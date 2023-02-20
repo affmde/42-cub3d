@@ -1,24 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/20 14:26:44 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/20 14:39:50 by andrferr         ###   ########.fr       */
+/*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
+/*   Updated: 2023/02/20 14:48:23 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub3d.h"
-
-int	main(int argc, char **argv)
+typedef struct s_textures
 {
-	if (argc != 2)
-	{
-		ft_putendl_fd("Wrong number of argumments.", 2);
-		return (1);
-	}
-	(void)argv;
-	return (0);
-}
+	
+}	t_textures;

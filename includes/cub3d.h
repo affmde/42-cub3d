@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/20 14:26:44 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/20 14:39:50 by andrferr         ###   ########.fr       */
+/*   Created: 2023/02/20 14:28:37 by andrferr          #+#    #+#             */
+/*   Updated: 2023/02/20 14:46:40 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub3d.h"
+#ifndef CUB3D_H
+# define CUB3D_H
 
-int	main(int argc, char **argv)
-{
-	if (argc != 2)
-	{
-		ft_putendl_fd("Wrong number of argumments.", 2);
-		return (1);
-	}
-	(void)argv;
-	return (0);
-}
+# include "../libft/libft.h"
+# include "structs.h"
+
+
+
+#endif

@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/20 14:28:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/21 12:45:27 by andrferr         ###   ########.fr       */
+/*   Created: 2023/02/21 12:30:40 by andrferr          #+#    #+#             */
+/*   Updated: 2023/02/21 12:42:08 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "../../includes/cub3d.h"
 
-# include "../libft/libft.h"
-# include "structs.h"
-# include <fcntl.h>
+int	read_file(char *path)
+{
+	int	fd;
 
-int	read_file(char *path);
-
-#endif
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+	{
+		ft_putendl_fd("Failed to open the file", 2);
+		return (1);
+	}
+	ft_printf("%s", get_next_line(fd));
+	close(fd);
+	return (0);
+}

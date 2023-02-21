@@ -9,8 +9,10 @@ ft_power_of.c get_next_line.c ft_isspace.c ft_abs.c ft_min.c ft_max.c ft_strrev.
 ft_letters_count.c
 LOBJECTS = $(LSRCS:.c=.o)
 LODEST = $(addprefix ./libft/, $(LOBJECTS))
+FILE_PARSING = read_file.c
+FILE_PARSING_DEST = $(addprefix file_parsing/, $(FILE_PARSING))
 SRCS = handle_errors.c clean.c
-SRCSDEST = $(addprefix ./srcs/, $(SRCS))
+SRCSDEST = $(addprefix ./srcs/, $(SRCS) $(FILE_PARSING_DEST))
 all: $(NAME)
 
 $(NAME): $(SRCSDEST) main.c

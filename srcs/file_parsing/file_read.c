@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_file.c                                        :+:      :+:    :+:   */
+/*   file_read.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 12:30:40 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/21 12:42:08 by andrferr         ###   ########.fr       */
+/*   Created: 2023/02/21 15:23:17 by andrferr          #+#    #+#             */
+/*   Updated: 2023/02/21 17:23:55 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	read_file(char *path)
+int	file_read(char *path, t_cub3d *cub3d)
 {
 	int	fd;
+	char *line;
 
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
@@ -22,7 +23,12 @@ int	read_file(char *path)
 		ft_putendl_fd("Failed to open the file", 2);
 		return (1);
 	}
-	ft_printf("%s", get_next_line(fd));
+	while (1)
+	{
+		line = get_next_line(fd);
+
+	}
+	(void)cub3d;
 	close(fd);
 	return (0);
 }

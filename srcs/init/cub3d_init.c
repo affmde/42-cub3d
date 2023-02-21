@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/20 14:28:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/21 17:25:41 by andrferr         ###   ########.fr       */
+/*   Created: 2023/02/21 17:15:42 by andrferr          #+#    #+#             */
+/*   Updated: 2023/02/21 17:27:34 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "../../includes/cub3d.h"
 
-# include "../libft/libft.h"
-# include "structs.h"
-# include <fcntl.h>
+t_cub3d	*cub3d_init(void)
+{
+	t_cub3d	*cub3d;
 
-int		file_read(char *path, t_cub3d *cub3d);
-int		check_identifier(char *str);
-t_cub3d	*cub3d_init(void);
-#endif
+	cub3d = ft_calloc(1, sizeof(t_cub3d));
+	if (!cub3d)
+		return (NULL);
+
+	return (cub3d);
+}

@@ -9,14 +9,16 @@ ft_power_of.c get_next_line.c ft_isspace.c ft_abs.c ft_min.c ft_max.c ft_strrev.
 ft_letters_count.c
 LOBJECTS = $(LSRCS:.c=.o)
 LODEST = $(addprefix ./libft/, $(LOBJECTS))
-FILE_PARSING = read_file.c
+FILE_PARSING = file_read.c
 FILE_PARSING_DEST = $(addprefix file_parsing/, $(FILE_PARSING))
+INIT = cub3d_init.c
+INIT_DEST = $(addprefix init/, $(INIT))
 SRCS = handle_errors.c clean.c
-SRCSDEST = $(addprefix ./srcs/, $(SRCS) $(FILE_PARSING_DEST))
+SRCSDEST = $(addprefix ./srcs/, $(SRCS) $(FILE_PARSING_DEST) $(INIT_DEST))
 all: $(NAME)
 
 $(NAME): $(SRCSDEST) main.c
-	make -C libft
+	@make -C libft
 	cc $(FLAGS) -o $(NAME) main.c $(SRCSDEST) -L. ./libft/$(LIBFT)
 
 clean:

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:28:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/21 17:25:41 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/26 15:39:37 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,13 @@
 # include "structs.h"
 # include <fcntl.h>
 
-int		file_read(char *path, t_cub3d *cub3d);
-int		check_identifier(char *str);
-t_cub3d	*cub3d_init(void);
+int			file_read(char *path, t_cub3d *cub3d);
+int			check_identifier(char *str);
+t_cub3d		*cub3d_init(void);
+int			parse_elements(int fd, t_cub3d *cub3d);
+void		texture_creator(t_textures *texture, char *info);
+void		walls_creator(t_walls *wall, char *info);
+void		clean_char_arr(char **arr);
+void		free_cub3d(t_cub3d *cub3d);
+
 #endif

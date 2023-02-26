@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file_read.c                                        :+:      :+:    :+:   */
+/*   map_validity.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 15:23:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/26 18:33:49 by andrferr         ###   ########.fr       */
+/*   Created: 2023/02/26 20:17:36 by andrferr          #+#    #+#             */
+/*   Updated: 2023/02/26 20:23:42 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	file_read(char *path, t_cub3d *cub3d)
+void	map_check_iniit(t_map_check *map_check)
 {
-	int	fd;
+	map_check->zeros = 0;
+	map_check->ones = 0;
+	map_check->ones = 0;
+}
 
-	fd = open(path, O_RDONLY);
-	if (fd < 0)
-	{
-		ft_putendl_fd("Failed to open the file", 2);
-		return (1);
-	}
-	if (parse_elements(fd, cub3d))
-		return (1);
-	parse_map(cub3d, fd);
-	close(fd);
+int	valid_map(t_cub3d *cub3d)
+{
+	t_map_check map_check;
+
+	map_check_iniit(&map_check);
 	return (0);
 }

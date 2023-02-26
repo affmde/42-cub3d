@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file_read.c                                        :+:      :+:    :+:   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 15:23:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/26 18:33:49 by andrferr         ###   ########.fr       */
+/*   Created: 2023/02/26 16:57:49 by andrferr          #+#    #+#             */
+/*   Updated: 2023/02/26 18:44:26 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	file_read(char *path, t_cub3d *cub3d)
+int	parse_map(t_cub3d *cub3d, int fd)
 {
-	int	fd;
-
-	fd = open(path, O_RDONLY);
-	if (fd < 0)
+	char	*line;
+	
+	while (1)
 	{
-		ft_putendl_fd("Failed to open the file", 2);
-		return (1);
+		line = get_next_line(fd);
+		if (!line)
+			return (1);
+		ft_lstadd_back(&cub3d->map, ft_lstnew(ft_strdup(line)));
+		free(line);
 	}
-	if (parse_elements(fd, cub3d))
-		return (1);
-	parse_map(cub3d, fd);
-	close(fd);
 	return (0);
 }

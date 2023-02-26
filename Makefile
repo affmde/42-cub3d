@@ -12,14 +12,16 @@ LFTBONUS_SRCS = ft_lstadd_back_bonus.c ft_lstadd_front_bonus.c ft_lstclear_bonus
 ft_lstiter_bonus.c ft_lstmap_bonus.c get_next_line_bonus.c
 LFTBONUS_OBJS = $(LFTBONUS_SRCS:.c=.o)
 LODEST = $(addprefix ./libft/, $(LOBJECTS) $(LFTBONUS_OBJS));
-FILE_PARSING = file_read.c parse_elements.c
+FILE_PARSING = file_read.c parse_elements.c parse_map.c
 FILE_PARSING_DEST = $(addprefix file_parsing/, $(FILE_PARSING))
 INIT = cub3d_init.c
 INIT_DEST = $(addprefix init/, $(INIT))
 UTILS = parse_utils.c texture_creator.c walls_creator.c
 UTILS_DEST = $(addprefix utils/, $(UTILS))
+MAP_VALIDATION = map_validity.c
+MAP_VALIDATION_DEST = $(addprefix map_validation/, $(MAP_VALIDATION))
 SRCS = handle_errors.c clean.c
-SRCSDEST = $(addprefix ./srcs/, $(SRCS) $(FILE_PARSING_DEST) $(UTILS_DEST) $(INIT_DEST))
+SRCSDEST = $(addprefix ./srcs/, $(SRCS) $(FILE_PARSING_DEST) $(UTILS_DEST) $(INIT_DEST) $(MAP_VALIDATION_DEST))
 all: $(NAME)
 
 $(NAME): $(SRCSDEST) main.c

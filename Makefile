@@ -18,10 +18,10 @@ INIT = cub3d_init.c
 INIT_DEST = $(addprefix init/, $(INIT))
 UTILS = parse_utils.c texture_creator.c walls_creator.c map_validation_utils.c
 UTILS_DEST = $(addprefix utils/, $(UTILS))
-MAP_VALIDATION = map_validity.c
-MAP_VALIDATION_DEST = $(addprefix map_validation/, $(MAP_VALIDATION))
+FILE_VALIDATION = map_validity.c
+FILE_VALIDATION_DEST = $(addprefix file_validation/, $(FILE_VALIDATION))
 SRCS = handle_errors.c clean.c
-SRCSDEST = $(addprefix ./srcs/, $(SRCS) $(FILE_PARSING_DEST) $(UTILS_DEST) $(INIT_DEST) $(MAP_VALIDATION_DEST))
+SRCSDEST = $(addprefix ./srcs/, $(SRCS) $(FILE_PARSING_DEST) $(UTILS_DEST) $(INIT_DEST) $(FILE_VALIDATION_DEST))
 all: $(NAME)
 
 $(NAME): $(SRCSDEST) main.c

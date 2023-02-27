@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:56:34 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/27 16:57:49 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/27 20:24:29 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	file_validity(t_cub3d *cub3d)
 	{
 		ft_putendl_fd("Invalid map.", 2);
 		free_cub3d(cub3d);
-		return (0);
+		return (1);
 	}
+	return (0);
 }

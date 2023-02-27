@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:26:44 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/27 16:57:26 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/27 20:25:01 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ int	main(int argc, char **argv)
 	cub3d = cub3d_init();
 	if(file_read(argv[1], cub3d))
 	{
-		ft_printf("HERE\n");
-		free_cub3d(cub3d); //CHECK HERE SEG FAULT CREATED BY NEW LINE IN MIDDLE OF MAP!!!!!
+		free_cub3d(cub3d);
 		return (0);
 	}
 	

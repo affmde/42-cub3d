@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:28:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/27 13:20:02 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/27 20:21:37 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void		free_cub3d(t_cub3d *cub3d);
 int			parse_map(t_cub3d *cub3d, char *path);
 
 
-//map validation
+//file validation
 int			is_valid_char(char c);
 int			is_start_pos(char c);
 int			valid_map(t_cub3d *cub3d);
-
+int			file_validity(t_cub3d *cub3d);
 
 #endif

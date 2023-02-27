@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d_init.c                                       :+:      :+:    :+:   */
+/*   map_validation_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 17:15:42 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/27 16:37:07 by andrferr         ###   ########.fr       */
+/*   Created: 2023/02/27 13:08:30 by andrferr          #+#    #+#             */
+/*   Updated: 2023/02/27 13:24:36 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-t_cub3d	*cub3d_init(void)
+int	is_valid_char(char c)
 {
-	t_cub3d	*cub3d;
+	if (c == ' ' || c == '1' || c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == '\n')
+		return (1);
+	return (0);
+}
 
-	cub3d = ft_calloc(1, sizeof(t_cub3d));
-	if (!cub3d)
-		return (NULL);
-	return (cub3d);
+int	is_start_pos(char c)
+{
+	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
+		return (1);
+	return (0);
 }

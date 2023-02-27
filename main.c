@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:26:44 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/26 18:45:08 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/27 09:15:20 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ int	main(int argc, char **argv)
 		ft_printf("ident: %s - path: %s\n", aux->identifier, aux->path);
 		a = a->next;
 	}*/
-	/*t_list *a = cub3d->map;
+	t_list *a = cub3d->map->map;
 	while (a)
 	{
 		ft_printf("%s", a->content);
 		a = a->next;
-	}*/
+	}
 	free_cub3d(cub3d);
 	return (0);
 }

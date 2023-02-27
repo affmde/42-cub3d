@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/26 20:21:54 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/27 09:15:08 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,17 @@ typedef struct s_walls
 	t_color	*color;
 }	t_walls;
 
+typedef struct s_map
+{
+	t_list *map;
+	int		height;
+}	t_map;
 
 typedef struct s_cub3d
 {
 	t_list	*textures;
 	t_list	*walls;
-	t_list	*map;
+	t_map	*map;
 }	t_cub3d;
 
 typedef struct s_map_check
@@ -46,6 +51,7 @@ typedef struct s_map_check
 	int	zeros;
 	int	ones;
 	int	start_position;
-}	t_map_check
+}	t_map_check;
+
 
 #endif

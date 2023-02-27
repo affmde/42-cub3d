@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 10:32:16 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/26 16:39:58 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/27 09:31:22 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,6 @@ int	parse_elements(int fd, t_cub3d *cub3d)
 		}
 		free(line);
 	}
+	close(fd);
 	return (0);
 }

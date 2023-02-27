@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:26:44 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/27 09:15:20 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/27 09:58:32 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,15 @@ int	main(int argc, char **argv)
 		a = a->next;
 	}*/
 	t_list *a = cub3d->map->map;
+	int	i;
+	i = 0;
 	while (a)
 	{
-		ft_printf("%s", a->content);
+		ft_printf("i: %d - %s",i, a->content);
 		a = a->next;
+		i++;
 	}
+	ft_printf("map height: %d\n", cub3d->map->height);
 	free_cub3d(cub3d);
 	return (0);
 }

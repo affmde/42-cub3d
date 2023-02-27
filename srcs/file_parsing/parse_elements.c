@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 10:32:16 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/27 09:31:22 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/27 10:04:23 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int	parse_line(char *line, t_cub3d *cub3d)
 	int	identifier;
 
 	identifier = check_identifier(line);
-	ft_printf("identifier: %d\n", identifier);
 	if(identifier == 0)
 		return (1);
 	else if (identifier == 1)
@@ -61,18 +60,28 @@ int	parse_line(char *line, t_cub3d *cub3d)
 	return (0);
 }
 
-int	parse_elements(int fd, t_cub3d *cub3d)
+int	parse_elements(char *path, t_cub3d *cub3d)
 {
 	char	*line;
-	
+	int	fd;
+
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+	{
+		ft_putendl_fd("Failed to open the file", 2);
+		return (1);
+	}
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (!line)
-			return (1);
+			break;
 		line = trim_line(line);
 		if (!line)
+		{
+			close(fd);
 			return (1);
+		}
 		if (parse_line(line, cub3d))
 		{
 			free(line);

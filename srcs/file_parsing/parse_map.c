@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 16:57:49 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/27 09:33:35 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/27 09:57:19 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,10 @@ static t_map	*map_creator(int fd)
 {
 	t_map	*map;
 	char	*line;
-	int		i;
 	
 	map = ft_calloc(1, sizeof(t_map));
 	if (!map)
 		return (NULL);
-	i = 0;
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -30,10 +28,9 @@ static t_map	*map_creator(int fd)
 			break;
 		if (check_identifier(line) == 0)
 			ft_lstadd_back(&map->map, ft_lstnew(ft_strdup(line)));
-		i++;
 		free(line);
 	}
-	map->height = i;
+	map->height = ft_lstsize(map->map);
 	return (map);
 }
 

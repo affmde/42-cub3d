@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 16:57:49 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/27 16:52:40 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/28 09:42:09 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static t_map	*map_creator(int fd)
 		{
 			if (!map_started)
 				map_started = 1;
+			line = trim_line(line, "\n");
 			ft_lstadd_back(&map->map, ft_lstnew(ft_strdup(line)));
 		}
 		free(line);

@@ -6,22 +6,12 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 10:32:16 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/27 10:04:23 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/28 10:22:09 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static char	*trim_line(char *line)
-{
-	char	*new;
-
-	new = ft_strtrim(line, " \t");
-	if (!new)
-		return (NULL);
-	free(line);
-	return (new);
-}
 
 static t_textures	*create_texture(char *line)
 {
@@ -31,7 +21,6 @@ static t_textures	*create_texture(char *line)
 	if (!texture)
 		return (NULL);
 	texture_creator(texture, line);
-	ft_printf("id: %s path: %s\n", texture->identifier, texture->path);
 	return (texture);
 }
 
@@ -76,7 +65,7 @@ int	parse_elements(char *path, t_cub3d *cub3d)
 		line = get_next_line(fd);
 		if (!line)
 			break;
-		line = trim_line(line);
+		line = trim_line(line, " \t\n");
 		if (!line)
 		{
 			close(fd);

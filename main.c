@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:26:44 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/27 20:25:01 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/28 08:59:38 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,17 @@ int	main(int argc, char **argv)
 	}
 	cub3d = cub3d_init();
 	if(file_read(argv[1], cub3d))
-	{
-		free_cub3d(cub3d);
 		return (0);
-	}
 	
-	/*t_list *a = cub3d->textures;
-	while (a)
+	/*t_list *aa = cub3d->textures;
+	while (aa)
 	{
 		t_textures *aux;
 
-		aux = (t_textures *)a->content;
+		aux = (t_textures *)aa->content;
 		ft_printf("ident: %s - path: %s\n", aux->identifier, aux->path);
-		a = a->next;
-	}*/
+		aa = aa->next;
+	}
 	t_list *a = cub3d->map->map;
 	int	i;
 	i = 0;
@@ -45,7 +42,7 @@ int	main(int argc, char **argv)
 		a = a->next;
 		i++;
 	}
-	ft_printf("map height: %d\n", cub3d->map->height);
+	ft_printf("map height: %d\n", cub3d->map->height);*/
 	free_cub3d(cub3d);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:33:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/26 16:42:26 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/28 10:19:48 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,16 @@ int	check_identifier(char *str)
 		return (3);
 	else
 		return (0);
+}
+
+
+char	*trim_line(char *line, char *str)
+{
+	char	*new;
+
+	new = ft_strtrim(line, str);
+	if (!new)
+		return (NULL);
+	free(line);
+	return (new);
 }

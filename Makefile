@@ -25,8 +25,8 @@ SRCSDEST = $(addprefix ./srcs/, $(SRCS) $(FILE_PARSING_DEST) $(UTILS_DEST) $(INI
 all: $(NAME)
 
 $(NAME): $(SRCSDEST) main.c
-	@make bonus -C libft
 	@make -C libft
+	@make bonus -C libft
 	cc $(FLAGS) -o $(NAME) main.c $(SRCSDEST) -L. ./libft/$(LIBFT)
 
 clean:

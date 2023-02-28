@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:33:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/28 14:56:40 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/28 15:25:01 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,7 @@ int	check_identifier(char *str)
 	else if (!ft_strncmp(str, "\n", ft_strlen(str)))
 		return (3);
 	else if (map_start_detector(str) == 0)
-	{
-		ft_printf("map start detected\n");
 		return (4);
-	}
 	else
 		return (0);
 }

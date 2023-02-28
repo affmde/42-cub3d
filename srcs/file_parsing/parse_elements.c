@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 10:32:16 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/28 11:12:58 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/28 15:30:12 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,21 +64,24 @@ int	parse_elements(char *path, t_cub3d *cub3d)
 	while (1)
 	{
 		line = get_next_line(fd);
-		if (!line)
-			break;
-		line = trim_line(line, " \t\n");
-		if (!line)
+		line = trim_line(line, "\n");
+		if (check_identifier(line) == 4)
 		{
+			ft_printf("BREAK\n");
+			break;
+		}
+		line = trim_line(line, " \t");
+		if (!line)
+			break ;
+		if (parse_line(line, cub3d))
+		{
+			ft_strdel(&line);
 			close(fd);
 			return (1);
 		}
-		if (parse_line(line, cub3d))
-		{
-			free(line);
-			break;
-		}
 		free(line);
 	}
+	ft_strdel(&line);
 	close(fd);
 	return (0);
 }

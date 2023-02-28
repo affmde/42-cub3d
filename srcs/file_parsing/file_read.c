@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:23:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/28 14:49:10 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/28 15:23:59 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,14 @@ int	file_read(char *path, t_cub3d *cub3d)
 		return (1);
 	if (parse_map(cub3d, path))
 	{
-		ft_putendl_fd("Invalid file configuation", 2);
+		ft_putendl_fd("Invalid map configuation", 2);
 		return (1);
 	}
 	if (parse_elements(path, cub3d))
+	{
+		ft_putendl_fd("Invalid elements configuration", 2);
 		return (1);
+	}
 	if (file_validity(cub3d))
 		return (1);
 	return (0);

@@ -6,13 +6,13 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 16:57:49 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/28 14:57:17 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/28 15:25:11 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static void	clean_map_error(t_map *map, char *line)
+/*static void	clean_map_error(t_map *map, char *line)
 {
 	//ft_printf("New line error\n");
 	ft_lstclear(&map->map, free);
@@ -28,7 +28,7 @@ static int	check_map_error(t_map *map, char *line, int *map_started)
 		return (1);
 	}
 	return (0);
-}
+}*/
 
 static t_map	*map_creator(int fd)
 {
@@ -40,7 +40,22 @@ static t_map	*map_creator(int fd)
 	if (!map)
 		return (NULL);
 	map_started = 0;
-	while (1)
+	while ((line = get_next_line(fd)))
+	{
+		line = trim_line(line, "\n");
+		if (check_identifier(line) == 4)
+			break;
+		ft_strdel(&line);
+	}
+	ft_lstadd_back(&map->map, ft_lstnew(ft_strdup(line)));
+	ft_strdel(&line);
+	while ((line = get_next_line(fd)))
+	{
+		line = trim_line(line, "\n");
+		ft_lstadd_back(&map->map, ft_lstnew(ft_strdup(line)));
+		ft_strdel(&line);
+	}
+	/*while (1)
 	{
 		line = get_next_line(fd);
 		if (!line)
@@ -55,8 +70,9 @@ static t_map	*map_creator(int fd)
 			ft_lstadd_back(&map->map, ft_lstnew(ft_strdup(line)));
 		}
 		free(line);
-	}
+	}*/
 	map->height = ft_lstsize(map->map);
+
 	return (map);
 }
 

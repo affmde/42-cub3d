@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:23:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/28 08:53:07 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/28 14:49:10 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	check_file_extension(char *path)
 	i = ft_strlen(path);
 	if (ft_strncmp(&path[i - 4], ".cub", 4))
 	{
+		ft_putendl_fd("Error", 2);
 		ft_putendl_fd("Wrong file extension.", 2);
 		return (1);
 	}
@@ -30,7 +31,10 @@ int	file_read(char *path, t_cub3d *cub3d)
 	if (check_file_extension(path))
 		return (1);
 	if (parse_map(cub3d, path))
+	{
+		ft_putendl_fd("Invalid file configuation", 2);
 		return (1);
+	}
 	if (parse_elements(path, cub3d))
 		return (1);
 	if (file_validity(cub3d))

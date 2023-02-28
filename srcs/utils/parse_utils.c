@@ -6,11 +6,25 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:33:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/28 10:19:48 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/28 14:56:40 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+static int	map_start_detector(char *str)
+{
+	int	i;
+
+	i = 0;
+	while(str[i])
+	{
+		if (!(str[i] == ' ' || str[i] == '1'))
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
 int	check_identifier(char *str)
 {
@@ -28,6 +42,11 @@ int	check_identifier(char *str)
 		return (2);
 	else if (!ft_strncmp(str, "\n", ft_strlen(str)))
 		return (3);
+	else if (map_start_detector(str) == 0)
+	{
+		ft_printf("map start detected\n");
+		return (4);
+	}
 	else
 		return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 16:57:49 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/28 09:42:09 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/28 14:57:17 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	clean_map_error(t_map *map, char *line)
 {
-	ft_printf("New line error\n");
+	//ft_printf("New line error\n");
 	ft_lstclear(&map->map, free);
 	free(line);
 	free(map);
@@ -67,6 +67,7 @@ int	parse_map(t_cub3d *cub3d, char *path)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
+		ft_putendl_fd("Error\n", 2);
 		ft_putendl_fd("Failed to open the file", 2);
 		return (1);
 	}

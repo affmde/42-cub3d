@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 10:32:16 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/28 10:22:09 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:12:58 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static t_textures	*create_texture(char *line)
 static t_walls *create_wall(char *line)
 {
 	t_walls	*wall;
-	
+
 	wall = ft_calloc(1, sizeof(t_walls));
 	if (!wall)
 		return (NULL);
@@ -57,6 +57,7 @@ int	parse_elements(char *path, t_cub3d *cub3d)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
+		ft_putendl_fd("Error\n", 2);
 		ft_putendl_fd("Failed to open the file", 2);
 		return (1);
 	}

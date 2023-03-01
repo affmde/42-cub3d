@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:23:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/28 15:23:59 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:22:55 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,44 @@ int	check_file_extension(char *path)
 	return (0);
 }
 
+
+t_list	*extract_file_data(int fd)
+{
+	t_list	*file_data;
+	char	*line;
+
+	file_data = NULL;
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break;
+		if (ft_strncmp(line, "\n", ft_strlen(line)))
+			line = trim_line(line, "\n");
+		ft_lstadd_back(&file_data, ft_lstnew(ft_strdup(line)));
+		ft_strdel(&line);
+	}
+	return (file_data);
+}
+
 int	file_read(char *path, t_cub3d *cub3d)
 {
+	int fd;
+
+	fd = open(path, O_RDONLY);
+	cub3d->file_data = extract_file_data(fd);
+	close(fd);
 	if (check_file_extension(path))
 		return (1);
-	if (parse_map(cub3d, path))
+	if (parse_map(cub3d))
 	{
 		ft_putendl_fd("Invalid map configuation", 2);
 		return (1);
 	}
-	if (parse_elements(path, cub3d))
+	if (parse_elements(cub3d))
 	{
 		ft_putendl_fd("Invalid elements configuration", 2);
 		return (1);
 	}
-	if (file_validity(cub3d))
-		return (1);
 	return (0);
 }

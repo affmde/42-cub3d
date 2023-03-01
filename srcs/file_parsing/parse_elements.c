@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 10:32:16 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/28 15:30:12 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:04:59 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,39 +49,19 @@ int	parse_line(char *line, t_cub3d *cub3d)
 	return (0);
 }
 
-int	parse_elements(char *path, t_cub3d *cub3d)
+int	parse_elements(t_cub3d *cub3d)
 {
-	char	*line;
-	int	fd;
+	t_list	*aux;
 
-	fd = open(path, O_RDONLY);
-	if (fd < 0)
+	aux = cub3d->file_data;
+	while (check_identifier(aux->content) != 4 && aux)
 	{
-		ft_putendl_fd("Error\n", 2);
-		ft_putendl_fd("Failed to open the file", 2);
-		return (1);
-	}
-	while (1)
-	{
-		line = get_next_line(fd);
-		line = trim_line(line, "\n");
-		if (check_identifier(line) == 4)
-		{
-			ft_printf("BREAK\n");
-			break;
-		}
-		line = trim_line(line, " \t");
-		if (!line)
-			break ;
-		if (parse_line(line, cub3d))
-		{
-			ft_strdel(&line);
-			close(fd);
+		aux->content = trim_line(aux->content, " \t");
+		if (!aux->content)
 			return (1);
-		}
-		free(line);
+		if (parse_line(aux->content, cub3d))
+			return (1);
+		aux = aux->next;
 	}
-	ft_strdel(&line);
-	close(fd);
 	return (0);
 }

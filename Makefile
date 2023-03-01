@@ -27,7 +27,7 @@ all: $(NAME)
 $(NAME): $(SRCSDEST) main.c
 	@make -C libft
 	@make bonus -C libft
-	cc $(FLAGS) -o $(NAME) main.c print_map_elements.c $(SRCSDEST) -L. ./libft/$(LIBFT)
+	cc $(FLAGS) -o $(NAME) main.c $(SRCSDEST) -L. ./libft/$(LIBFT)
 
 clean:
 	rm -f $(LODEST)

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:36:49 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/28 10:12:49 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:15:55 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	free_cub3d(t_cub3d *cub3d)
 {
 	if (cub3d)
 	{
+		if (cub3d->file_data)
+			ft_lstclear(&cub3d->file_data, free);
 		if (cub3d->textures)
 			ft_lstclear(&cub3d->textures, delete_texture_node);
 		if (cub3d->walls)
@@ -60,7 +62,7 @@ void	free_cub3d(t_cub3d *cub3d)
 		if (cub3d->map)
 		{
 			if (cub3d->map->map)
-				ft_lstclear(&cub3d->map->map, free);
+				clean_char_arr(cub3d->map->map);
 			free(cub3d->map);
 		}
 		free(cub3d);

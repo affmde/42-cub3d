@@ -6,34 +6,32 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 20:17:36 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/28 09:39:17 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:07:04 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static void	check_characters(t_map *map, t_map_check *map_check)
+static void	check_characters(char **map, t_map_check *map_check)
 {
-	t_list	*tmp;
-	char	*str;
 	int		i;
-
-	tmp = map->map;
-	while (tmp)
+	int		j;
+	
+	i = 0;
+	while (map[i])
 	{
-		i = 0;
-		str = tmp->content;
-		while (str[i])
+		j = 0;
+		while (map[i][j])
 		{
-			if (!is_valid_char(str[i]))
+			if (!is_valid_char(map[i][j]))
 				map_check->other_chars++;
-			if (is_start_pos(str[i]))
+			if (is_start_pos(map[i][j]))
 				map_check->start_position++;
-			i++;
+			j++;
 		}
-		if (!ft_strncmp(str, "\n", ft_strlen(str)))
+		if (!ft_strncmp(map[i], "\n", ft_strlen(map[i])))
 			map_check->empty_lines++;
-		tmp = tmp->next;
+		i++;
 	}
 }
 
@@ -44,7 +42,7 @@ int	valid_map(t_cub3d *cub3d)
 	map_check.start_position = 0;
 	map_check.other_chars = 0;
 	map_check.empty_lines = 0;
-	check_characters(cub3d->map, &map_check);
+	check_characters(cub3d->map->map, &map_check);
 	if (map_check.other_chars)
 		return (1);
 	if (map_check.start_position != 1)

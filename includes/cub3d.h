@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:28:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/28 11:09:57 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:42:19 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,17 @@
 int			file_read(char *path, t_cub3d *cub3d);
 int			check_identifier(char *str);
 t_cub3d		*cub3d_init(void);
-int			parse_elements(char *path, t_cub3d *cub3d);
 void		texture_creator(t_textures *texture, char *info);
 void		walls_creator(t_walls *wall, char *info);
 void		clean_char_arr(char **arr);
 void		free_cub3d(t_cub3d *cub3d);
-int			parse_map(t_cub3d *cub3d, char *path);
+int			parse_map(t_cub3d *cub3d);
 
 
 //Parsing
 char		*trim_line(char *line, char *str);
-void		print_map_elements(t_cub3d *cub3d);		//I CAN REMOVE THIS IN THE END. REMOVE ALSO FILE AND FROM MAKEFILE!!!!
-
+char		**list_to_matrix(t_list *list);
+int			parse_elements(t_cub3d *cub3d);
 //file validation
 int			is_valid_char(char c);
 int			is_start_pos(char c);

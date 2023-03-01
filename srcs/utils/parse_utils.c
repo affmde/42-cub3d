@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:33:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/28 15:25:01 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:39:50 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,3 +59,27 @@ char	*trim_line(char *line, char *str)
 	free(line);
 	return (new);
 }
+
+char	**list_to_matrix(t_list *list)
+{
+	t_list *temp;
+	char	**arr;
+	int		height;
+	int		i;
+	height = ft_lstsize(list);
+	arr = ft_calloc(height + 1, sizeof(char *));
+	if (!arr)
+		return (NULL);
+	temp = list;
+	i = 0;
+	while (temp)
+	{
+		arr[i] = ft_strdup(temp->content);
+		if (!arr[i])
+			return (NULL);
+		i++;
+		temp = temp->next;
+	}
+	return (arr);
+}
+

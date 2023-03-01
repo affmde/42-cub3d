@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/27 13:35:44 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:07:48 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_walls
 
 typedef struct s_map
 {
-	t_list *map;
+	char	**map;
 	int		height;
 }	t_map;
 
@@ -44,6 +44,7 @@ typedef struct s_cub3d
 	t_list	*textures;
 	t_list	*walls;
 	t_map	*map;
+	t_list	*file_data;
 }	t_cub3d;
 
 typedef struct s_map_check

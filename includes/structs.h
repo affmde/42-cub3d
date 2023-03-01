@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/01 13:07:48 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/01 16:30:05 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,16 @@ typedef struct s_map_check
 	int	other_chars;
 	int	empty_lines;
 }	t_map_check;
+
+typedef struct s_elements_check
+{
+	int	n;
+	int	s;
+	int	e;
+	int	w;
+	int	f;
+	int	c;
+}	t_elements_check;
 
 
 #endif

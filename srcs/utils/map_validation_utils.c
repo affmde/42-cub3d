@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 13:08:30 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/28 08:45:46 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/02 10:26:41 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,12 @@ int	is_start_pos(char c)
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 		return (1);
 	return (0);
+}
+
+
+void	add_values_to_compare(t_map_check *a, t_map_check *b)
+{
+	a->ones = b->ones;
+	a->spaces = b->spaces;
+	a->zeros = b->zeros;
 }

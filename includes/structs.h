@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/01 16:30:05 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/02 09:56:59 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,13 @@ typedef struct s_cub3d
 
 typedef struct s_map_check
 {
-	int	start_position;
-	int	other_chars;
-	int	empty_lines;
+	int		start_position;
+	int		other_chars;
+	int		empty_lines;
+	int		ones;
+	int		zeros;
+	int		spaces;
+	char	**map;
 }	t_map_check;
 
 typedef struct s_elements_check

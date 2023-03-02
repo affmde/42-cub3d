@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 20:17:36 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/01 14:07:04 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/02 10:33:59 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,21 @@ static void	check_characters(char **map, t_map_check *map_check)
 	}
 }
 
+void	map_check_init(t_map_check *map_check)
+{
+	map_check->start_position = 0;
+	map_check->other_chars = 0;
+	map_check->empty_lines = 0;
+	map_check->zeros = 0;
+	map_check->ones = 0;
+	map_check->spaces = 0;
+}
+
 int	valid_map(t_cub3d *cub3d)
 {
 	t_map_check map_check;
 
-	map_check.start_position = 0;
-	map_check.other_chars = 0;
-	map_check.empty_lines = 0;
+	map_check_init(&map_check);
 	check_characters(cub3d->map->map, &map_check);
 	if (map_check.other_chars)
 		return (1);
@@ -49,5 +57,11 @@ int	valid_map(t_cub3d *cub3d)
 		return (1);
 	if (map_check.empty_lines)
 		return (1);
+	if (is_map_closed(cub3d, &map_check))
+	{
+		clean_char_arr(map_check.map);
+		return (1);
+	}
+	clean_char_arr(map_check.map);
 	return (0);
 }

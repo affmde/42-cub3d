@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:28:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/01 18:50:22 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/02 10:23:07 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,7 @@ int			is_start_pos(char c);
 int			valid_map(t_cub3d *cub3d);
 int			file_validity(t_cub3d *cub3d);
 int			elements_validity(t_cub3d *cub3d);
-
+int			is_map_closed(t_cub3d *cub3d, t_map_check *map);
+void		map_check_init(t_map_check *map_check);
+void		add_values_to_compare(t_map_check *a, t_map_check *b);
 #endif

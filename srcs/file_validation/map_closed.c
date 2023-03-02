@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 08:58:08 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/02 16:08:51 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/02 16:12:34 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ static char **get_map_copy(t_cub3d *cub3d)
 	i = 0;
 	while (i < cub3d->map->height)
 	{
-		//arr[i] = ft_strdup(cub3d->map->map[i]);
 		arr[i + 1] = line_add_border(cub3d->map->map[i], cub3d);
 		if (!arr[i + 1])
 			return (NULL);
@@ -132,16 +131,11 @@ int	is_map_closed(t_cub3d *cub3d, t_map_check *map)
 	t_map_check compare;
 	
 	map->map = get_map_copy(cub3d);
-	int	i = -1;
-	while (map->map[++i])
-		ft_printf("%s\n", map->map[i]);
 	get_starting_point(map->map, &y, &x);
 	map_count_elements(map->map, map);
 	flood_fill(cub3d, map->map, x, y);
 	map_check_init(&compare);
 	map_count_elements(map->map, &compare);
-	ft_printf("spaces: %d ones: %d zeros: %d hats: %d\n", compare.spaces, compare.ones, compare.zeros, compare.hats);
-	ft_printf("spaces: %d ones: %d zeros: %d hats: %d\n", map->spaces, map->ones, map->zeros, map->hats);
 	if (map->ones != compare.ones || map->spaces != compare.spaces || compare.zeros != 0 || map->hats != compare.hats)
 		return (1);
 	return (0);

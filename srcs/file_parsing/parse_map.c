@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 16:57:49 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/01 14:17:15 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:58:35 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,27 @@ static t_map	*map_creator(t_cub3d *cub3d)
 	return (map);
 }
 
+static void	get_longer_line(t_cub3d *cub3d)
+{	
+	int	i;
+	int len;
+	
+	len = 0;
+	i = 0;
+	while(cub3d->map->map[i])
+	{
+		if ((int)ft_strlen(cub3d->map->map[i]) > len)
+			len = ft_strlen(cub3d->map->map[i]);
+		i++;
+	}
+	cub3d->map->max_length = len;
+}
+
 int	parse_map(t_cub3d *cub3d)
 {
 	cub3d->map = map_creator(cub3d);
 	if (!cub3d->map)
 		return (1);
+	get_longer_line(cub3d);
 	return (0);
 }

@@ -22,8 +22,10 @@ UTILS = parse_utils.c texture_creator.c walls_creator.c map_validation_utils.c
 UTILS_DEST = $(addprefix utils/, $(UTILS))
 FILE_VALIDATION = map_validity.c file_validity.c elements_validity.c map_closed.c
 FILE_VALIDATION_DEST = $(addprefix file_validation/, $(FILE_VALIDATION))
+MLX_HANDLING = mlx_handling.c events.c
+MLX_HANDLING_DEST = $(addprefix mlx_handling/, $(MLX_HANDLING))
 SRCS = handle_errors.c clean.c
-SRCSDEST = $(addprefix ./srcs/, $(SRCS) $(FILE_PARSING_DEST) $(UTILS_DEST) $(INIT_DEST) $(FILE_VALIDATION_DEST))
+SRCSDEST = $(addprefix ./srcs/, $(SRCS) $(FILE_PARSING_DEST) $(UTILS_DEST) $(INIT_DEST) $(FILE_VALIDATION_DEST) $(MLX_HANDLING_DEST))
 all: $(NAME)
 
 $(NAME): $(SRCSDEST) main.c

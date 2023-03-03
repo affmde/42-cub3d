@@ -1,5 +1,7 @@
 NAME = cub3D
 FLAGS = -Wall -Werror -Wextra
+LINFLAGS = -lmlx -lXext -lX11
+MOSFLAGS = -lmlx -framework OpenGl -framework AppKit
 LIBFT = libft.a
 LSRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c ft_memchr.c \
 ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c \
@@ -27,7 +29,7 @@ all: $(NAME)
 $(NAME): $(SRCSDEST) main.c
 	@make -C libft
 	@make bonus -C libft
-	cc $(FLAGS) -o $(NAME) main.c $(SRCSDEST) -L. ./libft/$(LIBFT)
+	cc $(FLAGS) -o $(NAME) main.c $(SRCSDEST) -L. ./libft/$(LIBFT) $(LINFLAGS)
 
 clean:
 	rm -f $(LODEST)

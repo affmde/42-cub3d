@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/02 16:06:30 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/03 09:37:28 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,24 @@ typedef struct s_map
 	int		max_length;
 }	t_map;
 
+typedef struct s_img
+{
+	void		*img_ptr;
+	int			*data;
+	int			size_l;
+	int			bpp;
+	int			endian;
+}	t_img;
+
 typedef struct s_cub3d
 {
 	t_list	*textures;
 	t_list	*walls;
 	t_map	*map;
 	t_list	*file_data;
+	void	*ptr;
+	void	*win;
+	void	*img;
 }	t_cub3d;
 
 typedef struct s_map_check

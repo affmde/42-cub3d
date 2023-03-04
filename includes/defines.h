@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_handling.c                                     :+:      :+:    :+:   */
+/*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/03 09:42:29 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/04 11:05:50 by andrferr         ###   ########.fr       */
+/*   Created: 2023/03/04 11:04:27 by andrferr          #+#    #+#             */
+/*   Updated: 2023/03/04 11:05:26 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#ifndef DEFINES_H
+# define DEFINES_H
 
-int	close_window(void)
-{
-	exit(0);
-}
+#define WIDTH 1024
+#define HEIGHT 571
 
-int	mlx_handling(t_cub3d *cub3d)
-{
-	cub3d->ptr = mlx_init();
-	cub3d->win = mlx_new_window(cub3d->ptr, WIDTH, HEIGHT, "My window");
-	mlx_key_hook(cub3d->win, deal_key, cub3d);
-	mlx_hook(cub3d->win, 17, 0, close_window, NULL);
-	mlx_loop(cub3d->ptr);
-	return (0);
-}
+#endif

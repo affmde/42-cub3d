@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/03 09:37:28 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/04 11:11:11 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,20 @@ typedef struct s_map
 	int		height;
 	int		max_length;
 }	t_map;
+
+typedef struct s_ray
+{
+	
+}	t_ray;
+
+typedef struct s_player
+{
+	int	fov;
+	int	player_angle;
+	int	x;
+	int	y;
+	
+}	t_player;
 
 typedef struct s_img
 {

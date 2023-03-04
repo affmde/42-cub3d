@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:33:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/01 13:39:50 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/04 10:11:51 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,3 @@ char	**list_to_matrix(t_list *list)
 	}
 	return (arr);
 }
-

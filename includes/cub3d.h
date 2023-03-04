@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:28:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/04 11:30:57 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/04 15:09:58 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,10 @@ int			deal_key(int keycode, t_cub3d *cub3d);
 
 //Maths
 float		degrees_to_radians(int degree);
+
+//Lines
+void	put_pixel(t_img *image, int x, int y, int color);
+void	bresenham_algo(t_pos pos_0, t_pos pos_1, t_img *image);
+t_pos	populate_position(int x, int y, int z, int color);
+int		create_rgb(t_color *color);
 #endif

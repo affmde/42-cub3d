@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.c                                           :+:      :+:    :+:   */
+/*   put_pixel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/03 10:30:22 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/04 15:42:26 by andrferr         ###   ########.fr       */
+/*   Created: 2023/03/04 14:37:44 by andrferr          #+#    #+#             */
+/*   Updated: 2023/03/04 14:38:00 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	deal_key(int keycode, t_cub3d *cub3d)
+void	put_pixel(t_img *image, int x, int y, int color)
 {
-	if (keycode == 65307 || keycode == 53)
-	{
-		mlx_destroy_window(cub3d->ptr, cub3d->win);
-		exit (1);
-	}
-	return (0);
+	int		offset;
+
+	offset = y * (image->size_l / 4) + x;
+	if ((x >= 0 && x < WIDTH) && (y >= 0 && y < HEIGHT))
+		image->data[offset] = color;
 }

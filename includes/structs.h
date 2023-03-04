@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/04 11:11:11 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/04 14:41:18 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ typedef struct s_cub3d
 	t_list	*file_data;
 	void	*ptr;
 	void	*win;
-	void	*img;
+	t_img	*img;
 }	t_cub3d;
 
 typedef struct s_map_check
@@ -96,5 +96,22 @@ typedef struct s_elements_check
 	int	c;
 }	t_elements_check;
 
+typedef struct s_position
+{
+	int	x;
+	int	y;
+	int	z;
+	int	color;
+}	t_pos;
+
+typedef struct s_line_params
+{
+	int	sx;
+	int	sy;
+	int	dx;
+	int	dy;
+	int	error;
+	int	offset;
+}		t_params;
 
 #endif

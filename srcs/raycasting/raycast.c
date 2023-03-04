@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_handling.c                                     :+:      :+:    :+:   */
+/*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/03 09:42:29 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/04 20:21:32 by andrferr         ###   ########.fr       */
+/*   Created: 2023/03/04 17:10:52 by andrferr          #+#    #+#             */
+/*   Updated: 2023/03/04 17:28:35 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	close_window(void)
+int	raycasting(t_cub3d *cub3d)
 {
-	exit(0);
-}
-
-
-
-int	mlx_handling(t_cub3d *cub3d)
-{
-	cub3d->ptr = mlx_init();
-	cub3d->win = mlx_new_window(cub3d->ptr, WIDTH, HEIGHT, "My window");
+	float	ray_angle;
+	int		i;
 	
-	mlx_key_hook(cub3d->win, deal_key, cub3d);
-	mlx_hook(cub3d->win, 17, 0, close_window, NULL);
-	minimap(cub3d);
-	mlx_loop(cub3d->ptr);
+	ray_angle = cub3d->camera->player_angle - cub3d->camera->half_fov;
+	i = 0;
+	while (i < WIDTH)
+	{
+		
+		ray_angle += cub3d->camera->angle_increment;
+		i++;
+	}
 	return (0);
 }

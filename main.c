@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:26:44 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/04 11:31:56 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/04 17:08:33 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,12 @@ int	main(int argc, char **argv)
 	}
 	if (file_validity(cub3d))
 		return (0);
-	printf("result: %f\n", degrees_to_radians(60));
+	cub3d->camera = camera_init(cub3d);
+	if (!cub3d->camera)
+	{
+		free_cub3d(cub3d);
+		return (0);
+	}
 	mlx_handling(cub3d);
 	free_cub3d(cub3d);
 	return (0);

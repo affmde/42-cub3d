@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/04 14:41:18 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/04 17:08:07 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,6 @@ typedef struct s_ray
 	
 }	t_ray;
 
-typedef struct s_player
-{
-	int	fov;
-	int	player_angle;
-	int	x;
-	int	y;
-	
-}	t_player;
-
 typedef struct s_img
 {
 	void		*img_ptr;
@@ -63,15 +54,29 @@ typedef struct s_img
 	int			endian;
 }	t_img;
 
+typedef struct s_camera
+{
+	int		fov;
+	float	half_fov;
+	float	angle_increment;
+	int		precision;
+	int		x;
+	int		y;
+	float	player_angle;
+	float	half_width;
+	float	half_height;
+}	t_camera;
+
 typedef struct s_cub3d
 {
-	t_list	*textures;
-	t_list	*walls;
-	t_map	*map;
-	t_list	*file_data;
-	void	*ptr;
-	void	*win;
-	t_img	*img;
+	t_list		*textures;
+	t_list		*walls;
+	t_map		*map;
+	t_list		*file_data;
+	void		*ptr;
+	void		*win;
+	t_img		*img;
+	t_camera	*camera;
 }	t_cub3d;
 
 typedef struct s_map_check

@@ -16,7 +16,7 @@ LFTBONUS_OBJS = $(LFTBONUS_SRCS:.c=.o)
 LODEST = $(addprefix ./libft/, $(LOBJECTS) $(LFTBONUS_OBJS));
 FILE_PARSING = file_read.c parse_elements.c parse_map.c
 FILE_PARSING_DEST = $(addprefix file_parsing/, $(FILE_PARSING))
-INIT = cub3d_init.c
+INIT = cub3d_init.c cam_init.c
 INIT_DEST = $(addprefix init/, $(INIT))
 UTILS = parse_utils.c texture_creator.c walls_creator.c map_validation_utils.c return_textures.c math_utils.c bresenham_algo.c put_pixel.c \
 colors.c
@@ -25,14 +25,17 @@ FILE_VALIDATION = map_validity.c file_validity.c elements_validity.c map_closed.
 FILE_VALIDATION_DEST = $(addprefix file_validation/, $(FILE_VALIDATION))
 MLX_HANDLING = mlx_handling.c events.c
 MLX_HANDLING_DEST = $(addprefix mlx_handling/, $(MLX_HANDLING))
+RAYCASTING = raycast.c
+RAYCASTING_DEST = $(addprefix raycasting/, $(RAYCASTING))
 SRCS = handle_errors.c clean.c
-SRCSDEST = $(addprefix ./srcs/, $(SRCS) $(FILE_PARSING_DEST) $(UTILS_DEST) $(INIT_DEST) $(FILE_VALIDATION_DEST) $(MLX_HANDLING_DEST))
+SRCSDEST = $(addprefix ./srcs/, $(SRCS) $(FILE_PARSING_DEST) $(UTILS_DEST) $(INIT_DEST) $(FILE_VALIDATION_DEST) $(MLX_HANDLING_DEST) \
+$(RAYCASTING_DEST))
 all: $(NAME)
 
-$(NAME): $(SRCSDEST) main.c
+$(NAME): $(SRCSDEST) main.c draw_example.c
 	@make -C libft
 	@make bonus -C libft
-	cc $(FLAGS) -o $(NAME) main.c $(SRCSDEST) -L. ./libft/$(LIBFT) $(LINFLAGS)
+	cc $(FLAGS) -o $(NAME) main.c draw_example.c $(SRCSDEST) -L. ./libft/$(LIBFT) $(LINFLAGS)
 
 clean:
 	rm -f $(LODEST)

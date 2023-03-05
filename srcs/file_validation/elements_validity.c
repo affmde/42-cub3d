@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 20:23:54 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/01 18:49:47 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/05 11:28:43 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,23 +28,6 @@ static void check_repeated_textures(t_cub3d *cub3d, t_elements_check *element)
 			element->e++;
 		else if (!ft_strncmp(texture->identifier, "WE", ft_strlen(texture->identifier)))
 			element->w++;
-		aux = aux->next;
-	}
-}
-
-static void	check_repeated_walls(t_cub3d *cub3d, t_elements_check *element)
-{
-	t_list		*aux;
-	t_walls		*wall;
-	
-	aux = cub3d->textures;
-	while (aux)
-	{
-		wall = aux->content;
-		if (!ft_strncmp(wall->identifier, "F", ft_strlen(wall->identifier)))
-			element->f++;
-		else if (!ft_strncmp(wall->identifier, "C", ft_strlen(wall->identifier)))
-			element->c++;
 		aux = aux->next;
 	}
 }
@@ -80,5 +63,7 @@ int	elements_validity(t_cub3d *cub3d)
 	check_repeated_walls(cub3d, &element);
 	if (pass_elements_check(&element))
 		return (1);
+	if (check_walls_color(cub3d))
+		return (2);
 	return (0);
 }

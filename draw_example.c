@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 20:16:48 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/04 21:15:17 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/03/05 10:03:08 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static void paint_cube_vertically(t_pos start, t_pos end, t_cub3d *cub3d, t_img 
 	x = start.x;
 	while (x < start.x + 20)
 	{
-		ft_printf("x: %d - %d\n", x, start.x * 20);
 		a = populate_position(x, start.y, 0, get_color(cub3d->map->map, start.y /20, start.x / 20));
 		b = populate_position(x, end.y, 0, get_color(cub3d->map->map, start.y / 20, start.x / 20));
 		bresenham_algo(a, b, img);
@@ -68,25 +67,16 @@ static void	draw_minimap(t_cub3d *cub3d, t_img *img)
 		{
 			if (j < (int)ft_strlen(cub3d->map->map[i]) - 1)
 			{
-				//start = populate_position(j * 20, i * 20, 0, get_color(cub3d->map->map, i, j));
-				//end = populate_position((j + 1) * 20, i * 20, 0, get_color(cub3d->map->map, i, j + 1));
-				//bresenham_algo(start, end, img);
 				start = populate_position(j * 20, i * 20, 0, get_color(cub3d->map->map, i, j));
 				end = populate_position((j + 1) * 20, i * 20, 0, get_color(cub3d->map->map, i, j + 1));
 				paint_cube_horizontally(start, end, cub3d, img);
 			}
 			if (i < cub3d->map->height - 1)
 			{
-				//start = populate_position(j * 20, i * 20, 0, get_color(cub3d->map->map, i, j));
-				//end = populate_position(j * 20, (i + 1) * 20, 0, get_color(cub3d->map->map, i + 1, j));
-				//bresenham_algo(start, end, img);
 				start = populate_position(j * 20, i * 20, 0, get_color(cub3d->map->map, i, j));
 				end = populate_position(j * 20, (i + 1) * 20, 0, get_color(cub3d->map->map, i + 1, j));
 				paint_cube_vertically(start, end, cub3d, img);
 			}
-			/*start = populate_position(j * 20, i * 20, 0, get_color(cub3d->map->map, i, j));
-			end = populate_position(j * 20, (i + 1) * 20, 0, get_color(cub3d->map->map, i + 1, j));
-			paint_cube(start, end, cub3d, img);*/
 			j++;
 		}
 		i++;

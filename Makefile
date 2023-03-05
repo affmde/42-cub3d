@@ -21,7 +21,7 @@ INIT_DEST = $(addprefix init/, $(INIT))
 UTILS = parse_utils.c texture_creator.c walls_creator.c map_validation_utils.c return_textures.c math_utils.c bresenham_algo.c put_pixel.c \
 colors.c
 UTILS_DEST = $(addprefix utils/, $(UTILS))
-FILE_VALIDATION = map_validity.c file_validity.c elements_validity.c map_closed.c
+FILE_VALIDATION = map_validity.c file_validity.c elements_validity.c map_closed.c fc_validity.c
 FILE_VALIDATION_DEST = $(addprefix file_validation/, $(FILE_VALIDATION))
 MLX_HANDLING = mlx_handling.c events.c
 MLX_HANDLING_DEST = $(addprefix mlx_handling/, $(MLX_HANDLING))

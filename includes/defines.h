@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 11:04:27 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/04 11:05:26 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:47:42 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define DEFINES_H
 
 #define WIDTH 1024
-#define HEIGHT 571
+#define HEIGHT 512
+#define PI 3.141593
 
 #endif

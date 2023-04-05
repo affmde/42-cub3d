@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:26:44 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/05 14:13:30 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/05 16:47:27 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	main(int argc, char **argv)
 	if (file_validity(cub3d))
 		return (0);
 
+	printf("pi: %f\n", PI);
 	/************************************/
 	cub3d->camera = camera_init(cub3d);
 	if (!cub3d->camera)

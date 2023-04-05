@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 20:16:48 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/05 10:03:08 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/05 15:07:44 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static int get_color(char **map, int y, int x)
 		return (0xffffff);
 	if (map[y][x] == ' ')
 		return (0x000000);
+	if (map[y][x] == 'N')
+		return (0xffff00);
 	return (0x0880808);
 }
 

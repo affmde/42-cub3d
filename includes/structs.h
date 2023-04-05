@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/04 17:08:07 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/05 17:28:57 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_map
 
 typedef struct s_ray
 {
-	
+
 }	t_ray;
 
 typedef struct s_img
@@ -65,6 +65,7 @@ typedef struct s_camera
 	float	player_angle;
 	float	half_width;
 	float	half_height;
+	float	distance_to_plane;
 }	t_camera;
 
 typedef struct s_cub3d

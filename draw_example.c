@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 20:16:48 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/05 17:16:56 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/05 18:12:31 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static int get_color(char **map, int y, int x)
 		return (0xffffff);
 	if (map[y][x] == ' ')
 		return (0x000000);
-	if (map[y][x] == 'N')
-		return (0xffff00);
+	// if (map[y][x] == 'N')
+	// 	return (0xffff00);
 	return (0x0880808);
 }
 
@@ -87,6 +87,35 @@ static void	draw_minimap(t_cub3d *cub3d, t_img *img)
 	}
 }
 
+void	draw_player(t_cub3d *cub3d)
+{
+	//t_img	*img;
+	int		i;
+	int		j;
+	int		x;
+	int		y;
+
+	//img = ft_calloc(1, sizeof(t_img));
+	//img->data = (int *)mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size_l, &img->endian);
+	i = -1;
+	while (++i < cub3d->map->height)
+	{
+		j = -1;
+		while (++j < (int)ft_strlen(cub3d->map->map[i]))
+		{
+			if (cub3d->map->map[i][j] == 'N')
+			{
+				printf("Found\n");
+				x = j;
+				y = i;
+				break;
+			}
+		}
+	}
+	//put_pixel(img, x, i, 0xffffff);
+	//mlx_put_image_to_window(cub3d->ptr, cub3d->win, img->img_ptr, 0, 0);
+}
+
 void	minimap(t_cub3d *cub3d)
 {
 	t_img *img;
@@ -94,5 +123,6 @@ void	minimap(t_cub3d *cub3d)
 	img->img_ptr = mlx_new_image(cub3d->ptr, WIDTH, HEIGHT);
 	img->data = (int *)mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size_l, &img->endian);
 	draw_minimap(cub3d, img);
+	draw_player(cub3d);
 	mlx_put_image_to_window(cub3d->ptr, cub3d->win, img->img_ptr, 0, 0);
 }

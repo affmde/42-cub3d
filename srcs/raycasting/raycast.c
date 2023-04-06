@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:10:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/06 21:26:30 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/06 22:38:51 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,42 @@ float	raycasting(t_cub3d *cub3d, float angle)
 	return (distance);
 }
 
-void	draw_ray(t_cub3d *cub3d, t_img *img, float angle)
+void	draw_ray(t_cub3d *cub3d, t_img *img, float angle, int i)
 {
 	float	distance;
-	t_pos	a;
-	t_pos	b;
+	//t_pos	a;
+	//t_pos	b;
+	float wallHeight;
 	
-	a.x = cub3d->camera->x;
-	a.y = cub3d->camera->y;
-	a.color = 0xFFFF00;
+	//a.x = cub3d->camera->x;
+	//a.y = cub3d->camera->y;
+	//a.color = 0xFFFF00;
 	distance = raycasting(cub3d, angle) * scale;
-	b.x = a.x + distance * cos(degrees_to_radians(angle));
-	b.y = a.y + distance * sin(degrees_to_radians(angle)); 
-	b.color = 0xFFFF00;
-	bresenham_algo(a, b, img);
-	
+	distance = distance * cos(degrees_to_radians(angle - cub3d->camera->player_angle));
+	//b.x = a.x + distance * cos(degrees_to_radians(angle));
+	//b.y = a.y + distance * sin(degrees_to_radians(angle)); 
+	//b.color = 0xFFFF00;
+	//bresenham_algo(a, b, img);
+	wallHeight = cub3d->camera->half_height / distance * scale;
+	printf("wallHeight: %f, half_H: %f\n", wallHeight, cub3d->camera->half_height);
+	t_pos	c;
+	t_pos	d;
+	c.x = i;
+	c.y = cub3d->camera->half_height - wallHeight;
+	c.color = 0xffffff;
+	d.x = i;
+	d.y = cub3d->camera->half_height + wallHeight;
+	bresenham_algo(c, d, img);
+	c.x = i;
+	c.y = 0;
+	c.color = 0x0000FF;
+	d.x = i;
+	d.y = cub3d->camera->half_height - wallHeight;
+	bresenham_algo(c, d, img);
+	c.x = i;
+	c.y = cub3d->camera->half_height + wallHeight;
+	c.color = 0x00FF00;
+	d.x = i;
+	d.y = HEIGHT;
+	bresenham_algo(c, d, img);
 }

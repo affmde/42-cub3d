@@ -6,13 +6,13 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 20:16:48 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/06 21:19:00 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/06 21:47:30 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/cub3d.h"
 
-static int get_color(char **map, int y, int x)
+/*static int get_color(char **map, int y, int x)
 {
 	if (map[y][x] == '1')
 		return (0xffffff);
@@ -51,9 +51,9 @@ static void paint_cube_horizontally(t_pos start, t_pos end, t_cub3d *cub3d, t_im
 		bresenham_algo(a, b, img);
 		y++;
 	}
-}
+}*/
 
-static void	draw_minimap(t_cub3d *cub3d, t_img *img)
+/*static void	draw_minimap(t_cub3d *cub3d, t_img *img)
 {
 	int	i;
 	int	j;
@@ -81,7 +81,7 @@ static void	draw_minimap(t_cub3d *cub3d, t_img *img)
 		}
 		i++;
 	}
-}
+}*/
 
 void	minimap(t_cub3d *cub3d)
 {
@@ -92,9 +92,9 @@ void	minimap(t_cub3d *cub3d)
 	img->img_ptr = mlx_new_image(cub3d->ptr, WIDTH, HEIGHT);
 	img->data = (int *)mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size_l, &img->endian);
 	cub3d->img = img;
-	draw_minimap(cub3d, img);
+	//draw_minimap(cub3d, img);
 	i = -1;
 	while (++i < WIDTH)
-		draw_ray(cub3d, img, cub3d->camera->player_angle- cub3d->camera->half_fov + (i * cub3d->camera->angle_increment));
+		draw_ray(cub3d, img, cub3d->camera->player_angle- cub3d->camera->half_fov + (i * cub3d->camera->angle_increment), i);
 	mlx_put_image_to_window(cub3d->ptr, cub3d->win, img->img_ptr, 0, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 20:16:48 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/06 10:46:59 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/06 19:41:40 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,25 +89,121 @@ void	draw_player(t_cub3d *cub3d, t_img *img)
 	{
 		for (int j = 0; j < WIDTH; j++)
 		{
-			put_pixel(img, j, i, 0xFF000000);
 			if (i == cub3d->camera->y && j == cub3d->camera->x)
 				put_pixel(img, j, i, 0xffffff);
 		}
 	}
 }
 
-void	draw_ray(t_cub3d *cub3d, t_img *img)
+float	ray_horizontal_distance(t_cub3d *cub3d, t_pos *start)
 {
-	t_pos a;
-	t_pos b;
+	t_pos	a;
+	int		ya;
+	int		xa;
+	int		gridX;
+	int		gridY;
+	
+	if (cub3d->camera->player_angle > 180 && cub3d->camera->player_angle < 360) //Ray down Direction
+	{
+		a.y = (int)(floor(start->y / scale) * scale - 1);
+		ya = -64;
+	}
+	else // Ray Up Direction
+	{
+		a.y = (int)(floor(start->y / scale) * scale + scale);
+		ya = 64;
+	}
+	xa = (int)(scale / tan(degrees_to_radians(cub3d->camera->player_angle)));
+	//gridY = a.y / scale;
+	a.x = start->x + (start->y - a.y) / tan(degrees_to_radians(cub3d->camera->player_angle));
+	//gridX = a.x / scale;
+	while (1)
+	{
+		gridX = a.x / scale;
+		gridY = a.y / scale;
+		printf("checking: y: %d x: %d map char: %c\n", gridY, gridX, cub3d->map->map[gridY][gridX]);
+		if (cub3d->map->map[gridY][gridX] == '1')
+		{
+			printf("wall detected on x: %d y: %d\n", gridX, gridY);
+			break;
+		}
+		a.x = (a.x + xa);
+		a.y = (a.y + ya);
+	}
+
+	float	distance;
+	printf("a.x: %d start.x: %d a.y: %d start.y: %d\n", a.x, start->x, a.y, start->y);
+	distance = sqrtf(pow(start->x - a.x, 2) + pow(start->y - a.y, 2));
+	printf("distance: %f\n", distance);	
+	return (distance);
+}
+
+float	ray_vertical_distance(t_cub3d *cub3d, t_pos *start)
+{
+	t_pos	a;
+	int		ya;
+	int		xa;
+	int		gridX;
+	int		gridY;
+	
+	if (cub3d->camera->angle_increment > 90 && cub3d->camera->angle_increment < 270) // Ray turn left
+	{
+		a.x = (int)(floor(start->x / scale) * scale - 1);
+		xa = -64;
+	}
+	else // ray turn right
+	{
+		a.x = (int)(floor(start->x / scale) * scale + scale);
+		xa = 64;
+	}
+	ya = (int)(scale * tan(degrees_to_radians(cub3d->camera->player_angle)));
+	//gridX = a.x / scale;
+	a.y = start->y + (start->x - a.x) / tan(degrees_to_radians(cub3d->camera->player_angle));
+	printf("startY: %d startX: %d a.x: %d tan(90): %d\n", start->y, start->x, a.x, (int)tan(degrees_to_radians(cub3d->camera->player_angle - 1)));
+	printf("a.y val: %d\n", a.y);
+	//gridY = a.y / scale;
+	while (1)
+	{
+		gridX = a.x / scale;
+		gridY = a.y / scale;
+		printf("vertical.y: %d vertical.x: %d\n", gridY, gridX);
+		if (cub3d->map->map[gridY][gridX] == '1')
+		{
+			printf("Wall found\n");
+			break;
+		}
+		else
+			printf("Wall not found\n");
+		a.x = a.x + xa;
+		a.y = a.y + ya;
+	}
+	float	distance;
+	distance = sqrtf(pow(start->x - a.x, 2) - pow(start->y - a.y, 2));
+	return (distance);
+}
+
+void	draw_ray(t_cub3d *cub3d, t_img *img, float angle)
+{
+	//float	horizontal_dist;
+	//float	vertical_dist;
+	float	smaller_distance;
+	t_pos	a;
+	t_pos	b;
+	
 	
 	a.x = cub3d->camera->x;
 	a.y = cub3d->camera->y;
 	a.color = 0xFFFF00;
-	b.x = a.x + scale * cos(cub3d->camera->player_angle);
-	b.y = a.y + scale * sin(cub3d->camera->player_angle); 
+	//horizontal_dist = ray_horizontal_distance(cub3d, &a);
+	//vertical_dist = ray_vertical_distance(cub3d, &a);
+	//if (horizontal_dist < vertical_dist)
+		//smaller_distance = horizontal_dist;
+	//else
+		//smaller_distance = vertical_dist;
+	smaller_distance = raycasting(cub3d, angle) * scale;
+	b.x = a.x + smaller_distance * cos(degrees_to_radians(angle));
+	b.y = a.y + smaller_distance * sin(degrees_to_radians(angle)); 
 	b.color = 0xFFFF00;
-	
 	bresenham_algo(a, b, img);
 }
 
@@ -121,6 +217,8 @@ void	minimap(t_cub3d *cub3d)
 	cub3d->img = img;
 	draw_minimap(cub3d, img);
 	draw_player(cub3d, img);
-	draw_ray(cub3d, img);
+	for(int i = 0; i < WIDTH; i++)
+		draw_ray(cub3d, img, cub3d->camera->player_angle- cub3d->camera->half_fov + (i * cub3d->camera->angle_increment));
+	//draw_ray(cub3d, img, cub3d->camera->player_angle);
 	mlx_put_image_to_window(cub3d->ptr, cub3d->win, img->img_ptr, 0, 0);
 }

@@ -6,24 +6,31 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:10:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/04 17:28:35 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/06 19:48:10 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	raycasting(t_cub3d *cub3d)
+float	raycasting(t_cub3d *cub3d, float angle)
 {
 	float	ray_angle;
-	int		i;
+	float	ray_cos;
+	float	ray_sin;
+	char	c;
 	
-	ray_angle = cub3d->camera->player_angle - cub3d->camera->half_fov;
-	i = 0;
-	while (i < WIDTH)
+	ray_angle = angle;
+	float x = cub3d->camera->x / scale;
+	float y = cub3d->camera->y / scale;
+	ray_cos = cosf(degrees_to_radians(ray_angle)) / scale;
+	ray_sin = sinf(degrees_to_radians(ray_angle)) / scale;
+	c = '0';
+	while (c != '1')
 	{
-		
-		ray_angle += cub3d->camera->angle_increment;
-		i++;
+		x += ray_cos;
+		y += ray_sin;
+		c = cub3d->map->map[(int)floor(y)][(int)floor(x)];
 	}
-	return (0);
+	float distance = sqrt(pow(cub3d->camera->x / scale - x, 2) + pow(cub3d->camera->y / scale - y, 2));
+	return (distance);
 }

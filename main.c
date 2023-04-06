@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:26:44 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/05 17:52:28 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/06 10:33:34 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	main(int argc, char **argv)
 	}
 	if (file_validity(cub3d))
 		return (0);
-
 	cub3d->camera = camera_init(cub3d);
 	if (!cub3d->camera)
 	{

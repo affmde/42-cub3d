@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 11:04:27 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/05 16:47:42 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/06 09:26:48 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@
 #define WIDTH 1024
 #define HEIGHT 512
 #define PI 3.141593
+#define scale 32 //This is supposed to represent the number of pixels !**DELETE THIS****
 
 #endif

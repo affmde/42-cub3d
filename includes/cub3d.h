@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:28:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/05 11:38:59 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/06 09:54:10 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,11 @@ void		map_check_init(t_map_check *map_check);
 void		add_values_to_compare(t_map_check *a, t_map_check *b);
 int			check_walls_color(t_cub3d *cub3d);
 void		check_repeated_walls(t_cub3d *cub3d, t_elements_check *element);
+
 //MLX Handling
 int			mlx_handling(t_cub3d *cub3d);
 int			deal_key(int keycode, t_cub3d *cub3d);
+void		refresh_window(t_cub3d *cub3d);
 
 //Maths
 float		degrees_to_radians(int degree);

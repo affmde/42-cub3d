@@ -18,8 +18,8 @@ FILE_PARSING = file_read.c parse_elements.c parse_map.c
 FILE_PARSING_DEST = $(addprefix file_parsing/, $(FILE_PARSING))
 INIT = cub3d_init.c cam_init.c
 INIT_DEST = $(addprefix init/, $(INIT))
-UTILS = parse_utils.c texture_creator.c walls_creator.c map_validation_utils.c return_textures.c math_utils.c bresenham_algo.c put_pixel.c \
-colors.c
+UTILS = parse_utils.c texture_creator.c walls_creator.c map_validation_utils.c return_textures.c math_utils.c bresenham_algo.c \
+colors.c graphics_utils.c
 UTILS_DEST = $(addprefix utils/, $(UTILS))
 FILE_VALIDATION = map_validity.c file_validity.c elements_validity.c map_closed.c fc_validity.c
 FILE_VALIDATION_DEST = $(addprefix file_validation/, $(FILE_VALIDATION))
@@ -35,7 +35,8 @@ all: $(NAME)
 $(NAME): $(SRCSDEST) main.c draw_example.c
 	@make -C libft
 	@make bonus -C libft
-	cc $(FLAGS) -o $(NAME) main.c draw_example.c $(SRCSDEST) -L. ./libft/$(LIBFT) $(MOSFLAGS)
+#cc $(FLAGS) -o $(NAME) main.c draw_example.c $(SRCSDEST) -L. ./libft/$(LIBFT) $(MOSFLAGS)
+	cc $(FLAGS) -o $(NAME) main.c draw_example.c $(SRCSDEST) -L. ./libft/$(LIBFT) $(LINFLAGS) -lm
 
 clean:
 	rm -f $(LODEST)

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:05:04 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/05 17:49:32 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/06 10:32:40 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,16 @@ static void	find_player(char **map, t_camera *camera)
 	}
 }
 
-static int	get_player_angle(char **map, t_camera *camera)
+static float	get_player_angle(char **map, t_camera *camera)
 {
 	if (map[camera->y][camera->x] == 'N')
-		return (90);
+		return (degrees_to_radians(90));
 	if (map[camera->y][camera->x] == 'S')
-		return (270);
+		return (degrees_to_radians(270));
 	if (map[camera->y][camera->x] == 'E')
-		return (0);
+		return (degrees_to_radians(0));
 	if (map[camera->y][camera->x] == 'N')
-		return (180);
+		return (degrees_to_radians(180));
 	return (-1);
 }
 
@@ -61,5 +61,7 @@ t_camera	*camera_init(t_cub3d *cub3d)
 	cam->player_angle = get_player_angle(cub3d->map->map, cam);
 	cam->angle_increment = (float)cam->fov / WIDTH;
 	cam->distance_to_plane = cam->half_width / tan(degrees_to_radians(30));
+	cam->x *= scale;
+	cam->y *= scale;
 	return (cam);
 }

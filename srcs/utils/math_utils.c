@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 11:22:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/04 11:24:54 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/06 10:44:17 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ float degrees_to_radians(int degree)
 {
 	float	result;
 
-	result = degree * (M_PI / 180);
+	result = (float)degree * (M_PI / 180);
 	return (result);
 }

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:28:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/06 18:53:57 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/06 21:16:20 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int		create_rgb(t_color *color);
 
 //RAYCASTING
 float		raycasting(t_cub3d *cub3d, float angle);
-
+void		draw_ray(t_cub3d *cub3d, t_img *img, float angle);
 
 //EXTRAS
 void	minimap(t_cub3d *cub3d); //DELETE THIS! IS JUST FOR TESTING THE MAP

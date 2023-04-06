@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:10:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/06 19:48:10 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/06 21:26:30 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,21 @@ float	raycasting(t_cub3d *cub3d, float angle)
 	}
 	float distance = sqrt(pow(cub3d->camera->x / scale - x, 2) + pow(cub3d->camera->y / scale - y, 2));
 	return (distance);
+}
+
+void	draw_ray(t_cub3d *cub3d, t_img *img, float angle)
+{
+	float	distance;
+	t_pos	a;
+	t_pos	b;
+	
+	a.x = cub3d->camera->x;
+	a.y = cub3d->camera->y;
+	a.color = 0xFFFF00;
+	distance = raycasting(cub3d, angle) * scale;
+	b.x = a.x + distance * cos(degrees_to_radians(angle));
+	b.y = a.y + distance * sin(degrees_to_radians(angle)); 
+	b.color = 0xFFFF00;
+	bresenham_algo(a, b, img);
+	
 }

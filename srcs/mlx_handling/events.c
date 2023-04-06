@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 10:30:22 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/06 21:03:47 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/06 21:10:34 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	move_forward(t_cub3d *cub3d)
 	
 	player_cos = cos(degrees_to_radians(cub3d->camera->player_angle)) * 0.5;
 	player_sin = sin(degrees_to_radians(cub3d->camera->player_angle)) * 0.5;
-	printf("Pcos: %f Psin: %f\n", player_cos, player_sin);
 	cub3d->camera->x += player_cos;
 	cub3d->camera->y += player_sin;
 }
@@ -54,7 +53,7 @@ void	move_backwards(t_cub3d *cub3d)
 
 int	deal_key(int keycode, t_cub3d *cub3d)
 {
-	printf("keycode: %d\n", keycode);
+	//printf("keycode: %d\n", keycode);
 	if (keycode == 65307 || keycode == 53)
 	{
 		mlx_destroy_window(cub3d->ptr, cub3d->win);

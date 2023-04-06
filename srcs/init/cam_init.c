@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:05:04 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/06 21:06:01 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/06 21:09:48 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ t_camera	*camera_init(t_cub3d *cub3d)
 	cam->player_angle = get_player_angle(cub3d->map->map, cam);
 	cam->angle_increment = (float)cam->fov / WIDTH;
 	cam->distance_to_plane = cam->half_width / tan(degrees_to_radians(30));
-	cam->x = cam->x * scale;
-	cam->y = cam->y * scale;
+	cam->x = cam->x * scale + (scale / 2);
+	cam->y = cam->y * scale + (scale / 2);
 	return (cam);
 }

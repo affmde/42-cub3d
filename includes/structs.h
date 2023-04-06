@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/06 14:46:06 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/06 21:04:52 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ typedef struct s_camera
 	float	half_fov;
 	float	angle_increment;
 	int		precision;
-	int		x;
-	int		y;
+	float			x;
+	float			y;
 	float	player_angle;
 	float	half_width;
 	float	half_height;

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:05:04 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/06 19:33:53 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/06 21:06:01 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,18 @@ static void	find_player(char **map, t_camera *camera)
 
 static float	get_player_angle(char **map, t_camera *camera)
 {
-	if (map[camera->y][camera->x] == 'N')
+	int	x;
+	int	y;
+
+	x = (int)camera->x;
+	y = (int)camera->y;
+	if (map[y][x] == 'N')
 		return (90);
-	if (map[camera->y][camera->x] == 'S')
+	if (map[y][x] == 'S')
 		return (270);
-	if (map[camera->y][camera->x] == 'E')
+	if (map[y][x] == 'E')
 		return (0);
-	if (map[camera->y][camera->x] == 'W')
+	if (map[y][x] == 'W')
 		return (180);
 	return (-1);
 }

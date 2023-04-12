@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:28:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/12 13:04:40 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/12 15:06:57 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ int		create_rgb(t_color *color);
 void	raycasting(t_cub3d *cub3d, t_ray *ray);
 void	draw_ray(t_cub3d *cub3d, t_img *img, t_ray *ray);
 void	draw_col(t_cub3d *cub3d, t_ray *ray);
-
-//EXTRAS
-void	minimap(t_cub3d *cub3d); //DELETE THIS! IS JUST FOR TESTING THE MAP
+void	load_textures(t_cub3d *cub3d);
+void	draw(t_cub3d *cub3d);
+void	draw_minimap(t_cub3d *cub3d, t_img *img);
 
 #endif

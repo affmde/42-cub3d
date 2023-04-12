@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/12 12:52:33 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:18:48 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,17 @@ typedef struct s_color
 
 typedef struct s_textures
 {
-	char	*identifier;
-	char	*path;
+	char			*identifier;
+	char			*path;
+	struct s_img	*img;
 }	t_textures;
 
 
 typedef struct s_walls
 {
-	char	*identifier;
-	t_color	*color;
+	char			*identifier;
+	t_color			*color;
+	struct s_img	*img;
 }	t_walls;
 
 typedef struct s_map

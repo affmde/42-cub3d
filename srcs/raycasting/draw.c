@@ -22,15 +22,17 @@ void	draw(t_cub3d *cub3d)
 	img->img_ptr = mlx_new_image(cub3d->ptr, WIDTH, HEIGHT);
 	img->data = (int *)mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size_l, &img->endian);
 	cub3d->img = img;
-	draw_minimap(cub3d, img);
+	//draw_minimap(cub3d, img);
 	i = -1;
 	while (++i < WIDTH)
 	{
-		ray.angle = cub3d->camera->player_angle- cub3d->camera->half_fov + (i * cub3d->camera->angle_increment);
+		ray.angle = cub3d->camera->player_angle - cub3d->camera->half_fov + (i * cub3d->camera->angle_increment);
 		ray.index = i;
-		raycasting(cub3d, &ray);
-		draw_ray(cub3d, img, &ray);
-		draw_col(cub3d, &ray);
+		draw_column(cub3d, &ray);
+	//	raycasting(cub3d, &ray);
+	//	draw_ray(cub3d, img, &ray);
+	//	draw_col(cub3d, &ray);
 	}
+	//exit(37);
 	mlx_put_image_to_window(cub3d->ptr, cub3d->win, img->img_ptr, 0, 0);
 }

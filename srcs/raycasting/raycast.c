@@ -56,25 +56,25 @@ void	draw_wall(t_cub3d *cub3d, int color, t_pos *start, t_pos *end)
 
 void	draw_col(t_cub3d *cub3d, t_ray *ray)
 {
-	float	wallHeight;
+	float	wall_height;
 	float	distance;
 	t_pos	start;
 	t_pos	end;
 
 	distance = ray->distance * cos(degrees_to_radians(ray->angle - cub3d->camera->player_angle));
-	wallHeight = cub3d->camera->half_height / distance * scale;
+	wall_height = cub3d->camera->half_height / distance * scale;
 	start.x = ray->index;
-	start.y = cub3d->camera->half_height - wallHeight;
+	start.y = cub3d->camera->half_height - wall_height;
 	end.x = ray->index;
-	end.y = cub3d->camera->half_height + wallHeight;
+	end.y = cub3d->camera->half_height + wall_height;
 	draw_wall(cub3d, 0xffffff, &start, &end);
 	start.x = ray->index;
 	start.y = 0;
 	end.x = ray->index;
-	end.y = cub3d->camera->half_height - wallHeight;
+	end.y = cub3d->camera->half_height - wall_height;
 	draw_wall(cub3d, 0x0000FF, &start, &end);
 	start.x = ray->index;
-	start.y = cub3d->camera->half_height + wallHeight;
+	start.y = cub3d->camera->half_height + wall_height;
 	end.x = ray->index;
 	end.y = HEIGHT;
 	draw_wall(cub3d, 0x00FF00, &start, &end);

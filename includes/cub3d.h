@@ -38,6 +38,7 @@ void		validity_error_msg(int err);
 char		*trim_line(char *line, char *str);
 char		**list_to_matrix(t_list *list);
 int			parse_elements(t_cub3d *cub3d);
+
 //file validation
 int			is_valid_char(char c);
 int			is_start_pos(char c);
@@ -65,11 +66,15 @@ t_pos	populate_position(int x, int y, int z, int color);
 int		create_rgb(t_color *color);
 
 //RAYCASTING
+void	draw_wall(t_cub3d *cub3d, int color, t_pos *start, t_pos *end);
 void	raycasting(t_cub3d *cub3d, t_ray *ray);
 void	draw_ray(t_cub3d *cub3d, t_img *img, t_ray *ray);
 void	draw_col(t_cub3d *cub3d, t_ray *ray);
 void	load_textures(t_cub3d *cub3d);
 void	draw(t_cub3d *cub3d);
 void	draw_minimap(t_cub3d *cub3d, t_img *img);
+
+//NOel ray
+void	draw_column(t_cub3d *cub3d, t_ray *ray);
 
 #endif

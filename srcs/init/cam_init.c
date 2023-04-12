@@ -39,9 +39,9 @@ static float	get_player_angle(char **map, t_camera *camera)
 
 	x = (int)camera->x;
 	y = (int)camera->y;
-	if (map[y][x] == 'N')
-		return (90);
 	if (map[y][x] == 'S')
+		return (90);
+	if (map[y][x] == 'N')
 		return (270);
 	if (map[y][x] == 'E')
 		return (0);
@@ -57,7 +57,7 @@ t_camera	*camera_init(t_cub3d *cub3d)
 	cam = ft_calloc(1, sizeof(t_camera));
 	if (!cam)
 		return (NULL);
-	cam->fov = 60;
+	cam->fov = 90;
 	cam->half_fov = cam->fov / 2;
 	cam->half_height = HEIGHT / 2;
 	cam->half_width = WIDTH / 2;

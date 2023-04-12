@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
-
+#include "cub3d.h"
 
 static t_textures	*create_texture(char *line)
 {

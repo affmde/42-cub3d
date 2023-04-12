@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:10:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/12 13:18:34 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/12 17:28:28 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	raycasting(t_cub3d *cub3d, t_ray *ray)
 
 	float x = cub3d->camera->x / scale;
 	float y = cub3d->camera->y / scale;
-	ray_cos = cosf(degrees_to_radians(ray->angle)) / 100;
-	ray_sin = sinf(degrees_to_radians(ray->angle)) / 100;
+	ray_cos = cos(degrees_to_radians(ray->angle)) / 100;
+	ray_sin = sin(degrees_to_radians(ray->angle)) / 100;
 	while (1)
 	{
 		x += ray_cos;
@@ -56,7 +56,7 @@ void	draw_wall(t_cub3d *cub3d, int color, t_pos *start, t_pos *end)
 
 void	draw_col(t_cub3d *cub3d, t_ray *ray)
 {
-	float	wallHeight;
+	int		wallHeight;
 	float	distance;
 	t_pos	start;
 	t_pos	end;

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 10:30:22 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/12 13:56:38 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/12 17:17:03 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,15 @@ void	move_forward(t_cub3d *cub3d)
 {
 	float	player_cos;
 	float	player_sin;
+	float	new_x;
+	float	new_y;
 
-	player_cos = cos(degrees_to_radians(cub3d->camera->player_angle)) * 5;
-	player_sin = sin(degrees_to_radians(cub3d->camera->player_angle)) * 5;
+	player_cos = cos(degrees_to_radians(cub3d->camera->player_angle)) * 2;
+	player_sin = sin(degrees_to_radians(cub3d->camera->player_angle)) * 2;
+	new_x = cub3d->camera->x + player_cos;
+	new_y = cub3d->camera->y + player_sin;
+	if (cub3d->map->map[(int)new_y / scale][(int)new_x / scale] == '1')
+		return ;
 	cub3d->camera->x += player_cos;
 	cub3d->camera->y += player_sin;
 }
@@ -41,9 +47,16 @@ void	move_backwards(t_cub3d *cub3d)
 {
 	float	player_cos;
 	float	player_sin;
+	float	new_x;
+	float	new_y;
 
 	player_cos = cos(degrees_to_radians(cub3d->camera->player_angle)) * 5;
 	player_sin = sin(degrees_to_radians(cub3d->camera->player_angle)) * 5;
+	new_x = cub3d->camera->x - player_cos;
+	new_y = cub3d->camera->y - player_sin;
+	printf("Y: %d X: %d\n", (int)new_y / scale, (int)new_x / scale);
+	if (cub3d->map->map[(int)floor(new_y / scale)][(int)floor(new_x / scale)] == '1')
+		return ;
 	cub3d->camera->x -= player_cos;
 	cub3d->camera->y -= player_sin;
 
@@ -65,5 +78,6 @@ int	deal_key(int keycode, t_cub3d *cub3d)
 	else if (keycode == 65361 || keycode == 123)
 		turn_left(cub3d);
 	refresh_window(cub3d);
+	printf("player position x: %d y: %d\n", (int)cub3d->camera->x, (int)cub3d->camera->y);
 	return (0);
 }

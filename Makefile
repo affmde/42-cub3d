@@ -41,8 +41,9 @@ $(NAME): $(SRCSDEST) main.c draw_example.c
 clean:
 	rm -f $(LODEST)
 
-fclean:
-	rm -f $(NAME) ./libft/$(LIBFT)
+fclean: clean
+	rm -f $(NAME)
+	make fclean -C libft
 
 re: fclean all
 

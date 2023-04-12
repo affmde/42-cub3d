@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 10:30:22 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/12 11:13:07 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/12 13:23:13 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	move_forward(t_cub3d *cub3d)
 	float	player_cos;
 	float	player_sin;
 
-	player_cos = cos(degrees_to_radians(cub3d->camera->player_angle)) * 3;
-	player_sin = sin(degrees_to_radians(cub3d->camera->player_angle)) * 3;
+	player_cos = cos(degrees_to_radians(cub3d->camera->player_angle)) * 0.5;
+	player_sin = sin(degrees_to_radians(cub3d->camera->player_angle)) * 0.5;
 	cub3d->camera->x += player_cos;
 	cub3d->camera->y += player_sin;
 }
@@ -44,8 +44,8 @@ void	move_backwards(t_cub3d *cub3d)
 	float	player_cos;
 	float	player_sin;
 
-	player_cos = cos(degrees_to_radians(cub3d->camera->player_angle)) * 3;
-	player_sin = sin(degrees_to_radians(cub3d->camera->player_angle)) * 3;
+	player_cos = cos(degrees_to_radians(cub3d->camera->player_angle)) * 0.5;
+	player_sin = sin(degrees_to_radians(cub3d->camera->player_angle)) * 0.5;
 	cub3d->camera->x -= player_cos;
 	cub3d->camera->y -= player_sin;
 

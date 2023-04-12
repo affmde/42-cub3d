@@ -32,3 +32,5 @@ re: fclean all
 bonus: $(BONUS_SRCS)
 	cc -c $(FLAGS) -I$(INC) $(BONUS_SRCS)
 	ar -rcs $(NAME) $(BONUS_OBJS)
+
+.SILENT:

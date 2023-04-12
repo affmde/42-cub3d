@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "cub3d.h"
 
 static void check_repeated_textures(t_cub3d *cub3d, t_elements_check *element)
 {

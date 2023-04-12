@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 09:42:29 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/04 20:21:32 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/12 11:05:14 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	mlx_handling(t_cub3d *cub3d)
 {
 	cub3d->ptr = mlx_init();
 	cub3d->win = mlx_new_window(cub3d->ptr, WIDTH, HEIGHT, "My window");
-	
 	mlx_key_hook(cub3d->win, deal_key, cub3d);
 	mlx_hook(cub3d->win, 17, 0, close_window, NULL);
 	minimap(cub3d);

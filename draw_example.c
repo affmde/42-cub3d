@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 20:16:48 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/11 10:19:17 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/12 13:19:33 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ static void	draw_minimap(t_cub3d *cub3d, t_img *img)
 	int	j;
 	t_pos	start;
 	t_pos	end;
-	i = 0;
-	while (i < cub3d->map->height)
+	i = -1;
+	while (++i < cub3d->map->height)
 	{
-		j = 0;
-		while (j < (int)ft_strlen(cub3d->map->map[i]))
+		j = -1;
+		while (++j < (int)ft_strlen(cub3d->map->map[i]))
 		{
 			if (j < (int)ft_strlen(cub3d->map->map[i]) - 1)
 			{
@@ -77,25 +77,29 @@ static void	draw_minimap(t_cub3d *cub3d, t_img *img)
 				end = populate_position(j * scale, (i + 1) * scale, 0, get_color(cub3d->map->map, i + 1, j));
 				paint_cube_vertically(start, end, cub3d, img);
 			}
-			j++;
 		}
-		i++;
 	}
 }
 
 void	minimap(t_cub3d *cub3d)
 {
 	t_img	*img;
-	//int		i;
-	
+	t_ray	ray;
+	int		i;
+
 	img = ft_calloc(1, sizeof(t_img));
 	img->img_ptr = mlx_new_image(cub3d->ptr, WIDTH, HEIGHT);
 	img->data = (int *)mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size_l, &img->endian);
 	cub3d->img = img;
 	draw_minimap(cub3d, img);
-	//i = -1;
-	//while (++i < WIDTH)
-	//	draw_ray(cub3d, img, cub3d->camera->player_angle- cub3d->camera->half_fov + (i * cub3d->camera->angle_increment), i);
-	draw_ray(cub3d, img, cub3d->camera->player_angle, 0);
+	i = -1;
+	while (++i < WIDTH)
+	{
+		ray.angle = cub3d->camera->player_angle- cub3d->camera->half_fov + (i * cub3d->camera->angle_increment);
+		ray.index = i;
+		raycasting(cub3d, &ray);
+		draw_ray(cub3d, img, &ray);
+		//draw_col(cub3d, &ray);
+	}
 	mlx_put_image_to_window(cub3d->ptr, cub3d->win, img->img_ptr, 0, 0);
 }

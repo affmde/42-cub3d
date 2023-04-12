@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/06 22:31:42 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/12 12:52:33 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,6 @@ typedef struct s_map
 	int		height;
 	int		max_length;
 }	t_map;
-
-typedef struct s_ray
-{
-
-}	t_ray;
 
 typedef struct s_img
 {
@@ -119,5 +114,14 @@ typedef struct s_line_params
 	int	error;
 	int	offset;
 }		t_params;
+
+typedef struct s_ray
+{
+	int		index;
+	float	distance;
+	float	angle;
+	t_pos	start;
+	t_pos	end;
+}		t_ray;
 
 #endif

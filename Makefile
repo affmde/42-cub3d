@@ -35,8 +35,8 @@ all: $(NAME)
 $(NAME): $(SRCSDEST) main.c draw_example.c
 	@make -C libft
 	@make bonus -C libft
-#cc $(FLAGS) -o $(NAME) main.c draw_example.c $(SRCSDEST) -L. ./libft/$(LIBFT) $(MOSFLAGS)
-	cc $(FLAGS) -o $(NAME) main.c draw_example.c $(SRCSDEST) -L. ./libft/$(LIBFT) $(LINFLAGS) -lm
+	cc $(FLAGS) -o $(NAME) main.c draw_example.c $(SRCSDEST) -L. ./libft/$(LIBFT) $(MOSFLAGS)
+#cc $(FLAGS) -o $(NAME) main.c draw_example.c $(SRCSDEST) -L. ./libft/$(LIBFT) $(LINFLAGS) -lm
 
 clean:
 	rm -f $(LODEST)

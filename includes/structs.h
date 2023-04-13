@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/12 14:18:48 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/13 08:17:46 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct s_textures
 	char			*identifier;
 	char			*path;
 	struct s_img	*img;
+	int				height;
+	int				width;
 }	t_textures;
 
 

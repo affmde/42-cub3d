@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:36:49 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/04 17:09:09 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/13 09:22:47 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	delete_texture_node(void *node)
 		return ;
 	ft_strdel(&texture->identifier);
 	ft_strdel(&texture->path);
+	if (texture->img)
+		free(texture->img);
 	free(texture);
 }
 

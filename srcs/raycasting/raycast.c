@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:10:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/13 12:31:00 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/13 16:48:48 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ static void	define_wall_texture(t_pos *start, t_pos *end,
 	start->color = 0xffffff;
 	end->x = ray->index;
 	end->y = cub3d->camera->half_height + ray->wall_height;
-	if (ray->index < 50)
-		printf("inde: %d startX: %d, startY: %d, endX: %d endY: %d\n",ray->index, start->x, start->y, end->x, end->y);
 }
 
 static void	draw_layer(t_cub3d *cub3d, int wall_height, char *type, t_ray *ray)
@@ -95,8 +93,6 @@ void	draw_col(t_cub3d *cub3d, t_ray *ray)
 	distance = ray->distance * cos(degrees_to_radians(ray->angle \
 		- cub3d->camera->player_angle));
 	ray->wall_height = cub3d->camera->half_height / distance * scale;
-	if (ray->index < 50)
-		printf("inde: %d wall height: %d ray distance: %f\n",ray->index, ray->wall_height, ray->distance);
 	draw_layer(cub3d, ray->wall_height, "ceiling", ray);
 	draw_layer(cub3d, ray->wall_height, "floor", ray);
 	draw_layer(cub3d, ray->wall_height, "wall", ray);

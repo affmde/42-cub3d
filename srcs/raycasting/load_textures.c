@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 14:11:27 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/13 10:28:51 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/13 16:48:31 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	load_textures(t_cub3d *cub3d)
 		}
 		if (get_texture_info(texture))
 			return (1);
-		printf("texure height: %d l_size: %d\n", texture->height, texture->img->size_l);
 		tmp = tmp->next;
 	}
 	return (0);

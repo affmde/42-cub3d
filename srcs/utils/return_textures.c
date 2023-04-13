@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 10:13:04 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/04 10:58:12 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/13 17:21:39 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,3 +48,20 @@ t_color	*get_wall_color(char *identifier, t_cub3d *cub3d)
 	return (NULL);
 }
 
+t_textures	*return_texture(char *identifier, t_cub3d *cub3d)
+{
+	t_list		*tmp;
+	t_textures	*element;
+	
+	if (!cub3d || !identifier)
+		return (NULL);
+	tmp = cub3d->textures;
+	while (tmp)
+	{
+		element = tmp->content;
+		if (!ft_strncmp(element->identifier, identifier, ft_strlen(identifier)))
+			return (element);
+		tmp = tmp->next;
+	}
+	return (NULL);
+}

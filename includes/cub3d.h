@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:28:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/13 09:16:47 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/13 17:13:06 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int			parse_map(t_cub3d *cub3d);
 char		*get_texture(char *identifier, t_cub3d *cub3d);
 t_color		*get_wall_color(char *identifier, t_cub3d *cub3d);
 t_camera	*camera_init(t_cub3d *cub3d);
+t_textures	*return_texture(char *identifier, t_cub3d *cub3d);
 
 //Error Handling
 void		validity_error_msg(int err);

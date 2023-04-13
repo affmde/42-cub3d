@@ -6,13 +6,13 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:10:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/13 16:48:48 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/13 22:11:57 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	raycasting(t_cub3d *cub3d, t_ray *ray)
+/*void	raycasting(t_cub3d *cub3d, t_ray *ray)
 {
 	float	ray_cos;
 	float	ray_sin;
@@ -34,66 +34,77 @@ void	raycasting(t_cub3d *cub3d, t_ray *ray)
 	distance = sqrt(pow(cub3d->camera->x / scale - x, 2) \
 		+ pow(cub3d->camera->y / scale - y, 2));
 	ray->distance = distance * scale;
-}
+	ray->wall_hit_x = x;
+	ray->wall_hit_y = y;
+}*/
 
-void	draw_ray(t_cub3d *cub3d, t_img *img, t_ray *ray)
+static void	get_steps(t_cub3d *cub3d, t_ray *ray)
 {
-	float	distance;
-
-	ray->start.x = cub3d->camera->x;
-	ray->start.y = cub3d->camera->y;
-	ray->start.color = 0xFFFF00;
-	distance = ray->distance;
-	ray->end.x = ray->start.x + distance * cos(degrees_to_radians(ray->angle));
-	ray->end.y = ray->start.y + distance * sin(degrees_to_radians(ray->angle));
-	ray->end.color = 0xFFFF00;
-	bresenham_algo(ray->start, ray->end, img);
-}
-
-static void	define_wall_texture(t_pos *start, t_pos *end,
-	t_cub3d *cub3d, t_ray *ray)
-{
-	start->x = ray->index;
-	start->y = cub3d->camera->half_height - ray->wall_height;
-	start->color = 0xffffff;
-	end->x = ray->index;
-	end->y = cub3d->camera->half_height + ray->wall_height;
-}
-
-static void	draw_layer(t_cub3d *cub3d, int wall_height, char *type, t_ray *ray)
-{
-	t_pos	start;
-	t_pos	end;
-
-	if (!ft_strncmp(type, "ceiling", ft_strlen(type)))
+	if (ray->dir_x < 0)
 	{
-		start.x = ray->index;
-		start.y = 0;
-		start.color = create_rgb(get_wall_color("C", cub3d));
-		end.x = ray->index;
-		end.y = cub3d->camera->half_height - wall_height;
-	}
-	else if (!ft_strncmp(type, "floor", ft_strlen(type)))
-	{
-		start.x = ray->index;
-		start.y = cub3d->camera->half_height + wall_height;
-		start.color = create_rgb(get_wall_color("F", cub3d));
-		end.x = ray->index;
-		end.y = HEIGHT;
+		ray->step_x = -1;
+		ray->side_dist_x = (cub3d->camera->x - ray->map_x) * ray->delta_dist_x;
 	}
 	else
-		define_wall_texture(&start, &end, cub3d, ray);
-	bresenham_algo(start, end, cub3d->img);
+	{
+		ray->step_x = 1;
+		ray->side_dist_x = (ray->map_x + 1.0 - cub3d->camera->x) * ray->delta_dist_x;
+	}
+	if (ray->dir_y)
+	{
+		ray->step_y = -1;
+		ray->side_dist_y = (cub3d->camera->y - ray->map_y) * ray->delta_dist_y;
+	}
+	else
+	{
+		ray->step_y = 1;
+		ray->side_dist_y = (ray->map_y + 1.0 - cub3d->camera->y) * ray->delta_dist_y;
+	}
 }
 
-void	draw_col(t_cub3d *cub3d, t_ray *ray)
+static void	dda_algo(t_cub3d *cub3d, t_ray *ray)
 {
-	float	distance;
+	while (ray->hit == 0)
+	{
+		if (ray->side_dist_x < ray->side_dist_y)
+		{
+			ray->side_dist_x += ray->delta_dist_x;
+			ray->map_x += ray->step_x;
+			if (ray->dir_x > 0)
+				ray->direction = EAST;
+			else
+				ray->direction = WEST;
+		}
+		else
+		{
+			ray->side_dist_y += ray->delta_dist_y;
+			ray->map_y += ray->step_y;
+			if (ray->dir_y > 0)
+				ray->direction = SOUTH;
+			else
+				ray->direction = NORTH;
+		}
+		if (cub3d->map->map[ray->map_y][ray->map_x] == '1')
+			ray->hit = 1;
+	}
+	printf("wall detected at y: %d x: %d\n", ray->map_x, ray->map_y);
+}
 
-	distance = ray->distance * cos(degrees_to_radians(ray->angle \
-		- cub3d->camera->player_angle));
-	ray->wall_height = cub3d->camera->half_height / distance * scale;
-	draw_layer(cub3d, ray->wall_height, "ceiling", ray);
-	draw_layer(cub3d, ray->wall_height, "floor", ray);
-	draw_layer(cub3d, ray->wall_height, "wall", ray);
+void	raycasting(t_cub3d *cub3d, t_ray *ray)
+{
+	ray->index = 0;
+	while (ray->index < WIDTH)
+	{
+		cub3d->camera->x = 2 * ray->index / (double)WIDTH - 1;
+		ray->dir_x = cub3d->camera->x + cub3d->camera->plane_x * cub3d->camera->x;
+		ray->dir_y = cub3d->camera->y + cub3d->camera->plane_y * cub3d->camera->x;
+		ray->map_x = (int)cub3d->camera->x;
+		ray->map_y = (int)cub3d->camera->y;
+		ray->delta_dist_x = fabs(1 / ray->dir_x);
+		ray->delta_dist_y = fabs(1 / ray->dir_y);
+		ray->hit = 0;
+		get_steps(cub3d, ray);
+		dda_algo(cub3d, ray);
+		ray->index++;
+	}
 }

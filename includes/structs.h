@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/13 12:11:13 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/13 22:23:21 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,14 @@ typedef struct s_camera
 	float	half_width;
 	float	half_height;
 	float	distance_to_plane;
+
+	/*for the new raycast*/
+	double	plane_x;
+	double	plane_y;
+	int		direction;
+	double	d_fov;
+	double	dir_x;
+	double	dir_y;
 }	t_camera;
 
 typedef struct s_cub3d
@@ -128,8 +136,23 @@ typedef struct s_ray
 	int		wall_height;
 	float	distance;
 	float	angle;
+	float	wall_hit_x;
+	float	wall_hit_y;
 	t_pos	start;
 	t_pos	end;
+
+	double	dir_x;
+	double	dir_y;
+	int		map_x;
+	int		map_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	int		step_x;
+	int		step_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	int		direction;
+	int		hit;
 }		t_ray;
 
 #endif

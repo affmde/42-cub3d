@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:05:04 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/12 17:30:29 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/13 22:30:03 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,22 @@ t_camera	*camera_init(t_cub3d *cub3d)
 	cam->player_angle = get_player_angle(cub3d->map->map, cam);
 	cam->angle_increment = (float)cam->fov / WIDTH;
 	cam->distance_to_plane = cam->half_width / tan(degrees_to_radians(30));
-	cam->x = cam->x * scale + (scale / 2);
-	cam->y = cam->y * scale + (scale / 2);
+	//cam->x = cam->x * scale + (scale / 2);
+	//cam->y = cam->y * scale + (scale / 2);
+
+	/**Init values for new raycast**/
+	cam->d_fov = 0.66;
+	cam->dir_x = 0;
+	cam->dir_y = 0;
+	cam->plane_x = 0;
+	cam->plane_y = 0;
+	cam->x += 0.5;
+	cam->y += 0.5;
+	if (cub3d->map->map[(int)cam->y][(int)cam->x] == 'N')
+	{
+		cam->dir_y = -1;
+		cam->plane_x = cam->d_fov;
+	}
+	
 	return (cam);
 }

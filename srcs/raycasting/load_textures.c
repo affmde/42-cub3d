@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 14:11:27 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/13 09:15:13 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/13 10:28:51 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static int	get_texture_info(t_textures *texture)
 {
 	texture->img->data = (int *)mlx_get_data_addr(texture->img->img_ptr, &texture->img->bpp, &texture->img->size_l, &texture->img->endian);
 	if (!texture->img->data)
-	if (!texture->img->img_ptr)
 	{
 		invalid_texture(texture->path);
 		return (1);
@@ -47,3 +46,4 @@ int	load_textures(t_cub3d *cub3d)
 	}
 	return (0);
 }
+

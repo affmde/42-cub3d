@@ -50,8 +50,8 @@ $(LIBFT):
 	@echo "$(COLOUR_GREEN)libft compilation completed$(COLOUR_END)"
 
 $(NAME): $(LIBFT) $(OBJS_DIR) $(OBJS)
-#@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(MOSFLAGS)
-	@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(LINFLAGS) -lm
+	@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(MOSFLAGS)
+#@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(LINFLAGS) -lm
 	@echo "$(COLOUR_GREEN)$@ created$(COLOUR_END)"
 
 $(OBJS_DIR):
@@ -59,31 +59,31 @@ $(OBJS_DIR):
 	@echo "$(COLOUR_BLUE)object directory created$(COLOUR_END)"
 
 $(OBJS_DIR)%.o: $(CORE_DIR)%.c
-	@cc $(FLAGS) -c $< -o $@ 
+	@cc $(FLAGS) -c $< -o $@
 	@echo "$(COLOUR_BLUE)$@ created$(COLOUR_END)"
 
 $(OBJS_DIR)%.o: $(FILE_PARSING_DIR)%.c
-	@cc $(FLAGS) -c $< -o $@ 
+	@cc $(FLAGS) -c $< -o $@
 	@echo "$(COLOUR_BLUE)$@ created$(COLOUR_END)"
 
 $(OBJS_DIR)%.o: $(UTILS_DIR)%.c
-	@cc $(FLAGS) -c $< -o $@ 
+	@cc $(FLAGS) -c $< -o $@
 	@echo "$(COLOUR_BLUE)$@ created$(COLOUR_END)"
 
 $(OBJS_DIR)%.o: $(INIT_DIR)%.c
-	@cc $(FLAGS) -c $< -o $@ 
+	@cc $(FLAGS) -c $< -o $@
 	@echo "$(COLOUR_BLUE)$@ created$(COLOUR_END)"
 
 $(OBJS_DIR)%.o: $(FILE_VALIDATION_DIR)%.c
-	@cc $(FLAGS) -c $< -o $@ 
+	@cc $(FLAGS) -c $< -o $@
 	@echo "$(COLOUR_BLUE)$@ created$(COLOUR_END)"
 
 $(OBJS_DIR)%.o: $(MLX_HANDLING_DIR)%.c
-	@cc $(FLAGS) -c $< -o $@ 
+	@cc $(FLAGS) -c $< -o $@
 	@echo "$(COLOUR_BLUE)$@ created$(COLOUR_END)"
 
 $(OBJS_DIR)%.o: $(RAYCASTING_DIR)%.c
-	@cc $(FLAGS) -c $< -o $@ 
+	@cc $(FLAGS) -c $< -o $@
 	@echo "$(COLOUR_BLUE)$@ created$(COLOUR_END)"
 
 clean:

@@ -1,6 +1,6 @@
 NO ./textures/brick.xpm
 SO ./textures/brick.xpm
-WE ./texturesa/brick.xpm
+WE ./textures/brick.xpm
 
 
 
@@ -10,8 +10,8 @@ WE ./texturesa/brick.xpm
 EA                  ./textures/brick.xpm
 
 
-F 220,100,0
-C 225,30,0
+F 250,250,0
+C 0,0,250
 
 
 

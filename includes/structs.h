@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/13 08:17:46 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/13 12:11:13 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ typedef struct s_color
 	int	r;
 	int	g;
 	int	b;
+	int	full_color;
 }	t_color;
 
 typedef struct s_textures
@@ -35,6 +36,8 @@ typedef struct s_walls
 	char			*identifier;
 	t_color			*color;
 	struct s_img	*img;
+	int				height;
+	int				wall;
 }	t_walls;
 
 typedef struct s_map
@@ -122,6 +125,7 @@ typedef struct s_line_params
 typedef struct s_ray
 {
 	int		index;
+	int		wall_height;
 	float	distance;
 	float	angle;
 	t_pos	start;

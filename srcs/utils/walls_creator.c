@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 13:13:48 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/05 10:45:08 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/13 10:49:10 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static t_color *color_creator(char *info)
 	color->r = ft_atoi(arr[0]);
 	color->g = ft_atoi(arr[1]);
 	color->b = ft_atoi(arr[2]);
+	color->full_color = (color->r * 1000 + color->g) * 1000 + color->b;
 	clean_char_arr(arr);
 	return (color);
 }

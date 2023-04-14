@@ -6,33 +6,49 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:03:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/13 21:01:36 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/14 08:59:54 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
+static void ray_init(t_ray *ray)
+{
+	ray->side_dist_x = 0;
+	ray->side_dist_y = 0;
+	ray->step_x = 0;
+	ray->step_y = 0;
+	ray->map_x = 0;
+	ray->map_y = 0;
+	ray->direction = 0;
+	ray->perp_wall_dist = 0;
+	ray->r_start = 0;
+	ray->r_end = 0;
+	ray->wall_hit_x = 0;
+}
+
 void	draw(t_cub3d *cub3d)
 {
 	t_img	*img;
 	t_ray	ray;
-	int		i;
+//	int		i;
 
 	img = ft_calloc(1, sizeof(t_img));
 	img->img_ptr = mlx_new_image(cub3d->ptr, WIDTH, HEIGHT);
 	img->data = (int *)mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size_l, &img->endian);
 	cub3d->img = img;
-	draw_minimap(cub3d, img);
-	i = -1;
+	//draw_minimap(cub3d, img);
+	//i = -1;
 	//ray.angle = cub3d->camera->player_angle - cub3d->camera->half_fov;
-	while (++i < WIDTH)
-	{
-		ray.index = i;
+	//while (++i < WIDTH)
+	//{
+		ray_init(&ray);
+		//ray.index = i;
 		raycasting(cub3d, &ray);
 		//draw_ray(cub3d, img, &ray);
-		draw_col(cub3d, &ray);
-		ray.angle += cub3d->camera->angle_increment;
-	}
+		//draw_col(cub3d, &ray);
+		//ray.angle += cub3d->camera->angle_increment;
+	//}
 	mlx_put_image_to_window(cub3d->ptr, cub3d->win, img->img_ptr, 0, 0);
 }
 

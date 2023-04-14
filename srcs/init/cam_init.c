@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:05:04 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/13 22:30:03 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/14 09:41:43 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,20 @@ t_camera	*camera_init(t_cub3d *cub3d)
 		cam->dir_y = -1;
 		cam->plane_x = cam->d_fov;
 	}
-	
+	else if (cub3d->map->map[(int)cam->y][(int)cam->x] == 'S')
+	{
+		cam->dir_y = 1;
+		cam->plane_x = -cam->d_fov;
+	}
+	else if (cub3d->map->map[(int)cam->y][(int)cam->x] == 'E')
+	{
+		cam->dir_x = 1;
+		cam->plane_y = cam->d_fov;;
+	}
+	else if (cub3d->map->map[(int)cam->y][(int)cam->x] == 'E')
+	{
+		cam->dir_x = -1;
+		cam->plane_y = -cam->d_fov;
+	}
 	return (cam);
 }

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/13 22:23:21 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/14 08:43:02 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ typedef struct s_camera
 	double	d_fov;
 	double	dir_x;
 	double	dir_y;
+	double	cam_x;
 }	t_camera;
 
 typedef struct s_cub3d
@@ -153,6 +154,10 @@ typedef struct s_ray
 	double	side_dist_y;
 	int		direction;
 	int		hit;
+	double	perp_wall_dist;
+	int		line_height;
+	int		r_start;
+	int		r_end;
 }		t_ray;
 
 #endif

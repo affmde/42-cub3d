@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:10:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/13 22:11:57 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/14 10:00:13 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	get_steps(t_cub3d *cub3d, t_ray *ray)
 		ray->step_x = 1;
 		ray->side_dist_x = (ray->map_x + 1.0 - cub3d->camera->x) * ray->delta_dist_x;
 	}
-	if (ray->dir_y)
+	if (ray->dir_y < 0 )
 	{
 		ray->step_y = -1;
 		ray->side_dist_y = (cub3d->camera->y - ray->map_y) * ray->delta_dist_y;
@@ -87,7 +87,43 @@ static void	dda_algo(t_cub3d *cub3d, t_ray *ray)
 		if (cub3d->map->map[ray->map_y][ray->map_x] == '1')
 			ray->hit = 1;
 	}
-	printf("wall detected at y: %d x: %d\n", ray->map_x, ray->map_y);
+}
+
+static void render(t_cub3d *cub3d, t_ray *ray)
+{
+	int	i;
+
+	i = 0;
+	printf("r_start: %d\n", ray->r_start);
+	while (i < HEIGHT)
+	{
+		while (i < ray->r_start)
+		{
+			if (ray->r_start)
+				ray->r_start = 0;
+			put_pixel(cub3d->img, ray->index, i, create_rgb(get_wall_color("C", cub3d)));
+			printf("color: %d\n", create_rgb(get_wall_color("C", cub3d)));
+			i++;
+		}
+		i++;
+	}
+}
+
+static void calculate_distance(t_cub3d *cub3d, t_ray *ray)
+{
+	if (ray->direction == EAST || ray->direction == WEST)
+		ray->perp_wall_dist = (ray->map_x - cub3d->camera->x + (1 - ray->step_x) / 2) / ray->dir_x;
+	else
+		ray->perp_wall_dist = (ray->map_y - cub3d->camera->y + (1 + ray->step_y) / 2) / ray->dir_y;
+	ray->line_height = (int)(HEIGHT / ray->perp_wall_dist);
+	printf("line height: %d perp: %f\n", ray->line_height, ray->perp_wall_dist);
+	ray->r_start = cub3d->camera->half_height - ray->line_height / 2;
+	ray->r_end = cub3d->camera->half_height + ray->line_height / 2;
+	if (ray->direction == EAST || ray->direction == WEST)
+		ray->wall_hit_x = cub3d->camera->y + ray->perp_wall_dist * ray->dir_y;
+	else
+		ray->wall_hit_x = cub3d->camera->x + ray->perp_wall_dist * ray->dir_x;
+	ray->wall_hit_x = floor(ray->wall_hit_x);
 }
 
 void	raycasting(t_cub3d *cub3d, t_ray *ray)
@@ -95,9 +131,9 @@ void	raycasting(t_cub3d *cub3d, t_ray *ray)
 	ray->index = 0;
 	while (ray->index < WIDTH)
 	{
-		cub3d->camera->x = 2 * ray->index / (double)WIDTH - 1;
-		ray->dir_x = cub3d->camera->x + cub3d->camera->plane_x * cub3d->camera->x;
-		ray->dir_y = cub3d->camera->y + cub3d->camera->plane_y * cub3d->camera->x;
+		cub3d->camera->cam_x = 2 * ray->index / (double)WIDTH - 1;
+		ray->dir_x = cub3d->camera->x + cub3d->camera->plane_x * cub3d->camera->cam_x;
+		ray->dir_y = cub3d->camera->y + cub3d->camera->plane_y * cub3d->camera->cam_x;
 		ray->map_x = (int)cub3d->camera->x;
 		ray->map_y = (int)cub3d->camera->y;
 		ray->delta_dist_x = fabs(1 / ray->dir_x);
@@ -105,6 +141,8 @@ void	raycasting(t_cub3d *cub3d, t_ray *ray)
 		ray->hit = 0;
 		get_steps(cub3d, ray);
 		dda_algo(cub3d, ray);
+		calculate_distance(cub3d, ray);
+		render(cub3d, ray);
 		ray->index++;
 	}
 }

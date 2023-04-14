@@ -57,6 +57,7 @@ void		check_repeated_walls(t_cub3d *cub3d, t_elements_check *element);
 //MLX Handling
 int			mlx_handling(t_cub3d *cub3d);
 int			deal_key(int keycode, t_cub3d *cub3d);
+int			mouse(int x, int y, t_cub3d *cub3d);
 void		refresh_window(t_cub3d *cub3d);
 
 //Maths

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:10:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/14 16:04:18 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/14 21:09:12 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,4 +102,5 @@ void	raycasting(t_cub3d *cub3d, t_ray *ray)
 		render(cub3d, ray);
 		ray->index++;
 	}
+	mlx_put_image_to_window(cub3d->ptr, cub3d->win, cub3d->img->img_ptr, 0, 0);
 }

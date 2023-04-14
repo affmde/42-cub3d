@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:03:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/14 17:23:20 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/14 21:08:49 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,5 @@ void	draw(t_cub3d *cub3d)
 	raycasting(cub3d, &ray);
 	//draw_minimap(cub3d, img);
 	//draw_ray(cub3d, img, &ray);
-	mlx_put_image_to_window(cub3d->ptr, cub3d->win, img->img_ptr, 0, 0);
+	//mlx_put_image_to_window(cub3d->ptr, cub3d->win, img->img_ptr, 0, 0);
 }

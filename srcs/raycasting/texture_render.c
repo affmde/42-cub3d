@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 16:45:40 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/14 17:25:00 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/14 21:54:25 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,14 @@ void	texture_render(t_cub3d *cub3d, t_ray *ray)
 		exit (1);
 	}
 	if (ray->direction == EAST || ray->direction == WEST)
-		wall_x = cub3d->camera->x + ray->perp_wall_dist  * ray->dir_y;
+		wall_x = cub3d->camera->y + ray->perp_wall_dist  * ray->dir_y;
 	else
 		wall_x = cub3d->camera->x + ray->perp_wall_dist * ray->dir_x;
+	wall_x -= floor(wall_x);
 	texture_x = (int)(wall_x * (double)texture->width);
 	if ((ray->direction == EAST || ray->direction == WEST) && ray->dir_x > 0)
 		texture_x = texture->width - texture_x - 1;
-	if ((ray->direction == NORTH || ray->direction == SOUTH) && ray->direction > 0)
+	if ((ray->direction == NORTH || ray->direction == SOUTH) && ray->direction < 0)
 		texture_x = texture->width - texture_x - 1;
 
 	step = 1.0 * texture->height / ray->line_height;
@@ -61,6 +62,7 @@ void	texture_render(t_cub3d *cub3d, t_ray *ray)
 	{
 		texture_y = (int)texture_pos & (texture->height - 1);
 		texture_pos += step;
+		printf("texture: %s texH: %d texY: %d textX: %d val: %d\n", texture->identifier, texture->height, texture_y, texture_x, texture->height * texture_y + texture_x);
 		color = texture->img->data[texture->height * texture_y + texture_x];
 		//buffer[i][ray->index] = color;
 		put_pixel(cub3d->img, ray->index, i, color);

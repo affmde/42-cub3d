@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:26:44 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/13 09:17:41 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/14 16:16:11 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 int	main(int argc, char **argv)
 {
-	t_cub3d *cub3d;
+	t_cub3d	*cub3d;
+
 	if (argc != 2)
 	{
 		ft_putendl_fd("Wrong number of arguments.", 2);
 		return (1);
 	}
 	cub3d = cub3d_init();
-	if(file_read(argv[1], cub3d))
+	if (file_read(argv[1], cub3d))
 	{
 		free_cub3d(cub3d);
 		return (0);
@@ -34,7 +35,6 @@ int	main(int argc, char **argv)
 		free_cub3d(cub3d);
 		return (0);
 	}
-
 	mlx_handling(cub3d);
 	free_cub3d(cub3d);
 	return (0);

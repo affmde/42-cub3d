@@ -6,13 +6,13 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 20:16:48 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/12 15:06:43 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/14 16:15:11 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int get_color(char **map, int y, int x)
+static int	get_color(char **map, int y, int x)
 {
 	if (map[y][x] == '1')
 		return (0xffffff);
@@ -21,33 +21,39 @@ static int get_color(char **map, int y, int x)
 	return (0x0880808);
 }
 
-static void paint_cube_vertically(t_pos start, t_pos end, t_cub3d *cub3d, t_img *img)
+static void	paint_cube_vertically(t_pos start, t_pos end,
+		t_cub3d *cub3d, t_img *img)
 {
-	t_pos a;
-	t_pos b;
-	int	x;
+	t_pos	a;
+	t_pos	b;
+	int		x;
 
 	x = start.x;
 	while (x < start.x + scale)
 	{
-		a = populate_position(x, start.y, 0, get_color(cub3d->map->map, start.y /scale, start.x / scale));
-		b = populate_position(x, end.y, 0, get_color(cub3d->map->map, start.y / scale, start.x / scale));
+		a = populate_position(x, start.y, 0, get_color(cub3d->map->map, start.y
+					/ scale, start.x / scale));
+		b = populate_position(x, end.y, 0, get_color(cub3d->map->map, start.y
+					/ scale, start.x / scale));
 		bresenham_algo(a, b, img);
 		x++;
 	}
 }
 
-static void paint_cube_horizontally(t_pos start, t_pos end, t_cub3d *cub3d, t_img *img)
+static void	paint_cube_horizontally(t_pos start,
+	t_pos end, t_cub3d *cub3d, t_img *img)
 {
-	t_pos a;
-	t_pos b;
-	int	y;
+	t_pos	a;
+	t_pos	b;
+	int		y;
 
 	y = start.y;
 	while (y < start.y + scale)
 	{
-		a = populate_position(start.x, y, 0, get_color(cub3d->map->map, start.y /scale, start.x / scale));
-		b = populate_position(end.x, y, 0, get_color(cub3d->map->map, start.y / scale, start.x / scale));
+		a = populate_position(start.x, y, 0, get_color(cub3d->map->map, start.y
+					/ scale, start.x / scale));
+		b = populate_position(end.x, y, 0, get_color(cub3d->map->map, start.y
+					/ scale, start.x / scale));
 		bresenham_algo(a, b, img);
 		y++;
 	}
@@ -55,8 +61,8 @@ static void paint_cube_horizontally(t_pos start, t_pos end, t_cub3d *cub3d, t_im
 
 void	draw_minimap(t_cub3d *cub3d, t_img *img)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	t_pos	start;
 	t_pos	end;
 
@@ -68,17 +74,20 @@ void	draw_minimap(t_cub3d *cub3d, t_img *img)
 		{
 			if (j < (int)ft_strlen(cub3d->map->map[i]) - 1)
 			{
-				start = populate_position(j * scale, i * scale, 0, get_color(cub3d->map->map, i, j));
-				end = populate_position((j + 1) * scale, i * scale, 0, get_color(cub3d->map->map, i, j + 1));
+				start = populate_position(j * scale, i * scale,
+						0, get_color(cub3d->map->map, i, j));
+				end = populate_position((j + 1) * scale, i * scale,
+						0, get_color(cub3d->map->map, i, j + 1));
 				paint_cube_horizontally(start, end, cub3d, img);
 			}
 			if (i < cub3d->map->height - 1)
 			{
-				start = populate_position(j * scale, i * scale, 0, get_color(cub3d->map->map, i, j));
-				end = populate_position(j * scale, (i + 1) * scale, 0, get_color(cub3d->map->map, i + 1, j));
+				start = populate_position(j * scale, i * scale,
+						0, get_color(cub3d->map->map, i, j));
+				end = populate_position(j * scale, (i + 1) * scale,
+						0, get_color(cub3d->map->map, i + 1, j));
 				paint_cube_vertically(start, end, cub3d, img);
 			}
 		}
 	}
 }
-

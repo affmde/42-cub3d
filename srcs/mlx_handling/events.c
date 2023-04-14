@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 10:30:22 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/14 14:48:43 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/14 15:57:13 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,51 +14,58 @@
 
 void	turn_right(t_cub3d *cub3d)
 {
-	cub3d->camera->player_angle += 5;
-	if (cub3d->camera->player_angle > 360)
-		cub3d->camera->player_angle = 0;
+	double	old_dir_x;
+	double	old_plane;
+
+	old_dir_x = cub3d->camera->dir_x;
+	cub3d->camera->dir_x = cub3d->camera->dir_x * cos(-ROTATE_SPEED) - cub3d->camera->dir_y * sin(-ROTATE_SPEED);
+	cub3d->camera->dir_y = old_dir_x * sin(-ROTATE_SPEED) + cub3d->camera->dir_y * cos(-ROTATE_SPEED);
+	old_plane = cub3d->camera->plane_x;
+	cub3d->camera->plane_x = cub3d->camera->plane_x * cos(-ROTATE_SPEED) - cub3d->camera->plane_y * sin(-ROTATE_SPEED);
+	cub3d->camera->plane_y = old_plane * sin(-ROTATE_SPEED) + cub3d->camera->plane_y * cos(-ROTATE_SPEED);
 }
 
 void	turn_left(t_cub3d *cub3d)
 {
-	cub3d->camera->player_angle -= 5;
-	if (cub3d->camera->player_angle < 0)
-		cub3d->camera->player_angle = 360;
+	double	old_dir_x;
+	double	old_plane;
+
+	old_dir_x = cub3d->camera->dir_x;
+	cub3d->camera->dir_x = cub3d->camera->dir_x * cos(ROTATE_SPEED) - cub3d->camera->dir_y * sin(ROTATE_SPEED);
+	cub3d->camera->dir_y = old_dir_x * sin(ROTATE_SPEED) + cub3d->camera->dir_y * cos(ROTATE_SPEED);
+	old_plane = cub3d->camera->plane_x;
+	cub3d->camera->plane_x = cub3d->camera->plane_x * cos(ROTATE_SPEED) - cub3d->camera->plane_y * sin(ROTATE_SPEED);
+	cub3d->camera->plane_y = old_plane * sin(ROTATE_SPEED) + cub3d->camera->plane_y * cos(ROTATE_SPEED);
 }
 
 void	move_forward(t_cub3d *cub3d)
 {
-	float	player_cos;
-	float	player_sin;
-	float	new_x;
-	float	new_y;
+	int		x;
+	int		y;
 
-	player_cos = cos(degrees_to_radians(cub3d->camera->player_angle)) * 0.1;
-	player_sin = sin(degrees_to_radians(cub3d->camera->player_angle)) * 0.1;
-	new_x = cub3d->camera->x + player_cos;
-	new_y = cub3d->camera->y + player_sin;
-	if (cub3d->map->map[(int)new_y / scale][(int)new_x / scale] == '1')
-		return ;
-	cub3d->camera->x += player_cos;
-	cub3d->camera->y += player_sin;
+	y = (int)cub3d->camera->y;
+	x = (int)(cub3d->camera->x + cub3d->camera->dir_x * MOVEMENT_SPEED);
+	if (cub3d->map->map[y][x] != '1')
+		cub3d->camera->x += cub3d->camera->dir_x * MOVEMENT_SPEED;
+	x = (int)cub3d->camera->x;
+	y = (int)(cub3d->camera->y + cub3d->camera->dir_y * MOVEMENT_SPEED);
+	if (cub3d->map->map[y][x] != '1')
+		cub3d->camera->y += cub3d->camera->dir_y * MOVEMENT_SPEED;
 }
 
 void	move_backwards(t_cub3d *cub3d)
 {
-	float	player_cos;
-	float	player_sin;
-	float	new_x;
-	float	new_y;
+	int		x;
+	int		y;
 
-	player_cos = cos(degrees_to_radians(cub3d->camera->player_angle)) * 0.1;
-	player_sin = sin(degrees_to_radians(cub3d->camera->player_angle)) * 0.1;
-	new_x = cub3d->camera->x - player_cos;
-	new_y = cub3d->camera->y - player_sin;
-	if (cub3d->map->map[(int)floor(new_y / scale)][(int)floor(new_x / scale)] == '1')
-		return ;
-	cub3d->camera->x -= player_cos;
-	cub3d->camera->y -= player_sin;
-
+	y = (int)cub3d->camera->y;
+	x = (int)(cub3d->camera->x - cub3d->camera->dir_x * MOVEMENT_SPEED);
+	if (cub3d->map->map[y][x] != '1')
+		cub3d->camera->x -= cub3d->camera->dir_x * MOVEMENT_SPEED;
+	x = (int)cub3d->camera->x;
+	y = (int)(cub3d->camera->y - cub3d->camera->dir_y * MOVEMENT_SPEED);
+	if (cub3d->map->map[y][x] != '1')
+		cub3d->camera->y -= cub3d->camera->dir_y * MOVEMENT_SPEED;
 }
 
 int	deal_key(int keycode, t_cub3d *cub3d)

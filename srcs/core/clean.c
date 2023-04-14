@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:36:49 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/13 09:22:47 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/14 16:16:30 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	clean_char_arr(char **arr)
 
 void	delete_texture_node(void *node)
 {
-	t_textures *texture;
+	t_textures	*texture;
 
 	texture = (t_textures *)node;
 	if (!texture)
@@ -41,7 +41,7 @@ void	delete_texture_node(void *node)
 
 void	delete_wall_node(void *node)
 {
-	t_walls *wall;
+	t_walls	*wall;
 
 	wall = (t_walls *)node;
 	if (!wall)

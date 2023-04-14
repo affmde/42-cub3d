@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:28:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/13 17:13:06 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/14 16:05:05 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int		create_rgb(t_color *color);
 void	raycasting(t_cub3d *cub3d, t_ray *ray);
 void	draw_ray(t_cub3d *cub3d, t_img *img, t_ray *ray);
 void	draw_col(t_cub3d *cub3d, t_ray *ray);
+void	render(t_cub3d *cub3d, t_ray *ray);
 int		load_textures(t_cub3d *cub3d);
 void	draw(t_cub3d *cub3d);
 void	draw_minimap(t_cub3d *cub3d, t_img *img);

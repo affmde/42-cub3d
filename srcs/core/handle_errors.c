@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:36:38 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/13 08:33:55 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/14 16:11:54 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	validity_error_msg(int err)
 	else if (err == 3)
 	{
 		ft_putendl_fd("Error", 2);
-		ft_putendl_fd("Wrong colors configuration on your ceiling or floor.", 2);
+		ft_putendl_fd("Wrong colors configuration on your ceiling or floor.",
+			2);
 	}
 }
 

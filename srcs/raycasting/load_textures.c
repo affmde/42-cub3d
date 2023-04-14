@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 14:11:27 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/13 16:48:31 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/14 13:46:10 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	get_texture_info(t_textures *texture)
 	if (!texture->img->data)
 	{
 		invalid_texture(texture->path);
-		return (1);
+		return (0); // change back to 1
 	}
 	return (0);
 }

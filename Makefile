@@ -8,7 +8,7 @@ COLOUR_END=\033[0m
 NAME = cub3D
 
 #Flags
-FLAGS = -Wall -Werror -Wextra -I includes
+FLAGS = -Wall -Werror -Wextra -I includes -g
 LINFLAGS = -lmlx -lXext -lX11
 MOSFLAGS = -lmlx -framework OpenGl -framework AppKit
 LIBFT = libft/libft.a
@@ -50,8 +50,8 @@ $(LIBFT):
 	@echo "$(COLOUR_GREEN)libft compilation completed$(COLOUR_END)"
 
 $(NAME): $(LIBFT) $(OBJS_DIR) $(OBJS)
-#@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(MOSFLAGS)
-	@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(LINFLAGS) -lm
+	@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(MOSFLAGS)
+#@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(LINFLAGS) -lm
 	@echo "$(COLOUR_GREEN)$@ created$(COLOUR_END)"
 
 $(OBJS_DIR):

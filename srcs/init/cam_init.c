@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:05:04 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/14 09:41:43 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/14 14:03:08 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_camera	*camera_init(t_cub3d *cub3d)
 
 	/**Init values for new raycast**/
 	cam->d_fov = 0.66;
-	cam->dir_x = 0;
+	cam->dir_x = -1;
 	cam->dir_y = 0;
 	cam->plane_x = 0;
 	cam->plane_y = 0;

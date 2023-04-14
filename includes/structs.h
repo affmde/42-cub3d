@@ -80,6 +80,7 @@ typedef struct s_cub3d
 	void		*win;
 	t_img		*img;
 	t_camera	*camera;
+	int			mouse_x;
 }	t_cub3d;
 
 typedef struct s_map_check

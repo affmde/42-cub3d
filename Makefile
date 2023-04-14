@@ -9,8 +9,8 @@ NAME = cub3D
 
 #Flags
 FLAGS = -Wall -Werror -Wextra -I includes
-LINFLAGS = -lmlx -lXext -lX11
-MOSFLAGS = -lmlx -framework OpenGl -framework AppKit
+LINFLAGS = -lmlx -lm -lXext -lX11
+MOSFLAGS = -lmlx -lm -framework OpenGl -framework AppKit
 LIBFT = libft/libft.a
 
 #Dirs
@@ -34,7 +34,7 @@ colors.c graphics_utils.c
 
 FILE_VALIDATION = map_validity.c file_validity.c elements_validity.c map_closed.c fc_validity.c
 
-MLX_HANDLING = mlx_handling.c events.c
+MLX_HANDLING = mlx_handling.c events.c mouse.c
 
 RAYCASTING = raycast.c load_textures.c draw.c
 
@@ -51,7 +51,7 @@ $(LIBFT):
 
 $(NAME): $(LIBFT) $(OBJS_DIR) $(OBJS)
 	@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(MOSFLAGS)
-#	@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(LINFLAGS) -lm
+#	@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(LINFLAGS)
 	@echo "$(COLOUR_GREEN)$@ created$(COLOUR_END)"
 
 $(OBJS_DIR):

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:03:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/14 16:09:12 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/14 16:24:31 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	render(t_cub3d *cub3d, t_ray *ray)
 		while (i < HEIGHT)
 		{
 			put_pixel(cub3d->img, ray->index, i,
-				create_rgb(get_wall_color("C", cub3d)));
+				create_rgb(get_wall_color("F", cub3d)));
 			i++;
 		}
 		i++;

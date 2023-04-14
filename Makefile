@@ -51,7 +51,7 @@ $(LIBFT):
 
 $(NAME): $(LIBFT) $(OBJS_DIR) $(OBJS)
 	@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(MOSFLAGS)
-#@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(LINFLAGS) -lm
+#	@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(LINFLAGS) -lm
 	@echo "$(COLOUR_GREEN)$@ created$(COLOUR_END)"
 
 $(OBJS_DIR):

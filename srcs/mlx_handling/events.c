@@ -44,11 +44,11 @@ void	move_forward(t_cub3d *cub3d)
 	int		y;
 
 	y = (int)cub3d->camera->y;
-	x = (int)(cub3d->camera->x + cub3d->camera->dir_x * MOVEMENT_SPEED);
+	x = (int)(cub3d->camera->x + cub3d->camera->dir_x * TEST_SPEED);
 	if (cub3d->map->map[y][x] != '1')
 		cub3d->camera->x += cub3d->camera->dir_x * MOVEMENT_SPEED;
 	x = (int)cub3d->camera->x;
-	y = (int)(cub3d->camera->y + cub3d->camera->dir_y * MOVEMENT_SPEED);
+	y = (int)(cub3d->camera->y + cub3d->camera->dir_y * TEST_SPEED);
 	if (cub3d->map->map[y][x] != '1')
 		cub3d->camera->y += cub3d->camera->dir_y * MOVEMENT_SPEED;
 }
@@ -59,11 +59,11 @@ void	move_backwards(t_cub3d *cub3d)
 	int		y;
 
 	y = (int)cub3d->camera->y;
-	x = (int)(cub3d->camera->x - cub3d->camera->dir_x * MOVEMENT_SPEED);
+	x = (int)(cub3d->camera->x - cub3d->camera->dir_x * TEST_SPEED);
 	if (cub3d->map->map[y][x] != '1')
 		cub3d->camera->x -= cub3d->camera->dir_x * MOVEMENT_SPEED;
 	x = (int)cub3d->camera->x;
-	y = (int)(cub3d->camera->y - cub3d->camera->dir_y * MOVEMENT_SPEED);
+	y = (int)(cub3d->camera->y - cub3d->camera->dir_y * TEST_SPEED);
 	if (cub3d->map->map[y][x] != '1')
 		cub3d->camera->y -= cub3d->camera->dir_y * MOVEMENT_SPEED;
 }

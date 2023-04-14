@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/14 08:43:02 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/14 16:39:46 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,10 @@ typedef struct s_img
 
 typedef struct s_camera
 {
-	int		fov;
-	float	half_fov;
-	float	angle_increment;
-	int		precision;
-	float			x;
-	float			y;
+	float	x;
+	float	y;
 	float	player_angle;
-	float	half_width;
 	float	half_height;
-	float	distance_to_plane;
 
 	/*for the new raycast*/
 	double	plane_x;

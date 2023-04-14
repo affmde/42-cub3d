@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 15:03:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/14 16:24:31 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/14 17:23:20 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ static void	render_texture(t_cub3d *cub3d, t_ray *ray, int *i)
 {
 	if (ray->r_start < 0)
 		ray->r_start = 0;
-	put_pixel(cub3d->img, ray->index, *i, 0xffffff);
+	//put_pixel(cub3d->img, ray->index, *i, 0xffffff);
+	texture_render(cub3d, ray);
 	(*i)++;
 }
 

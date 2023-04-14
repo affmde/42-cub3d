@@ -12,23 +12,15 @@
 
 #include "cub3d.h"
 
-#define WALL_SCALE 20
-
 void	find_wall(float x, float y, t_cub3d *cub3d, t_ray *ray)
 {
 	float	inc_x;
 	float	inc_y;
-	int		x2;
-	int		y2;
 
 	inc_x = cosf(degrees_to_radians(ray->angle)) / 1000;
 	inc_y = sinf(degrees_to_radians(ray->angle)) / 1000;
 	while (1)
 	{
-		x2 = (int)x;
-		y2 = (int)y;
-		// printf("x is %f x2 is %d: %f\n", x, x2, x - x2);
-		// printf("y is %f y2 is %d: %f\n", y, y2, y - y2);
 		if (cub3d->map->map[(int)y][(int)x] == '1')
 			break ;
 		x += inc_x;
@@ -36,7 +28,6 @@ void	find_wall(float x, float y, t_cub3d *cub3d, t_ray *ray)
 	}
 	ray->distance = (sqrt(pow(cub3d->camera->x / scale - x, 2) \
 	+ pow(cub3d->camera->y / scale - y, 2))) * scale;
-//	printf("dist is %f\n", ray->distance);
 }
 
 void	draw_column(t_cub3d *cub3d, t_ray *ray)
@@ -49,7 +40,7 @@ void	draw_column(t_cub3d *cub3d, t_ray *ray)
 	find_wall(cub3d->camera->x / scale, cub3d->camera->y / scale, cub3d, ray);
 	distance = ray->distance * cos(degrees_to_radians \
 	(ray->angle - cub3d->camera->player_angle));
-	wall_height = cub3d->camera->half_height / distance * WALL_SCALE;
+	wall_height = cub3d->camera->half_height / distance * scale;
 	start.x = ray->index;
 	end.x = ray->index;
 	start.y = cub3d->camera->half_height - wall_height;

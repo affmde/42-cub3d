@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 16:45:40 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/14 21:54:25 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/15 10:55:30 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,33 @@ static t_textures	*receive_texture(t_cub3d *cub3d, int direction)
 	return (NULL);
 }
 
-void	texture_render(t_cub3d *cub3d, t_ray *ray)
+static void transfer_texture_pixel(t_cub3d *cub3d, t_textures *t, int *texture_x)
+{
+	int	i;
+	int	texture_y;
+	int	color;
+	double	texture_pos;
+	double	step;
+	
+	step = 1.0 * t->height / cub3d->ray->line_height;
+	texture_pos = (cub3d->ray->r_start - HEIGHT / 2 + cub3d->ray->line_height / 2) * step;
+	i = cub3d->ray->r_start;
+	while (i < cub3d->ray->r_end)
+	{
+		texture_y = (int)texture_pos & (t->height - 1);
+		texture_pos += step;
+		color = t->img->data[t->height * texture_y + *texture_x];
+		put_pixel(cub3d->img, cub3d->ray->index, i, color);
+		i++;
+	}
+}
+
+void	texture_render(t_cub3d *cub3d, t_ray *ray, int *position)
 {
 	t_textures *texture;
 
 	double	wall_x;
 	int		texture_x;
-	double	step;
-	double	texture_pos;
-	int		texture_y;
-	int		color;
-	//int		buffer[HEIGHT][WIDTH];
 
 	texture = receive_texture(cub3d, ray->direction);
 	if (!texture)
@@ -53,19 +69,32 @@ void	texture_render(t_cub3d *cub3d, t_ray *ray)
 		texture_x = texture->width - texture_x - 1;
 	if ((ray->direction == NORTH || ray->direction == SOUTH) && ray->direction < 0)
 		texture_x = texture->width - texture_x - 1;
+	transfer_texture_pixel(cub3d, texture, &texture_x);
+	*position += 1;
+}
 
-	step = 1.0 * texture->height / ray->line_height;
-	texture_pos = (ray->r_start - HEIGHT / 2 + ray->line_height / 2) * step;
+
+void	render(t_cub3d *cub3d, t_ray *ray)
+{
 	int	i;
-	i = ray->r_start;
-	while (i < ray->r_end)
+
+	i = 0;
+	while (i < HEIGHT)
 	{
-		texture_y = (int)texture_pos & (texture->height - 1);
-		texture_pos += step;
-		printf("texture: %s texH: %d texY: %d textX: %d val: %d\n", texture->identifier, texture->height, texture_y, texture_x, texture->height * texture_y + texture_x);
-		color = texture->img->data[texture->height * texture_y + texture_x];
-		//buffer[i][ray->index] = color;
-		put_pixel(cub3d->img, ray->index, i, color);
+		while (i < ray->r_start)
+		{
+			if (ray->r_start < 0)
+				ray->r_start = 0;
+			put_pixel(cub3d->img, ray->index, i, ray->ceiling_color);
+			i++;
+		}
+		while (i < ray->r_end)
+			texture_render(cub3d, ray, &i);
+		while (i < HEIGHT)
+		{
+			put_pixel(cub3d->img, ray->index, i, ray->floor_color);
+			i++;
+		}
 		i++;
 	}
 }

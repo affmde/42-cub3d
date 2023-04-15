@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 09:53:05 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/14 21:10:11 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/15 09:29:40 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 void	refresh_window(t_cub3d *cub3d)
 {
-	mlx_clear_window(cub3d->ptr, cub3d->win);
-	mlx_destroy_image(cub3d->ptr, cub3d->img->img_ptr);
-	free(cub3d->img);
-	draw(cub3d);
+	raycasting(cub3d, cub3d->ray);
 }
 
 void	put_pixel(t_img *image, int x, int y, int color)

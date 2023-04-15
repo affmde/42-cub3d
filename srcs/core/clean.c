@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:36:49 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/14 16:16:30 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/15 09:16:18 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void	free_cub3d(t_cub3d *cub3d)
 				clean_char_arr(cub3d->map->map);
 			free(cub3d->map);
 		}
+		if (cub3d->ray)
+			free(cub3d->ray);
 		if (cub3d->camera)
 			free(cub3d->camera);
 		free(cub3d);

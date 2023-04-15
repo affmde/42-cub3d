@@ -27,7 +27,7 @@ CORE = main.c handle_errors.c clean.c draw_example.c
 
 FILE_PARSING = file_read.c parse_elements.c parse_map.c
 
-INIT = cub3d_init.c cam_init.c
+INIT = cub3d_init.c cam_init.c image_init.c ray_init.c
 
 UTILS = parse_utils.c texture_creator.c walls_creator.c map_validation_utils.c return_textures.c math_utils.c bresenham_algo.c \
 colors.c graphics_utils.c
@@ -36,7 +36,7 @@ FILE_VALIDATION = map_validity.c file_validity.c elements_validity.c map_closed.
 
 MLX_HANDLING = mlx_handling.c events.c mouse.c
 
-RAYCASTING = raycast.c load_textures.c draw.c texture_render.c
+RAYCASTING = raycast.c load_textures.c texture_render.c
 
 ALL_SRCS = $(FILE_PARSING) $(INIT) $(UTILS) $(FILE_VALIDATION) $(MLX_HANDLING) $(RAYCASTING) $(CORE)
 OBJ_FILES = $(ALL_SRCS:.c=.o)

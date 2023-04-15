@@ -12,9 +12,19 @@
 
 #include "cub3d.h"
 
+double	fix_dif(double dif)
+{
+	if (dif < 0)
+		return (0.07);
+	else 
+		return (-0.07);
+}
+
 int	mouse(int x, int y, t_cub3d *cub3d)
 {
-	int	x_dif;
+	double	x_dif;
+	double	old_dir_x;
+	double	old_plane;
 
 	if (x < 0 || y < 0 || x >= WIDTH || y >= HEIGHT)
 		return (1);
@@ -24,12 +34,16 @@ int	mouse(int x, int y, t_cub3d *cub3d)
 		return (37);
 	}
 	x_dif = x - cub3d->mouse_x;
-	while (x_dif > 15 || x_dif < -15)
-		x_dif = x_dif / 5;
-	cub3d->camera->player_angle += x_dif;
-	if (cub3d->camera->player_angle < 0)
-		cub3d->camera->player_angle = 360;
+	if (x_dif == 0)
+		return (1);
+	x_dif = fix_dif(x_dif);
+	old_dir_x = cub3d->camera->dir_x;
+	cub3d->camera->dir_x = cub3d->camera->dir_x * cos(-x_dif) - cub3d->camera->dir_y * sin(-x_dif);
+	cub3d->camera->dir_y = old_dir_x * sin(-x_dif) + cub3d->camera->dir_y * cos(-x_dif);
+	old_plane = cub3d->camera->plane_x;
+	cub3d->camera->plane_x = cub3d->camera->plane_x * cos(-x_dif) - cub3d->camera->plane_y * sin(-x_dif);
+	cub3d->camera->plane_y = old_plane * sin(-x_dif) + cub3d->camera->plane_y * cos(-x_dif);
 	cub3d->mouse_x = x;
 	refresh_window(cub3d);
-	return (1);
+	return (0);
 }

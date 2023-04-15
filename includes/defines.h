@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 11:04:27 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/15 10:38:57 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/15 11:02:56 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #define SOUTH 2
 #define EAST 3
 #define WEST 4
-#define MOVEMENT_SPEED 0.05
-#define ROTATE_SPEED 0.05
+#define MOVEMENT_SPEED 0.2
+#define TEST_SPEED 0.3
+#define ROTATE_SPEED 0.07
 #endif

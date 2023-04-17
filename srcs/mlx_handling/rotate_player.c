@@ -6,13 +6,13 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 08:29:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/17 08:32:53 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/17 08:35:32 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	turn_right(t_cub3d *cub3d)
+static void	turn_right(t_cub3d *cub3d)
 {
 	double	old_dir_x;
 	double	old_plane;
@@ -25,7 +25,7 @@ void	turn_right(t_cub3d *cub3d)
 	cub3d->camera->plane_y = old_plane * sin(ROTATE_SPEED) + cub3d->camera->plane_y * cos(ROTATE_SPEED);
 }
 
-void	turn_left(t_cub3d *cub3d)
+static void	turn_left(t_cub3d *cub3d)
 {
 	double	old_dir_x;
 	double	old_plane;

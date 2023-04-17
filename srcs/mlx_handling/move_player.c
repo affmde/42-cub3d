@@ -6,13 +6,13 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 08:14:59 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/17 08:20:27 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/17 08:36:04 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	move_forward(t_cub3d *cub3d)
+static void	move_forward(t_cub3d *cub3d)
 {
 	int		x;
 	int		y;
@@ -27,7 +27,7 @@ void	move_forward(t_cub3d *cub3d)
 		cub3d->camera->y += cub3d->camera->dir_y * MOVEMENT_SPEED;
 }
 
-void	move_backwards(t_cub3d *cub3d)
+static void	move_backwards(t_cub3d *cub3d)
 {
 	int		x;
 	int		y;
@@ -42,7 +42,7 @@ void	move_backwards(t_cub3d *cub3d)
 		cub3d->camera->y -= cub3d->camera->dir_y * MOVEMENT_SPEED;
 }
 
-void	move_left(t_cub3d *cub3d)
+static void	move_left(t_cub3d *cub3d)
 {
 	int		x;
 	int		y;
@@ -57,7 +57,7 @@ void	move_left(t_cub3d *cub3d)
 		cub3d->camera->y -= cub3d->camera->plane_y * MOVEMENT_SPEED;
 }
 
-void	move_right(t_cub3d *cub3d)
+static void	move_right(t_cub3d *cub3d)
 {
 	int		x;
 	int		y;

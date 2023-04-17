@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 08:14:59 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/17 08:36:04 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/17 10:02:31 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,13 @@ static void	move_right(t_cub3d *cub3d)
 
 void	move_player(t_cub3d *cub3d, int keycode)
 {
-	if (keycode == 119 || keycode == 126)
+	if (keycode == 119 || keycode == 13)
 		move_forward(cub3d);
-	else if (keycode == 115 || keycode == 125)
+	else if (keycode == 115 || keycode == 1)
 		move_backwards(cub3d);
-	else if (keycode == 97)
+	else if (keycode == 97 || keycode == 0)
 		move_left(cub3d);
-	else if (keycode == 100)
+	else if (keycode == 100 || keycode == 2)
 		move_right(cub3d);
 	refresh_window(cub3d);
 }

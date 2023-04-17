@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 10:30:22 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/17 08:33:22 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/17 10:01:19 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	deal_key(int keycode, t_cub3d *cub3d)
 {
-	//printf("Keycode: %d\n", keycode);
+	printf("Keycode: %d\n", keycode);
 	if (keycode == 65307 || keycode == 53)
 	{
 		mlx_destroy_window(cub3d->ptr, cub3d->win);

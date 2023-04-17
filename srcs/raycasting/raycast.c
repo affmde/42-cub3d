@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:10:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/15 10:19:51 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/17 10:14:09 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,69 +38,75 @@ static void	get_steps(t_cub3d *cub3d, t_ray *ray)
 	}
 }
 
-static void	dda_algo(t_cub3d *cub3d, t_ray *ray)
+static void	dda_algo(t_cub3d *cub3d)
 {
-	while (ray->hit == 0)
+	while (cub3d->ray->hit == 0)
 	{
-		if (ray->side_dist_x < ray->side_dist_y)
+		if (cub3d->ray->side_dist_x < cub3d->ray->side_dist_y)
 		{
-			ray->side_dist_x += ray->delta_dist_x;
-			ray->map_x += ray->step_x;
-			if (ray->dir_x > 0)
-				ray->direction = EAST;
+			cub3d->ray->side_dist_x += cub3d->ray->delta_dist_x;
+			cub3d->ray->map_x += cub3d->ray->step_x;
+			if (cub3d->ray->dir_x > 0)
+				cub3d->ray->direction = EAST;
 			else
-				ray->direction = WEST;
+				cub3d->ray->direction = WEST;
 		}
 		else
 		{
-			ray->side_dist_y += ray->delta_dist_y;
-			ray->map_y += ray->step_y;
-			if (ray->dir_y > 0)
-				ray->direction = SOUTH;
+			cub3d->ray->side_dist_y += cub3d->ray->delta_dist_y;
+			cub3d->ray->map_y += cub3d->ray->step_y;
+			if (cub3d->ray->dir_y > 0)
+				cub3d->ray->direction = SOUTH;
 			else
-				ray->direction = NORTH;
+				cub3d->ray->direction = NORTH;
 		}
-		if (cub3d->map->map[ray->map_y][ray->map_x] == '1')
-			ray->hit = 1;
+		if (cub3d->map->map[cub3d->ray->map_y][cub3d->ray->map_x] == '1')
+			cub3d->ray->hit = 1;
 	}
 }
 
-static void	calculate_distance(t_cub3d *cub3d, t_ray *ray)
+static void	calculate_distance(t_cub3d *cub3d)
 {
-	if (ray->direction == EAST || ray->direction == WEST)
-		ray->perp_wall_dist = ray->side_dist_x - ray->delta_dist_x;
+	if (cub3d->ray->direction == EAST || cub3d->ray->direction == WEST)
+		cub3d->ray->perp_wall_dist = cub3d->ray->side_dist_x
+			- cub3d->ray->delta_dist_x;
 	else
-		ray->perp_wall_dist = ray->side_dist_y - ray->delta_dist_y;
-	ray->line_height = (int)(HEIGHT / ray->perp_wall_dist);
-	ray->r_start = cub3d->camera->half_height - ray->line_height / 2;
-	ray->r_end = cub3d->camera->half_height + ray->line_height / 2;
-	if (ray->direction == EAST || ray->direction == WEST)
-		ray->wall_hit_x = cub3d->camera->y + ray->perp_wall_dist * ray->dir_y;
+		cub3d->ray->perp_wall_dist = cub3d->ray->side_dist_y
+			- cub3d->ray->delta_dist_y;
+	cub3d->ray->line_height = (int)(HEIGHT / cub3d->ray->perp_wall_dist);
+	cub3d->ray->r_start = cub3d->camera->half_height
+		- cub3d->ray->line_height / 2;
+	cub3d->ray->r_end = cub3d->camera->half_height
+		+ cub3d->ray->line_height / 2;
+	if (cub3d->ray->direction == EAST || cub3d->ray->direction == WEST)
+		cub3d->ray->wall_hit_x = cub3d->camera->y + cub3d->ray->perp_wall_dist
+			* cub3d->ray->dir_y;
 	else
-		ray->wall_hit_x = cub3d->camera->x + ray->perp_wall_dist * ray->dir_x;
-	ray->wall_hit_x = floor(ray->wall_hit_x);
+		cub3d->ray->wall_hit_x = cub3d->camera->x + cub3d->ray->perp_wall_dist
+			* cub3d->ray->dir_x;
+	cub3d->ray->wall_hit_x = floor(cub3d->ray->wall_hit_x);
 }
 
-void	raycasting(t_cub3d *cub3d, t_ray *ray)
+void	raycasting(t_cub3d *cub3d)
 {
-	ray_reset_values(cub3d, ray);
-	while (ray->index < WIDTH)
+	ray_reset_values(cub3d, cub3d->ray);
+	while (cub3d->ray->index < WIDTH)
 	{
-		cub3d->camera->cam_x = 2 * ray->index / (double)WIDTH - 1;
-		ray->dir_x = cub3d->camera->dir_x + cub3d->camera->plane_x
+		cub3d->camera->cam_x = 2 * cub3d->ray->index / (double)WIDTH - 1;
+		cub3d->ray->dir_x = cub3d->camera->dir_x + cub3d->camera->plane_x
 			* cub3d->camera->cam_x;
-		ray->dir_y = cub3d->camera->dir_y + cub3d->camera->plane_y
+		cub3d->ray->dir_y = cub3d->camera->dir_y + cub3d->camera->plane_y
 			* cub3d->camera->cam_x;
-		ray->map_x = (int)cub3d->camera->x;
-		ray->map_y = (int)cub3d->camera->y;
-		ray->delta_dist_x = fabs(1 / ray->dir_x);
-		ray->delta_dist_y = fabs(1 / ray->dir_y);
-		ray->hit = 0;
-		get_steps(cub3d, ray);
-		dda_algo(cub3d, ray);
-		calculate_distance(cub3d, ray);
-		render(cub3d, ray);
-		ray->index++;
+		cub3d->ray->map_x = (int)cub3d->camera->x;
+		cub3d->ray->map_y = (int)cub3d->camera->y;
+		cub3d->ray->delta_dist_x = fabs(1 / cub3d->ray->dir_x);
+		cub3d->ray->delta_dist_y = fabs(1 / cub3d->ray->dir_y);
+		cub3d->ray->hit = 0;
+		get_steps(cub3d, cub3d->ray);
+		dda_algo(cub3d);
+		calculate_distance(cub3d);
+		render(cub3d, cub3d->ray);
+		cub3d->ray->index++;
 	}
 	mlx_put_image_to_window(cub3d->ptr, cub3d->win, cub3d->img->img_ptr, 0, 0);
 }

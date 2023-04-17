@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 13:13:48 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/13 10:49:10 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/17 11:17:23 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	count_arr_values(char **arr)
 	return (0);
 }
 
-static t_color *color_creator(char *info)
+static t_color	*color_creator(char *info)
 {
 	t_color	*color;
 	char	**arr;
@@ -36,7 +36,7 @@ static t_color *color_creator(char *info)
 		info++;
 	arr = ft_split(info, ',');
 	if (!arr)
-		return(NULL);
+		return (NULL);
 	color = ft_calloc(1, sizeof(t_color));
 	if (!color)
 		return (NULL);

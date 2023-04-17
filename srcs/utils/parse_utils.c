@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:33:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/04 10:11:51 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/17 11:19:49 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	map_start_detector(char *str)
 	int	i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
 		if (!(str[i] == ' ' || str[i] == '1'))
 			return (1);
@@ -48,7 +48,6 @@ int	check_identifier(char *str)
 		return (0);
 }
 
-
 char	*trim_line(char *line, char *str)
 {
 	char	*new;
@@ -62,10 +61,11 @@ char	*trim_line(char *line, char *str)
 
 char	**list_to_matrix(t_list *list)
 {
-	t_list *temp;
+	t_list	*temp;
 	char	**arr;
 	int		height;
 	int		i;
+
 	height = ft_lstsize(list);
 	arr = ft_calloc(height + 1, sizeof(char *));
 	if (!arr)

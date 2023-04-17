@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:28:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/17 08:32:11 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/17 11:36:18 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void		map_check_init(t_map_check *map_check);
 void		add_values_to_compare(t_map_check *a, t_map_check *b);
 int			check_walls_color(t_cub3d *cub3d);
 void		check_repeated_walls(t_cub3d *cub3d, t_elements_check *element);
+char		**get_map_copy(t_cub3d *cub3d);
 
 //MLX Handling
 int			mlx_handling(t_cub3d *cub3d);
@@ -74,12 +75,10 @@ t_pos	populate_position(int x, int y, int z, int color);
 int		create_rgb(t_color *color);
 
 //RAYCASTING
-void	raycasting(t_cub3d *cub3d, t_ray *ray);
-void	draw_ray(t_cub3d *cub3d, t_img *img, t_ray *ray);
+void	raycasting(t_cub3d *cub3d);
 void	render(t_cub3d *cub3d, t_ray *ray);
 int		load_textures(t_cub3d *cub3d);
 void	draw_minimap(t_cub3d *cub3d, t_img *img);
-void	texture_render(t_cub3d *cub3d, t_ray *ray, int *position);
 void	ray_reset_values(t_cub3d *cub3d, t_ray *ray);
 
 #endif

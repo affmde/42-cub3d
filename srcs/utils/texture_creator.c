@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 12:33:12 by andrferr          #+#    #+#             */
-/*   Updated: 2023/02/26 16:26:57 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/17 11:18:21 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static char	*get_texture_path(char *info)
 	int		i;
 	int		size_to_copy;
 	char	*path;
+
 	i = 2;
 	while (ft_isspace(info[i]))
 		i++;

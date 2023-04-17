@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 16:45:40 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/15 10:55:30 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/17 11:13:24 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,18 @@ static t_textures	*receive_texture(t_cub3d *cub3d, int direction)
 	return (NULL);
 }
 
-static void transfer_texture_pixel(t_cub3d *cub3d, t_textures *t, int *texture_x)
+static void	transfer_texture_pixel(t_cub3d *cub3d,
+	t_textures *t, int *texture_x)
 {
-	int	i;
-	int	texture_y;
-	int	color;
+	int		i;
+	int		texture_y;
+	int		color;
 	double	texture_pos;
 	double	step;
-	
+
 	step = 1.0 * t->height / cub3d->ray->line_height;
-	texture_pos = (cub3d->ray->r_start - HEIGHT / 2 + cub3d->ray->line_height / 2) * step;
+	texture_pos = (cub3d->ray->r_start - HEIGHT / 2
+			+ cub3d->ray->line_height / 2) * step;
 	i = cub3d->ray->r_start;
 	while (i < cub3d->ray->r_end)
 	{
@@ -46,12 +48,11 @@ static void transfer_texture_pixel(t_cub3d *cub3d, t_textures *t, int *texture_x
 	}
 }
 
-void	texture_render(t_cub3d *cub3d, t_ray *ray, int *position)
+static void	texture_render(t_cub3d *cub3d, t_ray *ray, int *position)
 {
-	t_textures *texture;
-
-	double	wall_x;
-	int		texture_x;
+	t_textures	*texture;
+	double		wall_x;
+	int			texture_x;
 
 	texture = receive_texture(cub3d, ray->direction);
 	if (!texture)
@@ -60,19 +61,19 @@ void	texture_render(t_cub3d *cub3d, t_ray *ray, int *position)
 		exit (1);
 	}
 	if (ray->direction == EAST || ray->direction == WEST)
-		wall_x = cub3d->camera->y + ray->perp_wall_dist  * ray->dir_y;
+		wall_x = cub3d->camera->y + ray->perp_wall_dist * ray->dir_y;
 	else
 		wall_x = cub3d->camera->x + ray->perp_wall_dist * ray->dir_x;
 	wall_x -= floor(wall_x);
 	texture_x = (int)(wall_x * (double)texture->width);
 	if ((ray->direction == EAST || ray->direction == WEST) && ray->dir_x > 0)
 		texture_x = texture->width - texture_x - 1;
-	if ((ray->direction == NORTH || ray->direction == SOUTH) && ray->direction < 0)
+	if ((ray->direction == NORTH || ray->direction == SOUTH)
+		&& ray->direction < 0)
 		texture_x = texture->width - texture_x - 1;
 	transfer_texture_pixel(cub3d, texture, &texture_x);
 	*position += 1;
 }
-
 
 void	render(t_cub3d *cub3d, t_ray *ray)
 {

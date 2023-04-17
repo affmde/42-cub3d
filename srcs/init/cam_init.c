@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:05:04 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/14 16:39:15 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/17 11:26:21 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void	check_directions(t_cub3d *cub3d, t_camera *cam)
 	else if (cub3d->map->map[(int)cam->y][(int)cam->x] == 'E')
 	{
 		cam->dir_x = 1;
-		cam->plane_y = cam->d_fov;;
+		cam->plane_y = cam->d_fov;
 	}
 	else if (cub3d->map->map[(int)cam->y][(int)cam->x] == 'E')
 	{
@@ -76,7 +76,7 @@ static void	check_directions(t_cub3d *cub3d, t_camera *cam)
 
 t_camera	*camera_init(t_cub3d *cub3d)
 {
-	t_camera *cam;
+	t_camera	*cam;
 
 	cam = ft_calloc(1, sizeof(t_camera));
 	if (!cam)

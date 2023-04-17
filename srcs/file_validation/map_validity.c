@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 20:17:36 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/05 11:43:17 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/17 11:26:58 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	check_characters(char **map, t_map_check *map_check)
 {
 	int		i;
 	int		j;
-	
+
 	i = 0;
 	while (map[i])
 	{
@@ -48,7 +48,7 @@ void	map_check_init(t_map_check *map_check)
 
 int	valid_map(t_cub3d *cub3d)
 {
-	t_map_check map_check;
+	t_map_check	map_check;
 
 	map_check_init(&map_check);
 	check_characters(cub3d->map->map, &map_check);

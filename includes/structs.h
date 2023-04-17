@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/14 08:43:02 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/15 09:53:38 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,10 @@ typedef struct s_img
 
 typedef struct s_camera
 {
-	int		fov;
-	float	half_fov;
-	float	angle_increment;
-	int		precision;
-	float			x;
-	float			y;
+	float	x;
+	float	y;
 	float	player_angle;
-	float	half_width;
 	float	half_height;
-	float	distance_to_plane;
 
 	/*for the new raycast*/
 	double	plane_x;
@@ -81,15 +75,16 @@ typedef struct s_camera
 
 typedef struct s_cub3d
 {
-	t_list		*textures;
-	t_list		*walls;
-	t_map		*map;
-	t_list		*file_data;
-	void		*ptr;
-	void		*win;
-	t_img		*img;
-	t_camera	*camera;
-	int			mouse_x;
+	t_list				*textures;
+	t_list				*walls;
+	t_map				*map;
+	t_list				*file_data;
+	void				*ptr;
+	void				*win;
+	t_img				*img;
+	t_camera			*camera;
+	int					mouse_x;
+	struct s_ray		*ray;
 }	t_cub3d;
 
 typedef struct s_map_check
@@ -159,6 +154,8 @@ typedef struct s_ray
 	int		line_height;
 	int		r_start;
 	int		r_end;
+	int		ceiling_color;
+	int		floor_color;
 }		t_ray;
 
 #endif

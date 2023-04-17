@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:28:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/14 16:05:05 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/17 11:36:18 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,14 @@ int			parse_map(t_cub3d *cub3d);
 char		*get_texture(char *identifier, t_cub3d *cub3d);
 t_color		*get_wall_color(char *identifier, t_cub3d *cub3d);
 t_camera	*camera_init(t_cub3d *cub3d);
+void		image_init(t_cub3d *cub3d);
+void		ray_init(t_cub3d *cub3d);
 t_textures	*return_texture(char *identifier, t_cub3d *cub3d);
 
 //Error Handling
 void		validity_error_msg(int err);
 void		invalid_texture(char *path);
-
+void		error_msg_exit(char *msg);
 //Parsing
 char		*trim_line(char *line, char *str);
 char		**list_to_matrix(t_list *list);
@@ -53,12 +55,15 @@ void		map_check_init(t_map_check *map_check);
 void		add_values_to_compare(t_map_check *a, t_map_check *b);
 int			check_walls_color(t_cub3d *cub3d);
 void		check_repeated_walls(t_cub3d *cub3d, t_elements_check *element);
+char		**get_map_copy(t_cub3d *cub3d);
 
 //MLX Handling
 int			mlx_handling(t_cub3d *cub3d);
 int			deal_key(int keycode, t_cub3d *cub3d);
 int			mouse(int x, int y, t_cub3d *cub3d);
 void		refresh_window(t_cub3d *cub3d);
+void		move_player(t_cub3d *cub3d, int keycode);
+void		rotate_player(t_cub3d *cub3d, int keycode);
 
 //Maths
 float		degrees_to_radians(int degree);
@@ -70,13 +75,11 @@ t_pos	populate_position(int x, int y, int z, int color);
 int		create_rgb(t_color *color);
 
 //RAYCASTING
-void	raycasting(t_cub3d *cub3d, t_ray *ray);
-void	draw_ray(t_cub3d *cub3d, t_img *img, t_ray *ray);
-void	draw_col(t_cub3d *cub3d, t_ray *ray);
+void	raycasting(t_cub3d *cub3d);
 void	render(t_cub3d *cub3d, t_ray *ray);
 int		load_textures(t_cub3d *cub3d);
-void	draw(t_cub3d *cub3d);
 void	draw_minimap(t_cub3d *cub3d, t_img *img);
+void	ray_reset_values(t_cub3d *cub3d, t_ray *ray);
 //noel's map
 void	draw_map_ray(t_cub3d *cub3d, t_ray *ray);
 void	draw_map_frame(t_cub3d *cub3d);

@@ -34,7 +34,7 @@ colors.c graphics_utils.c
 
 FILE_VALIDATION = map_validity.c file_validity.c elements_validity.c map_closed.c fc_validity.c
 
-MLX_HANDLING = mlx_handling.c events.c mouse.c
+MLX_HANDLING = mlx_handling.c events.c mouse.c move_player.c rotate_player.c
 
 RAYCASTING = raycast.c load_textures.c texture_render.c
 

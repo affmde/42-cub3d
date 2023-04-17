@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:28:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/15 10:19:04 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/17 08:32:11 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int			mlx_handling(t_cub3d *cub3d);
 int			deal_key(int keycode, t_cub3d *cub3d);
 int			mouse(int x, int y, t_cub3d *cub3d);
 void		refresh_window(t_cub3d *cub3d);
+void		move_player(t_cub3d *cub3d, int keycode);
+void		rotate_player(t_cub3d *cub3d, int keycode);
 
 //Maths
 float		degrees_to_radians(int degree);

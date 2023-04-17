@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:28:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/17 11:36:18 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/17 15:25:14 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,6 @@ void	raycasting(t_cub3d *cub3d);
 void	render(t_cub3d *cub3d, t_ray *ray);
 int		load_textures(t_cub3d *cub3d);
 void	draw_minimap(t_cub3d *cub3d, t_img *img);
-void	ray_reset_values(t_cub3d *cub3d, t_ray *ray);
+void	ray_reset_values(t_ray *ray);
 
 #endif

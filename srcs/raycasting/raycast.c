@@ -100,6 +100,8 @@ void	raycasting(t_cub3d *cub3d, t_ray *ray)
 		dda_algo(cub3d, ray);
 		calculate_distance(cub3d, ray);
 		render(cub3d, ray);
+		//draw_map_ray(cub3d, ray);
 		ray->index++;
 	}
+	draw_map_frame(cub3d, ray);
 }

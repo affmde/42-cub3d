@@ -77,5 +77,8 @@ void	render(t_cub3d *cub3d, t_ray *ray);
 int		load_textures(t_cub3d *cub3d);
 void	draw(t_cub3d *cub3d);
 void	draw_minimap(t_cub3d *cub3d, t_img *img);
+//noel's map
+void	draw_map_ray(t_cub3d *cub3d, t_ray *ray);
+void	draw_map_frame(t_cub3d *cub3d);
 
 #endif

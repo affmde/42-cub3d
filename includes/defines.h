@@ -13,13 +13,8 @@
 #ifndef DEFINES_H
 # define DEFINES_H
 
-<<<<<<< HEAD
 #define WIDTH 1920
 #define HEIGHT 1080
-=======
-#define WIDTH 640//1980
-#define HEIGHT 480//1080
->>>>>>> master
 #define PI 3.141593
 #define scale 32 //This is supposed to represent the number of pixels of each asset !**DELETE THIS****
 #define minimap_scale 5

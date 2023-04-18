@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:56:34 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/05 11:45:30 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:29:56 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	file_validity(t_cub3d *cub3d)
 	error_code = elements_validity(cub3d);
 	if (error_code)
 	{
-		
+
 		if (error_code == 1)
 			validity_error_msg(2);
 		else if (error_code == 2)

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:28:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/17 15:25:14 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/18 15:38:12 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void		free_cub3d(t_cub3d *cub3d);
 int			parse_map(t_cub3d *cub3d);
 char		*get_texture(char *identifier, t_cub3d *cub3d);
 t_color		*get_wall_color(char *identifier, t_cub3d *cub3d);
-t_camera	*camera_init(t_cub3d *cub3d);
+void		camera_init(t_cub3d *cub3d);
 void		image_init(t_cub3d *cub3d);
 void		ray_init(t_cub3d *cub3d);
 t_textures	*return_texture(char *identifier, t_cub3d *cub3d);
@@ -76,7 +76,7 @@ int		create_rgb(t_color *color);
 
 //RAYCASTING
 void	raycasting(t_cub3d *cub3d);
-void	render(t_cub3d *cub3d, t_ray *ray);
+void	render(t_cub3d *cub3d);
 int		load_textures(t_cub3d *cub3d);
 void	draw_minimap(t_cub3d *cub3d, t_img *img);
 void	ray_reset_values(t_ray *ray);

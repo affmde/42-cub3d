@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:05:04 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/17 11:26:21 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/18 15:19:25 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,11 @@ static void	check_directions(t_cub3d *cub3d, t_camera *cam)
 	}
 }
 
-t_camera	*camera_init(t_cub3d *cub3d)
+void	camera_init(t_cub3d *cub3d)
 {
 	t_camera	*cam;
 
-	cam = ft_calloc(1, sizeof(t_camera));
-	if (!cam)
-		return (NULL);
+	cam = &cub3d->camera;
 	cam->half_height = HEIGHT / 2;
 	find_player(cub3d->map->map, cam);
 	cam->player_angle = get_player_angle(cub3d->map->map, cam);
@@ -92,5 +90,4 @@ t_camera	*camera_init(t_cub3d *cub3d)
 	cam->x += 0.5;
 	cam->y += 0.5;
 	check_directions(cub3d, cam);
-	return (cam);
 }

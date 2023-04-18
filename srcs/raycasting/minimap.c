@@ -12,6 +12,8 @@
 
 #include "cub3d.h"
 
+#define MINIMAP_SIZE 7
+
 // void	draw_map_ray(t_cub3d *cub3d, t_ray *ray)
 // {
 
@@ -19,13 +21,22 @@
 // }
 
 //(int)cub3d->camera->x;
+//put_pixel(cub3d->img, (int)ceil(origo_x + (radius * cos(i))),
+//		(int)ceil(origo_y - (radius * sin(i))), 0xFFFFFF);
 
-void	draw_map(t_cub3d *cub3d, int origo_x, int origo_y)
+void	draw_map(t_cub3d *cub3d)
 {
 	float	radius;
-	float	i;
+	int		x;
+	int		y;
 
-	
+	radius = HEIGHT / 8 - 3;
+	x = (int)cub3d->camera->x - (MINIMAP_SIZE / 2) + 1;
+	y = (int)cub3d->camera->y - (MINIMAP_SIZE / 2);
+	while (y != (int)cub3d->camera->y + (MINIMAP_SIZE / 2 + 1))
+	{
+		if 
+	}
 }
 
 void	draw_player(t_cub3d *cub3d)
@@ -49,7 +60,7 @@ void	draw_player(t_cub3d *cub3d)
 		}
 		radius += 0.5;
 	}
-	draw_map(cub3d, origo_x, origo_y);
+	draw_map(cub3d);
 }
 
 void	draw_map_frame(t_cub3d *cub3d, int radius)

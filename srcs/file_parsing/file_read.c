@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:23:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/01 14:22:55 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/18 14:58:14 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,11 @@ int	file_read(char *path, t_cub3d *cub3d)
 	int fd;
 
 	fd = open(path, O_RDONLY);
+	if (fd < 0)
+	{
+		ft_putendl_fd("Invalid file name", 2);
+		return (1);
+	}
 	cub3d->file_data = extract_file_data(fd);
 	close(fd);
 	if (check_file_extension(path))

@@ -12,71 +12,63 @@
 
 #include "cub3d.h"
 
-#define HALF_MAP 
-
 // void	draw_map_ray(t_cub3d *cub3d, t_ray *ray)
 // {
 
 
 // }
 
-void	draw_rows(t_cub3d *cub3d, int h)
+//(int)cub3d->camera->x;
+
+void	draw_map(t_cub3d *cub3d, int origo_x, int origo_y)
 {
-	t_pos	start;
-	t_pos	end;
-	int		i;
+	float	radius;
+	float	i;
 
-	i = 0;
-	while (i != 12)
-	{
-		start = populate_position(WIDTH - 256, HEIGHT - h - i, 0, 0x04D0099);
-		end = populate_position(WIDTH - 32, HEIGHT - h - i, 0, 0x04D0099);
-		bresenham_algo(start, end, cub3d->img);
-		i++;
-	}
-}
-
-void	draw_cols(t_cub3d *cub3d, int w)
-{
-	t_pos	start;
-	t_pos	end;
-	int		i;
-
-	i = 0;
-	while (i != 12)
-	{
-		start = populate_position(WIDTH - w - i, HEIGHT - 267, 0, 0x04D0099);
-		end = populate_position(WIDTH - w - i, HEIGHT - 31, 0, 0x04D0099);
-		bresenham_algo(start, end, cub3d->img);
-		i++;
-	}
+	
 }
 
 void	draw_player(t_cub3d *cub3d)
 {
-	t_pos	start;
-	t_pos	end;
-	int		i;
-	int		w;
-	int		h;
+	int		origo_x;
+	int		origo_y;
+	float	radius;
+	float	i;
 
-	i = 0;
-	w = 143;
-	h = 143;
-	while (i != 10)
+	origo_x = WIDTH - 10 - (HEIGHT / 8 - 3);
+	origo_y = HEIGHT - 10 - (HEIGHT / 8 - 3);
+	radius = 1;
+	while (radius != 4)
 	{
-		start = populate_position(WIDTH - w - i, HEIGHT - h, 0, 0x04D0099);
-		end = populate_position(WIDTH - w - i, HEIGHT - h - 10, 0, 0x04D0099);
-		bresenham_algo(start, end, cub3d->img);
-		i++;
+		i = 0;
+		while (i != 360)
+		{
+			put_pixel(cub3d->img, (int)ceil(origo_x + (radius * cos(i))),\
+			 (int)ceil(origo_y - (radius * sin(i))), 0xFFFFFF);
+			i += 1;
+		}
+		radius += 0.5;
 	}
+	draw_map(cub3d, origo_x, origo_y);
 }
 
-void	draw_map_frame(t_cub3d *cub3d)
+void	draw_map_frame(t_cub3d *cub3d, int radius)
 {
-	draw_rows(cub3d, 256);
-	draw_rows(cub3d, 32);
-	draw_cols(cub3d, 256);
-	draw_cols(cub3d, 32);
-	draw_player(cub3d);
+	//0x400080
+	int		origo_x;
+	int		origo_y;
+	float	i;
+
+	if (radius < (HEIGHT / 8 - 5))
+		return (draw_player(cub3d));
+	origo_x = WIDTH - 10 - radius;
+	origo_y = HEIGHT - 10 - radius;
+	i = 0;
+	while (i != 360)
+	{
+		put_pixel(cub3d->img, (int)ceil(origo_x + (radius * cos(i))), \
+		(int)ceil(origo_y - (radius * sin(i))), 0xFFFFFF);
+		i += .5;
+	}
+	draw_map_frame(cub3d, radius - 1);
 }

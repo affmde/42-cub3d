@@ -82,6 +82,6 @@ void	draw_minimap(t_cub3d *cub3d, t_img *img);
 void	ray_reset_values(t_cub3d *cub3d, t_ray *ray);
 //noel's map
 void	draw_map_ray(t_cub3d *cub3d, t_ray *ray);
-void	draw_map_frame(t_cub3d *cub3d);
+void	draw_map_frame(t_cub3d *cub3d, int radius);
 
 #endif

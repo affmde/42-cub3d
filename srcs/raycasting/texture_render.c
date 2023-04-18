@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 16:45:40 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/18 17:33:12 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/18 18:22:29 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	transfer_texture_pixel(t_cub3d *cub3d,
 		texture_y = (int)texture_pos & (t->height - 1);
 		texture_pos += step;
 		color = t->img->data[t->height * texture_y + *texture_x];
-		put_pixel(cub3d->img, cub3d->ray.index, i, color);
+		put_pixel(&cub3d->img, cub3d->ray.index, i, color);
 		i++;
 	}
 }
@@ -86,14 +86,18 @@ void	render(t_cub3d *cub3d)
 		{
 			if (cub3d->ray.r_start < 0)
 				cub3d->ray.r_start = 0;
-			put_pixel(cub3d->img, cub3d->ray.index, i, cub3d->ray.ceiling_color);
+			put_pixel(&cub3d->img, cub3d->ray.index, i, cub3d->ray.ceiling_color);
 			i++;
 		}
 		while (i < cub3d->ray.r_end)
+		{
 			texture_render(cub3d, &i);
+			if (cub3d->ray.r_end > HEIGHT)
+				cub3d->ray.r_end = HEIGHT;
+		}
 		while (i < HEIGHT)
 		{
-			put_pixel(cub3d->img, cub3d->ray.index, i, cub3d->ray.floor_color);
+			put_pixel(&cub3d->img, cub3d->ray.index, i, cub3d->ray.floor_color);
 			i++;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:10:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/18 15:43:13 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/18 18:22:47 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void	raycasting(t_cub3d *cub3d)
 {
 	cub3d->ray.index = 0;
 	write(1, "#", 1);
+
 	while (cub3d->ray.index < WIDTH)
 	{
 		cub3d->camera.cam_x = 2 * cub3d->ray.index / (double)WIDTH - 1;
@@ -109,5 +110,5 @@ void	raycasting(t_cub3d *cub3d)
 		render(cub3d);
 		cub3d->ray.index++;
 	}
-	mlx_put_image_to_window(cub3d->ptr, cub3d->win, cub3d->img->img_ptr, 0, 0);
+	mlx_put_image_to_window(cub3d->ptr, cub3d->win, cub3d->img.img_ptr, 0, 0);
 }

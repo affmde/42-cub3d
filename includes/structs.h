@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/18 15:31:56 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/18 17:42:31 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ typedef struct s_cub3d
 	t_list				*file_data;
 	void				*ptr;
 	void				*win;
-	t_img				*img;
+	t_img				img;
 	t_camera			camera;
 	int					mouse_x;
 	struct s_ray		ray;

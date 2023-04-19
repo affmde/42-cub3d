@@ -24,20 +24,6 @@
 //put_pixel(cub3d->img, (int)ceil(origo_x + (radius * cos(i))),
 //		(int)ceil(origo_y - (radius * sin(i))), 0xFFFFFF);
 
-void	draw_map(t_cub3d *cub3d)
-{
-	float	radius;
-	int		x;
-	int		y;
-
-	radius = HEIGHT / 8 - 3;
-	x = (int)cub3d->camera->x - (MINIMAP_SIZE / 2) + 1;
-	y = (int)cub3d->camera->y - (MINIMAP_SIZE / 2);
-	while (y != (int)cub3d->camera->y + (MINIMAP_SIZE / 2 + 1))
-	{
-		if 
-	}
-}
 
 void	draw_player(t_cub3d *cub3d)
 {
@@ -60,7 +46,22 @@ void	draw_player(t_cub3d *cub3d)
 		}
 		radius += 0.5;
 	}
-	draw_map(cub3d);
+}
+
+void	draw_map_tiles(t_cub3d *cub3d)
+{
+	// float	radius;
+	// int		x;
+	// int		y;
+
+	// radius = HEIGHT / 8 - 3;
+	// x = (int)cub3d->camera->x - (MINIMAP_SIZE / 2) + 1;
+	// y = (int)cub3d->camera->y - (MINIMAP_SIZE / 2);
+	// while (y != (int)cub3d->camera->y + (MINIMAP_SIZE / 2 + 1))
+	// {
+	// 	y++;
+	// }
+	draw_player(cub3d);
 }
 
 void	draw_map_frame(t_cub3d *cub3d, int radius)
@@ -71,7 +72,7 @@ void	draw_map_frame(t_cub3d *cub3d, int radius)
 	float	i;
 
 	if (radius < (HEIGHT / 8 - 5))
-		return (draw_player(cub3d));
+		return (draw_map_tiles(cub3d));
 	origo_x = WIDTH - 10 - radius;
 	origo_y = HEIGHT - 10 - radius;
 	i = 0;

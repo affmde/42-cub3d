@@ -8,7 +8,7 @@ COLOUR_END=\033[0m
 NAME = cub3D
 
 #Flags
-FLAGS = -I includes
+FLAGS = -Wall -Werror -Wextra -I includes
 LINFLAGS = -lmlx -lm -lXext -lX11
 MOSFLAGS = -lmlx -lm -framework OpenGl -framework AppKit
 LIBFT = libft/libft.a

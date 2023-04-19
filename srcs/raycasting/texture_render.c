@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 16:45:40 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/19 09:03:11 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/19 16:04:05 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ static void	texture_render(t_cub3d *cub3d, int *i)
 		wall_x = cub3d->camera.x + cub3d->ray.perp_wall_dist * cub3d->ray.dir_x;
 	wall_x -= floor(wall_x);
 	texture_x = (int)(wall_x * (double)texture->width);
-	if ((cub3d->ray.direction == EAST || cub3d->ray.direction == WEST) && cub3d->ray.dir_x > 0)
+	if ((cub3d->ray.direction == EAST || cub3d->ray.direction == WEST)
+		&& cub3d->ray.dir_x > 0)
 		texture_x = texture->width - texture_x - 1;
 	if ((cub3d->ray.direction == NORTH || cub3d->ray.direction == SOUTH)
 		&& cub3d->ray.direction < 0)
@@ -83,7 +84,8 @@ void	render(t_cub3d *cub3d)
 		{
 			if (cub3d->ray.r_start < 0)
 				cub3d->ray.r_start = 0;
-			put_pixel(&cub3d->img, cub3d->ray.index, i, cub3d->ray.ceiling_color);
+			put_pixel(&cub3d->img, cub3d->ray.index,
+				i, cub3d->ray.ceiling_color);
 			i++;
 		}
 		while (i < cub3d->ray.r_end)

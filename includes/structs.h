@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/19 09:24:25 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/19 14:59:01 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,18 +102,29 @@ typedef struct s_camera
 	double	cam_x;
 }	t_camera;
 
+typedef struct s_movement
+{
+	int	move_forward;
+	int	move_backwards;
+	int	move_right;
+	int	move_left;
+	int	turn_right;
+	int	turn_left;
+}	t_movement;
+
 typedef struct s_cub3d
 {
-	t_list				*textures;
-	t_list				*walls;
-	t_map				*map;
-	t_list				*file_data;
-	void				*ptr;
-	void				*win;
-	t_img				img;
-	t_camera			camera;
-	int					mouse_x;
-	struct s_ray		ray;
+	t_list			*textures;
+	t_list			*walls;
+	t_map			*map;
+	t_list			*file_data;
+	void			*ptr;
+	void			*win;
+	t_img			img;
+	t_camera		camera;
+	int				mouse_x;
+	struct s_ray	ray;
+	t_movement		movement;
 }	t_cub3d;
 
 typedef struct s_map_check

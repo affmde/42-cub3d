@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 08:14:59 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/19 09:18:34 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/19 15:41:40 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,14 @@ static void	move_right(t_cub3d *cub3d)
 		cub3d->camera.y += cub3d->camera.plane_y * MOVEMENT_SPEED;
 }
 
-void	move_player(t_cub3d *cub3d, int keycode)
+void	move_player(t_cub3d *cub3d)
 {
-	if (keycode == 119 || keycode == 13)
+	if (cub3d->movement.move_forward)
 		move_forward(cub3d);
-	else if (keycode == 115 || keycode == 1)
+	if (cub3d->movement.move_backwards)
 		move_backwards(cub3d);
-	else if (keycode == 97 || keycode == 0)
+	else if (cub3d->movement.move_left)
 		move_left(cub3d);
-	else if (keycode == 100 || keycode == 2)
+	else if (cub3d->movement.move_right)
 		move_right(cub3d);
 }

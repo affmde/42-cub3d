@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:10:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/19 09:12:34 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/19 16:04:48 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ static void	get_steps(t_cub3d *cub3d)
 	if (cub3d->ray.dir_x < 0)
 	{
 		cub3d->ray.step_x = -1;
-		cub3d->ray.side_dist_x = (cub3d->camera.x - cub3d->ray.map_x) * cub3d->ray.delta_dist_x;
+		cub3d->ray.side_dist_x = (cub3d->camera.x - cub3d->ray.map_x)
+			* cub3d->ray.delta_dist_x;
 	}
 	else
 	{
@@ -28,7 +29,8 @@ static void	get_steps(t_cub3d *cub3d)
 	if (cub3d->ray.dir_y < 0)
 	{
 		cub3d->ray.step_y = -1;
-		cub3d->ray.side_dist_y = (cub3d->camera.y - cub3d->ray.map_y) * cub3d->ray.delta_dist_y;
+		cub3d->ray.side_dist_y = (cub3d->camera.y - cub3d->ray.map_y)
+			* cub3d->ray.delta_dist_y;
 	}
 	else
 	{
@@ -90,7 +92,6 @@ static void	calculate_distance(t_cub3d *cub3d)
 void	raycasting(t_cub3d *cub3d)
 {
 	cub3d->ray.index = 0;
-
 	while (cub3d->ray.index < WIDTH)
 	{
 		cub3d->camera.cam_x = 2 * cub3d->ray.index / (double)WIDTH - 1;

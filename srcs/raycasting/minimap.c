@@ -37,7 +37,7 @@ int	detect_color(t_cub3d *cub3d, int x, int y)
 	y2 = y + (int)cub3d->camera.y - (MINIMAP_SIZE / 2);
 	if (y2 < 0 || y2 >= cub3d->map->height)
 		return (0xFFFFFF);
-	if (x2 < 0 || x2 >= ft_strlen(cub3d->map->map[y2]))
+	if (x2 < 0 || (size_t)x2 >= ft_strlen(cub3d->map->map[y2]))
 		return (0xFFFFFF);
 	if (cub3d->map->map[y2][x2] == ' ')
 		return (0xFFFFFF);

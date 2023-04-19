@@ -6,13 +6,13 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 11:11:31 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/05 11:33:31 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/19 16:06:35 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int check_values(t_color *color)
+static int	check_values(t_color *color)
 {
 	if (color->r < 0 || color->r > 255)
 		return (1);
@@ -45,14 +45,15 @@ void	check_repeated_walls(t_cub3d *cub3d, t_elements_check *element)
 {
 	t_list		*aux;
 	t_walls		*wall;
-	
+
 	aux = cub3d->textures;
 	while (aux)
 	{
 		wall = aux->content;
 		if (!ft_strncmp(wall->identifier, "F", ft_strlen(wall->identifier)))
 			element->f++;
-		else if (!ft_strncmp(wall->identifier, "C", ft_strlen(wall->identifier)))
+		else if (!ft_strncmp(wall->identifier,
+				"C", ft_strlen(wall->identifier)))
 			element->c++;
 		aux = aux->next;
 	}

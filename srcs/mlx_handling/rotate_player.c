@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 08:29:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/19 09:24:19 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/19 15:56:29 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ static void	turn_left(t_cub3d *cub3d)
 		+ cub3d->camera.plane_y * cos(-ROTATE_SPEED);
 }
 
-void	rotate_player(t_cub3d *cub3d, int keycode)
+void	rotate_player(t_cub3d *cub3d)
 {
-	if (keycode == 65363 || keycode == 124)
+	if (cub3d->movement.turn_right)
 		turn_right(cub3d);
-	else if (keycode == 65361 || keycode == 123)
+	else if (cub3d->movement.turn_left)
 		turn_left(cub3d);
 }

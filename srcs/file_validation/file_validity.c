@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 16:56:34 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/18 16:29:56 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/19 16:05:50 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	file_validity(t_cub3d *cub3d)
 {
-	int error_code;
+	int	error_code;
 
 	error_code = valid_map(cub3d);
 	if (error_code)
@@ -26,7 +26,6 @@ int	file_validity(t_cub3d *cub3d)
 	error_code = elements_validity(cub3d);
 	if (error_code)
 	{
-
 		if (error_code == 1)
 			validity_error_msg(2);
 		else if (error_code == 2)

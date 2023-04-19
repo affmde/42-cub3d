@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/18 17:42:31 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/19 09:24:25 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,7 @@ typedef struct s_img
 typedef struct s_ray
 {
 	int		index;
-	int		wall_height;
-	float	distance;
 	float	wall_hit_x;
-	float	wall_hit_y;
-	t_pos	start;
-	t_pos	end;
-
 	double	dir_x;
 	double	dir_y;
 	int		map_x;
@@ -98,7 +92,6 @@ typedef struct s_camera
 {
 	float	x;
 	float	y;
-	float	player_angle;
 	float	half_height;
 	double	plane_x;
 	double	plane_y;

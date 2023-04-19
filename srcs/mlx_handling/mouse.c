@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:12:15 by nlonka            #+#    #+#             */
-/*   Updated: 2023/04/18 17:11:29 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/19 09:28:30 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,5 @@ int	mouse(int x, int y, t_cub3d *cub3d)
 	cub3d->camera.plane_x = cub3d->camera.plane_x * cos(-x_dif) - cub3d->camera.plane_y * sin(-x_dif);
 	cub3d->camera.plane_y = old_plane * sin(-x_dif) + cub3d->camera.plane_y * cos(-x_dif);
 	cub3d->mouse_x = x;
-	refresh_window(cub3d);
 	return (0);
 }

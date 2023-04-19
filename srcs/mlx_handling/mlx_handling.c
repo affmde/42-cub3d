@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 09:42:29 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/18 18:29:48 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/19 09:27:14 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,6 @@
 static int	close_window(void)
 {
 	exit(0);
-}
-
-static void	init(t_cub3d *cub3d)
-{
-	image_init(cub3d);
-	ray_init(cub3d);
 }
 
 static int	play(t_cub3d *cub3d)
@@ -36,12 +30,12 @@ int	mlx_handling(t_cub3d *cub3d)
 	if (load_textures(cub3d))
 		exit(1);
 	cub3d->win = mlx_new_window(cub3d->ptr, WIDTH, HEIGHT, "cub3d");
-	init(cub3d);
+	image_init(cub3d);
+	ray_init(cub3d);
 	mlx_loop_hook(cub3d->ptr, &play, cub3d);
 	mlx_hook(cub3d->win, 2, 1L << 0, &deal_key, cub3d);
 	mlx_hook(cub3d->win, 17, 0, close_window, NULL);
 	mlx_hook(cub3d->win, 6, 1L << 0, &mouse, cub3d);
-	//raycasting(cub3d);
 	mlx_loop(cub3d->ptr);
 	return (0);
 }

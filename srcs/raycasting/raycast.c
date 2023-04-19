@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:10:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/18 18:22:47 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/19 09:12:34 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ static void	calculate_distance(t_cub3d *cub3d)
 void	raycasting(t_cub3d *cub3d)
 {
 	cub3d->ray.index = 0;
-	write(1, "#", 1);
 
 	while (cub3d->ray.index < WIDTH)
 	{

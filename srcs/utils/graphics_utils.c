@@ -6,16 +6,11 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 09:53:05 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/18 08:39:54 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/19 09:25:57 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	refresh_window(t_cub3d *cub3d)
-{
-	raycasting(cub3d);
-}
 
 void	put_pixel(t_img *image, int x, int y, int color)
 {

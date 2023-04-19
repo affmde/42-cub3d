@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 08:29:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/18 15:44:45 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/19 09:24:19 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,4 @@ void	rotate_player(t_cub3d *cub3d, int keycode)
 		turn_right(cub3d);
 	else if (keycode == 65361 || keycode == 123)
 		turn_left(cub3d);
-	//refresh_window(cub3d);
 }

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:23:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/03/01 14:22:55 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/18 17:36:08 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ t_list	*extract_file_data(int fd)
 		if (!line)
 			break;
 		if (ft_strncmp(line, "\n", ft_strlen(line)))
+		{
 			line = trim_line(line, "\n");
-		ft_lstadd_back(&file_data, ft_lstnew(ft_strdup(line)));
+			ft_lstadd_back(&file_data, ft_lstnew(ft_strdup(line)));
+		}
 		ft_strdel(&line);
 	}
 	return (file_data);
@@ -51,10 +53,18 @@ int	file_read(char *path, t_cub3d *cub3d)
 	int fd;
 
 	fd = open(path, O_RDONLY);
+	if (fd < 0)
+	{
+		ft_putendl_fd("Invalid file name", 2);
+		return (1);
+	}
 	cub3d->file_data = extract_file_data(fd);
 	close(fd);
-	if (check_file_extension(path))
+	if (!cub3d->file_data || check_file_extension(path))
+	{
+		ft_putendl_fd("You have error in the file.", 2);
 		return (1);
+	}
 	if (parse_map(cub3d))
 	{
 		ft_putendl_fd("Invalid map configuation", 2);

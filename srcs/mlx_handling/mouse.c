@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlonka <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:12:15 by nlonka            #+#    #+#             */
-/*   Updated: 2023/04/14 15:12:28 by nlonka           ###   ########.fr       */
+/*   Updated: 2023/04/19 09:28:30 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ double	fix_dif(double dif)
 {
 	if (dif < 0)
 		return (0.07);
-	else 
+	else
 		return (-0.07);
 }
 
@@ -37,13 +37,12 @@ int	mouse(int x, int y, t_cub3d *cub3d)
 	if (x_dif == 0)
 		return (1);
 	x_dif = fix_dif(x_dif);
-	old_dir_x = cub3d->camera->dir_x;
-	cub3d->camera->dir_x = cub3d->camera->dir_x * cos(-x_dif) - cub3d->camera->dir_y * sin(-x_dif);
-	cub3d->camera->dir_y = old_dir_x * sin(-x_dif) + cub3d->camera->dir_y * cos(-x_dif);
-	old_plane = cub3d->camera->plane_x;
-	cub3d->camera->plane_x = cub3d->camera->plane_x * cos(-x_dif) - cub3d->camera->plane_y * sin(-x_dif);
-	cub3d->camera->plane_y = old_plane * sin(-x_dif) + cub3d->camera->plane_y * cos(-x_dif);
+	old_dir_x = cub3d->camera.dir_x;
+	cub3d->camera.dir_x = cub3d->camera.dir_x * cos(-x_dif) - cub3d->camera.dir_y * sin(-x_dif);
+	cub3d->camera.dir_y = old_dir_x * sin(-x_dif) + cub3d->camera.dir_y * cos(-x_dif);
+	old_plane = cub3d->camera.plane_x;
+	cub3d->camera.plane_x = cub3d->camera.plane_x * cos(-x_dif) - cub3d->camera.plane_y * sin(-x_dif);
+	cub3d->camera.plane_y = old_plane * sin(-x_dif) + cub3d->camera.plane_y * cos(-x_dif);
 	cub3d->mouse_x = x;
-	refresh_window(cub3d);
 	return (0);
 }

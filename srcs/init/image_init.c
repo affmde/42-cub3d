@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 08:51:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/15 09:02:36 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/18 17:43:57 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,11 @@
 
 void	image_init(t_cub3d *cub3d)
 {
-	t_img	*img;
-
-	img = ft_calloc(1, sizeof(t_img));
-	if (!img)
+	cub3d->img.img_ptr = mlx_new_image(cub3d->ptr, WIDTH, HEIGHT);
+	if (!cub3d->img.img_ptr)
 		error_msg_exit("Failed to create image");
-	img->img_ptr = mlx_new_image(cub3d->ptr, WIDTH, HEIGHT);
-	if (!img->img_ptr)
-		error_msg_exit("Failed to create image");
-	img->data = (int *)mlx_get_data_addr(img->img_ptr,
-			&img->bpp, &img->size_l, &img->endian);
-	if (!img->data)
+	cub3d->img.data = (int *)mlx_get_data_addr(cub3d->img.img_ptr,
+			&cub3d->img.bpp, &cub3d->img.size_l, &cub3d->img.endian);
+	if (!cub3d->img.data)
 		error_msg_exit("Failed to get image data");
-	cub3d->img = img;
 }

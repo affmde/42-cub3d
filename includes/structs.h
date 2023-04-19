@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/15 09:53:38 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/19 09:24:25 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@ typedef struct s_color
 	int	b;
 	int	full_color;
 }	t_color;
+
+typedef struct s_position
+{
+	int	x;
+	int	y;
+	int	z;
+	int	color;
+}	t_pos;
 
 typedef struct s_textures
 {
@@ -56,14 +64,35 @@ typedef struct s_img
 	int			endian;
 }	t_img;
 
+typedef struct s_ray
+{
+	int		index;
+	float	wall_hit_x;
+	double	dir_x;
+	double	dir_y;
+	int		map_x;
+	int		map_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	int		step_x;
+	int		step_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	int		direction;
+	int		hit;
+	double	perp_wall_dist;
+	int		line_height;
+	int		r_start;
+	int		r_end;
+	int		ceiling_color;
+	int		floor_color;
+}		t_ray;
+
 typedef struct s_camera
 {
 	float	x;
 	float	y;
-	float	player_angle;
 	float	half_height;
-
-	/*for the new raycast*/
 	double	plane_x;
 	double	plane_y;
 	int		direction;
@@ -81,10 +110,10 @@ typedef struct s_cub3d
 	t_list				*file_data;
 	void				*ptr;
 	void				*win;
-	t_img				*img;
-	t_camera			*camera;
+	t_img				img;
+	t_camera			camera;
 	int					mouse_x;
-	struct s_ray		*ray;
+	struct s_ray		ray;
 }	t_cub3d;
 
 typedef struct s_map_check
@@ -109,14 +138,6 @@ typedef struct s_elements_check
 	int	c;
 }	t_elements_check;
 
-typedef struct s_position
-{
-	int	x;
-	int	y;
-	int	z;
-	int	color;
-}	t_pos;
-
 typedef struct s_line_params
 {
 	int	sx;
@@ -126,36 +147,5 @@ typedef struct s_line_params
 	int	error;
 	int	offset;
 }		t_params;
-
-typedef struct s_ray
-{
-	int		index;
-	int		wall_height;
-	float	distance;
-	float	angle;
-	float	wall_hit_x;
-	float	wall_hit_y;
-	t_pos	start;
-	t_pos	end;
-
-	double	dir_x;
-	double	dir_y;
-	int		map_x;
-	int		map_y;
-	double	delta_dist_x;
-	double	delta_dist_y;
-	int		step_x;
-	int		step_y;
-	double	side_dist_x;
-	double	side_dist_y;
-	int		direction;
-	int		hit;
-	double	perp_wall_dist;
-	int		line_height;
-	int		r_start;
-	int		r_end;
-	int		ceiling_color;
-	int		floor_color;
-}		t_ray;
 
 #endif

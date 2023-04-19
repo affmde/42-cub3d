@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 10:30:22 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/19 16:05:06 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/19 17:11:23 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	handle_key_pressed(int keycode, t_cub3d *cub3d)
 	if (keycode == 65307 || keycode == 53)
 	{
 		mlx_destroy_window(cub3d->ptr, cub3d->win);
-		exit (1);
+		exit (0);
 	}
 	else if (keycode == MAC_UP && !cub3d->movement.move_forward)
 		cub3d->movement.move_forward = 1;

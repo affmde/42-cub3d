@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:10:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/19 16:38:16 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/19 17:34:55 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ static void	calculate_distance(t_cub3d *cub3d)
 	else
 		cub3d->ray.perp_wall_dist = cub3d->ray.side_dist_y
 			- cub3d->ray.delta_dist_y;
+	cub3d->z_buffer[cub3d->ray.index] = cub3d->ray.perp_wall_dist;
 	cub3d->ray.line_height = (int)(HEIGHT / cub3d->ray.perp_wall_dist);
 	cub3d->ray.r_start = cub3d->camera.half_height
 		- cub3d->ray.line_height / 2;

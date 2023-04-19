@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/19 14:59:01 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/19 17:43:21 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ typedef struct s_cub3d
 	int				mouse_x;
 	struct s_ray	ray;
 	t_movement		movement;
+	double			*z_buffer;
 }	t_cub3d;
 
 typedef struct s_map_check
@@ -158,5 +159,12 @@ typedef struct s_line_params
 	int	error;
 	int	offset;
 }		t_params;
+
+typedef struct s_sprite
+{
+	double	x;
+	double	y;
+	int		texture;
+}
 
 #endif

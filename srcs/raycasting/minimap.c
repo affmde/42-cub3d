@@ -36,14 +36,14 @@ int	detect_color(t_cub3d *cub3d, int x, int y)
 	x2 = x + (int)cub3d->camera.x - (MINIMAP_SIZE / 2);
 	y2 = y + (int)cub3d->camera.y - (MINIMAP_SIZE / 2);
 	if (y2 < 0 || y2 >= cub3d->map->height)
-		return (0xFFFFFF);
+		return (0x000000);
 	if (x2 < 0 || (size_t)x2 >= ft_strlen(cub3d->map->map[y2]))
-		return (0xFFFFFF);
+		return (0x000000);
 	if (cub3d->map->map[y2][x2] == ' ')
-		return (0xFFFFFF);
+		return (0x000000);
 	if (cub3d->map->map[y2][x2] == '1')
-		return (0x400080);
-	return (0xFFCCCC);
+		return (0x006600);
+	return (0x66FF66);
 }
 
 void	draw_player(t_cub3d *cub3d)
@@ -62,7 +62,7 @@ void	draw_player(t_cub3d *cub3d)
 		while (i != 360)
 		{
 			put_pixel(&cub3d->img, (int)ceil(origo_x + (radius * cos(i))),\
-			 (int)ceil(origo_y - (radius * sin(i))), 0x000000);
+			 (int)ceil(origo_y - (radius * sin(i))), 0xE60000);
 			i += 1;
 		}
 		radius += 0.5;
@@ -88,6 +88,8 @@ void	draw_map_tiles(t_cub3d *cub3d)
 			(int)ceil(origo_y - (radius * sin(i))), detect_color(cub3d, (int)ceil(origo_x \
 			+ (radius * cos(i))), (int)ceil(origo_y - (radius * sin(i)))));
 			i += .7;
+			// if one wants a completely full circle one can replace the above index increase with this vv
+			//i += .1
 			// if (radius < 70)
 			// 	i += .2;
 			// if (radius < 40)
@@ -100,7 +102,6 @@ void	draw_map_tiles(t_cub3d *cub3d)
 
 void	draw_map_frame(t_cub3d *cub3d, int radius)
 {
-	//0x400080
 	int		origo_x;
 	int		origo_y;
 	float	i;
@@ -113,7 +114,7 @@ void	draw_map_frame(t_cub3d *cub3d, int radius)
 	while (i != 360)
 	{
 		put_pixel(&cub3d->img, (int)ceil(origo_x + (radius * cos(i))), \
-		(int)ceil(origo_y - (radius * sin(i))), 0x000000);
+		(int)ceil(origo_y - (radius * sin(i))), 0x004D00);
 		i += .5;
 	}
 	draw_map_frame(cub3d, radius - 1);

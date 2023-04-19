@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 16:45:40 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/18 18:22:29 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/19 09:03:11 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,8 @@ static t_textures	*receive_texture(t_cub3d *cub3d, int direction)
 }
 
 static void	transfer_texture_pixel(t_cub3d *cub3d,
-	t_textures *t, int *texture_x)
+	t_textures *t, int *texture_x, int *i)
 {
-	int		i;
 	int		texture_y;
 	int		color;
 	double	texture_pos;
@@ -37,18 +36,17 @@ static void	transfer_texture_pixel(t_cub3d *cub3d,
 	step = 1.0 * t->height / cub3d->ray.line_height;
 	texture_pos = (cub3d->ray.r_start - HEIGHT / 2
 			+ cub3d->ray.line_height / 2) * step;
-	i = cub3d->ray.r_start;
-	while (i < cub3d->ray.r_end)
+	while (*i < cub3d->ray.r_end)
 	{
 		texture_y = (int)texture_pos & (t->height - 1);
 		texture_pos += step;
 		color = t->img->data[t->height * texture_y + *texture_x];
-		put_pixel(&cub3d->img, cub3d->ray.index, i, color);
-		i++;
+		put_pixel(&cub3d->img, cub3d->ray.index, *i, color);
+		(*i)++;
 	}
 }
 
-static void	texture_render(t_cub3d *cub3d, int *position)
+static void	texture_render(t_cub3d *cub3d, int *i)
 {
 	t_textures	*texture;
 	double		wall_x;
@@ -71,8 +69,7 @@ static void	texture_render(t_cub3d *cub3d, int *position)
 	if ((cub3d->ray.direction == NORTH || cub3d->ray.direction == SOUTH)
 		&& cub3d->ray.direction < 0)
 		texture_x = texture->width - texture_x - 1;
-	transfer_texture_pixel(cub3d, texture, &texture_x);
-	*position += 1;
+	transfer_texture_pixel(cub3d, texture, &texture_x, i);
 }
 
 void	render(t_cub3d *cub3d)
@@ -91,15 +88,14 @@ void	render(t_cub3d *cub3d)
 		}
 		while (i < cub3d->ray.r_end)
 		{
-			texture_render(cub3d, &i);
 			if (cub3d->ray.r_end > HEIGHT)
 				cub3d->ray.r_end = HEIGHT;
+			texture_render(cub3d, &i);
 		}
 		while (i < HEIGHT)
 		{
 			put_pixel(&cub3d->img, cub3d->ray.index, i, cub3d->ray.floor_color);
 			i++;
 		}
-		i++;
 	}
 }

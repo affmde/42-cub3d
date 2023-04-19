@@ -13,11 +13,10 @@
 #ifndef DEFINES_H
 # define DEFINES_H
 
-#define WIDTH 1920
-#define HEIGHT 1080
+#define WIDTH 1000
+#define HEIGHT 700
 #define PI 3.141593
 #define scale 32 //This is supposed to represent the number of pixels of each asset !**DELETE THIS****
-#define minimap_scale 5
 #define NORTH 1
 #define SOUTH 2
 #define EAST 3

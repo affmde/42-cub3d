@@ -109,6 +109,6 @@ void	raycasting(t_cub3d *cub3d)
 		render(cub3d);
 		cub3d->ray.index++;
 	}
-	draw_map_frame(cub3d, HEIGHT / 8);
-	mlx_put_image_to_window(cub3d->ptr, cub3d->win, cub3d->img->img_ptr, 0, 0);
+	draw_map_tiles(cub3d);
+	mlx_put_image_to_window(cub3d->ptr, cub3d->win, cub3d->img.img_ptr, 0, 0);
 }

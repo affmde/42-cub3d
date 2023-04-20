@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 08:14:59 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/20 08:19:01 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/20 11:07:35 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,24 @@ static void	move_forward(t_cub3d *cub3d)
 {
 	int		x;
 	int		y;
+	double	player_body;
 
+	if (cub3d->camera.dir_x > 0)
+		player_body = PLAYER_BODY;
+	else
+		player_body = -PLAYER_BODY;
 	y = (int)cub3d->camera.y;
-	x = (int)(cub3d->camera.x + cub3d->camera.dir_x * TEST_SPEED);
+	x = (int)(cub3d->camera.x + cub3d->camera.dir_x
+			* MOVEMENT_SPEED + player_body);
 	if (cub3d->map->map[y][x] != '1')
 		cub3d->camera.x += cub3d->camera.dir_x * MOVEMENT_SPEED;
+	if (cub3d->camera.dir_y > 0)
+		player_body = PLAYER_BODY;
+	else if (cub3d->camera.dir_x > 0)
+		player_body = -PLAYER_BODY;
 	x = (int)cub3d->camera.x;
-	y = (int)(cub3d->camera.y + cub3d->camera.dir_y * TEST_SPEED);
+	y = (int)(cub3d->camera.y + cub3d->camera.dir_y
+			* MOVEMENT_SPEED + player_body);
 	if (cub3d->map->map[y][x] != '1')
 		cub3d->camera.y += cub3d->camera.dir_y * MOVEMENT_SPEED;
 }
@@ -31,13 +42,24 @@ static void	move_backwards(t_cub3d *cub3d)
 {
 	int		x;
 	int		y;
+	double	player_body;
 
+	if (cub3d->camera.dir_x > 0)
+		player_body = -PLAYER_BODY;
+	else
+		player_body = PLAYER_BODY;
 	y = (int)cub3d->camera.y;
-	x = (int)(cub3d->camera.x - cub3d->camera.dir_x * TEST_SPEED);
+	x = (int)(cub3d->camera.x - cub3d->camera.dir_x
+			* MOVEMENT_SPEED + player_body);
 	if (cub3d->map->map[y][x] != '1')
 		cub3d->camera.x -= cub3d->camera.dir_x * MOVEMENT_SPEED;
+	if (cub3d->camera.dir_y > 0)
+		player_body = -PLAYER_BODY;
+	else if (cub3d->camera.dir_x > 0)
+		player_body = PLAYER_BODY;
 	x = (int)cub3d->camera.x;
-	y = (int)(cub3d->camera.y - cub3d->camera.dir_y * TEST_SPEED);
+	y = (int)(cub3d->camera.y - cub3d->camera.dir_y
+			* MOVEMENT_SPEED + player_body);
 	if (cub3d->map->map[y][x] != '1')
 		cub3d->camera.y -= cub3d->camera.dir_y * MOVEMENT_SPEED;
 }
@@ -46,12 +68,23 @@ static void	move_left(t_cub3d *cub3d)
 {
 	int		x;
 	int		y;
+	double	player_body;
 
+	if (cub3d->camera.plane_x > 0)
+		player_body = -PLAYER_BODY;
+	else
+		player_body = PLAYER_BODY;
 	y = (int)cub3d->camera.y;
-	x = (int)(cub3d->camera.x - cub3d->camera.plane_x * TEST_SPEED);
+	x = (int)(cub3d->camera.x - cub3d->camera.plane_x
+			* MOVEMENT_SPEED + player_body);
 	if (cub3d->map->map[y][x] != '1')
 		cub3d->camera.x -= cub3d->camera.plane_x * MOVEMENT_SPEED;
-	y = (int)(cub3d->camera.y - cub3d->camera.plane_x * TEST_SPEED);
+	if (cub3d->camera.plane_y > 0)
+		player_body = -PLAYER_BODY;
+	else if (cub3d->camera.plane_x > 0)
+		player_body = PLAYER_BODY;
+	y = (int)(cub3d->camera.y - cub3d->camera.plane_x
+			* MOVEMENT_SPEED + player_body);
 	x = (int)cub3d->camera.x;
 	if (cub3d->map->map[y][x] != '1')
 		cub3d->camera.y -= cub3d->camera.plane_y * MOVEMENT_SPEED;
@@ -61,12 +94,23 @@ static void	move_right(t_cub3d *cub3d)
 {
 	int		x;
 	int		y;
+	double	player_body;
 
+	if (cub3d->camera.plane_x > 0)
+		player_body = PLAYER_BODY;
+	else
+		player_body = -PLAYER_BODY;
 	y = (int)cub3d->camera.y;
-	x = (int)(cub3d->camera.x + cub3d->camera.plane_x * TEST_SPEED);
+	x = (int)(cub3d->camera.x + cub3d->camera.plane_x
+			* MOVEMENT_SPEED + player_body);
 	if (cub3d->map->map[y][x] != '1')
 		cub3d->camera.x += cub3d->camera.plane_x * MOVEMENT_SPEED;
-	y = (int)(cub3d->camera.y + cub3d->camera.plane_x * TEST_SPEED);
+	if (cub3d->camera.plane_y > 0)
+		player_body = PLAYER_BODY;
+	else if (cub3d->camera.plane_x > 0)
+		player_body = -PLAYER_BODY;
+	y = (int)(cub3d->camera.y + cub3d->camera.plane_x
+			* MOVEMENT_SPEED + player_body);
 	x = (int)cub3d->camera.x;
 	if (cub3d->map->map[y][x] != '1')
 		cub3d->camera.y += cub3d->camera.plane_y * MOVEMENT_SPEED;

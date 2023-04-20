@@ -92,6 +92,7 @@ static void	calculate_distance(t_cub3d *cub3d)
 void	raycasting(t_cub3d *cub3d)
 {
 	cub3d->ray.index = 0;
+		//printf("dir x is %f and dir y is %f\n", cub3d->camera.plane_x, cub3d->camera.plane_y);
 	while (cub3d->ray.index < WIDTH)
 	{
 		cub3d->camera.cam_x = 2 * cub3d->ray.index / (double)WIDTH - 1;

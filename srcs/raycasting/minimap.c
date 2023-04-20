@@ -14,16 +14,8 @@
 
 #define MINIMAP_SIZE 9
 
-// void	draw_map_ray(t_cub3d *cub3d, t_ray *ray)
-// {
-
-
-// }
-
 //(int)cub3d->camera->x;
 //square size = (HEIGHT / 8 - 5) * 2
-//put_pixel(cub3d->img, (int)ceil(origo_x + (radius * cos(i))),
-//		(int)ceil(origo_y - (radius * sin(i))), 0xFFFFFF);
 
 int	detect_color(t_cub3d *cub3d, int x, int y)
 {
@@ -32,7 +24,6 @@ int	detect_color(t_cub3d *cub3d, int x, int y)
 	
 	y = (HEIGHT - y - 10) / ((HEIGHT / 8 - 5) * 2 / MINIMAP_SIZE);
 	x = (WIDTH - x - 10) / ((HEIGHT / 8 - 5) * 2 / MINIMAP_SIZE);
-	
 	x2 = x + (int)cub3d->camera.x - (MINIMAP_SIZE / 2);
 	y2 = y + (int)cub3d->camera.y - (MINIMAP_SIZE / 2);
 	if (y2 < 0 || y2 >= cub3d->map->height)
@@ -48,8 +39,8 @@ int	detect_color(t_cub3d *cub3d, int x, int y)
 
 void	draw_player(t_cub3d *cub3d)
 {
-	int		origo_x;
-	int		origo_y;
+	float	origo_x;
+	float	origo_y;
 	float	radius;
 	float	i;
 

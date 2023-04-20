@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:28:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/20 13:54:18 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/20 17:53:23 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,7 @@ void	sprites_config(t_cub3d *cub3d);
 void	draw_map_tiles(t_cub3d *cub3d);
 void	draw_map_frame(t_cub3d *cub3d, int radius);
 
+//SPRITES
+void	load_sprite_texture(t_cub3d *cub3d);
+void	project_sprites(t_cub3d *cub3d);
 #endif

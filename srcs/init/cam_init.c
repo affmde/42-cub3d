@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:05:04 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/19 21:37:02 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/20 09:25:12 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	camera_init(t_cub3d *cub3d)
 	cam->half_height = HEIGHT / 2;
 	find_player(cub3d->map->map, cam);
 	cam->d_fov = 0.66;
-	cam->dir_x = -1;
+	cam->dir_x = 0;
 	cam->dir_y = 0;
 	cam->plane_x = 0;
 	cam->plane_y = 0;

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/19 21:08:09 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/20 08:57:02 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ typedef struct s_img
 typedef struct s_ray
 {
 	int		index;
-	float	wall_hit_x;
 	double	dir_x;
 	double	dir_y;
 	int		map_x;

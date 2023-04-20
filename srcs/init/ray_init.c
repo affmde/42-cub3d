@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 09:13:09 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/18 15:23:26 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/20 09:26:49 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	ray_reset_values(t_ray *ray)
 	ray->perp_wall_dist = 0;
 	ray->r_start = 0;
 	ray->r_end = 0;
-	ray->wall_hit_x = 0;
 	ray->index = 0;
 }
 

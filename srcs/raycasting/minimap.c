@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-#define MINIMAP_SIZE 9
+#define MINIMAP_SIZE 7
 
 //(int)cub3d->camera->x;
 //square size = (HEIGHT / 8 - 5) * 2
@@ -47,7 +47,7 @@ void	draw_player(t_cub3d *cub3d)
 	origo_x = WIDTH - 10 - (HEIGHT / 8 - 3);
 	origo_y = HEIGHT - 10 - (HEIGHT / 8 - 3);
 	radius = 1;
-	while (radius != 4)
+	while (radius != 3)
 	{
 		i = 0;
 		while (i != 360)

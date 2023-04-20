@@ -92,6 +92,7 @@ static void	calculate_distance(t_cub3d *cub3d)
 void	raycasting(t_cub3d *cub3d)
 {
 	cub3d->ray.index = 0;
+		//printf("dir x is %f and dir y is %f\n", cub3d->camera.plane_x, cub3d->camera.plane_y);
 	while (cub3d->ray.index < WIDTH)
 	{
 		cub3d->camera.cam_x = 2 * cub3d->ray.index / (double)WIDTH - 1;
@@ -110,5 +111,6 @@ void	raycasting(t_cub3d *cub3d)
 		render(cub3d);
 		cub3d->ray.index++;
 	}
+	draw_map_tiles(cub3d);
 	mlx_put_image_to_window(cub3d->ptr, cub3d->win, cub3d->img.img_ptr, 0, 0);
 }

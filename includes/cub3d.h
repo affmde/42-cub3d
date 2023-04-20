@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:28:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/19 15:56:39 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/20 11:30:55 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void		camera_init(t_cub3d *cub3d);
 void		image_init(t_cub3d *cub3d);
 void		ray_init(t_cub3d *cub3d);
 t_textures	*return_texture(char *identifier, t_cub3d *cub3d);
+void		cub_config_init(t_cub3d *cub3d);
 
 //Error Handling
 void		validity_error_msg(int err);

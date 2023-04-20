@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:15:42 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/18 15:18:31 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/20 11:13:35 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,23 @@ t_cub3d	*cub3d_init(void)
 	if (!cub3d)
 		return (NULL);
 	return (cub3d);
+}
+
+
+static void	movement_init(t_movement *m)
+{
+	m->move_backwards = 0;
+	m->move_forward = 0;
+	m->move_right = 0;
+	m->move_left = 0;
+	m->turn_left = 0;
+	m->turn_right = 0;
+}
+
+
+void	cub_config_init(t_cub3d *cub3d)
+{
+	camera_init(cub3d);
+	ray_init(cub3d);
+	movement_init(&cub3d->movement);
 }

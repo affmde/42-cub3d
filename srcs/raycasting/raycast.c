@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:10:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/20 08:56:34 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/20 13:08:03 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,11 @@ static void	dda_algo(t_cub3d *cub3d)
 static void	calculate_distance(t_cub3d *cub3d)
 {
 	if (cub3d->ray.direction == EAST || cub3d->ray.direction == WEST)
-		cub3d->ray.perp_wall_dist = (cub3d->ray.map_x - cub3d->camera.x + (1 - cub3d->ray.step_x) /2) / cub3d->ray.dir_x;
-		//cub3d->ray.perp_wall_dist = cub3d->ray.side_dist_x
-		//	- cub3d->ray.delta_dist_x;
+		cub3d->ray.perp_wall_dist = cub3d->ray.side_dist_x
+			- cub3d->ray.delta_dist_x;
 	else
-		cub3d->ray.perp_wall_dist = (cub3d->ray.map_y - cub3d->camera.y + (1 - cub3d->ray.step_y) /2) / cub3d->ray.dir_y;
-		//cub3d->ray.perp_wall_dist = cub3d->ray.side_dist_y
-		//	- cub3d->ray.delta_dist_y;
+		cub3d->ray.perp_wall_dist = cub3d->ray.side_dist_y
+			- cub3d->ray.delta_dist_y;
 	cub3d->z_buffer[cub3d->ray.index] = cub3d->ray.perp_wall_dist;
 	cub3d->ray.line_height = (int)(HEIGHT / cub3d->ray.perp_wall_dist);
 	cub3d->ray.r_start = cub3d->camera.half_height

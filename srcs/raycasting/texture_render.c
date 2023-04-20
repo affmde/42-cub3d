@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 16:45:40 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/20 08:53:48 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/20 13:10:33 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,7 @@ static void	texture_render(t_cub3d *cub3d, int *i)
 
 	texture = receive_texture(cub3d, cub3d->ray.direction);
 	if (!texture)
-	{
-		ft_putendl_fd("Error: couln't get texture", 2);
-		exit (1);
-	}
+		error_msg_exit("couldn't get texture");
 	if (cub3d->ray.direction == EAST || cub3d->ray.direction == WEST)
 		wall_x = cub3d->camera.y + cub3d->ray.perp_wall_dist * cub3d->ray.dir_y;
 	else

@@ -79,8 +79,11 @@ int		create_rgb(t_color *color);
 void	raycasting(t_cub3d *cub3d);
 void	render(t_cub3d *cub3d);
 int		load_textures(t_cub3d *cub3d);
-void	draw_minimap(t_cub3d *cub3d, t_img *img);
 void	ray_reset_values(t_ray *ray);
 void	sprites_config(t_cub3d *cub3d);
+
+//noel's map
+void	draw_map_tiles(t_cub3d *cub3d);
+void	draw_map_frame(t_cub3d *cub3d, int radius);
 
 #endif

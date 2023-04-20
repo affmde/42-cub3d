@@ -17,7 +17,6 @@
 #define HEIGHT 500//1080
 #define PI 3.141593
 #define scale 32 //This is supposed to represent the number of pixels of each asset !**DELETE THIS****
-#define minimap_scale 5
 #define NORTH 1
 #define SOUTH 2
 #define EAST 3

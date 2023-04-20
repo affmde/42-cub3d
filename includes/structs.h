@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/19 17:43:21 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/19 21:08:09 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,6 @@ typedef struct s_sprite
 	double	x;
 	double	y;
 	int		texture;
-}
+}		t_sprite;
 
 #endif

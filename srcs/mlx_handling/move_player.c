@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 08:14:59 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/19 15:41:40 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/20 08:19:01 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ void	move_player(t_cub3d *cub3d)
 {
 	if (cub3d->movement.move_forward)
 		move_forward(cub3d);
-	if (cub3d->movement.move_backwards)
+	else if (cub3d->movement.move_backwards)
 		move_backwards(cub3d);
-	else if (cub3d->movement.move_left)
+	if (cub3d->movement.move_left)
 		move_left(cub3d);
 	else if (cub3d->movement.move_right)
 		move_right(cub3d);

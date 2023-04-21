@@ -13,18 +13,17 @@
 #ifndef DEFINES_H
 # define DEFINES_H
 
-#define WIDTH 1000//1980
-#define HEIGHT 500//1080
+#define WIDTH 1280//1980
+#define HEIGHT 720//1080
 #define PI 3.141593
-#define scale 32 //This is supposed to represent the number of pixels of each asset !**DELETE THIS****
 #define NORTH 1
 #define SOUTH 2
 #define EAST 3
 #define WEST 4
 #define PLAYER_BODY 0.5
-#define MOVEMENT_SPEED 0.05
+#define MOVEMENT_SPEED 0.08
 #define TEST_SPEED 1
-#define ROTATE_SPEED 0.05
+#define ROTATE_SPEED 0.07
 #define MAC_UP 13
 #define MAC_RIGHT 2
 #define MAC_LEFT 0

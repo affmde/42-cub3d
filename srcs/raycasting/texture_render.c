@@ -59,13 +59,13 @@ static void	texture_render(t_cub3d *cub3d, int *i)
 		exit (1);
 	}
 	if (cub3d->ray.direction == EAST || cub3d->ray.direction == WEST)
-		wall_x = cub3d->camera.y + cub3d->ray.perp_wall_dist * cub3d->ray.dir_y;
+		wall_x = cub3d->camera.y + cub3d->ray.perp_wall_dist * cub3d->ray.dir_y[cub3d->ray.index];
 	else
-		wall_x = cub3d->camera.x + cub3d->ray.perp_wall_dist * cub3d->ray.dir_x;
+		wall_x = cub3d->camera.x + cub3d->ray.perp_wall_dist * cub3d->ray.dir_x[cub3d->ray.index];
 	wall_x -= floor(wall_x);
 	texture_x = (int)(wall_x * (double)texture->width);
 	if ((cub3d->ray.direction == EAST || cub3d->ray.direction == WEST)
-		&& cub3d->ray.dir_x > 0)
+		&& cub3d->ray.dir_x[cub3d->ray.index] > 0)
 		texture_x = texture->width - texture_x - 1;
 	if ((cub3d->ray.direction == NORTH || cub3d->ray.direction == SOUTH)
 		&& cub3d->ray.direction < 0)

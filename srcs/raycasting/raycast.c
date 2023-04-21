@@ -14,7 +14,7 @@
 
 static void	get_steps(t_cub3d *cub3d)
 {
-	if (cub3d->ray.dir_x < 0)
+	if (cub3d->ray.dir_x[cub3d->ray.index] < 0)
 	{
 		cub3d->ray.step_x = -1;
 		cub3d->ray.side_dist_x = (cub3d->camera.x - cub3d->ray.map_x)
@@ -26,7 +26,7 @@ static void	get_steps(t_cub3d *cub3d)
 		cub3d->ray.side_dist_x = (cub3d->ray.map_x + 1.0 - cub3d->camera.x)
 			* cub3d->ray.delta_dist_x;
 	}
-	if (cub3d->ray.dir_y < 0)
+	if (cub3d->ray.dir_y[cub3d->ray.index] < 0)
 	{
 		cub3d->ray.step_y = -1;
 		cub3d->ray.side_dist_y = (cub3d->camera.y - cub3d->ray.map_y)
@@ -48,7 +48,7 @@ static void	dda_algo(t_cub3d *cub3d)
 		{
 			cub3d->ray.side_dist_x += cub3d->ray.delta_dist_x;
 			cub3d->ray.map_x += cub3d->ray.step_x;
-			if (cub3d->ray.dir_x > 0)
+			if (cub3d->ray.dir_x[cub3d->ray.index] > 0)
 				cub3d->ray.direction = EAST;
 			else
 				cub3d->ray.direction = WEST;
@@ -57,7 +57,7 @@ static void	dda_algo(t_cub3d *cub3d)
 		{
 			cub3d->ray.side_dist_y += cub3d->ray.delta_dist_y;
 			cub3d->ray.map_y += cub3d->ray.step_y;
-			if (cub3d->ray.dir_y > 0)
+			if (cub3d->ray.dir_y[cub3d->ray.index] > 0)
 				cub3d->ray.direction = SOUTH;
 			else
 				cub3d->ray.direction = NORTH;
@@ -70,11 +70,11 @@ static void	dda_algo(t_cub3d *cub3d)
 static void	calculate_distance(t_cub3d *cub3d)
 {
 	if (cub3d->ray.direction == EAST || cub3d->ray.direction == WEST)
-		cub3d->ray.perp_wall_dist = (cub3d->ray.map_x - cub3d->camera.x + (1 - cub3d->ray.step_x) /2) / cub3d->ray.dir_x;
+		cub3d->ray.perp_wall_dist = (cub3d->ray.map_x - cub3d->camera.x + (1 - cub3d->ray.step_x) /2) / cub3d->ray.dir_x[cub3d->ray.index];
 		//cub3d->ray.perp_wall_dist = cub3d->ray.side_dist_x
 		//	- cub3d->ray.delta_dist_x;
 	else
-		cub3d->ray.perp_wall_dist = (cub3d->ray.map_y - cub3d->camera.y + (1 - cub3d->ray.step_y) /2) / cub3d->ray.dir_y;
+		cub3d->ray.perp_wall_dist = (cub3d->ray.map_y - cub3d->camera.y + (1 - cub3d->ray.step_y) /2) / cub3d->ray.dir_y[cub3d->ray.index];
 		//cub3d->ray.perp_wall_dist = cub3d->ray.side_dist_y
 		//	- cub3d->ray.delta_dist_y;
 	cub3d->z_buffer[cub3d->ray.index] = cub3d->ray.perp_wall_dist;
@@ -96,14 +96,14 @@ void	raycasting(t_cub3d *cub3d)
 	while (cub3d->ray.index < WIDTH)
 	{
 		cub3d->camera.cam_x = 2 * cub3d->ray.index / (double)WIDTH - 1;
-		cub3d->ray.dir_x = cub3d->camera.dir_x + cub3d->camera.plane_x
+		cub3d->ray.dir_x[cub3d->ray.index] = cub3d->camera.dir_x + cub3d->camera.plane_x
 			* cub3d->camera.cam_x;
-		cub3d->ray.dir_y = cub3d->camera.dir_y + cub3d->camera.plane_y
+		cub3d->ray.dir_y[cub3d->ray.index] = cub3d->camera.dir_y + cub3d->camera.plane_y
 			* cub3d->camera.cam_x;
 		cub3d->ray.map_x = (int)cub3d->camera.x;
 		cub3d->ray.map_y = (int)cub3d->camera.y;
-		cub3d->ray.delta_dist_x = fabs(1 / cub3d->ray.dir_x);
-		cub3d->ray.delta_dist_y = fabs(1 / cub3d->ray.dir_y);
+		cub3d->ray.delta_dist_x = fabs(1 / cub3d->ray.dir_x[cub3d->ray.index]);
+		cub3d->ray.delta_dist_y = fabs(1 / cub3d->ray.dir_y[cub3d->ray.index]);
 		cub3d->ray.hit = 0;
 		get_steps(cub3d);
 		dda_algo(cub3d);

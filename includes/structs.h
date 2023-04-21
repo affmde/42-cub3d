@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/20 17:31:27 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/21 09:01:23 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,26 @@ typedef struct s_movement
 	int	turn_left;
 }	t_movement;
 
+typedef struct sprites_manager
+{
+	t_list			*sprites_list;
+	int				total_sprites;
+	t_textures		sprite_texture;	
+	double			sprite_x;
+	double			sprite_y;
+	double			inv_det;
+	double			transform_x;
+	double			transform_y;
+	int				sprite_screen_x;
+	int				sprite_height;
+	int				start_x;
+	int				start_y;
+	int				end_x;
+	int				end_y;
+	int				sprite_width;
+	
+}	t_sprites_manager;
+
 typedef struct s_sprite
 {
 	double	x;
@@ -123,21 +143,19 @@ typedef struct s_sprite
 
 typedef struct s_cub3d
 {
-	t_list			*textures;
-	t_list			*walls;
-	t_map			*map;
-	t_list			*file_data;
-	void			*ptr;
-	void			*win;
-	t_img			img;
-	t_camera		camera;
-	int				mouse_x;
-	struct s_ray	ray;
-	t_movement		movement;
-	double			*z_buffer;
-	t_list			*sprites_list;
-	int				total_sprites;
-	t_textures		sprite_texture;
+	t_list				*textures;
+	t_list				*walls;
+	t_map				*map;
+	t_list				*file_data;
+	void				*ptr;
+	void				*win;
+	t_img				img;
+	t_camera			camera;
+	int					mouse_x;
+	struct s_ray		ray;
+	t_movement			movement;
+	double				*z_buffer;
+	t_sprites_manager	sp_manager;
 }	t_cub3d;
 
 typedef struct s_map_check

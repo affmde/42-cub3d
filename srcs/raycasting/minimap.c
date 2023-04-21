@@ -13,6 +13,9 @@
 #include "cub3d.h"
 
 #define MINIMAP_SIZE 7               //mv this
+#define MINI_RAY_ACCURACY 5
+#define MINI_RAY_DIST 25
+#define MINI_RAY_MAX_DIST 60
 
 //(int)cub3d->camera.x;
 //square size = (HEIGHT / 8 - 5) * 2
@@ -34,6 +37,8 @@ int	detect_color(t_cub3d *cub3d, int x, int y)
 		return (0x000000);
 	if (cub3d->map->map[y2][x2] == '1')
 		return (0x006600);
+	if (cub3d->map->map[y2][x2] == '2')
+		return (0x800040);
 	return (0x66FF66);
 }
 
@@ -60,24 +65,23 @@ void	draw_player(t_cub3d *cub3d)
 	}
 }
 
-void	draw_map_rays(t_cub3d *cub3d)
+void	draw_map_rays(t_cub3d *cub3d, float origo_x, float origo_y)
 {
-	float	origo_x;
-	float	origo_y;
 	t_pos	start;
 	t_pos	end;
 	float	dist_x;
 	float	dist_y;
-	float	len;
 
-	origo_x = WIDTH - 10 - (HEIGHT / 8 - 3);
-	origo_y = HEIGHT - 10 - (HEIGHT / 8 - 3);
-	len = -22.5;
-	start = populate_position(origo_x, origo_y, 0, 0xFFFFFF);
-	dist_x = ((cub3d->ray.dir_x[WIDTH / 2]) * len);
-	dist_y = (cub3d->ray.dir_y[WIDTH / 2] * len);
-	end = populate_position((int)(origo_x + dist_x), (int)(origo_y + dist_y), 0, 0xFFFFFF);
-	bresenham_algo(start, end, &cub3d->img);
+	cub3d->ray.index = 0;
+	while (cub3d->ray.index < WIDTH)
+	{
+		dist_x = (cub3d->ray.dir_x[cub3d->ray.index] * MINI_RAY_DIST * -1 * cub3d->z_buffer[cub3d->ray.index]);
+		dist_y = (cub3d->ray.dir_y[cub3d->ray.index] * MINI_RAY_DIST * -1 * cub3d->z_buffer[cub3d->ray.index]);
+		start = populate_position(origo_x, origo_y, 0, 0xFFFFFF);
+		end = populate_position((int)(origo_x + dist_x), (int)(origo_y + dist_y), 0, 0xFFFFFF);
+		bresenham_algo(start, end, &cub3d->img);
+		cub3d->ray.index += MINI_RAY_ACCURACY;
+	}
 	draw_player(cub3d);
 }
 
@@ -119,7 +123,8 @@ void	draw_map_frame(t_cub3d *cub3d, int radius)
 	float	i;
 
 	if (radius < (HEIGHT / 8 - 5))
-		return (draw_map_rays(cub3d));
+		return (draw_map_rays(cub3d, WIDTH - 10 - (HEIGHT / 8 - 3), \
+		HEIGHT - 10 - (HEIGHT / 8 - 3)));
 	origo_x = WIDTH - 10 - radius;
 	origo_y = HEIGHT - 10 - radius;
 	i = 0;

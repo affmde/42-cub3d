@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/21 09:01:23 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/21 14:35:37 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,11 +111,21 @@ typedef struct s_movement
 	int	turn_left;
 }	t_movement;
 
+typedef struct s_sprite
+{
+	double	x;
+	double	y;
+	int		texture;
+	double	distance;
+	int		order;
+	char	identifier;
+}		t_sprite;
+
 typedef struct sprites_manager
 {
 	t_list			*sprites_list;
 	int				total_sprites;
-	t_textures		sprite_texture;	
+	t_textures		sprite_texture;
 	double			sprite_x;
 	double			sprite_y;
 	double			inv_det;
@@ -128,18 +138,9 @@ typedef struct sprites_manager
 	int				end_x;
 	int				end_y;
 	int				sprite_width;
-	
-}	t_sprites_manager;
+	int				color;
 
-typedef struct s_sprite
-{
-	double	x;
-	double	y;
-	int		texture;
-	double	distance;
-	int		order;
-	char	identifier;
-}		t_sprite;
+}	t_sprites_manager;
 
 typedef struct s_cub3d
 {

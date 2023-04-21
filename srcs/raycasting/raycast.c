@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:10:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/21 09:30:32 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/21 13:17:16 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ static void	calculate_distance(t_cub3d *cub3d)
 void	raycasting(t_cub3d *cub3d)
 {
 	cub3d->ray.index = 0;
-		//printf("dir x is %f and dir y is %f\n", cub3d->camera.plane_x, cub3d->camera.plane_y);
 	while (cub3d->ray.index < WIDTH)
 	{
 		cub3d->camera.cam_x = 2 * cub3d->ray.index / (double)WIDTH - 1;
@@ -109,7 +108,7 @@ void	raycasting(t_cub3d *cub3d)
 		render(cub3d);
 		cub3d->ray.index++;
 	}
-	project_sprites(cub3d);
+	render_sprites(cub3d);
 	draw_map_tiles(cub3d);
 	mlx_put_image_to_window(cub3d->ptr, cub3d->win, cub3d->img.img_ptr, 0, 0);
 }

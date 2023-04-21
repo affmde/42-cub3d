@@ -30,13 +30,13 @@ FILE_PARSING = file_read.c parse_elements.c parse_map.c
 INIT = cub3d_init.c cam_init.c image_init.c ray_init.c
 
 UTILS = parse_utils.c texture_creator.c walls_creator.c map_validation_utils.c return_textures.c math_utils.c bresenham_algo.c \
-colors.c graphics_utils.c
+colors.c graphics_utils.c movement_utils.c
 
 FILE_VALIDATION = map_validity.c file_validity.c elements_validity.c map_closed.c fc_validity.c get_map_copy.c
 
 MLX_HANDLING = mlx_handling.c events.c mouse.c move_player.c rotate_player.c
 
-RAYCASTING = raycast.c load_textures.c texture_render.c minimap.c sprites_config.c sprites.c load_sprites.c
+RAYCASTING = raycast.c load_textures.c texture_render.c minimap.c sprites_config.c sprites.c load_sprites.c sprites_utils.c
 
 ALL_SRCS = $(FILE_PARSING) $(INIT) $(UTILS) $(FILE_VALIDATION) $(MLX_HANDLING) $(RAYCASTING) $(CORE)
 OBJ_FILES = $(ALL_SRCS:.c=.o)
@@ -50,8 +50,8 @@ $(LIBFT):
 	@echo "$(COLOUR_GREEN)libft compilation completed$(COLOUR_END)"
 
 $(NAME): $(LIBFT) $(OBJS_DIR) $(OBJS)
-#	@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(MOSFLAGS)
-	@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(LINFLAGS)
+	@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(MOSFLAGS)
+#	@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(LINFLAGS)
 	@echo "$(COLOUR_GREEN)$@ created$(COLOUR_END)"
 
 $(OBJS_DIR):

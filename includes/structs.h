@@ -67,8 +67,8 @@ typedef struct s_img
 typedef struct s_ray
 {
 	int		index;
-	double	dir_x;
-	double	dir_y;
+	double	*dir_x;
+	double	*dir_y;
 	int		map_x;
 	int		map_y;
 	double	delta_dist_x;

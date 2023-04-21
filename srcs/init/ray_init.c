@@ -34,5 +34,19 @@ void	ray_init(t_cub3d *cub3d)
 	ray = &cub3d->ray;
 	ray->ceiling_color = create_rgb(get_wall_color("C", cub3d));
 	ray->floor_color = create_rgb(get_wall_color("F", cub3d));
+	ray->dir_x = malloc(sizeof(double) * WIDTH);
+	if (!ray->dir_x)
+	{
+		ft_putstr_fd("Error: ", 2);
+		ft_putendl_fd("Couldn't create buffer for ray directions", 2);
+		exit (1);
+	}
+	ray->dir_y = malloc(sizeof(double) * WIDTH);
+	if (!ray->dir_y)
+	{
+		ft_putstr_fd("Error: ", 2);
+		ft_putendl_fd("Couldn't create buffer for ray directions", 2);
+		exit (1);
+	}
 	ray_reset_values(ray);
 }

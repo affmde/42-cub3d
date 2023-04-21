@@ -12,9 +12,9 @@
 
 #include "cub3d.h"
 
-#define MINIMAP_SIZE 7
+#define MINIMAP_SIZE 7               //mv this
 
-//(int)cub3d->camera->x;
+//(int)cub3d->camera.x;
 //square size = (HEIGHT / 8 - 5) * 2
 
 int	detect_color(t_cub3d *cub3d, int x, int y)
@@ -47,7 +47,7 @@ void	draw_player(t_cub3d *cub3d)
 	origo_x = WIDTH - 10 - (HEIGHT / 8 - 3);
 	origo_y = HEIGHT - 10 - (HEIGHT / 8 - 3);
 	radius = 1;
-	while (radius != 3)
+	while (radius != 4)
 	{
 		i = 0;
 		while (i != 360)
@@ -58,6 +58,27 @@ void	draw_player(t_cub3d *cub3d)
 		}
 		radius += 0.5;
 	}
+}
+
+void	draw_map_rays(t_cub3d *cub3d)
+{
+	float	origo_x;
+	float	origo_y;
+	t_pos	start;
+	t_pos	end;
+	float	dist_x;
+	float	dist_y;
+	float	len;
+
+	origo_x = WIDTH - 10 - (HEIGHT / 8 - 3);
+	origo_y = HEIGHT - 10 - (HEIGHT / 8 - 3);
+	len = -22.5;
+	start = populate_position(origo_x, origo_y, 0, 0xFFFFFF);
+	dist_x = ((cub3d->ray.dir_x[WIDTH / 2]) * len);
+	dist_y = (cub3d->ray.dir_y[WIDTH / 2] * len);
+	end = populate_position((int)(origo_x + dist_x), (int)(origo_y + dist_y), 0, 0xFFFFFF);
+	bresenham_algo(start, end, &cub3d->img);
+	draw_player(cub3d);
 }
 
 void	draw_map_tiles(t_cub3d *cub3d)
@@ -98,7 +119,7 @@ void	draw_map_frame(t_cub3d *cub3d, int radius)
 	float	i;
 
 	if (radius < (HEIGHT / 8 - 5))
-		return (draw_player(cub3d));
+		return (draw_map_rays(cub3d));
 	origo_x = WIDTH - 10 - radius;
 	origo_y = HEIGHT - 10 - radius;
 	i = 0;

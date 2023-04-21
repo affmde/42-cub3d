@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:28:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/21 14:39:19 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/21 17:01:36 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void		image_init(t_cub3d *cub3d);
 void		ray_init(t_cub3d *cub3d);
 t_textures	*return_texture(char *identifier, t_cub3d *cub3d);
 void		cub_config_init(t_cub3d *cub3d);
+void		get_pixel(t_img *image, int x, int y);
 
 //Error Handling
 void		validity_error_msg(int err);
@@ -92,4 +93,6 @@ void	load_sprite_texture(t_cub3d *cub3d);
 void	swap_data(t_sprite *a, t_sprite *b);
 void	render_sprites(t_cub3d *cub3d);
 void	sort_sprites(t_list *sprites);
+void	gun_render(t_cub3d *cub3d);
+void	load_gun_texure(t_cub3d *cub3d);
 #endif

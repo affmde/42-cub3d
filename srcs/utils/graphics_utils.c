@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 09:53:05 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/19 09:25:57 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/21 17:03:03 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,14 @@ void	put_pixel(t_img *image, int x, int y, int color)
 	offset = y * (image->size_l >> 2) + x;
 	if ((x >= 0 && x < WIDTH) && (y >= 0 && y < HEIGHT))
 		image->data[offset] = color;
+}
+
+int	get_pixel(t_img *image, int x, int y)
+{
+	int	color;
+	int	offset;
+
+	offset = y * (imgage->size_l >> 2) + x;
+	color = img->data[offset];
+	return (color);
 }

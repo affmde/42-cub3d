@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 17:29:06 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/21 14:32:55 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/21 15:29:09 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	load_sprite_texture(t_cub3d *cub3d)
 {
-	cub3d->sp_manager.sprite_texture.img = ft_calloc(1, sizeof(t_textures));
+	cub3d->sp_manager.sprite_texture.img = ft_calloc(1, sizeof(t_img));
 	if (!cub3d->sp_manager.sprite_texture.img)
 		error_msg_exit("couldn't load sprite texture");
 	cub3d->sp_manager.sprite_texture.img->img_ptr

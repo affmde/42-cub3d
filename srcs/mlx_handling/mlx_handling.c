@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 09:42:29 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/21 13:12:58 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/21 16:54:13 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	mlx_handling(t_cub3d *cub3d)
 	image_init(cub3d);
 	cub3d->z_buffer = z_buffer_creator();
 	sprites_config(cub3d);
+	load_gun_texure(cub3d);
 	mlx_loop_hook(cub3d->ptr, &play, cub3d);
 	mlx_hook(cub3d->win, 2, 1L << 0, &handle_key_pressed, cub3d);
 	mlx_hook(cub3d->win, 3, 1L << 1, &handle_key_released, cub3d);

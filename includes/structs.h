@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/21 14:35:37 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/21 15:17:34 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ typedef struct sprites_manager
 	t_list			*sprites_list;
 	int				total_sprites;
 	t_textures		sprite_texture;
+	t_textures		gun;
 	double			sprite_x;
 	double			sprite_y;
 	double			inv_det;

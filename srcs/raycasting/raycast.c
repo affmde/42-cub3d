@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:10:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/21 15:55:32 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/22 10:00:44 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,6 @@ void	raycasting(t_cub3d *cub3d)
 	}
 	render_sprites(cub3d);
 	draw_map_tiles(cub3d);
-	gun_render(cub3d);
+	gun_render(cub3d, 0);
 	mlx_put_image_to_window(cub3d->ptr, cub3d->win, cub3d->img.img_ptr, 0, 0);
 }

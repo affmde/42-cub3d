@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:36:49 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/18 15:45:46 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/22 10:05:32 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	delete_wall_node(void *node)
 
 void	free_cub3d(t_cub3d *cub3d)
 {
+	int	i;
+	
 	if (cub3d)
 	{
 		if (cub3d->file_data)
@@ -66,6 +68,12 @@ void	free_cub3d(t_cub3d *cub3d)
 			if (cub3d->map->map)
 				clean_char_arr(cub3d->map->map);
 			free(cub3d->map);
+		}
+		if (cub3d->weapon.gun)
+		{
+			i = -1;
+			while (++i < 5)
+				free(&cub3d->weapon.gun[i]);
 		}
 		free(cub3d);
 	}

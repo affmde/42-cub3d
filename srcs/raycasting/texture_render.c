@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 16:45:40 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/20 13:10:33 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/22 08:23:25 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	render(t_cub3d *cub3d)
 	}
 	while (i < cub3d->ray.r_end)
 		texture_render(cub3d, &i);
-	while (i < HEIGHT)
+	while (i < HEIGHT - 1)
 	{
 		put_pixel(&cub3d->img, cub3d->ray.index, i, cub3d->ray.floor_color);
 		i++;

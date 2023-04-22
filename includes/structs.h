@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/21 15:17:34 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/22 09:53:03 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,6 @@ typedef struct sprites_manager
 	t_list			*sprites_list;
 	int				total_sprites;
 	t_textures		sprite_texture;
-	t_textures		gun;
 	double			sprite_x;
 	double			sprite_y;
 	double			inv_det;
@@ -143,6 +142,14 @@ typedef struct sprites_manager
 
 }	t_sprites_manager;
 
+typedef struct s_weapon
+{
+	t_textures	*gun;
+	int			max_bullets;
+	int			bullets;
+	int			state;
+}	t_weapon;
+
 typedef struct s_cub3d
 {
 	t_list				*textures;
@@ -158,6 +165,7 @@ typedef struct s_cub3d
 	t_movement			movement;
 	double				*z_buffer;
 	t_sprites_manager	sp_manager;
+	t_weapon			weapon;
 }	t_cub3d;
 
 typedef struct s_map_check

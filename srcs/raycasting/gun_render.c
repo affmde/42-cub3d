@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 15:17:57 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/22 10:02:03 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/23 10:39:26 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	gun_render(t_cub3d *cub3d, int nbr)
 {
 	int	i;
 	int	j;
-
 	int	color;
 	
 	i = 0;
@@ -64,5 +63,28 @@ void	gun_render(t_cub3d *cub3d, int nbr)
 			j++;
 		}
 		i++;
+	}
+}
+
+int	select_gun_texture(t_weapon *w)
+{
+	if (w->anim_frame > FRAME_RATE)
+	{
+		w->anim_frame = 0;
+		w->state = 0;
+	}
+	if (w->state == 0)
+		return (0);
+	else
+	{
+		w->anim_frame++;
+		if (w->anim_frame < FRAME_RATE * 0.25)
+			return (1);
+		else if (w->anim_frame < FRAME_RATE * 0.5)
+			return (2);
+		else if (w->anim_frame < FRAME_RATE * 0.75)
+			return (3);
+		else
+			return (4);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 11:04:27 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/20 11:04:37 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/23 10:52:28 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,5 @@
 #define LIN_LEFT 97
 #define LIN_R_RIGHT 65363
 #define LIN_R_LEFT 65361
+#define FRAME_RATE 5
 #endif

@@ -36,7 +36,8 @@ FILE_VALIDATION = map_validity.c file_validity.c elements_validity.c map_closed.
 
 MLX_HANDLING = mlx_handling.c events.c mouse.c move_player.c rotate_player.c
 
-RAYCASTING = raycast.c load_textures.c texture_render.c minimap.c sprites_config.c sprites.c load_sprites.c sprites_utils.c gun_render.c
+RAYCASTING = raycast.c load_textures.c texture_render.c minimap.c sprites_config.c sprites.c load_sprites.c sprites_utils.c gun_render.c \
+shoot.c
 
 ALL_SRCS = $(FILE_PARSING) $(INIT) $(UTILS) $(FILE_VALIDATION) $(MLX_HANDLING) $(RAYCASTING) $(CORE)
 OBJ_FILES = $(ALL_SRCS:.c=.o)

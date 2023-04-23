@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:28:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/22 10:00:34 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/23 10:27:45 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,6 @@ void	render_sprites(t_cub3d *cub3d);
 void	sort_sprites(t_list *sprites);
 void	gun_render(t_cub3d *cub3d, int nbr);
 void	weapon_init(t_cub3d *cub3d);
+int		select_gun_texture(t_weapon *w);
+void	shoot(t_cub3d *cub3d);
 #endif

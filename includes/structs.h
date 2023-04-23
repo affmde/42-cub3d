@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/22 09:53:03 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/23 09:56:27 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,7 @@ typedef struct s_weapon
 	int			max_bullets;
 	int			bullets;
 	int			state;
+	int			anim_frame;
 }	t_weapon;
 
 typedef struct s_cub3d

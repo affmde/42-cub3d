@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:28:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/24 08:42:52 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/24 11:18:22 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,12 @@ t_pos	populate_position(int x, int y, int z, int color);
 int		create_rgb(t_color *color);
 
 //RAYCASTING
-void	raycasting(t_cub3d *cub3d);
+void	raycasting(t_cub3d *cub3d, int x, int shoot);
 void	render(t_cub3d *cub3d);
 int		load_textures(t_cub3d *cub3d);
 void	ray_reset_values(t_ray *ray);
 void	sprites_config(t_cub3d *cub3d);
+void	raycast_environemt(t_cub3d *cub3d);
 
 //noel's map
 void	draw_map_tiles(t_cub3d *cub3d);

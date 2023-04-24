@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 10:28:16 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/24 11:54:29 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/24 13:51:15 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,31 @@ static int	allow_shoot(t_weapon *w)
 	return (1);
 }
 
-// void	handle_shoot_hit(t_cub3d *cub3d)
-// {
+void	handle_shoot_hit(t_cub3d *cub3d)
+{
+	t_sprite	*sprite;
 
-// }
+	sprite = find_sprite(cub3d, cub3d->ray.map_x, cub3d->ray.map_y);
+	if (sprite)
+		sprite->hit = 1;
+	cub3d->map->map[(int)(sprite->y)][(int)sprite->x] = '0';
+}
+
+t_sprite *find_sprite(t_cub3d *cub3d, int x, int y)
+{
+	t_list		*tmp;
+	t_sprite	*sprite;
+
+	tmp = cub3d->sp_manager.sprites_list;
+	while (tmp)
+	{
+		sprite = tmp->content;
+		if ((int)sprite->x == x && (int)sprite->y == y)
+			return (sprite);
+		tmp = tmp->next;
+	}
+	return (NULL);
+}
 
 void	shoot(t_cub3d *cub3d)
 {

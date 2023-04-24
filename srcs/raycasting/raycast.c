@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:10:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/24 11:25:52 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/24 13:45:23 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	dda_algo(t_cub3d *cub3d, int x, int shoot)
 		{
 			if (cub3d->map->map[cub3d->ray.map_y][cub3d->ray.map_x] == '2')
 			{
-				printf("Hit\n"); // CHANGE THIS TO HAVE ENEMY HIT EFFECT!!!!
+				handle_shoot_hit(cub3d);
 				return ;
 			}
 		}

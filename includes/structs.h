@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/24 11:54:15 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/24 13:25:07 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,13 +119,16 @@ typedef struct s_sprite
 	double	distance;
 	int		order;
 	char	identifier;
+	int		alive;
+	int		anim_frame;
+	int		hit;
 }		t_sprite;
 
 typedef struct sprites_manager
 {
 	t_list			*sprites_list;
 	int				total_sprites;
-	t_textures		sprite_texture;
+	t_textures		sprite_texture[6];
 	double			sprite_x;
 	double			sprite_y;
 	double			inv_det;

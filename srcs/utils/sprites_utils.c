@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 10:56:20 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/21 14:39:01 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/24 13:46:54 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,26 @@ void	sort_sprites(t_list *sprites)
 			index = index->next;
 		}
 		tmp = tmp->next;
+	}
+}
+
+int	get_sprite_text(t_sprite *sprite)
+{
+	if (sprite->hit)
+		sprite->anim_frame++;
+	if (sprite->anim_frame == 0)
+		return (0);
+	if (sprite->anim_frame < FRAME_RATE * 0.2)
+		return (1);
+	if (sprite->anim_frame < FRAME_RATE * 0.4)
+		return (2);
+	if (sprite->anim_frame < FRAME_RATE * 0.6)
+		return (3);
+	if (sprite->anim_frame < FRAME_RATE * 0.8)
+		return (4);
+	else
+	{
+		sprite->alive = 0;
+		return (4);
 	}
 }

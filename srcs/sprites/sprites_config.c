@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 17:47:14 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/21 14:33:51 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/24 13:25:43 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ static void	get_sprites(t_cub3d *cub3d)
 				sprite->order = cub3d->sp_manager.total_sprites;
 				sprite->x = j + 0.5;
 				sprite->y = i + 0.5;
+				sprite->alive = 1;
+				sprite->anim_frame = 0;
+				sprite->hit = 0;
 				sprite->identifier = cub3d->map->map[i][j];
 				ft_lstadd_back(&cub3d->sp_manager.sprites_list,
 					ft_lstnew(sprite));

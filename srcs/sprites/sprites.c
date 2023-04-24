@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:18:03 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/21 14:40:23 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/24 13:33:19 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	calculate_sprite_dimensions(t_sprites_manager *s_man)
 	return ;
 }
 
-void	draw_sprite(t_cub3d *cub3d, t_sprites_manager *s_man)
+void	draw_sprite(t_cub3d *cub3d, t_sprites_manager *s_man, t_sprite * sprite)
 {
 	int	x;
 	int	i;
@@ -40,11 +40,12 @@ void	draw_sprite(t_cub3d *cub3d, t_sprites_manager *s_man)
 	int	d;
 
 	x = s_man->start_x;
+	sprite->texture = get_sprite_text(sprite);
 	while (x < s_man->end_x)
 	{
 		tex_x = (int)((256 * (x - (-s_man->sprite_width / 2
 							+ s_man->sprite_screen_x))
-					* s_man->sprite_texture.width
+					* s_man->sprite_texture[sprite->texture].width
 					/ s_man->sprite_width) / 256);
 		if (s_man->transform_y > 0 && x > 0 && x < WIDTH
 			&& s_man->transform_y < cub3d->z_buffer[x])
@@ -54,9 +55,9 @@ void	draw_sprite(t_cub3d *cub3d, t_sprites_manager *s_man)
 			{
 				d = i * 256 - HEIGHT * 128
 					+ s_man->sprite_height * 128;
-				tex_y = ((d * s_man->sprite_texture.height)
+				tex_y = ((d * s_man->sprite_texture[sprite->texture].height)
 						/ s_man->sprite_height) / 256;
-				s_man->color = s_man->sprite_texture.img->data[s_man->sprite_texture.width
+				s_man->color = s_man->sprite_texture[sprite->texture].img->data[s_man->sprite_texture[sprite->texture].width
 					* tex_y + tex_x];
 				if ((s_man->color & 0x00FFFFFF) != 0)
 					put_pixel(&cub3d->img, x, i, s_man->color);
@@ -78,18 +79,21 @@ void	project_sprites(t_cub3d *cub3d)
 	while (tmp)
 	{
 		sprite = tmp->content;
-		s_man->sprite_x = sprite->x - cub3d->camera.x;
-		s_man->sprite_y = sprite->y - cub3d->camera.y;
-		s_man->inv_det = 1.0 / (cub3d->camera.plane_x * cub3d->camera.dir_y
-				- cub3d->camera.dir_x * cub3d->camera.plane_y);
-		s_man->transform_x = s_man->inv_det * (cub3d->camera.dir_y
-				* s_man->sprite_x - cub3d->camera.dir_x * s_man->sprite_y);
-		s_man->transform_y = s_man->inv_det * (-cub3d->camera.plane_y
-				* s_man->sprite_x + cub3d->camera.plane_x * s_man->sprite_y);
-		s_man->sprite_screen_x = (int)((WIDTH / 2)
-				* (1 + s_man->transform_x / s_man->transform_y));
-		calculate_sprite_dimensions(s_man);
-		draw_sprite(cub3d, s_man);
+		if (sprite->alive)
+		{
+			s_man->sprite_x = sprite->x - cub3d->camera.x;
+			s_man->sprite_y = sprite->y - cub3d->camera.y;
+			s_man->inv_det = 1.0 / (cub3d->camera.plane_x * cub3d->camera.dir_y
+					- cub3d->camera.dir_x * cub3d->camera.plane_y);
+			s_man->transform_x = s_man->inv_det * (cub3d->camera.dir_y
+					* s_man->sprite_x - cub3d->camera.dir_x * s_man->sprite_y);
+			s_man->transform_y = s_man->inv_det * (-cub3d->camera.plane_y
+					* s_man->sprite_x + cub3d->camera.plane_x * s_man->sprite_y);
+			s_man->sprite_screen_x = (int)((WIDTH / 2)
+					* (1 + s_man->transform_x / s_man->transform_y));
+			calculate_sprite_dimensions(s_man);
+			draw_sprite(cub3d, s_man, sprite);
+		}
 		tmp = tmp->next;
 	}
 }
@@ -104,7 +108,7 @@ void	render_sprites(t_cub3d *cub3d)
 	{
 		sprite = tmp->content;
 		sprite->distance = (pow(cub3d->camera.x - sprite->x, 2)
-				+ pow(cub3d->camera.y - sprite->y, 2));
+			+ pow(cub3d->camera.y - sprite->y, 2));
 		tmp = tmp->next;
 	}
 	sort_sprites(cub3d->sp_manager.sprites_list);

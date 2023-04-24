@@ -55,6 +55,28 @@ void	draw_player(t_cub3d *cub3d)
 	}
 }
 
+void	draw_map_bg(t_cub3d *cub3d, float radius, int origo_x, int origo_y)
+{
+	float	i;
+	float	rad_safe;
+
+	rad_safe = radius;
+	////could be optimized
+	while (radius > rad_safe - 26)
+	{
+		i = 0;
+		while (i < 360)
+		{
+			put_pixel(&cub3d->img, (int)ceil(origo_x + (radius * cos(i))), \
+			(int)ceil(origo_y - (radius * sin(i))), 0x000000);
+			i += .6;
+		}
+		radius -= 1;
+	}
+	if (rad_safe > (HEIGHT / 8 - 5))
+		return (draw_map_bg(cub3d, rad_safe - 1, WIDTH - 10 - rad_safe, HEIGHT - 10 - rad_safe));
+}
+
 void	draw_map_tiles(t_cub3d *cub3d)
 {
 	float	radius;
@@ -65,6 +87,7 @@ void	draw_map_tiles(t_cub3d *cub3d)
 	radius = HEIGHT / 8 - 5;
 	origo_x = WIDTH - 10 - radius;
 	origo_y = HEIGHT - 10 - radius;
+	draw_map_bg(cub3d, radius + 5, origo_x - 5, origo_y - 5);
 	while (radius > 0)
 	{
 		i = 0;
@@ -96,7 +119,8 @@ void	draw_map_frame(t_cub3d *cub3d, int radius)
 	while (i != 360)
 	{
 		put_pixel(&cub3d->img, (int)ceil(origo_x + (radius * cos(i))), \
-		(int)ceil(origo_y - (radius * sin(i))), 0x004D00);
+		(int)ceil(origo_y - (radius * sin(i))), 0xB3B3B3);
+		//0x004D00);
 		i += .5;
 	}
 	draw_map_frame(cub3d, radius - 1);

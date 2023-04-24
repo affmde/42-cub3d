@@ -22,6 +22,7 @@ UTILS_DIR = srcs/utils/
 FILE_VALIDATION_DIR = srcs/file_validation/
 MLX_HANDLING_DIR = srcs/mlx_handling/
 RAYCASTING_DIR = srcs/raycasting/
+SPRITES_DIR = srcs/sprites/
 
 CORE = main.c handle_errors.c clean.c draw_example.c
 
@@ -30,16 +31,17 @@ FILE_PARSING = file_read.c parse_elements.c parse_map.c
 INIT = cub3d_init.c cam_init.c image_init.c ray_init.c
 
 UTILS = parse_utils.c texture_creator.c walls_creator.c map_validation_utils.c return_textures.c math_utils.c bresenham_algo.c \
-colors.c graphics_utils.c movement_utils.c
+colors.c graphics_utils.c movement_utils.c sprites_utils.c
 
 FILE_VALIDATION = map_validity.c file_validity.c elements_validity.c map_closed.c fc_validity.c get_map_copy.c
 
 MLX_HANDLING = mlx_handling.c events.c mouse.c move_player.c rotate_player.c
 
-RAYCASTING = raycast.c load_textures.c texture_render.c minimap.c sprites_config.c sprites.c load_sprites.c sprites_utils.c gun_render.c \
-shoot.c aim.c bullets.c
+RAYCASTING = raycast.c texture_render.c minimap.c
 
-ALL_SRCS = $(FILE_PARSING) $(INIT) $(UTILS) $(FILE_VALIDATION) $(MLX_HANDLING) $(RAYCASTING) $(CORE)
+SPRITES = sprites.c sprites_config.c load_sprites.c gun_render.c shoot.c aim.c bullets.c load_textures.c
+
+ALL_SRCS = $(FILE_PARSING) $(INIT) $(UTILS) $(FILE_VALIDATION) $(MLX_HANDLING) $(RAYCASTING) $(CORE) $(SPRITES)
 OBJ_FILES = $(ALL_SRCS:.c=.o)
 OBJS = $(patsubst %, $(OBJS_DIR)%, $(ALL_SRCS:.c=.o))
 
@@ -84,6 +86,10 @@ $(OBJS_DIR)%.o: $(MLX_HANDLING_DIR)%.c
 	@echo "$(COLOUR_BLUE)$@ created$(COLOUR_END)"
 
 $(OBJS_DIR)%.o: $(RAYCASTING_DIR)%.c
+	@cc $(FLAGS) -c $< -o $@
+	@echo "$(COLOUR_BLUE)$@ created$(COLOUR_END)"
+
+$(OBJS_DIR)%.o: $(SPRITES_DIR)%.c
 	@cc $(FLAGS) -c $< -o $@
 	@echo "$(COLOUR_BLUE)$@ created$(COLOUR_END)"
 

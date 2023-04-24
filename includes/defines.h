@@ -24,6 +24,11 @@
 #define MOVEMENT_SPEED 0.08
 #define TEST_SPEED 1
 #define ROTATE_SPEED 0.07
+#define MINIMAP_SIZE 7
+#define MINI_RAY_ACCURACY 3
+#define MINI_RAY_DIST 25
+#define MINI_RAY_MAX_DIST 84
+#define RAY_LEN_ACCURACY 0.15
 #define MAC_UP 13
 #define MAC_RIGHT 2
 #define MAC_LEFT 0

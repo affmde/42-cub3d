@@ -37,7 +37,7 @@ FILE_VALIDATION = map_validity.c file_validity.c elements_validity.c map_closed.
 
 MLX_HANDLING = mlx_handling.c events.c mouse.c move_player.c rotate_player.c
 
-RAYCASTING = raycast.c texture_render.c minimap.c
+RAYCASTING = raycast.c texture_render.c minimap.c minimap_rays.c
 
 SPRITES = sprites.c sprites_config.c load_sprites.c gun_render.c shoot.c aim.c bullets.c load_textures.c
 

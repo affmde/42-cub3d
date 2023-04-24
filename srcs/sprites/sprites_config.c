@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 17:47:14 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/24 15:04:01 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/24 17:20:41 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,5 @@ void	sprites_config(t_cub3d *cub3d)
 {
 	get_sprites(cub3d);
 	load_sprite_texture(cub3d);
+	cub3d->sp_manager.enemies_left = cub3d->sp_manager.total_sprites;
 }

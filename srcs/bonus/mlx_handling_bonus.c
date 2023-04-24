@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_handling.c                                     :+:      :+:    :+:   */
+/*   mlx_handling_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/03 09:42:29 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/24 17:45:08 by andrferr         ###   ########.fr       */
+/*   Created: 2023/04/24 17:35:01 by andrferr          #+#    #+#             */
+/*   Updated: 2023/04/24 17:45:01 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static int	close_window(void)
 
 static int	play(t_cub3d *cub3d)
 {
+	delta_time(cub3d);
 	raycast_environemt(cub3d);
 	move_player(cub3d);
 	rotate_player(cub3d);

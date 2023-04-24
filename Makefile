@@ -6,9 +6,11 @@ COLOUR_BLUE=\033[0;34m
 COLOUR_END=\033[0m
 
 NAME = cub3D
+NAME_BONUS = cub3D_bonus
 
 #Flags
 FLAGS = -Wall -Werror -Wextra -I includes
+BONUS_FLAGS = -Wall -Werror -Wextra -I includes_bonus
 LINFLAGS = -lmlx -lm -lXext -lX11
 MOSFLAGS = -lmlx -lm -framework OpenGl -framework AppKit
 LIBFT = libft/libft.a
@@ -23,6 +25,7 @@ FILE_VALIDATION_DIR = srcs/file_validation/
 MLX_HANDLING_DIR = srcs/mlx_handling/
 RAYCASTING_DIR = srcs/raycasting/
 SPRITES_DIR = srcs/sprites/
+BONUS_DIR = srcs/bonus/
 
 CORE = main.c handle_errors.c clean.c draw_example.c
 
@@ -41,11 +44,14 @@ RAYCASTING = raycast.c texture_render.c minimap.c minimap_rays.c
 
 SPRITES = sprites.c sprites_config.c load_sprites.c gun_render.c shoot.c aim.c bullets.c load_textures.c
 
-BONUS = time_bonus.c
+BONUS = time_bonus.c map_validation_utils_bonus.c move_player_bonus.c mlx_handling_bonus.c rotate_player_bonus.c
 
 ALL_SRCS = $(FILE_PARSING) $(INIT) $(UTILS) $(FILE_VALIDATION) $(MLX_HANDLING) $(RAYCASTING) $(CORE) $(SPRITES)
+ALL_BONUS_SRCS := $(filter-out map_validation_utils.c move_player.c mlx_handling.c rotate_player.c , $(ALL_SRCS))
+ALL_BONUS_SRCS += $(BONUS)
 OBJ_FILES = $(ALL_SRCS:.c=.o)
 OBJS = $(patsubst %, $(OBJS_DIR)%, $(ALL_SRCS:.c=.o))
+BONUS_OBJS = $(patsubst %, $(OBJS_DIR)%, $(ALL_BONUS_SRCS:.c=.o))
 
 all: $(NAME)
 
@@ -95,6 +101,10 @@ $(OBJS_DIR)%.o: $(SPRITES_DIR)%.c
 	@cc $(FLAGS) -c $< -o $@
 	@echo "$(COLOUR_BLUE)$@ created$(COLOUR_END)"
 
+$(OBJS_DIR)%.o: $(BONUS_DIR)%.c
+	@cc $(FLAGS) -c $< -o $@
+	@echo "$(COLOUR_BLUE)$@ created$(COLOUR_END)"
+
 clean:
 	@make clean -C libft
 	@echo "$(COLOUR_BLUE)libft object files cleaned$(COLOUR_END)"
@@ -108,6 +118,11 @@ fclean: clean
 	@echo "$(COLOUR_RED)libft.a removed$(COLOUR_END)"
 	@rm -f $(NAME)
 	@echo "$(COLOUR_RED)$(NAME) removed$(COLOUR_END)"
+
+bonus: $(LIBFT) $(OBJS_DIR) $(BONUS_OBJS)
+	@cc $(BONUS_FLAGS) $(BONUS_OBJS) -o $(NAME_BONUS) -L. $(LIBFT) $(MOSFLAGS)
+#	@cc $(BONUS_FLAGS) $(OBJS) -o $(NAME_BONUS) -L. $(LIBFT) $(LINFLAGS)
+	@echo "$(COLOUR_GREEN)$(NAME_BONUS) created$(COLOUR_END)"
 
 re: fclean all
 

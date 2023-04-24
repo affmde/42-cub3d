@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/20 14:28:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/24 18:06:09 by andrferr         ###   ########.fr       */
+/*   Created: 2023/04/24 18:00:52 by andrferr          #+#    #+#             */
+/*   Updated: 2023/04/24 18:12:04 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
 # include "../libft/libft.h"
-# include "structs.h"
-# include "defines.h"
+# include "structs_bonus.h"
+# include "defines_bonus.h"
 # include <fcntl.h>
 # include <mlx.h>
 # include <math.h>
 # include <stdio.h>
-#include <time.h>
-#include <sys/time.h>
+# include <time.h>
+# include <sys/time.h>
 
 int			file_read(char *path, t_cub3d *cub3d);
 int			check_identifier(char *str);

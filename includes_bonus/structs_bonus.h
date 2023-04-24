@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
+/*   structs_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/24 18:07:39 by andrferr         ###   ########.fr       */
+/*   Created: 2023/04/24 18:02:17 by andrferr          #+#    #+#             */
+/*   Updated: 2023/04/24 18:02:39 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTS_H
-# define STRUCTS_H
+#ifndef STRUCTS_BONUS_H
+# define STRUCTS_BONUS_H
 
 typedef struct s_color
 {
@@ -173,6 +173,8 @@ typedef struct s_cub3d
 	t_sprites_manager	sp_manager;
 	t_weapon			weapon;
 	t_textures			aim;
+	double				d_time;
+	struct timeval		time;
 }	t_cub3d;
 
 typedef struct s_map_check

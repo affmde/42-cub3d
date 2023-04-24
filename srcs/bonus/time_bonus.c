@@ -6,11 +6,11 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 16:37:03 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/24 16:37:52 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/24 18:10:32 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../includes_bonus/cub3d_bonus.h"
 
 void	delta_time(t_cub3d *cub3d)
 {

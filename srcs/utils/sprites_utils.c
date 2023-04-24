@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 10:56:20 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/24 13:46:54 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/24 15:37:09 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ int	get_sprite_text(t_sprite *sprite)
 		sprite->anim_frame++;
 	if (sprite->anim_frame == 0)
 		return (0);
-	if (sprite->anim_frame < FRAME_RATE * 0.2)
+	if (sprite->anim_frame < ENEMY_DIE_SPEED * 0.2)
 		return (1);
-	if (sprite->anim_frame < FRAME_RATE * 0.4)
+	if (sprite->anim_frame < ENEMY_DIE_SPEED * 0.4)
 		return (2);
-	if (sprite->anim_frame < FRAME_RATE * 0.6)
+	if (sprite->anim_frame < ENEMY_DIE_SPEED * 0.6)
 		return (3);
-	if (sprite->anim_frame < FRAME_RATE * 0.8)
+	if (sprite->anim_frame < ENEMY_DIE_SPEED * 0.8)
 		return (4);
 	else
 	{

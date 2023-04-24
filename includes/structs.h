@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/24 13:25:07 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/24 15:57:29 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,6 +172,7 @@ typedef struct s_cub3d
 	t_sprites_manager	sp_manager;
 	t_weapon			weapon;
 	t_textures			aim;
+	double				d_time;
 }	t_cub3d;
 
 typedef struct s_map_check

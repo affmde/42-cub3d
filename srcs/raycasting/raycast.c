@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:10:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/23 18:05:04 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/24 08:43:50 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ void	raycasting(t_cub3d *cub3d)
 	}
 	render_sprites(cub3d);
 	draw_map_tiles(cub3d);
+	bullets_render(cub3d);
 	gun_render(cub3d, select_gun_texture(&cub3d->weapon));
 	aim_render(cub3d);
 	mlx_put_image_to_window(cub3d->ptr, cub3d->win, cub3d->img.img_ptr, 0, 0);

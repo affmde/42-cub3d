@@ -41,6 +41,8 @@ RAYCASTING = raycast.c texture_render.c minimap.c minimap_rays.c
 
 SPRITES = sprites.c sprites_config.c load_sprites.c gun_render.c shoot.c aim.c bullets.c load_textures.c
 
+BONUS = time_bonus.c
+
 ALL_SRCS = $(FILE_PARSING) $(INIT) $(UTILS) $(FILE_VALIDATION) $(MLX_HANDLING) $(RAYCASTING) $(CORE) $(SPRITES)
 OBJ_FILES = $(ALL_SRCS:.c=.o)
 OBJS = $(patsubst %, $(OBJS_DIR)%, $(ALL_SRCS:.c=.o))

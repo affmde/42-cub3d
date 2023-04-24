@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 11:04:27 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/24 15:13:20 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/24 17:05:14 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@
 #define LIN_R_LEFT 65361
 #define FRAME_RATE 10
 #define ENEMY_DIE_SPEED 20
-#define MAC_CTRL 256
+#define MAC_SPACE 49
 #define LIN_CTRL 65507
 #endif

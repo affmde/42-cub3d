@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/24 15:57:29 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/24 16:18:21 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,6 +173,7 @@ typedef struct s_cub3d
 	t_weapon			weapon;
 	t_textures			aim;
 	double				d_time;
+	struct timeval		time;
 }	t_cub3d;
 
 typedef struct s_map_check

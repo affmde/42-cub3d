@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:28:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/24 13:45:36 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/24 16:22:51 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <mlx.h>
 # include <math.h>
 # include <stdio.h>
+#include <time.h>
+#include <sys/time.h>
 
 int			file_read(char *path, t_cub3d *cub3d);
 int			check_identifier(char *str);
@@ -107,4 +109,7 @@ void	bullets_render(t_cub3d *cub3d);
 int		get_sprite_text(t_sprite *sprite);
 t_sprite	*find_sprite(t_cub3d *cub3d, int x, int y);
 void		handle_shoot_hit(t_cub3d *cub3d);
+
+//Time
+void	delta_time(t_cub3d *cub3d);
 #endif

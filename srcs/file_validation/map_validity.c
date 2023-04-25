@@ -58,6 +58,8 @@ int	valid_map(t_cub3d *cub3d)
 		return (1);
 	if (map_check.empty_lines)
 		return (1);
+	if (door_validity(cub3d->map->map))
+		return (1);
 	if (is_map_closed(cub3d, &map_check))
 	{
 		clean_char_arr(map_check.map);

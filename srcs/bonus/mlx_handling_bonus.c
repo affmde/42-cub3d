@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 17:35:01 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 15:01:33 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 15:22:46 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,20 @@ static int	close_window(void)
 	exit(0);
 }
 
-static int	play(t_cub3d *cub3d)
+static void	data_update(t_cub3d *cub3d)
 {
 	delta_time(cub3d);
+	printf("remaining opponents: %d\n", cub3d->sp_manager.enemies_left);
 	if (cub3d->health <= 0)
 	{
 		printf("You Lost!!\n");
 		exit(0);
 	}
+}
+
+static int	play(t_cub3d *cub3d)
+{
+	data_update(cub3d);
 	raycast_environemt(cub3d);
 	move_player(cub3d);
 	rotate_player(cub3d);

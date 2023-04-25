@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:01:36 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 11:48:07 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 15:18:16 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,9 @@
 //Animations
 # define ENEMY_DIE_SPEED 0.5
 # define FRAME_RATE 0.3
+# define ENEMY_SHOOT 0.8
+
+//ENEMY
+# define DAMAGE 10
+
 #endif

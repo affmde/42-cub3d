@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 17:29:27 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/24 17:29:47 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 19:31:00 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,5 @@ void	add_values_to_compare(t_map_check *a, t_map_check *b)
 	a->spaces = b->spaces;
 	a->zeros = b->zeros;
 	a->hats = b->hats;
+	a->enemies = b->enemies;
 }

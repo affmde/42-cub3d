@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 08:58:08 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/19 16:05:28 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 19:36:24 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ static void	map_count_elements(char **map, t_map_check *map_check)
 		{
 			if (map[i][j] == '1')
 				map_check->ones++;
+			else if (map[i][j] == '2')
+				map_check->enemies++;
 			else if (map[i][j] == ' ')
 				map_check->spaces++;
 			else if (map[i][j] == '0' || map[i][j] == 'N'
@@ -89,7 +91,7 @@ int	is_map_closed(t_cub3d *cub3d, t_map_check *map)
 	map_check_init(&compare);
 	map_count_elements(map->map, &compare);
 	if (map->ones != compare.ones || map->spaces != compare.spaces
-		|| compare.zeros != 0 || map->hats != compare.hats)
+		|| compare.zeros != 0 || map->hats != compare.hats || compare.enemies != 0)
 		return (1);
 	return (0);
 }

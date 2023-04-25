@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:46:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 14:13:03 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 19:22:56 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,6 +184,7 @@ typedef struct s_map_check
 	int		zeros;
 	int		spaces;
 	int		hats;
+	int		enemies;
 	char	**map;
 }	t_map_check;
 

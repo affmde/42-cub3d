@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:01:36 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 16:30:08 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 19:18:38 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@
 # define MAC_CTRL 256
 # define LIN_CTRL 65507
 # define MAC_SPACE 49
+# define LIN_SPACE 32
 
 //Animations
 # define ENEMY_DIE_SPEED 0.5

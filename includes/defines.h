@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 11:04:27 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 16:30:02 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 19:17:54 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@
 # define MAC_CTRL 256
 # define LIN_CTRL 65507
 # define MAC_SPACE 49
+# define LIN_SPACE 32
 
 //ENEMY
 # define DAMAGE 10

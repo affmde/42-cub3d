@@ -42,7 +42,7 @@ MLX_HANDLING = mlx_handling.c events.c mouse.c move_player.c rotate_player.c
 
 RAYCASTING = raycast.c texture_render.c minimap.c minimap_rays.c
 
-SPRITES = sprites.c sprites_config.c load_sprites.c gun_render.c shoot.c aim.c bullets.c load_textures.c
+SPRITES = sprites.c sprites_config.c load_sprites.c gun_render.c shoot.c aim.c bullets.c load_textures.c health_bar.c
 
 BONUS = time_bonus.c map_validation_utils_bonus.c move_player_bonus.c mlx_handling_bonus.c rotate_player_bonus.c main_bonus.c \
 load_all_text_bonus.c raycast_bonus.c cub3d_init_bonus.c opponent_attack_bonus.c

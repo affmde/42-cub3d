@@ -62,8 +62,8 @@ $(LIBFT):
 	@echo "$(COLOUR_GREEN)libft compilation completed$(COLOUR_END)"
 
 $(NAME): $(LIBFT) $(OBJS_DIR) $(OBJS)
-#	@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(MOSFLAGS)
-	@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(LINFLAGS)
+	@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(MOSFLAGS)
+#	@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(LINFLAGS)
 	@echo "$(COLOUR_GREEN)$@ created$(COLOUR_END)"
 
 $(OBJS_DIR):
@@ -121,8 +121,8 @@ fclean: clean
 	@echo "$(COLOUR_RED)$(NAME) removed$(COLOUR_END)"
 
 bonus: $(LIBFT) $(OBJS_DIR) $(BONUS_OBJS)
-#	@cc $(BONUS_FLAGS) $(BONUS_OBJS) -o $(NAME_BONUS) -L. $(LIBFT) $(MOSFLAGS)
-	@cc $(BONUS_FLAGS) $(BONUS_OBJS) -o $(NAME_BONUS) -L. $(LIBFT) $(LINFLAGS)
+	@cc $(BONUS_FLAGS) $(BONUS_OBJS) -o $(NAME_BONUS) -L. $(LIBFT) $(MOSFLAGS)
+#	@cc $(BONUS_FLAGS) $(BONUS_OBJS) -o $(NAME_BONUS) -L. $(LIBFT) $(LINFLAGS)
 	@echo "$(COLOUR_GREEN)$(NAME_BONUS) created$(COLOUR_END)"
 
 re: fclean all

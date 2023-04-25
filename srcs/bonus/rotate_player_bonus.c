@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 17:55:23 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/24 18:12:54 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:00:42 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@ static void	turn_right(t_cub3d *cub3d)
 	double	old_plane;
 
 	old_dir_x = cub3d->camera.dir_x;
-	cub3d->camera.dir_x = cub3d->camera.dir_x * cos(ROTATE_SPEED * cub3d->d_time)
+	cub3d->camera.dir_x = cub3d->camera.dir_x
+		* cos(ROTATE_SPEED * cub3d->d_time)
 		- cub3d->camera.dir_y * sin(ROTATE_SPEED * cub3d->d_time);
 	cub3d->camera.dir_y = old_dir_x * sin(ROTATE_SPEED * cub3d->d_time)
 		+ cub3d->camera.dir_y * cos(ROTATE_SPEED * cub3d->d_time);
 	old_plane = cub3d->camera.plane_x;
-	cub3d->camera.plane_x = cub3d->camera.plane_x * cos(ROTATE_SPEED * cub3d->d_time)
+	cub3d->camera.plane_x = cub3d->camera.plane_x
+		* cos(ROTATE_SPEED * cub3d->d_time)
 		- cub3d->camera.plane_y * sin(ROTATE_SPEED * cub3d->d_time);
 	cub3d->camera.plane_y = old_plane * sin(ROTATE_SPEED * cub3d->d_time)
 		+ cub3d->camera.plane_y * cos(ROTATE_SPEED * cub3d->d_time);
@@ -35,12 +37,14 @@ static void	turn_left(t_cub3d *cub3d)
 	double	old_plane;
 
 	old_dir_x = cub3d->camera.dir_x;
-	cub3d->camera.dir_x = cub3d->camera.dir_x * cos(-ROTATE_SPEED * cub3d->d_time)
+	cub3d->camera.dir_x = cub3d->camera.dir_x
+		* cos(-ROTATE_SPEED * cub3d->d_time)
 		- cub3d->camera.dir_y * sin(-ROTATE_SPEED * cub3d->d_time);
 	cub3d->camera.dir_y = old_dir_x * sin(-ROTATE_SPEED * cub3d->d_time)
 		+ cub3d->camera.dir_y * cos(-ROTATE_SPEED * cub3d->d_time);
 	old_plane = cub3d->camera.plane_x;
-	cub3d->camera.plane_x = cub3d->camera.plane_x * cos(-ROTATE_SPEED * cub3d->d_time)
+	cub3d->camera.plane_x = cub3d->camera.plane_x
+		* cos(-ROTATE_SPEED * cub3d->d_time)
 		- cub3d->camera.plane_y * sin(-ROTATE_SPEED * cub3d->d_time);
 	cub3d->camera.plane_y = old_plane * sin(-ROTATE_SPEED * cub3d->d_time)
 		+ cub3d->camera.plane_y * cos(-ROTATE_SPEED * cub3d->d_time);

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 09:44:49 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 16:37:24 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:06:30 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,43 +37,6 @@ static void	get_steps(t_cub3d *cub3d, int x)
 		cub3d->ray.step_y = 1;
 		cub3d->ray.side_dist_y = (cub3d->ray.map_y + 1.0 - cub3d->camera.y)
 			* cub3d->ray.delta_dist_y;
-	}
-}
-
-static void	dda_algo(t_cub3d *cub3d, int x, int shoot)
-{
-	while (cub3d->ray.hit == 0)
-	{
-		if (cub3d->ray.side_dist_x < cub3d->ray.side_dist_y)
-		{
-			cub3d->ray.side_dist_x += cub3d->ray.delta_dist_x;
-			cub3d->ray.map_x += cub3d->ray.step_x;
-			if (cub3d->ray.dir_x[x] > 0)
-				cub3d->ray.direction = EAST;
-			else
-				cub3d->ray.direction = WEST;
-		}
-		else
-		{
-			cub3d->ray.side_dist_y += cub3d->ray.delta_dist_y;
-			cub3d->ray.map_y += cub3d->ray.step_y;
-			if (cub3d->ray.dir_y[x] > 0)
-				cub3d->ray.direction = SOUTH;
-			else
-				cub3d->ray.direction = NORTH;
-		}
-		if (cub3d->map->map[cub3d->ray.map_y][cub3d->ray.map_x] == '2')
-			opponent_attack(cub3d);
-		if (shoot)
-		{
-			if (cub3d->map->map[cub3d->ray.map_y][cub3d->ray.map_x] == '2')
-			{
-				handle_shoot_hit(cub3d);
-				return ;
-			}
-		}
-		if (cub3d->map->map[cub3d->ray.map_y][cub3d->ray.map_x] == '1')
-			cub3d->ray.hit = 1;
 	}
 }
 
@@ -119,7 +82,7 @@ void	raycasting(t_cub3d *cub3d, int x, int shoot)
 
 void	raycast_environemt(t_cub3d *cub3d)
 {
-	char *str;
+	char	*str;
 
 	cub3d->ray.index = 0;
 	while (cub3d->ray.index < WIDTH)
@@ -135,7 +98,8 @@ void	raycast_environemt(t_cub3d *cub3d)
 	draw_health_bar(cub3d);
 	str = ft_itoa(cub3d->sp_manager.enemies_left);
 	mlx_put_image_to_window(cub3d->ptr, cub3d->win, cub3d->img.img_ptr, 0, 0);
-	mlx_string_put(cub3d->ptr, cub3d->win, 10, 10, 0xffffff, "Opponents remaining: ");
+	mlx_string_put(cub3d->ptr, cub3d->win, 10, 10,
+		0xffffff, "Opponents remaining: ");
 	mlx_string_put(cub3d->ptr, cub3d->win, 40, 40, 0xffffff, str);
 	free(str);
 }

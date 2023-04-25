@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:01:03 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 14:40:43 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:07:36 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	opponent_attack(t_cub3d *cub3d)
 {
-	int	random;
+	int			random;
 	t_sprite	*sprite;
 
 	sprite = find_sprite(cub3d, cub3d->ray.map_x, cub3d->ray.map_y);
@@ -26,4 +26,3 @@ void	opponent_attack(t_cub3d *cub3d)
 			sprite->is_attacking = 1;
 	}
 }
-

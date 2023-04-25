@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 17:32:20 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/24 18:12:37 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:08:16 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static void	move_forward(t_cub3d *cub3d)
 	x = (int)(cub3d->camera.x + cub3d->camera.dir_x
 			* (MOVEMENT_SPEED * cub3d->d_time) + player_body);
 	if (can_move(cub3d->map->map[y][x]))
-		cub3d->camera.x += cub3d->camera.dir_x * (MOVEMENT_SPEED * cub3d->d_time);
+		cub3d->camera.x += cub3d->camera.dir_x
+			* (MOVEMENT_SPEED * cub3d->d_time);
 	if (cub3d->camera.dir_y > 0)
 		player_body = PLAYER_BODY;
 	else if (cub3d->camera.dir_x > 0)
@@ -35,7 +36,8 @@ static void	move_forward(t_cub3d *cub3d)
 	y = (int)(cub3d->camera.y + cub3d->camera.dir_y
 			* (MOVEMENT_SPEED * cub3d->d_time) + player_body);
 	if (can_move(cub3d->map->map[y][x]))
-		cub3d->camera.y += cub3d->camera.dir_y * (MOVEMENT_SPEED * cub3d->d_time);
+		cub3d->camera.y += cub3d->camera.dir_y
+			* (MOVEMENT_SPEED * cub3d->d_time);
 }
 
 static void	move_backwards(t_cub3d *cub3d)
@@ -52,7 +54,8 @@ static void	move_backwards(t_cub3d *cub3d)
 	x = (int)(cub3d->camera.x - cub3d->camera.dir_x
 			* (MOVEMENT_SPEED * cub3d->d_time) + player_body);
 	if (can_move(cub3d->map->map[y][x]))
-		cub3d->camera.x -= cub3d->camera.dir_x * (MOVEMENT_SPEED * cub3d->d_time);
+		cub3d->camera.x -= cub3d->camera.dir_x
+			* (MOVEMENT_SPEED * cub3d->d_time);
 	if (cub3d->camera.dir_y > 0)
 		player_body = -PLAYER_BODY;
 	else if (cub3d->camera.dir_x > 0)
@@ -61,7 +64,8 @@ static void	move_backwards(t_cub3d *cub3d)
 	y = (int)(cub3d->camera.y - cub3d->camera.dir_y
 			* (MOVEMENT_SPEED * cub3d->d_time) + player_body);
 	if (can_move(cub3d->map->map[y][x]))
-		cub3d->camera.y -= cub3d->camera.dir_y * (MOVEMENT_SPEED * cub3d->d_time);
+		cub3d->camera.y -= cub3d->camera.dir_y
+			* (MOVEMENT_SPEED * cub3d->d_time);
 }
 
 static void	move_left(t_cub3d *cub3d)
@@ -78,7 +82,8 @@ static void	move_left(t_cub3d *cub3d)
 	x = (int)(cub3d->camera.x - cub3d->camera.plane_x
 			* (MOVEMENT_SPEED * cub3d->d_time) + player_body);
 	if (can_move(cub3d->map->map[y][x]))
-		cub3d->camera.x -= cub3d->camera.plane_x * (MOVEMENT_SPEED * cub3d->d_time);
+		cub3d->camera.x -= cub3d->camera.plane_x
+			* (MOVEMENT_SPEED * cub3d->d_time);
 	if (cub3d->camera.plane_y > 0)
 		player_body = -PLAYER_BODY;
 	else if (cub3d->camera.plane_x > 0)
@@ -87,7 +92,8 @@ static void	move_left(t_cub3d *cub3d)
 			* (MOVEMENT_SPEED * cub3d->d_time) + player_body);
 	x = (int)cub3d->camera.x;
 	if (can_move(cub3d->map->map[y][x]))
-		cub3d->camera.y -= cub3d->camera.plane_y * (MOVEMENT_SPEED * cub3d->d_time);
+		cub3d->camera.y -= cub3d->camera.plane_y
+			* (MOVEMENT_SPEED * cub3d->d_time);
 }
 
 static void	move_right(t_cub3d *cub3d)
@@ -104,7 +110,8 @@ static void	move_right(t_cub3d *cub3d)
 	x = (int)(cub3d->camera.x + cub3d->camera.plane_x
 			* (MOVEMENT_SPEED * cub3d->d_time) + player_body);
 	if (can_move(cub3d->map->map[y][x]))
-		cub3d->camera.x += cub3d->camera.plane_x * (MOVEMENT_SPEED * cub3d->d_time);
+		cub3d->camera.x += cub3d->camera.plane_x
+			* (MOVEMENT_SPEED * cub3d->d_time);
 	if (cub3d->camera.plane_y > 0)
 		player_body = PLAYER_BODY;
 	else if (cub3d->camera.plane_x > 0)
@@ -113,7 +120,8 @@ static void	move_right(t_cub3d *cub3d)
 			* (MOVEMENT_SPEED * cub3d->d_time) + player_body);
 	x = (int)cub3d->camera.x;
 	if (can_move(cub3d->map->map[y][x]))
-		cub3d->camera.y += cub3d->camera.plane_y * (MOVEMENT_SPEED * cub3d->d_time);
+		cub3d->camera.y += cub3d->camera.plane_y
+			* (MOVEMENT_SPEED * cub3d->d_time);
 }
 
 void	move_player(t_cub3d *cub3d)

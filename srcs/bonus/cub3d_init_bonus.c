@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:58:24 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 14:06:24 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:09:26 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ t_cub3d	*cub3d_init(void)
 	return (cub3d);
 }
 
-
 static void	movement_init(t_movement *m)
 {
 	m->move_backwards = 0;
@@ -33,7 +32,6 @@ static void	movement_init(t_movement *m)
 	m->turn_left = 0;
 	m->turn_right = 0;
 }
-
 
 void	cub_config_init(t_cub3d *cub3d)
 {

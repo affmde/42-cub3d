@@ -111,6 +111,8 @@ clean:
 	@echo "$(COLOUR_BLUE)libft object files cleaned$(COLOUR_END)"
 	@rm -f $(OBJS)
 	@echo "$(COLOUR_BLUE)object directory cleaned$(COLOUR_END)"
+	@rm -f $(BONUS_OBJS)
+	@echo "$(COLOUR_BLUE)bonus objects cleaned$(COLOUR_END)"
 
 fclean: clean
 	@rm libft/libft.h.gch
@@ -119,6 +121,8 @@ fclean: clean
 	@echo "$(COLOUR_RED)libft.a removed$(COLOUR_END)"
 	@rm -f $(NAME)
 	@echo "$(COLOUR_RED)$(NAME) removed$(COLOUR_END)"
+	@rm -f $(NAME_BONUS)
+	@echo "$(COLOUR_RED)$(NAME_BONUS) removed$(COLOUR_END)"
 
 bonus: $(LIBFT) $(OBJS_DIR) $(BONUS_OBJS)
 	@cc $(BONUS_FLAGS) $(BONUS_OBJS) -o $(NAME_BONUS) -L. $(LIBFT) $(MOSFLAGS)

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 10:56:20 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 15:18:00 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 16:07:24 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,20 +53,22 @@ int	enemy_attack(t_cub3d *cub3d, t_sprite *sprite)
 	if (sprite->is_attacking)
 	{
 		sprite->anim_frame += cub3d->d_time;
-		if (sprite->anim_frame < ENEMY_SHOOT * 0.2)
+		if (sprite->anim_frame < ENEMY_SHOOT * 0.20)
 			return (6);
-		if (sprite->anim_frame < ENEMY_SHOOT * 0.4)
+		if (sprite->anim_frame < ENEMY_SHOOT * 0.40)
 			return (7);
-		if (sprite->anim_frame < ENEMY_SHOOT * 0.6)
+		if (sprite->anim_frame < ENEMY_SHOOT * 0.60)
 			return (8);
-		if (sprite->anim_frame < ENEMY_SHOOT * 0.8)
+		else if (sprite->anim_frame < ENEMY_SHOOT)
+			return (9);
+		else
 		{
 			sprite->is_attacking = 0;
-			sprite->anim_frame = 0;
 			hit = rand() % 100;
 			if (hit < 50)
 				cub3d->health -= DAMAGE;
-			return (9);
+			sprite->anim_frame = 0;
+			return (0);
 		}
 	}
 	return (0);

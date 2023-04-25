@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 15:17:57 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 17:44:35 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 18:20:06 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,16 @@ void	weapon_init(t_cub3d *cub3d)
 	load_gun_texure(cub3d, "./textures/shotgun3.xpm", 2);
 	load_gun_texure(cub3d, "./textures/shotgun4.xpm", 3);
 	load_gun_texure(cub3d, "./textures/shotgun5.xpm", 4);
-	cub3d->weapon.bullets = 10;
-	cub3d->weapon.max_bullets = 10;
+	if (cub3d->sp_manager.total_sprites > 0)
+	{
+		cub3d->weapon.bullets = cub3d->sp_manager.total_sprites * 2;
+		cub3d->weapon.max_bullets = cub3d->sp_manager.total_sprites * 2;
+	}
+	else
+	{
+		cub3d->weapon.bullets = 10;
+		cub3d->weapon.max_bullets = 10;
+	}
 	cub3d->weapon.state = 0;
 }
 

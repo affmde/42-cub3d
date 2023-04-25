@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:00:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 16:11:40 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:06:00 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	raycasting(t_cub3d *cub3d, int x, int shoot);
 void	render(t_cub3d *cub3d);
 int		load_textures(t_cub3d *cub3d);
 void	ray_reset_values(t_ray *ray);
+void	dda_algo(t_cub3d *cub3d, int x, int shoot);
 void	sprites_config(t_cub3d *cub3d);
 void	raycast_environemt(t_cub3d *cub3d);
 

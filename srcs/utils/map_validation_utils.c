@@ -34,3 +34,9 @@ void	add_values_to_compare(t_map_check *a, t_map_check *b)
 	a->zeros = b->zeros;
 	a->hats = b->hats;
 }
+
+int door_validity(char **map)
+{
+	(void)map;
+	return (0);
+}

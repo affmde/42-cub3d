@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:01:36 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 16:06:27 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 16:30:08 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,6 @@
 
 //ENEMY
 # define DAMAGE 10
+# define HIT_PERCENTAGE 65
 
 #endif

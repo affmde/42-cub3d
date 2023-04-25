@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:02:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 14:13:16 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 16:16:20 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,6 +178,7 @@ typedef struct s_cub3d
 	double				d_time;
 	struct timeval		time;
 	int					health;
+	int					won;
 }	t_cub3d;
 
 typedef struct s_map_check

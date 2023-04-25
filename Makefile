@@ -45,7 +45,7 @@ RAYCASTING = raycast.c texture_render.c minimap.c minimap_rays.c
 SPRITES = sprites.c sprites_config.c load_sprites.c gun_render.c shoot.c aim.c bullets.c load_textures.c health_bar.c
 
 BONUS = time_bonus.c map_validation_utils_bonus.c move_player_bonus.c mlx_handling_bonus.c rotate_player_bonus.c main_bonus.c \
-load_all_text_bonus.c raycast_bonus.c cub3d_init_bonus.c opponent_attack_bonus.c lost_screen_bonus.c
+load_all_text_bonus.c raycast_bonus.c cub3d_init_bonus.c opponent_attack_bonus.c end_screen_bonus.c
 
 ALL_SRCS = $(FILE_PARSING) $(INIT) $(UTILS) $(FILE_VALIDATION) $(MLX_HANDLING) $(RAYCASTING) $(CORE) $(SPRITES)
 ALL_BONUS_SRCS := $(filter-out map_validation_utils.c move_player.c mlx_handling.c rotate_player.c main.c raycast.c cub3d_init.c, $(ALL_SRCS))

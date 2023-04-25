@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 09:44:49 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 15:01:40 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 16:37:24 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,8 @@ void	raycasting(t_cub3d *cub3d, int x, int shoot)
 
 void	raycast_environemt(t_cub3d *cub3d)
 {
+	char *str;
+
 	cub3d->ray.index = 0;
 	while (cub3d->ray.index < WIDTH)
 	{
@@ -131,5 +133,9 @@ void	raycast_environemt(t_cub3d *cub3d)
 	gun_render(cub3d, select_gun_texture(cub3d, &cub3d->weapon));
 	aim_render(cub3d);
 	draw_health_bar(cub3d);
+	str = ft_itoa(cub3d->sp_manager.enemies_left);
 	mlx_put_image_to_window(cub3d->ptr, cub3d->win, cub3d->img.img_ptr, 0, 0);
+	mlx_string_put(cub3d->ptr, cub3d->win, 10, 10, 0xffffff, "Opponents remaining: ");
+	mlx_string_put(cub3d->ptr, cub3d->win, 40, 40, 0xffffff, str);
+	free(str);
 }

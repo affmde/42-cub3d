@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 10:56:20 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 16:07:24 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 16:28:56 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	enemy_attack(t_cub3d *cub3d, t_sprite *sprite)
 		{
 			sprite->is_attacking = 0;
 			hit = rand() % 100;
-			if (hit < 50)
+			if (hit < HIT_PERCENTAGE)
 				cub3d->health -= DAMAGE;
 			sprite->anim_frame = 0;
 			return (0);
@@ -90,10 +90,14 @@ int	get_sprite_text(t_cub3d *cub3d, t_sprite *sprite)
 		return (3);
 	if (sprite->anim_frame < ENEMY_DIE_SPEED * 0.8)
 		return (4);
+	if (sprite->anim_frame < ENEMY_DIE_SPEED)
+		return (5);
 	else
 	{
 		sprite->alive = 0;
 		cub3d->sp_manager.enemies_left--;
-		return (4);
+		if (cub3d->sp_manager.enemies_left <= 0)
+			cub3d->won = 1;
+		return (5);
 	}
 }

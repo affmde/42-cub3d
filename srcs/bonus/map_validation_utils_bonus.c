@@ -15,7 +15,8 @@
 int	is_valid_char(char c)
 {
 	if (c == ' ' || c == '1' || c == '0' || c == 'N'
-		|| c == 'S' || c == 'E' || c == 'W' || c == '2')
+		|| c == 'S' || c == 'E' || c == 'W' || c == '2'
+		|| c == 'C' || c == 'O')
 		return (1);
 	return (0);
 }

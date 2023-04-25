@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events.c                                           :+:      :+:    :+:   */
+/*   events_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/03 10:30:22 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 16:45:40 by andrferr         ###   ########.fr       */
+/*   Created: 2023/04/25 16:45:08 by andrferr          #+#    #+#             */
+/*   Updated: 2023/04/25 16:45:31 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../includes_bonus/cub3d_bonus.h"
 
 int	handle_key_pressed(int keycode, t_cub3d *cub3d)
 {
@@ -36,6 +36,8 @@ int	handle_key_pressed(int keycode, t_cub3d *cub3d)
 
 int	handle_key_released(int keycode, t_cub3d *cub3d)
 {
+	if (keycode == MAC_SPACE || keycode == LIN_CTRL)
+		shoot(cub3d);
 	if (keycode == MAC_UP || keycode == LIN_UP)
 		cub3d->movement.move_forward = 0;
 	else if (keycode == MAC_DOWN || keycode == LIN_DOWN)

@@ -34,22 +34,23 @@ FILE_PARSING = file_read.c parse_elements.c parse_map.c
 INIT = cub3d_init.c cam_init.c image_init.c ray_init.c
 
 UTILS = parse_utils.c texture_creator.c walls_creator.c map_validation_utils.c return_textures.c math_utils.c bresenham_algo.c \
-colors.c graphics_utils.c movement_utils.c sprites_utils.c
+colors.c graphics_utils.c movement_utils.c
 
 FILE_VALIDATION = map_validity.c file_validity.c elements_validity.c map_closed.c fc_validity.c get_map_copy.c
 
 MLX_HANDLING = mlx_handling.c events.c mouse.c move_player.c rotate_player.c
 
-RAYCASTING = raycast.c texture_render.c minimap.c minimap_rays.c
+RAYCASTING = raycast.c texture_render.c minimap.c minimap_rays.c load_textures.c
 
-SPRITES = sprites.c sprites_config.c load_sprites.c gun_render.c shoot.c aim.c bullets.c load_textures.c health_bar.c
+SPRITES = sprites.c sprites_config.c load_sprites.c gun_render.c shoot.c aim.c bullets.c health_bar.c
 
 BONUS = time_bonus.c map_validation_utils_bonus.c move_player_bonus.c mlx_handling_bonus.c rotate_player_bonus.c main_bonus.c \
-load_all_text_bonus.c raycast_bonus.c cub3d_init_bonus.c opponent_attack_bonus.c end_screen_bonus.c
+load_all_text_bonus.c raycast_bonus.c cub3d_init_bonus.c opponent_attack_bonus.c end_screen_bonus.c sprites_utils.c events_bonus.c
 
-ALL_SRCS = $(FILE_PARSING) $(INIT) $(UTILS) $(FILE_VALIDATION) $(MLX_HANDLING) $(RAYCASTING) $(CORE) $(SPRITES)
-ALL_BONUS_SRCS := $(filter-out map_validation_utils.c move_player.c mlx_handling.c rotate_player.c main.c raycast.c cub3d_init.c, $(ALL_SRCS))
+ALL_SRCS = $(FILE_PARSING) $(INIT) $(UTILS) $(FILE_VALIDATION) $(MLX_HANDLING) $(RAYCASTING) $(CORE)
+ALL_BONUS_SRCS := $(filter-out map_validation_utils.c move_player.c mlx_handling.c rotate_player.c main.c raycast.c cub3d_init.c events.c, $(ALL_SRCS))
 ALL_BONUS_SRCS += $(BONUS)
+ALL_BONUS_SRCS += $(SPRITES)
 OBJ_FILES = $(ALL_SRCS:.c=.o)
 OBJS = $(patsubst %, $(OBJS_DIR)%, $(ALL_SRCS:.c=.o))
 BONUS_OBJS = $(patsubst %, $(OBJS_DIR)%, $(ALL_BONUS_SRCS:.c=.o))

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:10:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 09:45:52 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 16:42:52 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,7 @@ static void	dda_algo(t_cub3d *cub3d, int x, int shoot)
 			else
 				cub3d->ray.direction = NORTH;
 		}
-		if (shoot)
-		{
-			if (cub3d->map->map[cub3d->ray.map_y][cub3d->ray.map_x] == '2')
-			{
-				handle_shoot_hit(cub3d);
-				return ;
-			}
-		}
+		(void)shoot;
 		if (cub3d->map->map[cub3d->ray.map_y][cub3d->ray.map_x] == '1')
 			cub3d->ray.hit = 1;
 	}

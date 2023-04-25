@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 10:28:16 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 10:02:42 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:41:41 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ void	handle_shoot_hit(t_cub3d *cub3d)
 	t_sprite	*sprite;
 
 	sprite = find_sprite(cub3d, cub3d->ray.map_x, cub3d->ray.map_y);
-	if (sprite){
+	if (sprite)
+	{
 		sprite->hit = 1;
 		cub3d->map->map[(int)(sprite->y)][(int)sprite->x] = '0';
 	}
-	
 }
 
-t_sprite *find_sprite(t_cub3d *cub3d, int x, int y)
+t_sprite	*find_sprite(t_cub3d *cub3d, int x, int y)
 {
 	t_list		*tmp;
 	t_sprite	*sprite;

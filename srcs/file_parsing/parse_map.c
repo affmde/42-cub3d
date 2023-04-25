@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 16:57:49 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/18 16:34:49 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:11:11 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ static t_map	*map_creator(t_cub3d *cub3d)
 	if (!map)
 		return (NULL);
 	aux = cub3d->file_data;
-	while (check_identifier(aux->content) != 4 && check_identifier(aux->content))
+	while (check_identifier(aux->content) != 4
+		&& check_identifier(aux->content))
 		aux = aux->next;
 	map_list = NULL;
 	while (aux)
@@ -40,11 +41,11 @@ static t_map	*map_creator(t_cub3d *cub3d)
 static void	get_longer_line(t_cub3d *cub3d)
 {
 	int	i;
-	int len;
+	int	len;
 
 	len = 0;
 	i = 0;
-	while(cub3d->map->map[i])
+	while (cub3d->map->map[i])
 	{
 		if ((int)ft_strlen(cub3d->map->map[i]) > len)
 			len = ft_strlen(cub3d->map->map[i]);

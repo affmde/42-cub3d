@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 15:17:57 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 10:05:33 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:44:35 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,18 @@ static void	allocate_weapon_tex(t_cub3d *cub3d)
 		error_msg_exit("couldn't load weapon textures");
 }
 
-static void load_gun_texure(t_cub3d *cub3d, char *path, int i)
+static void	load_gun_texure(t_cub3d *cub3d, char *path, int i)
 {
 	cub3d->weapon.gun[i].img = ft_calloc(1, sizeof(t_img));
 	if (!cub3d->weapon.gun[i].img)
 		error_msg_exit("couldn't create the gun sprite");
-	cub3d->weapon.gun[i].img->img_ptr = mlx_xpm_file_to_image(cub3d->ptr, path, 
-		&cub3d->weapon.gun[i].width, &cub3d->weapon.gun[i].height);
-	cub3d->weapon.gun[i].img->data =
-		(int *)mlx_get_data_addr(cub3d->weapon.gun[i].img->img_ptr,
-		&cub3d->weapon.gun[i].img->bpp,
-		&cub3d->weapon.gun[i].img->size_l, &cub3d->weapon.gun[i].img->endian);
+	cub3d->weapon.gun[i].img->img_ptr = mlx_xpm_file_to_image(cub3d->ptr, path,
+			&cub3d->weapon.gun[i].width, &cub3d->weapon.gun[i].height);
+	cub3d->weapon.gun[i].img->data = (int *)mlx_get_data_addr(cub3d
+			->weapon.gun[i].img->img_ptr,
+			&cub3d->weapon.gun[i].img->bpp,
+			&cub3d->weapon.gun[i].img->size_l, &cub3d
+			->weapon.gun[i].img->endian);
 }
 
 void	weapon_init(t_cub3d *cub3d)
@@ -50,7 +51,7 @@ void	gun_render(t_cub3d *cub3d, int nbr)
 	int	i;
 	int	j;
 	int	color;
-	
+
 	i = 0;
 	while (i < cub3d->weapon.gun[nbr].height)
 	{
@@ -58,7 +59,7 @@ void	gun_render(t_cub3d *cub3d, int nbr)
 		while (j < cub3d->weapon.gun[nbr].width)
 		{
 			color = get_pixel(cub3d->weapon.gun[nbr].img, j, i);
-			put_pixel(&cub3d->img, WIDTH / 2 - cub3d->weapon.gun[nbr].width 
+			put_pixel(&cub3d->img, WIDTH / 2 - cub3d->weapon.gun[nbr].width
 				/ 2 + j, HEIGHT - cub3d->weapon.gun[nbr].height + i, color);
 			j++;
 		}

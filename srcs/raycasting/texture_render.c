@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 16:45:40 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/22 08:23:25 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:15:32 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,11 @@ static void	texture_render(t_cub3d *cub3d, int *i)
 	if (!texture)
 		error_msg_exit("couldn't get texture");
 	if (cub3d->ray.direction == EAST || cub3d->ray.direction == WEST)
-		wall_x = cub3d->camera.y + cub3d->ray.perp_wall_dist * cub3d->ray.dir_y[cub3d->ray.index];
+		wall_x = cub3d->camera.y + cub3d->ray.perp_wall_dist
+			* cub3d->ray.dir_y[cub3d->ray.index];
 	else
-		wall_x = cub3d->camera.x + cub3d->ray.perp_wall_dist * cub3d->ray.dir_x[cub3d->ray.index];
+		wall_x = cub3d->camera.x + cub3d->ray.perp_wall_dist
+			* cub3d->ray.dir_x[cub3d->ray.index];
 	wall_x -= floor(wall_x);
 	texture_x = (int)(wall_x * (double)texture->width);
 	if ((cub3d->ray.direction == EAST || cub3d->ray.direction == WEST)

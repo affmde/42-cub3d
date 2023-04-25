@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:23:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/18 17:36:08 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:13:30 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	check_file_extension(char *path)
 	return (0);
 }
 
-
 t_list	*extract_file_data(int fd)
 {
 	t_list	*file_data;
@@ -37,7 +36,7 @@ t_list	*extract_file_data(int fd)
 	{
 		line = get_next_line(fd);
 		if (!line)
-			break;
+			break ;
 		if (ft_strncmp(line, "\n", ft_strlen(line)))
 		{
 			line = trim_line(line, "\n");
@@ -48,9 +47,24 @@ t_list	*extract_file_data(int fd)
 	return (file_data);
 }
 
+static int	handle_parse(t_cub3d *cub3d)
+{
+	if (parse_map(cub3d))
+	{
+		ft_putendl_fd("Invalid map configuation", 2);
+		return (1);
+	}
+	if (parse_elements(cub3d))
+	{
+		ft_putendl_fd("Invalid elements configuration", 2);
+		return (1);
+	}
+	return (0);
+}
+
 int	file_read(char *path, t_cub3d *cub3d)
 {
-	int fd;
+	int	fd;
 
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
@@ -65,15 +79,7 @@ int	file_read(char *path, t_cub3d *cub3d)
 		ft_putendl_fd("You have error in the file.", 2);
 		return (1);
 	}
-	if (parse_map(cub3d))
-	{
-		ft_putendl_fd("Invalid map configuation", 2);
+	if (handle_parse(cub3d))
 		return (1);
-	}
-	if (parse_elements(cub3d))
-	{
-		ft_putendl_fd("Invalid elements configuration", 2);
-		return (1);
-	}
 	return (0);
 }

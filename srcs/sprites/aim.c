@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 16:40:48 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 09:29:39 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:46:21 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,9 @@ void	load_aim_texture(t_cub3d *cub3d)
 
 void	aim_render(t_cub3d *cub3d)
 {
-	// int		i;
-	// int		j;
 	t_pos	start;
 	t_pos	end;
-	//int	color;
+
 	start = populate_position(WIDTH / 2 - CH_MID, HEIGHT / 2, 0, CH_COLOR);
 	end = populate_position(WIDTH / 2 - CH_MID \
 	- CH_LEN, HEIGHT / 2, 0, CH_COLOR);
@@ -51,15 +49,4 @@ void	aim_render(t_cub3d *cub3d)
 	end = populate_position(WIDTH / 2, HEIGHT \
 	/ 2 + CH_MID + CH_LEN, 0, CH_COLOR);
 	bresenham_algo(start, end, &cub3d->img);
-
-	// i = -1;
-	// while (++i < cub3d->aim.height)
-	// {
-	// 	j = -1;
-	// 	while (++j < cub3d->aim.width)
-	// 	{
-	// 		color = get_pixel(cub3d->aim.img, j, i);
-	// 		put_pixel(&cub3d->img, WIDTH / 2 - cub3d->aim.width + j / 2, HEIGHT / 2 - cub3d->aim.height / 2 + i, color);
-	// 	}
-	// }
 }

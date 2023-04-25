@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:55:16 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 15:11:26 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:43:29 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	draw_inner_bar(t_cub3d *cub3d)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = -1;
 	while (++i < 30)
@@ -23,24 +23,28 @@ static void	draw_inner_bar(t_cub3d *cub3d)
 		j = -1;
 		while (++j < cub3d->weapon.max_bullets * cub3d->weapon.b_text.width)
 		{
-			put_pixel(&cub3d->img, cub3d->weapon.b_text.width + j, HEIGHT - (cub3d->weapon.b_text.height * 2) + i , 0xff0000);
+			put_pixel(&cub3d->img, cub3d->weapon.b_text.width + j, HEIGHT
+				- (cub3d->weapon.b_text.height * 2) + i, 0xff0000);
 		}
 	}
 }
+
 static void	draw_life_bar(t_cub3d *cub3d)
 {
 	int	i;
-	int j;
+	int	j;
 	int	bar_width;
 
-	bar_width = cub3d->weapon.max_bullets * cub3d->weapon.b_text.width * cub3d->health / 100;
+	bar_width = cub3d->weapon.max_bullets * cub3d->weapon.b_text.width
+		* cub3d->health / 100;
 	i = -1;
 	while (++i < 30)
 	{
 		j = -1;
 		while (++j < bar_width)
 		{
-			put_pixel(&cub3d->img, cub3d->weapon.b_text.width + j, HEIGHT - (cub3d->weapon.b_text.height * 2) + i , 0x00ff00);
+			put_pixel(&cub3d->img, cub3d->weapon.b_text.width + j, HEIGHT
+				- (cub3d->weapon.b_text.height * 2) + i, 0x00ff00);
 		}
 	}
 }

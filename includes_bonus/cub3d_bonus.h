@@ -60,6 +60,7 @@ void		add_values_to_compare(t_map_check *a, t_map_check *b);
 int			check_walls_color(t_cub3d *cub3d);
 void		check_repeated_walls(t_cub3d *cub3d, t_elements_check *element);
 char		**get_map_copy(t_cub3d *cub3d);
+int 		door_validity(char **map);
 
 //MLX Handling
 int			mlx_handling(t_cub3d *cub3d);

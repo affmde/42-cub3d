@@ -6,11 +6,11 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:18:03 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/24 15:28:17 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 09:05:38 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../includes_bonus/cub3d_bonus.h"
 
 void	calculate_sprite_dimensions(t_sprites_manager *s_man)
 {
@@ -40,7 +40,7 @@ void	draw_sprite(t_cub3d *cub3d, t_sprites_manager *s_man, t_sprite * sprite)
 	int	d;
 
 	x = s_man->start_x;
-	sprite->texture = get_sprite_text(sprite);
+	sprite->texture = get_sprite_text(cub3d, sprite);
 	while (x < s_man->end_x)
 	{
 		tex_x = (int)((256 * (x - (-s_man->sprite_width / 2

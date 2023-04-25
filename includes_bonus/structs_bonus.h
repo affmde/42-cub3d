@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:02:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/24 18:02:39 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 09:00:37 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ typedef struct s_sprite
 	int		order;
 	char	identifier;
 	int		alive;
-	int		anim_frame;
+	double	anim_frame;
 	int		hit;
 }		t_sprite;
 
@@ -153,7 +153,7 @@ typedef struct s_weapon
 	int			max_bullets;
 	int			bullets;
 	int			state;
-	int			anim_frame;
+	double		anim_frame;
 }	t_weapon;
 
 typedef struct s_cub3d

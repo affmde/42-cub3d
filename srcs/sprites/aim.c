@@ -6,11 +6,11 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 16:40:48 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/23 18:17:07 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 09:29:39 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../includes_bonus/cub3d_bonus.h"
 
 void	load_aim_texture(t_cub3d *cub3d)
 {

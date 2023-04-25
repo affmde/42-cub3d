@@ -6,11 +6,11 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 10:28:16 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/24 15:39:54 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 10:02:42 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../includes_bonus/cub3d_bonus.h"
 
 static int	allow_shoot(t_weapon *w)
 {
@@ -26,9 +26,11 @@ void	handle_shoot_hit(t_cub3d *cub3d)
 	t_sprite	*sprite;
 
 	sprite = find_sprite(cub3d, cub3d->ray.map_x, cub3d->ray.map_y);
-	if (sprite)
+	if (sprite){
 		sprite->hit = 1;
-	cub3d->map->map[(int)(sprite->y)][(int)sprite->x] = '0';
+		cub3d->map->map[(int)(sprite->y)][(int)sprite->x] = '0';
+	}
+	
 }
 
 t_sprite *find_sprite(t_cub3d *cub3d, int x, int y)
@@ -55,7 +57,6 @@ void	shoot(t_cub3d *cub3d)
 		if (cub3d->weapon.bullets < 0)
 			cub3d->weapon.bullets = 0;
 		cub3d->weapon.state = 1;
-		cub3d->weapon.anim_frame++;
 		raycasting(cub3d, (int)(WIDTH / 2), 1);
 	}
 }

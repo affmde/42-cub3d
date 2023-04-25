@@ -44,10 +44,11 @@ RAYCASTING = raycast.c texture_render.c minimap.c minimap_rays.c
 
 SPRITES = sprites.c sprites_config.c load_sprites.c gun_render.c shoot.c aim.c bullets.c load_textures.c
 
-BONUS = time_bonus.c map_validation_utils_bonus.c move_player_bonus.c mlx_handling_bonus.c rotate_player_bonus.c
+BONUS = time_bonus.c map_validation_utils_bonus.c move_player_bonus.c mlx_handling_bonus.c rotate_player_bonus.c main_bonus.c \
+load_all_text_bonus.c raycast_bonus.c
 
 ALL_SRCS = $(FILE_PARSING) $(INIT) $(UTILS) $(FILE_VALIDATION) $(MLX_HANDLING) $(RAYCASTING) $(CORE) $(SPRITES)
-ALL_BONUS_SRCS := $(filter-out map_validation_utils.c move_player.c mlx_handling.c rotate_player.c , $(ALL_SRCS))
+ALL_BONUS_SRCS := $(filter-out map_validation_utils.c move_player.c mlx_handling.c rotate_player.c main.c raycast.c, $(ALL_SRCS))
 ALL_BONUS_SRCS += $(BONUS)
 OBJ_FILES = $(ALL_SRCS:.c=.o)
 OBJS = $(patsubst %, $(OBJS_DIR)%, $(ALL_SRCS:.c=.o))
@@ -61,8 +62,8 @@ $(LIBFT):
 	@echo "$(COLOUR_GREEN)libft compilation completed$(COLOUR_END)"
 
 $(NAME): $(LIBFT) $(OBJS_DIR) $(OBJS)
-	@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(MOSFLAGS)
-#	@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(LINFLAGS)
+#	@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(MOSFLAGS)
+	@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(LINFLAGS)
 	@echo "$(COLOUR_GREEN)$@ created$(COLOUR_END)"
 
 $(OBJS_DIR):
@@ -120,8 +121,8 @@ fclean: clean
 	@echo "$(COLOUR_RED)$(NAME) removed$(COLOUR_END)"
 
 bonus: $(LIBFT) $(OBJS_DIR) $(BONUS_OBJS)
-	@cc $(BONUS_FLAGS) $(BONUS_OBJS) -o $(NAME_BONUS) -L. $(LIBFT) $(MOSFLAGS)
-#	@cc $(BONUS_FLAGS) $(OBJS) -o $(NAME_BONUS) -L. $(LIBFT) $(LINFLAGS)
+#	@cc $(BONUS_FLAGS) $(BONUS_OBJS) -o $(NAME_BONUS) -L. $(LIBFT) $(MOSFLAGS)
+	@cc $(BONUS_FLAGS) $(BONUS_OBJS) -o $(NAME_BONUS) -L. $(LIBFT) $(LINFLAGS)
 	@echo "$(COLOUR_GREEN)$(NAME_BONUS) created$(COLOUR_END)"
 
 re: fclean all

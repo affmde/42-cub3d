@@ -6,11 +6,11 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 15:17:57 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/23 16:10:01 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 10:05:33 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../includes_bonus/cub3d_bonus.h"
 
 static void	allocate_weapon_tex(t_cub3d *cub3d)
 {
@@ -66,7 +66,7 @@ void	gun_render(t_cub3d *cub3d, int nbr)
 	}
 }
 
-int	select_gun_texture(t_weapon *w)
+int	select_gun_texture(t_cub3d *cub3d, t_weapon *w)
 {
 	if (w->anim_frame > FRAME_RATE)
 	{
@@ -77,7 +77,7 @@ int	select_gun_texture(t_weapon *w)
 		return (0);
 	else
 	{
-		w->anim_frame++;
+		w->anim_frame += cub3d->d_time;
 		if (w->anim_frame < FRAME_RATE * 0.25)
 			return (1);
 		else if (w->anim_frame < FRAME_RATE * 0.5)

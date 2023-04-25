@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:00:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/24 18:12:04 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 09:54:20 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,19 +94,20 @@ void	draw_map_tiles(t_cub3d *cub3d);
 void	draw_map_frame(t_cub3d *cub3d, int radius);
 
 //SPRITES
+void	load_all_bonus_tex(t_cub3d *cub3d);
 void	load_sprite_texture(t_cub3d *cub3d);
 void	swap_data(t_sprite *a, t_sprite *b);
 void	render_sprites(t_cub3d *cub3d);
 void	sort_sprites(t_list *sprites);
 void	gun_render(t_cub3d *cub3d, int nbr);
 void	weapon_init(t_cub3d *cub3d);
-int		select_gun_texture(t_weapon *w);
+int		select_gun_texture(t_cub3d *cub3d, t_weapon *w);
 void	shoot(t_cub3d *cub3d);
 void	load_aim_texture(t_cub3d *cub3d);
 void	aim_render(t_cub3d *cub3d);
 void	load_bullet_texture(t_cub3d *cub3d);
 void	bullets_render(t_cub3d *cub3d);
-int		get_sprite_text(t_sprite *sprite);
+int		get_sprite_text(t_cub3d *cub3d, t_sprite *sprite);
 t_sprite	*find_sprite(t_cub3d *cub3d, int x, int y);
 void		handle_shoot_hit(t_cub3d *cub3d);
 

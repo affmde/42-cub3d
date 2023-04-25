@@ -6,11 +6,11 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 17:47:14 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/24 17:20:41 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 09:24:35 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../includes_bonus/cub3d_bonus.h"
 
 static t_sprite	*allocate_sprite(void)
 {

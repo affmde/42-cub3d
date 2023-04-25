@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycast.c                                          :+:      :+:    :+:   */
+/*   raycast_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/04 17:10:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 09:45:52 by andrferr         ###   ########.fr       */
+/*   Created: 2023/04/25 09:44:49 by andrferr          #+#    #+#             */
+/*   Updated: 2023/04/25 09:55:31 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../includes_bonus/cub3d_bonus.h"
 
 static void	get_steps(t_cub3d *cub3d, int x)
 {
@@ -123,6 +123,10 @@ void	raycast_environemt(t_cub3d *cub3d)
 		raycasting(cub3d, cub3d->ray.index, 0);
 		cub3d->ray.index++;
 	}
+	render_sprites(cub3d);
 	draw_map_tiles(cub3d);
+	bullets_render(cub3d);
+	gun_render(cub3d, select_gun_texture(cub3d, &cub3d->weapon));
+	aim_render(cub3d);
 	mlx_put_image_to_window(cub3d->ptr, cub3d->win, cub3d->img.img_ptr, 0, 0);
 }

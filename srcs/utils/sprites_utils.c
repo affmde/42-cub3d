@@ -6,11 +6,11 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 10:56:20 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/24 15:37:09 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 09:51:01 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../includes_bonus/cub3d_bonus.h"
 
 void	swap_data(t_sprite *a, t_sprite *b)
 {
@@ -46,10 +46,10 @@ void	sort_sprites(t_list *sprites)
 	}
 }
 
-int	get_sprite_text(t_sprite *sprite)
+int	get_sprite_text(t_cub3d *cub3d, t_sprite *sprite)
 {
 	if (sprite->hit)
-		sprite->anim_frame++;
+		sprite->anim_frame += cub3d->d_time;
 	if (sprite->anim_frame == 0)
 		return (0);
 	if (sprite->anim_frame < ENEMY_DIE_SPEED * 0.2)

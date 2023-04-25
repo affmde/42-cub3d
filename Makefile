@@ -119,11 +119,15 @@ fclean: clean
 	@echo "$(COLOUR_RED)libft.a removed$(COLOUR_END)"
 	@rm -f $(NAME)
 	@echo "$(COLOUR_RED)$(NAME) removed$(COLOUR_END)"
+	@rm -f $(NAME_BONUS)
+	@echo "$(COLOUR_RED)$(NAME_BONUS) removed$(COLOUR_END)"
 
-bonus: $(LIBFT) $(OBJS_DIR) $(BONUS_OBJS)
+$(NAME_BONUS): $(LIBFT) $(OBJS_DIR) $(BONUS_OBJS)
 	@cc $(BONUS_FLAGS) $(BONUS_OBJS) -o $(NAME_BONUS) -L. $(LIBFT) $(MOSFLAGS)
 #	@cc $(BONUS_FLAGS) $(BONUS_OBJS) -o $(NAME_BONUS) -L. $(LIBFT) $(LINFLAGS)
 	@echo "$(COLOUR_GREEN)$(NAME_BONUS) created$(COLOUR_END)"
+
+bonus: $(NAME_BONUS)
 
 re: fclean all
 

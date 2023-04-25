@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 10:56:20 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 09:51:01 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 14:38:27 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,36 @@ void	sort_sprites(t_list *sprites)
 	}
 }
 
+int	enemy_attack(t_cub3d *cub3d, t_sprite *sprite)
+{
+	int	hit;
+
+	if (sprite->is_attacking)
+	{
+		sprite->anim_frame += cub3d->d_time;
+		if (sprite->anim_frame < FRAME_RATE * 0.2)
+			return (6);
+		if (sprite->anim_frame < FRAME_RATE * 0.4)
+			return (7);
+		if (sprite->anim_frame < FRAME_RATE * 0.6)
+			return (8);
+		if (sprite->anim_frame < FRAME_RATE * 0.8)
+		{
+			sprite->is_attacking = 0;
+			sprite->anim_frame = 0;
+			hit = rand() % 100;
+			if (hit < 50)
+				cub3d->health -= 15;
+			return (9);
+		}
+	}
+	return (0);
+}
+
 int	get_sprite_text(t_cub3d *cub3d, t_sprite *sprite)
 {
+	if (sprite->is_attacking && sprite->alive)
+		return (enemy_attack(cub3d, sprite));
 	if (sprite->hit)
 		sprite->anim_frame += cub3d->d_time;
 	if (sprite->anim_frame == 0)

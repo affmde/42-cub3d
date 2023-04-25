@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:02:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 09:00:37 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 14:13:16 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,8 @@ typedef struct s_sprite
 	int		alive;
 	double	anim_frame;
 	int		hit;
+	int		is_attacking;
+
 }		t_sprite;
 
 typedef struct sprites_manager
@@ -129,7 +131,7 @@ typedef struct sprites_manager
 	t_list			*sprites_list;
 	int				total_sprites;
 	int				enemies_left;
-	t_textures		sprite_texture[6];
+	t_textures		sprite_texture[10];
 	double			sprite_x;
 	double			sprite_y;
 	double			inv_det;
@@ -175,6 +177,7 @@ typedef struct s_cub3d
 	t_textures			aim;
 	double				d_time;
 	struct timeval		time;
+	int					health;
 }	t_cub3d;
 
 typedef struct s_map_check

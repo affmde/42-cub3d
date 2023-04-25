@@ -6,11 +6,11 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 08:12:00 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/24 08:46:25 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 14:00:31 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../includes_bonus/cub3d_bonus.h"
 
 void	load_bullet_texture(t_cub3d *cub3d)
 {
@@ -34,7 +34,7 @@ void	bullets_render(t_cub3d *cub3d)
 	int	j;
 	int	k;
 	int	color;
-	
+
 	k = -1;
 	while (++k < cub3d->weapon.bullets)
 	{
@@ -49,8 +49,8 @@ void	bullets_render(t_cub3d *cub3d)
 			}
 		}
 	}
-	
 
-	
+
+
 }
 

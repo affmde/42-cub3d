@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:00:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 09:54:20 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 14:05:13 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	bullets_render(t_cub3d *cub3d);
 int		get_sprite_text(t_cub3d *cub3d, t_sprite *sprite);
 t_sprite	*find_sprite(t_cub3d *cub3d, int x, int y);
 void		handle_shoot_hit(t_cub3d *cub3d);
-
+void	opponent_attack(t_cub3d *cub3d);
 //Time
 void	delta_time(t_cub3d *cub3d);
 #endif

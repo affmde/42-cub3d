@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 17:47:14 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 09:24:35 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 14:13:21 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void sprite_info(t_cub3d *cub3d, t_sprite *sprite, int i, int j)
 	sprite->alive = 1;
 	sprite->anim_frame = 0;
 	sprite->hit = 0;
+	sprite->is_attacking = 0;
 	sprite->identifier = cub3d->map->map[i][j];
 }
 

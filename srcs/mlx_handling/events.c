@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 10:30:22 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/24 18:07:11 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/25 11:41:04 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ int	handle_key_pressed(int keycode, t_cub3d *cub3d)
 
 int	handle_key_released(int keycode, t_cub3d *cub3d)
 {
-	if (keycode == MAC_SPACE || keycode == LIN_CTRL)
+	printf("%d\n", keycode);
+	if (keycode == MAC_CTRL || keycode == LIN_CTRL)
 		shoot(cub3d);
 	if (keycode == MAC_UP || keycode == LIN_UP)
 		cub3d->movement.move_forward = 0;

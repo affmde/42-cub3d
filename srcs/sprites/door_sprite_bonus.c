@@ -12,10 +12,34 @@
 
 #include "../../includes_bonus/cub3d_bonus.h"
 
+int	door_open_text(t_sprite *sprite)
+{
+	if (sprite->anim_frame < DOOR_SPEED * 0.25)
+		return (14);
+	if (sprite->anim_frame < DOOR_SPEED * 0.5)
+		return (13);
+	if (sprite->anim_frame < DOOR_SPEED * 0.75)
+		return (12);
+	if (sprite->anim_frame < DOOR_SPEED)
+		return (11);
+	return (16);
+}
+
 int	get_door_text(t_cub3d *cub3d, t_sprite *sprite)
 {
-	(void)cub3d;
-	if (sprite->open)
-		return (10);
-	return (11);
+	if (sprite->hit)
+		sprite->anim_frame += cub3d->d_time;
+	if (sprite->anim_frame == 0)
+		return (16 - sprite->open);
+	if (!sprite->open)
+		return (door_open_text(sprite));
+	if (sprite->anim_frame < DOOR_SPEED * 0.25)
+		return (11);
+	if (sprite->anim_frame < DOOR_SPEED * 0.5)
+		return (12);
+	if (sprite->anim_frame < DOOR_SPEED * 0.75)
+		return (13);
+	if (sprite->anim_frame < DOOR_SPEED)
+		return (14);
+	return (15);
 }

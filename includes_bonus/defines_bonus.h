@@ -65,6 +65,7 @@
 
 //Animations
 # define ENEMY_DIE_SPEED 0.5
+# define DOOR_SPEED 0.45
 # define FRAME_RATE 0.3
 # define ENEMY_SHOOT 0.8
 # define BLOOD_SPLATTER_DURATION 0.6

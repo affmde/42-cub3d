@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 10:56:20 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 16:28:56 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/26 09:39:50 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,10 @@ int	enemy_attack(t_cub3d *cub3d, t_sprite *sprite)
 			sprite->is_attacking = 0;
 			hit = rand() % 100;
 			if (hit < HIT_PERCENTAGE)
+			{
 				cub3d->health -= DAMAGE;
+				cub3d->blood.is_rendering = 1;
+			}
 			sprite->anim_frame = 0;
 			return (0);
 		}

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:00:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 17:39:53 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/26 09:35:15 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,8 @@ void	opponent_attack(t_cub3d *cub3d);
 void	draw_health_bar(t_cub3d *cub3d);
 void	draw_sprite_loop(t_cub3d *cub3d, t_sprite *sprite, int tex_x, int x);
 void	handle_sprite_alive(t_cub3d *cub3d, t_sprite *sprite);
+void	blood_splatter_texture(t_cub3d *cub3d);
+void	blood_splatter_render(t_cub3d *cub3d);
 
 //Time
 void	delta_time(t_cub3d *cub3d);

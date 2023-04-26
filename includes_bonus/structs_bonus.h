@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:02:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 19:38:30 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/26 09:20:48 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,13 @@ typedef struct s_weapon
 	double		anim_frame;
 }	t_weapon;
 
+typedef struct s_blood
+{
+	t_textures	blood_texture;
+	int			is_rendering;
+	double		time;
+}	t_blood;
+
 typedef struct s_cub3d
 {
 	t_list				*textures;
@@ -175,6 +182,7 @@ typedef struct s_cub3d
 	t_sprites_manager	sp_manager;
 	t_weapon			weapon;
 	t_textures			aim;
+	t_blood				blood;
 	double				d_time;
 	struct timeval		time;
 	int					health;

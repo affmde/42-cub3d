@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:01:36 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 19:18:38 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/26 09:42:38 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@
 # define ENEMY_DIE_SPEED 0.5
 # define FRAME_RATE 0.3
 # define ENEMY_SHOOT 0.8
+# define BLOOD_SPLATTER_DURATION 0.6
 
 //ENEMY
 # define DAMAGE 10

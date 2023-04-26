@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:02:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/26 09:20:48 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/26 13:14:20 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,8 @@ typedef struct s_weapon
 
 typedef struct s_blood
 {
-	t_textures	blood_texture;
+	t_textures	blood_texture[3];
+	int			index;
 	int			is_rendering;
 	double		time;
 }	t_blood;

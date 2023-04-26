@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:18:03 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 17:41:02 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/26 12:53:18 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,5 @@ void	render_sprites(t_cub3d *cub3d)
 		tmp = tmp->next;
 	}
 	sort_sprites(cub3d->sp_manager.sprites_list);
-	tmp = cub3d->sp_manager.sprites_list;
 	project_sprites(cub3d);
 }

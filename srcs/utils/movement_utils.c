@@ -14,7 +14,7 @@
 
 int	can_move(char c)
 {
-	if (c == '1' || c == '2')
+	if (c == '1' || c == '2' || c == 'C')
 		return (0);
 	return (1);
 }

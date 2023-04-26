@@ -33,7 +33,7 @@ static void	sprite_info(t_cub3d *cub3d, t_sprite *sprite, int i, int j)
 	sprite->is_attacking = 0;
 	sprite->identifier = cub3d->map->map[i][j];
 	sprite->open = 0;
-	if (sprite->identifier == 'O' || sprite->identifier == 'U')
+	if (sprite->identifier == 'O')
 		sprite->open = 1;
 }
 
@@ -50,8 +50,7 @@ static void	get_sprites(t_cub3d *cub3d)
 		while (++j < (int)ft_strlen(cub3d->map->map[i]))
 		{
 			if (cub3d->map->map[i][j] == '2' || cub3d->map->map[i][j] == 'O'
-			|| cub3d->map->map[i][j] == 'C' || cub3d->map->map[i][j] == 'U'
-			|| cub3d->map->map[i][j] == 'D')
+			|| cub3d->map->map[i][j] == 'C')
 			{
 				sprite = allocate_sprite();
 				sprite_info(cub3d, sprite, i, j);

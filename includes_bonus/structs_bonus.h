@@ -132,7 +132,7 @@ typedef struct sprites_manager
 	t_list			*sprites_list;
 	int				total_sprites;
 	int				enemies_left;
-	t_textures		sprite_texture[16];
+	t_textures		sprite_texture[17];
 	double			sprite_x;
 	double			sprite_y;
 	double			inv_det;

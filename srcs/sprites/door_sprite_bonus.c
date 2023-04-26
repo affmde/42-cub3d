@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   door_sprite_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlonka <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 14:39:54 by nlonka            #+#    #+#             */
-/*   Updated: 2023/04/26 14:39:57 by nlonka           ###   ########.fr       */
+/*   Updated: 2023/04/26 17:27:36 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ int	get_door_text(t_cub3d *cub3d, t_sprite *sprite)
 {
 	(void)cub3d;
 	if (sprite->open)
-		return (10);
-	return (11);
+		return (12);
+	return (14);
 }

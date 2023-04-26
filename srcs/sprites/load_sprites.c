@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 17:29:06 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/26 12:49:44 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/26 17:29:00 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ void	load_sprite_texture(t_cub3d *cub3d)
 			error_msg_exit("couldn't load sprite texture");
 		cub3d->sp_manager.sprite_texture[i].img->img_ptr
 			= mlx_xpm_file_to_image(cub3d->ptr,
-				get_path_guard(i), &cub3d->sp_manager.sprite_texture[i].height,
-				&cub3d->sp_manager.sprite_texture[i].width);
+				get_path_guard(i), &cub3d->sp_manager.sprite_texture[i].width,
+				&cub3d->sp_manager.sprite_texture[i].height);
 		if (!cub3d->sp_manager.sprite_texture[i].img->img_ptr)
 			error_msg_exit("couldn't load sprite texture");
 		cub3d->sp_manager.sprite_texture[i].img->data

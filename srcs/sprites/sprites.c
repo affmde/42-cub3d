@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:18:03 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/26 12:53:18 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/26 17:27:30 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ void	draw_sprite(t_cub3d *cub3d, t_sprites_manager *s_man, t_sprite *sprite)
 	sprite->texture = get_sprite_text(cub3d, sprite);
 	while (x < s_man->end_x)
 	{
-		tex_x = (int)((256 * (x - (-s_man->sprite_width / 2
+		tex_x = (int)((x - (-s_man->sprite_width / 2
 							+ s_man->sprite_screen_x))
 					* s_man->sprite_texture[sprite->texture].width
-					/ s_man->sprite_width) / 256);
+					/ s_man->sprite_width);
 		if (s_man->transform_y > 0 && x > 0 && x < WIDTH
 			&& s_man->transform_y < cub3d->z_buffer[x])
 			draw_sprite_loop(cub3d, sprite, tex_x, x);

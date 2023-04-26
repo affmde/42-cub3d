@@ -123,6 +123,7 @@ typedef struct s_sprite
 	double	anim_frame;
 	int		hit;
 	int		is_attacking;
+	int		open;
 
 }		t_sprite;
 
@@ -131,7 +132,7 @@ typedef struct sprites_manager
 	t_list			*sprites_list;
 	int				total_sprites;
 	int				enemies_left;
-	t_textures		sprite_texture[10];
+	t_textures		sprite_texture[16];
 	double			sprite_x;
 	double			sprite_y;
 	double			inv_det;

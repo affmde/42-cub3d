@@ -51,6 +51,7 @@
 # define MAC_DOWN 1
 # define MAC_R_LEFT 123
 # define MAC_R_RIGHT 124
+# define MAC_F 3
 # define LIN_UP 119
 # define LIN_RIGHT 100
 # define LIN_DOWN 115

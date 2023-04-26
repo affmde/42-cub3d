@@ -82,6 +82,8 @@ int	enemy_attack(t_cub3d *cub3d, t_sprite *sprite)
 
 int	get_sprite_text(t_cub3d *cub3d, t_sprite *sprite)
 {
+	if (sprite->identifier != '2')
+		return (get_door_text(cub3d, sprite));
 	if (sprite->is_attacking && sprite->alive)
 		return (enemy_attack(cub3d, sprite));
 	if (sprite->hit)

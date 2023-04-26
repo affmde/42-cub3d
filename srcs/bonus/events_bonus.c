@@ -36,6 +36,8 @@ int	handle_key_pressed(int keycode, t_cub3d *cub3d)
 
 int	handle_key_released(int keycode, t_cub3d *cub3d)
 {
+	if (keycode == MAC_F)
+		raycasting(cub3d, (int)(WIDTH / 2), 2);
 	if (keycode == MAC_SPACE || keycode == LIN_SPACE)
 		shoot(cub3d);
 	if (keycode == MAC_UP || keycode == LIN_UP)

@@ -6,12 +6,11 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 08:53:27 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/26 13:32:16 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/26 13:38:11 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes_bonus/cub3d_bonus.h"
-
 
 static char	*get_path(int i)
 {
@@ -21,9 +20,9 @@ static char	*get_path(int i)
 		return ("./textures/blood_splatter2.xpm");
 	if (i == 2)
 		return ("./textures/blood_splatter3.xpm");
-	return(NULL);
-
+	return (NULL);
 }
+
 static void	load_img(t_cub3d *cub3d, int i)
 {
 	cub3d->blood.blood_texture[i].img = ft_calloc(1, sizeof(t_img));
@@ -62,7 +61,7 @@ static int	get_blood_index(t_cub3d *cub3d)
 	if (cub3d->health > 10)
 		return (1);
 	else
-		return(0);
+		return (0);
 }
 
 void	blood_splatter_render(t_cub3d *cub3d)
@@ -83,14 +82,11 @@ void	blood_splatter_render(t_cub3d *cub3d)
 			while (++j < cub3d->blood.blood_texture[index].width)
 			{
 				color = get_pixel(cub3d->blood.blood_texture[index].img, j, i);
-				put_pixel(&cub3d->img, WIDTH - cub3d->blood.blood_texture[index].width + j,
+				put_pixel(&cub3d->img, WIDTH - cub3d
+					->blood.blood_texture[index].width + j,
 					i, color);
 			}
 		}
 	}
-	if (cub3d->blood.time > BLOOD_SPLATTER_DURATION)
-	{
-		cub3d->blood.is_rendering = 0;
-		cub3d->blood.time = 0;
-	}
+	check_blood_anim_over(&cub3d->blood);
 }

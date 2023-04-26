@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 10:56:20 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/26 09:39:50 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/26 13:43:58 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,23 @@ void	sort_sprites(t_list *sprites)
 	}
 }
 
-int	enemy_attack(t_cub3d *cub3d, t_sprite *sprite)
+static int	handle_end_enemy_attack(t_cub3d *cub3d, t_sprite *sprite)
 {
 	int	hit;
 
+	sprite->is_attacking = 0;
+	hit = rand() % 100;
+	if (hit < HIT_PERCENTAGE)
+	{
+		cub3d->health -= DAMAGE;
+		cub3d->blood.is_rendering = 1;
+	}
+	sprite->anim_frame = 0;
+	return (0);
+}
+
+int	enemy_attack(t_cub3d *cub3d, t_sprite *sprite)
+{
 	if (sprite->is_attacking)
 	{
 		sprite->anim_frame += cub3d->d_time;
@@ -62,17 +75,7 @@ int	enemy_attack(t_cub3d *cub3d, t_sprite *sprite)
 		else if (sprite->anim_frame < ENEMY_SHOOT)
 			return (9);
 		else
-		{
-			sprite->is_attacking = 0;
-			hit = rand() % 100;
-			if (hit < HIT_PERCENTAGE)
-			{
-				cub3d->health -= DAMAGE;
-				cub3d->blood.is_rendering = 1;
-			}
-			sprite->anim_frame = 0;
-			return (0);
-		}
+			return (handle_end_enemy_attack(cub3d, sprite));
 	}
 	return (0);
 }

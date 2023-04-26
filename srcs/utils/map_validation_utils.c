@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 13:08:30 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/24 17:29:42 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/26 13:34:15 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	add_values_to_compare(t_map_check *a, t_map_check *b)
 	a->hats = b->hats;
 }
 
-int door_validity(char **map)
+int	door_validity(char **map)
 {
 	(void)map;
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   door_validation_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nlonka <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:06:36 by nlonka            #+#    #+#             */
-/*   Updated: 2023/04/25 13:06:39 by nlonka           ###   ########.fr       */
+/*   Updated: 2023/04/26 13:44:16 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	door_vertical(char **map, int x, int y)
 	return (0);
 }
 
-int door_validity(char **map)
+int	door_validity(char **map)
 {
 	int	y;
 	int	x;

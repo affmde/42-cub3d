@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:00:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/26 09:35:15 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/26 13:37:54 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ void	draw_sprite_loop(t_cub3d *cub3d, t_sprite *sprite, int tex_x, int x);
 void	handle_sprite_alive(t_cub3d *cub3d, t_sprite *sprite);
 void	blood_splatter_texture(t_cub3d *cub3d);
 void	blood_splatter_render(t_cub3d *cub3d);
+void	check_blood_anim_over(t_blood *blood);
 
 //Time
 void	delta_time(t_cub3d *cub3d);

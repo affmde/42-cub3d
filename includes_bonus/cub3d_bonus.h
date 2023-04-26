@@ -111,6 +111,7 @@ void	aim_render(t_cub3d *cub3d);
 void	load_bullet_texture(t_cub3d *cub3d);
 void	bullets_render(t_cub3d *cub3d);
 int		get_sprite_text(t_cub3d *cub3d, t_sprite *sprite);
+int		get_door_text(t_cub3d *cub3d, t_sprite *sprite);
 t_sprite	*find_sprite(t_cub3d *cub3d, int x, int y);
 void		handle_shoot_hit(t_cub3d *cub3d);
 void	opponent_attack(t_cub3d *cub3d);
@@ -120,4 +121,9 @@ void	handle_sprite_alive(t_cub3d *cub3d, t_sprite *sprite);
 
 //Time
 void	delta_time(t_cub3d *cub3d);
+
+//Doors
+int		check_door_char(t_cub3d *cub3d);
+void	handle_door_open(t_cub3d *cub3d);
+
 #endif

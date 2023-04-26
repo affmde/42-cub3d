@@ -12,7 +12,24 @@
 
 #include "../../includes_bonus/cub3d_bonus.h"
 
-static char	*get_path(int i)
+static char	*get_path_door(int i)
+{
+	if (i == 10)
+		return ("./textures/door_open.xpm");
+	if (i == 11)
+		return ("./textures/door_closing1.xpm");
+	if (i == 12)
+		return ("./textures/door_closing2.xpm");
+	if (i == 13)
+		return ("./textures/door_closing3.xpm");
+	if (i == 14)
+		return ("./textures/door_closing4.xpm");
+	if (i == 15)
+		return ("./textures/door_closed.xpm");
+	return (NULL);
+}
+
+static char	*get_path_guard(int i)
 {
 	if (i == 0)
 		return ("./textures/guard.xpm");
@@ -34,7 +51,7 @@ static char	*get_path(int i)
 		return ("./textures/guard_attack3.xpm");
 	if (i == 9)
 		return ("./textures/guard_attack4.xpm");
-	return (NULL);
+	return (get_path_door(i));
 }
 
 void	load_sprite_texture(t_cub3d *cub3d)
@@ -42,14 +59,14 @@ void	load_sprite_texture(t_cub3d *cub3d)
 	int	i;
 
 	i = -1;
-	while (++i < 10)
+	while (++i < 16)
 	{
 		cub3d->sp_manager.sprite_texture[i].img = ft_calloc(1, sizeof(t_img));
 		if (!cub3d->sp_manager.sprite_texture[i].img)
 			error_msg_exit("couldn't load sprite texture");
 		cub3d->sp_manager.sprite_texture[i].img->img_ptr
 			= mlx_xpm_file_to_image(cub3d->ptr,
-				get_path(i), &cub3d->sp_manager.sprite_texture[i].height,
+				get_path_guard(i), &cub3d->sp_manager.sprite_texture[i].height,
 				&cub3d->sp_manager.sprite_texture[i].width);
 		if (!cub3d->sp_manager.sprite_texture[i].img->img_ptr)
 			error_msg_exit("couldn't load sprite texture");

@@ -44,11 +44,14 @@ void	dda_algo(t_cub3d *cub3d, int x, int shoot)
 			opponent_attack(cub3d);
 		if (shoot)
 		{
-			if (cub3d->map->map[cub3d->ray.map_y][cub3d->ray.map_x] == '2')
+			if (cub3d->map->map[cub3d->ray.map_y][cub3d->ray.map_x] == '2'\
+			&& shoot != 2)
 			{
 				handle_shoot_hit(cub3d);
 				return ;
 			}
+			if (check_door_char(cub3d) && shoot == 2)
+				return (handle_door_open(cub3d));
 		}
 		if (cub3d->map->map[cub3d->ray.map_y][cub3d->ray.map_x] == '1')
 			cub3d->ray.hit = 1;

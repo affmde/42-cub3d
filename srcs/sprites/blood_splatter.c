@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 08:53:27 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/26 13:28:08 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/26 13:32:16 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ void	blood_splatter_texture(t_cub3d *cub3d)
 
 static int	get_blood_index(t_cub3d *cub3d)
 {
-	if (cub3d->health > 70)
+	if (cub3d->health > 40)
 		return (2);
-	if (cub3d->health > 20)
+	if (cub3d->health > 10)
 		return (1);
 	else
 		return(0);

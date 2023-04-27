@@ -91,7 +91,7 @@ int	is_map_closed(t_cub3d *cub3d, t_map_check *map)
 	map_check_init(&compare);
 	map_count_elements(map->map, &compare);
 	if (map->ones != compare.ones || map->spaces != compare.spaces
-		|| compare.zeros != 0 || map->hats != compare.hats
+		|| map->hats != compare.hats
 		|| compare.enemies != 0)
 		return (1);
 	return (0);

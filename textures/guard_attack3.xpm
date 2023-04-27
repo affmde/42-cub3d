@@ -3,7 +3,7 @@ static char *tile0491682427619[] = {
 /* columns rows colors chars-per-pixel */
 "64 64 55 1 ",
 "  c None",
-". c black",
+". c #00001A",
 "X c #00001C",
 "o c #00002C",
 "O c #000034",

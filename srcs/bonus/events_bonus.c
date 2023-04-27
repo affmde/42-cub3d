@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:45:08 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 19:18:11 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/27 07:54:52 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	handle_key_pressed(int keycode, t_cub3d *cub3d)
 
 int	handle_key_released(int keycode, t_cub3d *cub3d)
 {
-	if (keycode == MAC_F)
+	if (keycode == MAC_F || keycode == LIN_F)
 		raycasting(cub3d, (int)(WIDTH / 2), 2);
 	if (keycode == MAC_SPACE || keycode == LIN_SPACE)
 		shoot(cub3d);

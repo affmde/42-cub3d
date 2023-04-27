@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:01:36 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/26 09:42:38 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/27 07:54:27 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@
 # define MAC_R_LEFT 123
 # define MAC_R_RIGHT 124
 # define MAC_F 3
+# define LIN_F 102
 # define LIN_UP 119
 # define LIN_RIGHT 100
 # define LIN_DOWN 115

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minimap_rays.c                                     :+:      :+:    :+:   */
+/*   minimap_rays_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlonka <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 15:50:46 by nlonka            #+#    #+#             */
-/*   Updated: 2023/04/24 15:50:47 by nlonka           ###   ########.fr       */
+/*   Created: 2023/04/27 13:51:07 by nlonka            #+#    #+#             */
+/*   Updated: 2023/04/27 13:51:11 by nlonka           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../includes_bonus/cub3d_bonus.h"
 
 void	cut_down_ray(t_cub3d *cub3d, float *dist_x, float *dist_y)
 {

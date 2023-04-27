@@ -12,6 +12,13 @@
 
 #include "cub3d.h"
 
+int	mouse(int x, int y, t_cub3d *cub3d)
+{
+	x = y;
+	(void)cub3d;
+	return (0);
+}
+
 static int	close_window(void)
 {
 	exit(0);

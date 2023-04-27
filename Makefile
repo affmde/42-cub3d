@@ -38,15 +38,16 @@ colors.c graphics_utils.c movement_utils.c
 
 FILE_VALIDATION = map_validity.c file_validity.c elements_validity.c map_closed.c fc_validity.c get_map_copy.c
 
-MLX_HANDLING = mlx_handling.c events.c mouse.c move_player.c rotate_player.c
+MLX_HANDLING = mlx_handling.c events.c move_player.c rotate_player.c
 
-RAYCASTING = raycast.c texture_render.c minimap.c minimap_rays.c load_textures.c
+RAYCASTING = raycast.c texture_render.c load_textures.c
 
-SPRITES = sprites.c sprites_config.c load_sprites.c gun_render.c shoot.c aim.c bullets.c health_bar.c blood_splatter.c door_sprite_bonus.c
+SPRITES = sprites.c sprites_config.c load_sprites.c gun_render.c shoot.c aim.c bullets.c health_bar.c blood_splatter.c
 
 BONUS = time_bonus.c map_validation_utils_bonus.c move_player_bonus.c mlx_handling_bonus.c rotate_player_bonus.c main_bonus.c \
 load_all_text_bonus.c raycast_bonus.c cub3d_init_bonus.c opponent_attack_bonus.c end_screen_bonus.c sprites_utils.c events_bonus.c \
-raycast_dda_algo_bonus.c door_validation_bonus.c sprites_helper.c sprites_utils_2.c door_interact_bonus.c
+raycast_dda_algo_bonus.c door_validation_bonus.c sprites_helper.c sprites_utils_2.c door_interact_bonus.c door_sprite_bonus.c mouse_bonus.c \
+minimap_bonus.c minimap_rays_bonus.c
 
 ALL_SRCS = $(FILE_PARSING) $(INIT) $(UTILS) $(FILE_VALIDATION) $(MLX_HANDLING) $(RAYCASTING) $(CORE)
 ALL_BONUS_SRCS := $(filter-out map_validation_utils.c move_player.c mlx_handling.c rotate_player.c main.c raycast.c cub3d_init.c events.c, $(ALL_SRCS))

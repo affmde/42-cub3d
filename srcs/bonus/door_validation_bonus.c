@@ -62,7 +62,7 @@ int	door_validity(char **map)
 	while (map[y])
 	{
 		x = 0;
-		while (map[y][x]) //not the best atm
+		while (map[y][x])
 		{
 			if ((map[y][x] == 'C' || map[y][x] == 'O'))
 				check = door_sideways(map, x, y);

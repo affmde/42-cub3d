@@ -26,8 +26,8 @@ void	handle_door_open(t_cub3d *cub3d)
 	t_sprite	*sprite;
 
 	sprite = find_sprite(cub3d, cub3d->ray.map_x, cub3d->ray.map_y);
-	if (fabs(sprite->x - cub3d->camera.x) > 1.5 ||
-	fabs(sprite->y - cub3d->camera.y) > 1.5)
+	if (fabs(sprite->x - cub3d->camera.x) > 1.5
+		|| fabs(sprite->y - cub3d->camera.y) > 1.5)
 		return ;
 	if (sprite)
 	{

@@ -38,7 +38,6 @@ typedef struct s_textures
 	int				width;
 }	t_textures;
 
-
 typedef struct s_walls
 {
 	char			*identifier;

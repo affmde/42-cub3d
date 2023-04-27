@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:02:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/26 13:14:20 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/27 14:27:41 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ typedef struct sprites_manager
 
 typedef struct s_weapon
 {
-	t_textures	*gun;
+	t_textures	gun[10];
 	t_textures	b_text;
 	int			max_bullets;
 	int			bullets;

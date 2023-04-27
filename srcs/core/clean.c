@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:36:49 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/24 15:50:09 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/27 15:51:07 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ void	free_cub3d(t_cub3d *cub3d)
 		if (cub3d->weapon.gun)
 		{
 			i = -1;
-			while (++i < 5)
-				free(&cub3d->weapon.gun[i]);
+			while (++i < 10)
+				free(&cub3d->weapon.gun[i].img);
 		}
 		free(cub3d);
 	}

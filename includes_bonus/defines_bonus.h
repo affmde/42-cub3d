@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:01:36 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/27 07:54:27 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/27 14:45:07 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@
 # define ENEMY_DIE_SPEED 0.5
 # define DOOR_SPEED 0.45
 # define FRAME_RATE 0.3
+# define RELOAD_TIME 1
 # define ENEMY_SHOOT 0.8
 # define BLOOD_SPLATTER_DURATION 0.6
 

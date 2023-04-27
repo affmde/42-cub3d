@@ -29,6 +29,10 @@ int	detect_color(t_cub3d *cub3d, float x, float y)
 		return (0x000000);
 	if (cub3d->map->map[(int)y2][(int)x2] == '1')
 		return (0x006600);
+	if (cub3d->map->map[(int)y2][(int)x2] == 'C')
+		return (0xB300B3);
+	if (cub3d->map->map[(int)y2][(int)x2] == 'O')
+		return (0xFF80FF);
 	return (0x66FF66);
 }
 

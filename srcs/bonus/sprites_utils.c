@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 10:56:20 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/26 13:43:58 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/27 09:54:37 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,34 +78,4 @@ int	enemy_attack(t_cub3d *cub3d, t_sprite *sprite)
 			return (handle_end_enemy_attack(cub3d, sprite));
 	}
 	return (0);
-}
-
-int	get_sprite_text(t_cub3d *cub3d, t_sprite *sprite)
-{
-	if (sprite->identifier != '2')
-		return (get_door_text(cub3d, sprite));
-	if (sprite->is_attacking && sprite->alive)
-		return (enemy_attack(cub3d, sprite));
-	if (sprite->hit)
-		sprite->anim_frame += cub3d->d_time;
-	if (sprite->anim_frame == 0)
-		return (0);
-	if (sprite->anim_frame < ENEMY_DIE_SPEED * 0.2)
-		return (1);
-	if (sprite->anim_frame < ENEMY_DIE_SPEED * 0.4)
-		return (2);
-	if (sprite->anim_frame < ENEMY_DIE_SPEED * 0.6)
-		return (3);
-	if (sprite->anim_frame < ENEMY_DIE_SPEED * 0.8)
-		return (4);
-	if (sprite->anim_frame < ENEMY_DIE_SPEED)
-		return (5);
-	else
-	{
-		sprite->alive = 0;
-		cub3d->sp_manager.enemies_left--;
-		if (cub3d->sp_manager.enemies_left <= 0)
-			cub3d->won = 1;
-		return (5);
-	}
 }

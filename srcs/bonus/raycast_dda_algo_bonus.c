@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 17:01:44 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/27 08:53:08 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/27 10:19:51 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,20 @@ static void	y_smaller_x(t_cub3d *cub3d, int x)
 		cub3d->ray.direction = NORTH;
 }
 
+static void	dda_calculations(t_cub3d *cub3d, int *wall_between, int x)
+{
+	if (cub3d->ray.side_dist_x < cub3d->ray.side_dist_y)
+		x_smaller_y(cub3d, x);
+	else
+		y_smaller_x(cub3d, x);
+	if (cub3d->map->map[cub3d->ray.map_y][cub3d->ray.map_x]
+		== 'C')
+		*wall_between = 1;
+	if (cub3d->map->map[cub3d->ray.map_y][cub3d->ray.map_x]
+		== '2' && !*wall_between)
+		opponent_attack(cub3d);
+}
+
 void	dda_algo(t_cub3d *cub3d, int x, int shoot)
 {
 	int	wall_between;
@@ -39,17 +53,11 @@ void	dda_algo(t_cub3d *cub3d, int x, int shoot)
 	wall_between = 0;
 	while (cub3d->ray.hit == 0)
 	{
-		if (cub3d->ray.side_dist_x < cub3d->ray.side_dist_y)
-			x_smaller_y(cub3d, x);
-		else
-			y_smaller_x(cub3d, x);
-		if  (cub3d->map->map[cub3d->ray.map_y][cub3d->ray.map_x] == 'C')
-			wall_between = 1;
-		if (cub3d->map->map[cub3d->ray.map_y][cub3d->ray.map_x] == '2' && !wall_between)
-			opponent_attack(cub3d);
+		dda_calculations(cub3d, &wall_between, x);
 		if (shoot)
 		{
-			if(shoot == 1 && cub3d->map->map[cub3d->ray.map_y][cub3d->ray.map_x] == 'C')
+			if (shoot == 1 && cub3d->map->map[cub3d
+					->ray.map_y][cub3d->ray.map_x] == 'C')
 				return ;
 			if (cub3d->map->map[cub3d->ray.map_y][cub3d->ray.map_x] == '2'\
 			&& shoot == 1)

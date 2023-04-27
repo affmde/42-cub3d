@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:00:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/26 13:37:54 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/27 10:01:27 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void	ray_reset_values(t_ray *ray);
 void	dda_algo(t_cub3d *cub3d, int x, int shoot);
 void	sprites_config(t_cub3d *cub3d);
 void	raycast_environemt(t_cub3d *cub3d);
+int		enemy_attack(t_cub3d *cub3d, t_sprite *sprite);
 
 //Minimap
 void	draw_player(t_cub3d *cub3d);

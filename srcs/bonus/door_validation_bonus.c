@@ -12,6 +12,14 @@
 
 #include "../../includes_bonus/cub3d_bonus.h"
 
+int	invalid_empty_char(char c)
+{
+	if (c == 'N' || c == 'W' || c == 'E' ||
+	c == 'S' || c == '2' || c == '0')
+		return (0);
+	return (1);
+}
+
 int	check_corners(char **map, int x, int y)
 {
 	if (map[y - 1][x - 1] != '1')
@@ -31,8 +39,8 @@ int	door_sideways(char **map, int x, int y)
 		return (1);
 	if (check_corners(map, x, y))
 		return (1);
-	if ((map[y][x - 1] != '0' && map[y][x - 1] != '2') ||
-	(map[y][x + 1] != '0' && map[y][x + 1] != '2'))
+	if (invalid_empty_char(map[y][x - 1]) ||
+	invalid_empty_char(map[y][x + 1]))
 		return (1);
 	if (map[y - 1][x] != '1' || map[y + 1][x] != '1')
 		return (1);
@@ -47,8 +55,8 @@ int	door_vertical(char **map, int x, int y)
 		return (1);
 	if (map[y][x - 1] != '1' || map[y][x + 1] != '1')
 		return (1);
-	if ((map[y - 1][x] != '0' && map[y - 1][x] != '2') ||
-	(map[y + 1][x] != '0' && map[y + 1][x] != '2'))
+	if (invalid_empty_char(map[y - 1][x]) ||
+	invalid_empty_char(map[y + 1][x]))
 		return (1);
 	return (0);
 }
@@ -71,7 +79,7 @@ int	door_validity(char **map)
 			if (check)
 				check = door_vertical(map, x, y);
 			if (check)
-				return (printf("x is %d y is %d\n", x, y), 1);
+				return (1);
 			x++;
 		}
 		y++;

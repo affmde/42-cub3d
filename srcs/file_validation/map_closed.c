@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 08:58:08 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/27 17:50:56 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/28 08:22:43 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	is_map_closed(t_cub3d *cub3d, t_map_check *map)
 	map_check_init(&compare);
 	map_count_elements(map->map, &compare);
 	if (map->ones != compare.ones || map->spaces != compare.spaces
-	|| map->hats != compare.hats
+		|| map->hats != compare.hats
 		|| compare.enemies != 0)
 		return (1);
 	return (0);

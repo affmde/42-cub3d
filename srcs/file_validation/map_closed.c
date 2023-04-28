@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 08:58:08 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/28 10:37:10 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/28 11:19:58 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,11 @@ int	is_map_closed(t_cub3d *cub3d, t_map_check *map)
 		|| map->hats != compare.hats
 		|| compare.enemies != 0)
 		return (1);
-	if (map_outside_chars(cub3d, map))
+	if (check_borders(map))
 		return (1);
 	if (check_end_space(cub3d))
+		return (1);
+	if (map_outside_chars(cub3d, map))
 		return (1);
 	return (0);
 }

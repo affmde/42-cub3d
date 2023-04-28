@@ -36,7 +36,8 @@ INIT = cub3d_init.c cam_init.c image_init.c ray_init.c
 UTILS = parse_utils.c texture_creator.c walls_creator.c map_validation_utils.c return_textures.c math_utils.c bresenham_algo.c \
 colors.c graphics_utils.c movement_utils.c
 
-FILE_VALIDATION = map_validity.c file_validity.c elements_validity.c map_closed.c fc_validity.c get_map_copy.c map_outside_chars.c
+FILE_VALIDATION = map_validity.c file_validity.c elements_validity.c map_closed.c fc_validity.c get_map_copy.c map_outside_chars.c \
+map_check_borders.c
 
 MLX_HANDLING = mlx_handling.c events.c move_player.c rotate_player.c
 

@@ -31,7 +31,8 @@ int	door_sideways(char **map, int x, int y)
 		return (1);
 	if (check_corners(map, x, y))
 		return (1);
-	if ((map[y][x - 1] != '0' && map[y][x - 1] != '2') || (map[y][x + 1] != '0' && map[y][x + 1] != '2'))
+	if ((map[y][x - 1] != '0' && map[y][x - 1] != '2') ||
+	(map[y][x + 1] != '0' && map[y][x + 1] != '2'))
 		return (1);
 	if (map[y - 1][x] != '1' || map[y + 1][x] != '1')
 		return (1);
@@ -46,7 +47,8 @@ int	door_vertical(char **map, int x, int y)
 		return (1);
 	if (map[y][x - 1] != '1' || map[y][x + 1] != '1')
 		return (1);
-	if ((map[y - 1][x] != '0' && map[y - 1][x] != '2') || (map[y + 1][x] != '0' && map[y + 1][x] != '2'))
+	if ((map[y - 1][x] != '0' && map[y - 1][x] != '2') ||
+	(map[y + 1][x] != '0' && map[y + 1][x] != '2'))
 		return (1);
 	return (0);
 }

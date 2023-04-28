@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-int check_borders(t_map_check *map)
+int	check_borders(t_map_check *map)
 {
 	int	i;
 	int	j;

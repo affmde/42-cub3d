@@ -80,9 +80,9 @@ static void	map_count_elements(char **map, t_map_check *map_check)
 
 int	map_outside_chars(t_cub3d *cub3d, t_map_check *map)
 {
-	t_map_check compare;
-	int	x;
-	int y;
+	t_map_check	compare;
+	int			x;
+	int			y;
 
 	map->map = get_map_copy(cub3d);
 	get_starting_point(map->map, &y, &x);

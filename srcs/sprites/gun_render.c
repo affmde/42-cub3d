@@ -117,5 +117,5 @@ int	select_gun_texture(t_cub3d *cub3d, t_weapon *w)
 	}
 	if (w->state == 2)
 		return (reload_gun(cub3d, w));
-	return(0);
+	return (0);
 }

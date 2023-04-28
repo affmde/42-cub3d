@@ -14,8 +14,8 @@
 
 int	invalid_empty_char(char c)
 {
-	if (c == 'N' || c == 'W' || c == 'E' ||
-	c == 'S' || c == '2' || c == '0')
+	if (c == 'N' || c == 'W' || c == 'E'
+		|| c == 'S' || c == '2' || c == '0')
 		return (0);
 	return (1);
 }

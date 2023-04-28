@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 09:42:29 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 14:06:03 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/28 13:04:42 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	mouse(int x, int y, t_cub3d *cub3d)
 {
 	x = y;
 	(void)cub3d;
+	(void)x;
+	(void)y;
 	return (0);
 }
 

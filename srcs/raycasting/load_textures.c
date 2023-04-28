@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 14:11:27 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/14 16:10:43 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/28 13:07:59 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	load_textures(t_cub3d *cub3d)
 		texture = tmp->content;
 		texture->img = ft_calloc(1, sizeof(t_img));
 		texture->img->img_ptr = mlx_xpm_file_to_image(cub3d->ptr,
-				texture->path, &texture->height, &texture->width);
+				texture->path, &texture->width, &texture->height);
 		if (!texture->img->img_ptr)
 		{
 			invalid_texture(texture->path);

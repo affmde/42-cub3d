@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 20:17:36 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 19:34:57 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/28 09:37:54 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	map_check_init(t_map_check *map_check)
 	map_check->spaces = 0;
 	map_check->hats = 0;
 	map_check->enemies = 0;
+	map_check->outside_ones = 0;
+	map_check->outside_zeros = 0;
 }
 
 int	valid_map(t_cub3d *cub3d)

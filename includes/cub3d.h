@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:28:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/27 17:56:00 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/28 10:00:26 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int			check_walls_color(t_cub3d *cub3d);
 void		check_repeated_walls(t_cub3d *cub3d, t_elements_check *element);
 char		**get_map_copy(t_cub3d *cub3d);
 int			door_validity(char **map);
+int			map_outside_chars(t_cub3d *cub3d, t_map_check *map);
 
 //MLX Handling
 int			mlx_handling(t_cub3d *cub3d);

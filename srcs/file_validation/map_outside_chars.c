@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_closed.c                                       :+:      :+:    :+:   */
+/*   map_outside_chars.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/02 08:58:08 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/28 10:37:10 by andrferr         ###   ########.fr       */
+/*   Created: 2023/04/28 09:09:32 by andrferr          #+#    #+#             */
+/*   Updated: 2023/04/28 10:27:17 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	flood_fill(t_cub3d *cub3d, char **map, int x, int y)
+static void	flood_fill_zeros_spaces(t_cub3d *cub3d, char **map, int x, int y)
 {
 	if (x < 0 || y < 0 || x > (int)ft_strlen(map[y])
 		- 1 || y > cub3d->map->height)
 		return ;
-	if (map[y][x] == '1')
+	if (map[y][x] == ' ')
+		return ;
+	if (map[y][x] == '@')
 		return ;
 	if (map[y][x] == '#')
 		return ;
 	map[y][x] = '#';
-	flood_fill(cub3d, map, x + 1, y);
-	flood_fill(cub3d, map, x - 1, y);
-	flood_fill(cub3d, map, x, y + 1);
-	flood_fill(cub3d, map, x, y - 1);
+	flood_fill_zeros_spaces(cub3d, map, x + 1, y);
+	flood_fill_zeros_spaces(cub3d, map, x - 1, y);
+	flood_fill_zeros_spaces(cub3d, map, x, y + 1);
+	flood_fill_zeros_spaces(cub3d, map, x, y - 1);
 }
 
 static void	get_starting_point(char **map, int *y, int *x)
@@ -65,8 +67,6 @@ static void	map_count_elements(char **map, t_map_check *map_check)
 		{
 			if (map[i][j] == '1')
 				map_check->ones++;
-			else if (map[i][j] == '2')
-				map_check->enemies++;
 			else if (map[i][j] == ' ')
 				map_check->spaces++;
 			else if (map[i][j] == '0' || map[i][j] == 'N'
@@ -78,38 +78,19 @@ static void	map_count_elements(char **map, t_map_check *map_check)
 	}
 }
 
-static int	check_end_space(t_cub3d *cub3d)
+int	map_outside_chars(t_cub3d *cub3d, t_map_check *map)
 {
-	int	i;
-
-	i = -1;
-	while (++i < cub3d->map->height)
-	{
-		if (cub3d->map->map[i][ft_strlen(cub3d->map->map[i]) - 1] != '1')
-			return (1);
-	}
-	return (0);
-}
-
-int	is_map_closed(t_cub3d *cub3d, t_map_check *map)
-{
-	int			y;
-	int			x;
-	t_map_check	compare;
+	t_map_check compare;
+	int	x;
+	int y;
 
 	map->map = get_map_copy(cub3d);
 	get_starting_point(map->map, &y, &x);
 	map_count_elements(map->map, map);
-	flood_fill(cub3d, map->map, x, y);
+	flood_fill_zeros_spaces(cub3d, map->map, x, y);
 	map_check_init(&compare);
 	map_count_elements(map->map, &compare);
-	if (map->ones != compare.ones || map->spaces != compare.spaces
-		|| map->hats != compare.hats
-		|| compare.enemies != 0)
-		return (1);
-	if (map_outside_chars(cub3d, map))
-		return (1);
-	if (check_end_space(cub3d))
+	if (compare.ones > 0 || compare.zeros > 0)
 		return (1);
 	return (0);
 }

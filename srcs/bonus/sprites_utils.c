@@ -52,7 +52,8 @@ static int	handle_end_enemy_attack(t_cub3d *cub3d, t_sprite *sprite)
 
 	sprite->is_attacking = 0;
 	hit = rand() % 100;
-	if (hit < HIT_PERCENTAGE)
+	if (hit < HIT_PERCENTAGE && hypot((sprite->x - cub3d->camera.x), \
+		(sprite->y - cub3d->camera.y)) < 20)
 	{
 		cub3d->health -= DAMAGE;
 		cub3d->blood.is_rendering = 1;

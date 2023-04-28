@@ -26,6 +26,8 @@ void	handle_shoot_hit(t_cub3d *cub3d)
 	t_sprite	*sprite;
 
 	sprite = find_sprite(cub3d, cub3d->ray.map_x, cub3d->ray.map_y);
+	if (hypot((sprite->x - cub3d->camera.x), (sprite->y - cub3d->camera.y)) > 7)
+		return ;
 	if (sprite)
 	{
 		sprite->hit = 1;

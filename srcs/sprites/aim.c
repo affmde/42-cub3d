@@ -24,7 +24,7 @@ void	load_aim_texture(t_cub3d *cub3d)
 	cub3d->aim.img->data = (int *)mlx_get_data_addr(cub3d->aim.img->img_ptr, \
 	&cub3d->aim.img->bpp, &cub3d->aim.img->size_l,
 			&cub3d->aim.img->endian);
-	if (!cub3d->aim.img->data)
+	if (!cub3d->aim.img->data) //maybe rm?
 		error_msg_exit("couldn't load the aim image");
 }
 

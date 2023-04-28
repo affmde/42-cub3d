@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 15:17:57 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/28 13:28:55 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/28 15:24:56 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,16 @@ static void	load_gun_texure(t_cub3d *cub3d, char *path, int i)
 
 void	weapon_init(t_cub3d *cub3d)
 {
-	load_gun_texure(cub3d, "./textures/shoot0.xpm", 0);
-	load_gun_texure(cub3d, "./textures/shoot1.xpm", 1);
-	load_gun_texure(cub3d, "./textures/shoot2.xpm", 2);
-	load_gun_texure(cub3d, "./textures/shoot3.xpm", 3);
-	load_gun_texure(cub3d, "./textures/shoot4.xpm", 4);
-	load_gun_texure(cub3d, "./textures/shoot5.xpm", 5);
-	load_gun_texure(cub3d, "./textures/shoot6.xpm", 6);
-	load_gun_texure(cub3d, "./textures/shoot7.xpm", 7);
-	load_gun_texure(cub3d, "./textures/shoot8.xpm", 8);
-	load_gun_texure(cub3d, "./textures/shoot9.xpm", 9);
+	load_gun_texure(cub3d, "./textures/shoot0_big.xpm", 0);
+	load_gun_texure(cub3d, "./textures/shoot1_big.xpm", 1);
+	load_gun_texure(cub3d, "./textures/shoot2_big.xpm", 2);
+	load_gun_texure(cub3d, "./textures/shoot3_big.xpm", 3);
+	load_gun_texure(cub3d, "./textures/shoot4_big.xpm", 4);
+	load_gun_texure(cub3d, "./textures/shoot5_big.xpm", 5);
+	load_gun_texure(cub3d, "./textures/shoot6_big.xpm", 6);
+	load_gun_texure(cub3d, "./textures/shoot7_big.xpm", 7);
+	load_gun_texure(cub3d, "./textures/shoot8_big.xpm", 8);
+	load_gun_texure(cub3d, "./textures/shoot9_big.xpm", 9);
 	if (cub3d->sp_manager.total_sprites > 0)
 	{
 		cub3d->weapon.bullets = cub3d->sp_manager.total_sprites * 1.5;

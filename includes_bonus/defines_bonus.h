@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:01:36 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/27 14:45:07 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/28 13:38:39 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@
 # define RELOAD_TIME 1
 # define ENEMY_SHOOT 0.8
 # define BLOOD_SPLATTER_DURATION 0.6
+# define LIFE_BAR_WIDTH 200
 
 //ENEMY
 # define DAMAGE 10

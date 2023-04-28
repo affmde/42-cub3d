@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 15:17:57 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/27 14:35:55 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/28 13:28:55 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	weapon_init(t_cub3d *cub3d)
 	load_gun_texure(cub3d, "./textures/shoot9.xpm", 9);
 	if (cub3d->sp_manager.total_sprites > 0)
 	{
-		cub3d->weapon.bullets = cub3d->sp_manager.total_sprites * 2;
-		cub3d->weapon.max_bullets = cub3d->sp_manager.total_sprites * 2;
+		cub3d->weapon.bullets = cub3d->sp_manager.total_sprites * 1.5;
+		cub3d->weapon.max_bullets = cub3d->sp_manager.total_sprites * 1.5;
 	}
 	else
 	{

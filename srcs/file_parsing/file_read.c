@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:23:17 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 17:13:30 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/04/28 08:34:01 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,8 @@ t_list	*extract_file_data(int fd)
 		if (!line)
 			break ;
 		if (ft_strncmp(line, "\n", ft_strlen(line)))
-		{
 			line = trim_line(line, "\n");
-			ft_lstadd_back(&file_data, ft_lstnew(ft_strdup(line)));
-		}
+		ft_lstadd_back(&file_data, ft_lstnew(ft_strdup(line)));
 		ft_strdel(&line);
 	}
 	return (file_data);

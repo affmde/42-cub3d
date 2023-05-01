@@ -15,8 +15,8 @@
 void	end_screen(t_cub3d *cub3d, char *message)
 {
 	mlx_clear_window(cub3d->ptr, cub3d->win);
-	mlx_string_put(cub3d->ptr, cub3d->win, WIDTH / 2, HEIGHT / 2,
+	mlx_string_put(cub3d->ptr, cub3d->win, WIDTH / 2 - 113, HEIGHT / 2 - 50,
 		0xffffff, message);
-	mlx_string_put(cub3d->ptr, cub3d->win, WIDTH / 2, HEIGHT / 2 + 50,
+	mlx_string_put(cub3d->ptr, cub3d->win, WIDTH / 2 - 113, HEIGHT / 2,
 		0xffffff, "Press ESC to quit");
 }

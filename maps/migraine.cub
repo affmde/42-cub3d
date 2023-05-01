@@ -1,6 +1,6 @@
-NO ./textures/guard.xpm
-SO ./textures/guard_attack2.xpm
-EA ./textures/shotgun.xpm
+NO ./textures/aim.xpm
+SO ./textures/aim.xpm
+EA ./textures/enemy.xpm
 WE ./textures/shotgun.xpm
 
 F 184,113,39

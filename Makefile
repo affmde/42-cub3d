@@ -59,14 +59,14 @@ OBJ_FILES = $(ALL_SRCS:.c=.o)
 OBJS = $(patsubst %, $(OBJS_DIR)%, $(ALL_SRCS:.c=.o))
 BONUS_OBJS = $(patsubst %, $(OBJS_DIR)%, $(ALL_BONUS_SRCS:.c=.o))
 
-all: $(NAME)
+all: $(LIBFT) $(OBJS_DIR) $(OBJS) $(NAME)
 
 $(LIBFT):
 	@make all -C libft
 	@make bonus -C libft
 	@echo "$(COLOUR_GREEN)libft compilation completed$(COLOUR_END)"
 
-$(NAME): $(LIBFT) $(OBJS_DIR) $(OBJS)
+$(NAME):
 	@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(MOSFLAGS)
 	@echo "$(COLOUR_GREEN)$@ created$(COLOUR_END)"
 
@@ -119,7 +119,6 @@ clean:
 	@echo "$(COLOUR_BLUE)bonus objects cleaned$(COLOUR_END)"
 
 fclean: clean
-	@rm libft/libft.h.gch
 	@rm -rf $(OBJS_DIR)
 	@make fclean -C libft
 	@echo "$(COLOUR_RED)libft.a removed$(COLOUR_END)"
@@ -128,11 +127,11 @@ fclean: clean
 	@rm -f $(NAME_BONUS)
 	@echo "$(COLOUR_RED)$(NAME_BONUS) removed$(COLOUR_END)"
 
-$(NAME_BONUS): $(LIBFT) $(OBJS_DIR) $(BONUS_OBJS)
+$(NAME_BONUS):
 	@cc $(BONUS_FLAGS) $(BONUS_OBJS) -o $(NAME_BONUS) -L. $(LIBFT) $(MOSFLAGS)
 	@echo "$(COLOUR_GREEN)$(NAME_BONUS) created$(COLOUR_END)"
 
-bonus: $(NAME_BONUS)
+bonus: $(LIBFT) $(OBJS_DIR) $(BONUS_OBJS) $(NAME_BONUS)
 
 re: fclean all
 

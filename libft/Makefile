@@ -12,14 +12,13 @@ PRINTF = ft_printf
 BONUS_SRCS = ft_lstadd_back_bonus.c ft_lstadd_front_bonus.c ft_lstclear_bonus.c ft_lstdelone_bonus.c ft_lstlast_bonus.c ft_lstnew_bonus.c ft_lstsize_bonus.c \
 ft_lstiter_bonus.c ft_lstmap_bonus.c get_next_line_bonus.c
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)
-INC = ./my_libtf libft.h
 
 all: $(NAME)
 
 $(NAME) : $(SRCS)
 	@make -C $(PRINTF)
 	@cp ./$(PRINTF)/libftprintf.a $(NAME)
-	@cc -c $(FLAGS) -I$(INC) $(SRCS)
+	@cc -c $(FLAGS) $(SRCS)
 	@ar -rcs $(NAME) $(OBJECTS)
 
 clean:
@@ -30,7 +29,7 @@ fclean: clean
 re: fclean all
 
 bonus: $(BONUS_SRCS)
-	cc -c $(FLAGS) -I$(INC) $(BONUS_SRCS)
+	cc -c $(FLAGS) $(BONUS_SRCS)
 	ar -rcs $(NAME) $(BONUS_OBJS)
 
 .SILENT:

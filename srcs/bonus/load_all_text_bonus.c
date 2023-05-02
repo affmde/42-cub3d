@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 09:34:19 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/26 09:25:36 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/02 15:51:50 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	load_all_bonus_tex(t_cub3d *cub3d)
 {
 	sprites_config(cub3d);
 	weapon_init(cub3d);
-	load_aim_texture(cub3d);
 	load_bullet_texture(cub3d);
 	blood_splatter_texture(cub3d);
 }

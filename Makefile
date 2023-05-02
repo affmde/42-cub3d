@@ -67,7 +67,6 @@ $(LIBFT):
 
 $(NAME): $(LIBFT) $(OBJS_DIR) $(OBJS)
 	@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(MOSFLAGS)
-#	@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(LINFLAGS)
 	@echo "$(COLOUR_GREEN)$@ created$(COLOUR_END)"
 
 $(OBJS_DIR):
@@ -130,7 +129,6 @@ fclean: clean
 
 $(NAME_BONUS): $(LIBFT) $(OBJS_DIR) $(BONUS_OBJS)
 	@cc $(BONUS_FLAGS) $(BONUS_OBJS) -o $(NAME_BONUS) -L. $(LIBFT) $(MOSFLAGS)
-#	@cc $(BONUS_FLAGS) $(BONUS_OBJS) -o $(NAME_BONUS) -L. $(LIBFT) $(LINFLAGS)
 	@echo "$(COLOUR_GREEN)$(NAME_BONUS) created$(COLOUR_END)"
 
 bonus: $(NAME_BONUS)

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:28:37 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/28 11:16:37 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/02 11:07:19 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ char		**get_map_copy(t_cub3d *cub3d);
 int			door_validity(char **map);
 int			map_outside_chars(t_cub3d *cub3d, t_map_check *map);
 int			check_borders(t_map_check *map);
+int			contains_non_digit(char *str);
 
 //MLX Handling
 int			mlx_handling(t_cub3d *cub3d);

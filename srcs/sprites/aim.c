@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 16:40:48 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/25 17:46:21 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/02 11:09:49 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	load_aim_texture(t_cub3d *cub3d)
 	cub3d->aim.img->data = (int *)mlx_get_data_addr(cub3d->aim.img->img_ptr, \
 	&cub3d->aim.img->bpp, &cub3d->aim.img->size_l,
 			&cub3d->aim.img->endian);
-	if (!cub3d->aim.img->data) //maybe rm?
+	if (!cub3d->aim.img->data)
 		error_msg_exit("couldn't load the aim image");
 }
 

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 13:13:48 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/17 11:17:23 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/02 11:09:22 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,21 @@ static int	count_arr_values(char **arr)
 		clean_char_arr(arr);
 		return (1);
 	}
+	return (0);
+}
+
+static int	attribute_colors(t_color *color, char **arr)
+{
+	if (contains_non_digit(arr[0]))
+		return (1);
+	if (contains_non_digit(arr[1]))
+		return (1);
+	if (contains_non_digit(arr[2]))
+		return (1);
+	color->r = ft_atoi(arr[0]);
+	color->g = ft_atoi(arr[1]);
+	color->b = ft_atoi(arr[2]);
+	color->full_color = (color->r * 1000 + color->g) * 1000 + color->b;
 	return (0);
 }
 
@@ -45,10 +60,8 @@ static t_color	*color_creator(char *info)
 		free(color);
 		return (NULL);
 	}
-	color->r = ft_atoi(arr[0]);
-	color->g = ft_atoi(arr[1]);
-	color->b = ft_atoi(arr[2]);
-	color->full_color = (color->r * 1000 + color->g) * 1000 + color->b;
+	if (attribute_colors(color, arr))
+		return (NULL);
 	clean_char_arr(arr);
 	return (color);
 }

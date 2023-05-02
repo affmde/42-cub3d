@@ -54,7 +54,7 @@ static void	texture_render(t_cub3d *cub3d, int *i)
 
 	texture = receive_texture(cub3d, cub3d->ray.direction);
 	if (!texture)
-		error_msg_exit("couldn't get texture");
+		error_msg_exit("Couldn't get texture");
 	if (cub3d->ray.direction == EAST || cub3d->ray.direction == WEST)
 		wall_x = cub3d->camera.y + cub3d->ray.perp_wall_dist
 			* cub3d->ray.dir_y[cub3d->ray.index];

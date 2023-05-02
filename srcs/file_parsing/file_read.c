@@ -20,7 +20,7 @@ int	check_file_extension(char *path)
 	if (ft_strncmp(&path[i - 4], ".cub", 4))
 	{
 		ft_putendl_fd("Error", 2);
-		ft_putendl_fd("Wrong file extension.", 2);
+		ft_putendl_fd("Wrong file extension", 2);
 		return (1);
 	}
 	return (0);
@@ -49,12 +49,12 @@ static int	handle_parse(t_cub3d *cub3d)
 {
 	if (parse_map(cub3d))
 	{
-		ft_putendl_fd("Invalid map configuation", 2);
+		ft_putendl_fd("Error\nInvalid map configuation", 2);
 		return (1);
 	}
 	if (parse_elements(cub3d))
 	{
-		ft_putendl_fd("Invalid elements configuration", 2);
+		ft_putendl_fd("Error\nInvalid elements configuration", 2);
 		return (1);
 	}
 	return (0);

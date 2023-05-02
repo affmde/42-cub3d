@@ -16,7 +16,7 @@ static void	load_gun_texure(t_cub3d *cub3d, char *path, int i)
 {
 	cub3d->weapon.gun[i].img = ft_calloc(1, sizeof(t_img));
 	if (!cub3d->weapon.gun[i].img)
-		error_msg_exit("couldn't create the gun sprite");
+		error_msg_exit("Couldn't create the gun sprite");
 	cub3d->weapon.gun[i].img->img_ptr = mlx_xpm_file_to_image(cub3d->ptr, path,
 			&cub3d->weapon.gun[i].width, &cub3d->weapon.gun[i].height);
 	cub3d->weapon.gun[i].img->data = (int *)mlx_get_data_addr(cub3d

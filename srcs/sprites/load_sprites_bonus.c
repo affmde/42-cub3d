@@ -65,13 +65,13 @@ void	load_sprite_texture(t_cub3d *cub3d)
 	{
 		cub3d->sp_manager.sprite_texture[i].img = ft_calloc(1, sizeof(t_img));
 		if (!cub3d->sp_manager.sprite_texture[i].img)
-			error_msg_exit("couldn't load sprite texture");
+			error_msg_exit("Couldn't load sprite texture");
 		cub3d->sp_manager.sprite_texture[i].img->img_ptr
 			= mlx_xpm_file_to_image(cub3d->ptr,
 				get_path_guard(i), &cub3d->sp_manager.sprite_texture[i].width,
 				&cub3d->sp_manager.sprite_texture[i].height);
 		if (!cub3d->sp_manager.sprite_texture[i].img->img_ptr)
-			error_msg_exit("couldn't load sprite texture");
+			error_msg_exit("Couldn't load sprite texture");
 		cub3d->sp_manager.sprite_texture[i].img->data
 			= (int *)mlx_get_data_addr(cub3d
 				->sp_manager.sprite_texture[i].img->img_ptr,
@@ -79,6 +79,6 @@ void	load_sprite_texture(t_cub3d *cub3d)
 				&cub3d->sp_manager.sprite_texture[i].img->size_l,
 				&cub3d->sp_manager.sprite_texture[i].img->endian);
 		if (!cub3d->sp_manager.sprite_texture[i].img->data)
-			error_msg_exit("couldn't load sprite texture");
+			error_msg_exit("Couldn't load sprite texture");
 	}
 }

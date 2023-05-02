@@ -20,7 +20,7 @@ int	check_file_extension(char *path)
 	if (ft_strncmp(&path[i - 4], ".cub", 4))
 	{
 		ft_putendl_fd("Error", 2);
-		ft_putendl_fd("Wrong file extension.", 2);
+		ft_putendl_fd("Wrong file extension", 2);
 		return (1);
 	}
 	return (0);

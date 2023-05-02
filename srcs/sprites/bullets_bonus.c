@@ -16,18 +16,18 @@ void	load_bullet_texture(t_cub3d *cub3d)
 {
 	cub3d->weapon.b_text.img = ft_calloc(1, sizeof(t_img));
 	if (!cub3d->weapon.b_text.img)
-		error_msg_exit("couldn't load bullets texture");
+		error_msg_exit("Couldn't load bullets texture");
 	cub3d->weapon.b_text.img->img_ptr = mlx_xpm_file_to_image(cub3d->ptr,
 			"./textures/bullet.xpm", &cub3d->weapon.b_text.width,
 			&cub3d->weapon.b_text.height);
 	if (!cub3d->weapon.b_text.img->img_ptr)
-		error_msg_exit("couldn't load bullets texture");
+		error_msg_exit("Couldn't load bullets texture");
 	cub3d->weapon.b_text.img->data = (int *)mlx_get_data_addr(cub3d
 			->weapon.b_text.img->img_ptr,
 			&cub3d->weapon.b_text.img->bpp, &cub3d->weapon.b_text.img->size_l,
 			&cub3d->weapon.b_text.img->endian);
 	if (!cub3d->weapon.b_text.img->data)
-		error_msg_exit("couldn't load bullets texture");
+		error_msg_exit("Couldn't load bullets texture");
 }
 
 void	bullets_render(t_cub3d *cub3d)

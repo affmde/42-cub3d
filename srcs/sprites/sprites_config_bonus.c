@@ -18,7 +18,7 @@ static t_sprite	*allocate_sprite(void)
 
 	sprite = ft_calloc(1, sizeof(t_sprite));
 	if (!sprite)
-		error_msg_exit("couldn't allocate sprite");
+		error_msg_exit("Couldn't allocate sprite");
 	return (sprite);
 }
 

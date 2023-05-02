@@ -27,20 +27,20 @@ static void	load_img(t_cub3d *cub3d, int i)
 {
 	cub3d->blood.blood_texture[i].img = ft_calloc(1, sizeof(t_img));
 	if (!cub3d->blood.blood_texture[i].img)
-		error_msg_exit("couldn't load blood splatter texture");
+		error_msg_exit("Couldn't load blood splatter texture");
 	cub3d->blood.blood_texture[i].img->img_ptr = mlx_xpm_file_to_image(
 			cub3d->ptr, get_path(i),
 			&cub3d->blood.blood_texture[i].width,
 			&cub3d->blood.blood_texture[i].height);
 	if (!cub3d->blood.blood_texture[i].img->img_ptr)
-		error_msg_exit("couldn't load blood splatter texture");
+		error_msg_exit("Couldn't load blood splatter texture");
 	cub3d->blood.blood_texture[i].img->data = (int *)mlx_get_data_addr(cub3d
 			->blood.blood_texture[i].img->img_ptr,
 			&cub3d->blood.blood_texture[i].img->bpp,
 			&cub3d->blood.blood_texture[i].img->size_l,
 			&cub3d->blood.blood_texture[i].img->endian);
 	if (!cub3d->blood.blood_texture[i].img->data)
-		error_msg_exit("couldn't load blood splatter texture");
+		error_msg_exit("Couldn't load blood splatter texture");
 	cub3d->blood.is_rendering = 0;
 	cub3d->blood.time = 0;
 }

@@ -40,7 +40,7 @@ static double	*z_buffer_creator(void)
 	buffer = (double *)malloc(sizeof(double) * WIDTH);
 	if (!buffer)
 	{
-		ft_putstr_fd("Error: ", 2);
+		ft_putendl_fd("Error", 2);
 		ft_putendl_fd("Couldn't create buffer for sprites", 2);
 		exit (1);
 	}

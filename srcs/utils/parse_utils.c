@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:33:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/02 16:25:03 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/02 16:50:23 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	check_identifier(char *str)
 		return (free(cmp), 2);
 	else if (!ft_strncmp(cmp, "\n", ft_strlen(cmp)))
 		return (free(cmp), 3);
-	else if (map_start_detector(cmp) == 0)
+	else if (map_start_detector(str) == 0)
 		return (free(cmp), 4);
 	else
 		return (free(cmp), 0);

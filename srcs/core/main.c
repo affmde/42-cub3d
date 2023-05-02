@@ -17,16 +17,12 @@ int	main(int argc, char **argv)
 	t_cub3d	*cub3d;
 
 	if (argc != 2)
-	{
-		ft_putendl_fd("Error\nWrong number of arguments.", 2);
-		return (1);
-	}
+		return (ft_putendl_fd("Error\nWrong number of arguments", 2), 1);
 	cub3d = cub3d_init();
+	if (!cub3d)
+		return (ft_putendl_fd("Error\nMalloc failed", 2), 2);
 	if (file_read(argv[1], cub3d))
-	{
-		free_cub3d(cub3d);
-		return (0);
-	}
+		return (free_cub3d(cub3d), 0);
 	if (file_validity(cub3d))
 		return (0);
 	cub_config_init(cub3d);

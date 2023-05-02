@@ -27,7 +27,7 @@ RAYCASTING_DIR = srcs/raycasting/
 SPRITES_DIR = srcs/sprites/
 BONUS_DIR = srcs/bonus/
 
-CORE = main.c handle_errors.c clean.c draw_example.c
+CORE = main.c handle_errors.c clean.c
 
 FILE_PARSING = file_read.c parse_elements.c parse_map.c
 

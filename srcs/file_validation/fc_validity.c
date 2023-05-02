@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 11:11:31 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/19 16:06:35 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/02 15:09:54 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	check_repeated_walls(t_cub3d *cub3d, t_elements_check *element)
 	t_list		*aux;
 	t_walls		*wall;
 
-	aux = cub3d->textures;
+	aux = cub3d->walls;
 	while (aux)
 	{
 		wall = aux->content;

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:00:52 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/27 17:55:03 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/02 16:17:58 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,6 @@ void		gun_render(t_cub3d *cub3d, int nbr);
 void		weapon_init(t_cub3d *cub3d);
 int			select_gun_texture(t_cub3d *cub3d, t_weapon *w);
 void		shoot(t_cub3d *cub3d);
-void		load_aim_texture(t_cub3d *cub3d);
 void		aim_render(t_cub3d *cub3d);
 void		load_bullet_texture(t_cub3d *cub3d);
 void		bullets_render(t_cub3d *cub3d);
@@ -116,10 +115,10 @@ int			get_door_text(t_cub3d *cub3d, t_sprite *sprite);
 t_sprite	*find_sprite(t_cub3d *cub3d, int x, int y);
 void		handle_shoot_hit(t_cub3d *cub3d);
 void		opponent_attack(t_cub3d *cub3d);
-void		draw_health_bar(t_cub3d *cub3d);
+void		handle_sprite_alive(t_cub3d *cub3d, t_sprite *sprite);
 void		draw_sprite_loop(t_cub3d *cub3d, \
 t_sprite *sprite, int tex_x, int x);
-void		handle_sprite_alive(t_cub3d *cub3d, t_sprite *sprite);
+void		draw_health_bar(t_cub3d *cub3d);
 void		blood_splatter_texture(t_cub3d *cub3d);
 void		blood_splatter_render(t_cub3d *cub3d);
 void		check_blood_anim_over(t_blood *blood);

@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:33:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/02 12:51:40 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/02 16:25:03 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,27 @@ static int	map_start_detector(char *str)
 
 int	check_identifier(char *str)
 {
-	if (!ft_strncmp("NO ", str, 3))
-		return (1);
-	else if (!ft_strncmp("SO ", str, 3))
-		return (1);
-	else if (!ft_strncmp("WE ", str, 3))
-		return (1);
-	else if (!ft_strncmp("EA ", str, 3))
-		return (1);
-	else if (!ft_strncmp("F ", str, 2))
-		return (2);
-	else if (!ft_strncmp("C ", str, 2))
-		return (2);
-	else if (!ft_strncmp(str, "\n", ft_strlen(str)))
-		return (3);
-	else if (map_start_detector(str) == 0)
-		return (4);
+	char	*cmp;
+
+	cmp = ft_strtrim(str, " 	\t");
+	if (!ft_strncmp("NO ", cmp, 3))
+		return (free(cmp), 1);
+	else if (!ft_strncmp("SO ", cmp, 3))
+		return (free(cmp), 1);
+	else if (!ft_strncmp("WE ", cmp, 3))
+		return (free(cmp), 1);
+	else if (!ft_strncmp("EA ", cmp, 3))
+		return (free(cmp), 1);
+	else if (!ft_strncmp("F ", cmp, 2))
+		return (free(cmp), 2);
+	else if (!ft_strncmp("C ", cmp, 2))
+		return (free(cmp), 2);
+	else if (!ft_strncmp(cmp, "\n", ft_strlen(cmp)))
+		return (free(cmp), 3);
+	else if (map_start_detector(cmp) == 0)
+		return (free(cmp), 4);
 	else
-		return (0);
+		return (free(cmp), 0);
 }
 
 char	*trim_line(char *line, char *str)

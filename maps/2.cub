@@ -3,7 +3,7 @@ SO ./textures/floor.xpm
 EA ./textures/wood.xpm
 WE ./textures/colorstone.xpm
 
-F 184,113,39a
+F 184,113,39
 C 51,198,227
 
 

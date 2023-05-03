@@ -17,6 +17,7 @@ LIBFT = libft/libft.a
 
 #Dirs
 OBJS_DIR = obj/
+BOBJS_DIR = bonus_obj/
 CORE_DIR = srcs/core/
 FILE_PARSING_DIR = srcs/file_parsing/
 INIT_DIR = srcs/init/
@@ -57,23 +58,25 @@ ALL_BONUS_SRCS += $(BONUS)
 ALL_BONUS_SRCS += $(SPRITES)
 OBJ_FILES = $(ALL_SRCS:.c=.o)
 OBJS = $(patsubst %, $(OBJS_DIR)%, $(ALL_SRCS:.c=.o))
-BONUS_OBJS = $(patsubst %, $(OBJS_DIR)%, $(ALL_BONUS_SRCS:.c=.o))
+BONUS_OBJS = $(patsubst %, $(BOBJS_DIR)%, $(ALL_BONUS_SRCS:.c=.o))
 
-all: $(LIBFT) $(OBJS_DIR) $(OBJS) $(NAME)
+all: $(NAME)
 
 $(LIBFT):
 	@make all -C libft
 	@make bonus -C libft
 	@echo "$(COLOUR_GREEN)libft compilation completed$(COLOUR_END)"
 
-$(NAME):
+$(NAME): $(LIBFT) $(OBJS_DIR) $(OBJS)
 	@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(MOSFLAGS)
 	@echo "$(COLOUR_GREEN)$@ created$(COLOUR_END)"
 
+#objs dir
 $(OBJS_DIR):
 	@mkdir -p $(OBJS_DIR)
 	@echo "$(COLOUR_BLUE)object directory created$(COLOUR_END)"
 
+#obj files
 $(OBJS_DIR)%.o: $(CORE_DIR)%.c
 	@cc $(FLAGS) -c $< -o $@
 	@echo "$(COLOUR_BLUE)$@ created$(COLOUR_END)"
@@ -120,6 +123,7 @@ clean:
 
 fclean: clean
 	@rm -rf $(OBJS_DIR)
+	@rm -rf $(BOBJS_DIR)
 	@make fclean -C libft
 	@echo "$(COLOUR_RED)libft.a removed$(COLOUR_END)"
 	@rm -f $(NAME)
@@ -127,11 +131,53 @@ fclean: clean
 	@rm -f $(NAME_BONUS)
 	@echo "$(COLOUR_RED)$(NAME_BONUS) removed$(COLOUR_END)"
 
-$(NAME_BONUS):
+#bonus objs dir
+$(BOBJS_DIR):
+	@mkdir -p $(BOBJS_DIR)
+	@echo "$(COLOUR_BLUE)object directory created$(COLOUR_END)"
+
+#bonus obj files
+$(BOBJS_DIR)%.o: $(CORE_DIR)%.c
+	@cc $(FLAGS) -c $< -o $@
+	@echo "$(COLOUR_BLUE)$@ created$(COLOUR_END)"
+
+$(BOBJS_DIR)%.o: $(FILE_PARSING_DIR)%.c
+	@cc $(FLAGS) -c $< -o $@
+	@echo "$(COLOUR_BLUE)$@ created$(COLOUR_END)"
+
+$(BOBJS_DIR)%.o: $(UTILS_DIR)%.c
+	@cc $(FLAGS) -c $< -o $@
+	@echo "$(COLOUR_BLUE)$@ created$(COLOUR_END)"
+
+$(BOBJS_DIR)%.o: $(INIT_DIR)%.c
+	@cc $(FLAGS) -c $< -o $@
+	@echo "$(COLOUR_BLUE)$@ created$(COLOUR_END)"
+
+$(BOBJS_DIR)%.o: $(FILE_VALIDATION_DIR)%.c
+	@cc $(FLAGS) -c $< -o $@
+	@echo "$(COLOUR_BLUE)$@ created$(COLOUR_END)"
+
+$(BOBJS_DIR)%.o: $(MLX_HANDLING_DIR)%.c
+	@cc $(FLAGS) -c $< -o $@
+	@echo "$(COLOUR_BLUE)$@ created$(COLOUR_END)"
+
+$(BOBJS_DIR)%.o: $(RAYCASTING_DIR)%.c
+	@cc $(FLAGS) -c $< -o $@
+	@echo "$(COLOUR_BLUE)$@ created$(COLOUR_END)"
+
+$(BOBJS_DIR)%.o: $(SPRITES_DIR)%.c
+	@cc $(FLAGS) -c $< -o $@
+	@echo "$(COLOUR_BLUE)$@ created$(COLOUR_END)"
+
+$(BOBJS_DIR)%.o: $(BONUS_DIR)%.c
+	@cc $(FLAGS) -c $< -o $@
+	@echo "$(COLOUR_BLUE)$@ created$(COLOUR_END)"
+
+$(NAME_BONUS): $(LIBFT) $(BOBJS_DIR) $(BONUS_OBJS)
 	@cc $(BONUS_FLAGS) $(BONUS_OBJS) -o $(NAME_BONUS) -L. $(LIBFT) $(MOSFLAGS)
 	@echo "$(COLOUR_GREEN)$(NAME_BONUS) created$(COLOUR_END)"
 
-bonus: $(LIBFT) $(OBJS_DIR) $(BONUS_OBJS) $(NAME_BONUS)
+bonus: $(NAME_BONUS)
 
 re: fclean all
 

@@ -6,11 +6,19 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 16:57:49 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/02 19:15:22 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/03 12:22:35 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static void	map_creator_helper(t_list *aux, t_list *map_list, t_map *map)
+{
+	aux = map_list;
+	map->height = ft_lstsize(aux);
+	map->map = list_to_matrix(map_list);
+	ft_lstclear(&map_list, free);
+}
 
 static t_map	*map_creator(t_cub3d *cub3d)
 {
@@ -22,19 +30,22 @@ static t_map	*map_creator(t_cub3d *cub3d)
 	if (!map)
 		return (NULL);
 	aux = cub3d->file_data;
-	while (check_identifier(aux->content) != 4
-		&& check_identifier(aux->content))
+	while (aux)
+	{
+		if (check_identifier(aux->content) == 4
+			|| check_identifier(aux->content) == 0)
+			break ;
 		aux = aux->next;
+	}
 	map_list = NULL;
 	while (aux)
 	{
 		ft_lstadd_back(&map_list, ft_lstnew(ft_strdup(aux->content)));
 		aux = aux->next;
 	}
-	aux = map_list;
-	map->height = ft_lstsize(aux);
-	map->map = list_to_matrix(map_list);
-	ft_lstclear(&map_list, free);
+	if (!map_list)
+		return (free(map), NULL);
+	map_creator_helper(aux, map_list, map);
 	return (map);
 }
 

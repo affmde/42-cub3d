@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 14:36:38 by andrferr          #+#    #+#             */
-/*   Updated: 2023/04/20 13:09:47 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/03 12:39:21 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	validity_error_msg(int err)
 	else if (err == 2)
 	{
 		ft_putendl_fd("Error", 2);
-		ft_putendl_fd("You have repeated elements.", 2);
+		ft_putendl_fd("You dont have the right amount of elements.", 2);
 	}
 	else if (err == 3)
 	{

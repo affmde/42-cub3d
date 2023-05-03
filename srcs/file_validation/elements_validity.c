@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 20:23:54 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/02 15:10:10 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/03 12:39:52 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,17 @@ static void	check_repeated_textures(t_cub3d *cub3d, t_elements_check *element)
 
 static int	pass_elements_check(t_elements_check *element)
 {
-	if (element->n > 1)
+	if (element->n != 1)
 		return (1);
-	if (element->s > 1)
+	if (element->s != 1)
 		return (1);
-	if (element->e > 1)
+	if (element->e != 1)
 		return (1);
-	if (element->w > 1)
+	if (element->w != 1)
 		return (1);
-	if (element->f > 1)
+	if (element->f != 1)
 		return (1);
-	if (element->c > 1)
+	if (element->c != 1)
 		return (1);
 	return (0);
 }

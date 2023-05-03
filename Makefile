@@ -71,12 +71,10 @@ $(NAME): $(LIBFT) $(OBJS_DIR) $(OBJS)
 	@cc $(FLAGS) $(OBJS) -o $@ -L. $(LIBFT) $(MOSFLAGS)
 	@echo "$(COLOUR_GREEN)$@ created$(COLOUR_END)"
 
-#objs dir
 $(OBJS_DIR):
 	@mkdir -p $(OBJS_DIR)
 	@echo "$(COLOUR_BLUE)object directory created$(COLOUR_END)"
 
-#obj files
 $(OBJS_DIR)%.o: $(CORE_DIR)%.c
 	@cc $(FLAGS) -c $< -o $@
 	@echo "$(COLOUR_BLUE)$@ created$(COLOUR_END)"
@@ -117,13 +115,13 @@ clean:
 	@make clean -C libft
 	@echo "$(COLOUR_BLUE)libft object files cleaned$(COLOUR_END)"
 	@rm -f $(OBJS)
+	@rm -rf $(OBJS_DIR)
 	@echo "$(COLOUR_BLUE)object directory cleaned$(COLOUR_END)"
 	@rm -f $(BONUS_OBJS)
+	@rm -rf $(BOBJS_DIR)
 	@echo "$(COLOUR_BLUE)bonus objects cleaned$(COLOUR_END)"
 
 fclean: clean
-	@rm -rf $(OBJS_DIR)
-	@rm -rf $(BOBJS_DIR)
 	@make fclean -C libft
 	@echo "$(COLOUR_RED)libft.a removed$(COLOUR_END)"
 	@rm -f $(NAME)
@@ -131,12 +129,10 @@ fclean: clean
 	@rm -f $(NAME_BONUS)
 	@echo "$(COLOUR_RED)$(NAME_BONUS) removed$(COLOUR_END)"
 
-#bonus objs dir
 $(BOBJS_DIR):
 	@mkdir -p $(BOBJS_DIR)
 	@echo "$(COLOUR_BLUE)object directory created$(COLOUR_END)"
 
-#bonus obj files
 $(BOBJS_DIR)%.o: $(CORE_DIR)%.c
 	@cc $(FLAGS) -c $< -o $@
 	@echo "$(COLOUR_BLUE)$@ created$(COLOUR_END)"

@@ -14,13 +14,13 @@
 
 static t_textures	*receive_texture(t_cub3d *cub3d, int direction)
 {
-	if (direction == NORTH)
-		return (return_texture("NO", cub3d));
 	if (direction == SOUTH)
+		return (return_texture("NO", cub3d));
+	if (direction == NORTH)
 		return (return_texture("SO", cub3d));
-	if (direction == EAST)
-		return (return_texture("EA", cub3d));
 	if (direction == WEST)
+		return (return_texture("EA", cub3d));
+	if (direction == EAST)
 		return (return_texture("WE", cub3d));
 	return (NULL);
 }

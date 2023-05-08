@@ -35,8 +35,8 @@ void	validity_error_msg(int err)
 void	invalid_texture(char *path)
 {
 	ft_putendl_fd("Error", 2);
-	ft_putstr_fd(path, 2);
-	ft_putendl_fd("Couldn't load texture", 2);
+	ft_putstr_fd("Couldn't load texture: ", 2);
+	ft_putendl_fd(path, 2);
 }
 
 void	error_msg_exit(char *msg)

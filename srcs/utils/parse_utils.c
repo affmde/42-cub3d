@@ -6,7 +6,7 @@
 /*   By: andrferr <andrferr@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 15:33:26 by andrferr          #+#    #+#             */
-/*   Updated: 2023/05/02 16:50:23 by andrferr         ###   ########.fr       */
+/*   Updated: 2023/05/08 11:00:54 by andrferr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,14 +88,23 @@ char	**list_to_matrix(t_list *list)
 
 int	contains_non_digit(char *str)
 {
-	int	i;
+	int		i;
+	int		cmp;
+	char	*str_cmp;
+	char	*str_2;
 
+	str_2 = ft_strtrim(str, " \t");
+	cmp = ft_atoi(str);
+	str_cmp = ft_itoa(cmp);
+	if (ft_strncmp(str_2, str_cmp,
+			ft_max(ft_strlen(str_2), ft_strlen(str_cmp))))
+		error_msg_exit("Invalid ceiling or floor");
 	i = 0;
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]) && !ft_isspace(str[i]))
-			return (1);
+			return (free(str_cmp), free(str_2), 1);
 		i++;
 	}
-	return (0);
+	return (free(str_cmp), free(str_2), 0);
 }

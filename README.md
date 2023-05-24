@@ -1,4 +1,4 @@
-# 42 - Cub3D
+# 42 - Cub3D &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ![Grade](https://svgshare.com/i/tV2.svg)
 
 ## Description
 This project is inspired by the world-famous Wolfenstein 3D game, which
@@ -15,7 +15,7 @@ mathematics as a tool to create elegant and efficient algorithms
 
 ## Preview 
 
-![](./cubgif2.gif)
+[![cubgif2.gif](https://s12.gifyu.com/images/cubgif2.gif)](https://gifyu.com/image/SnPBT)
 
 ## Requirements
 As this program is coded in C, you will need a compiler. Also you will need minilibX graphic library. You can get it [here](https://github.com/42Paris/minilibx-linux).
@@ -28,7 +28,7 @@ To run the mandatory part just
 replace chooseMap with one of the maps available in the maps folder.<br>
 Although, the most fun part of this project is the bonus, so I strongly recommend you to use
 
-```make bonus && ./cub3D ./maps/[chooseMap] ```
+```make bonus && ./cub3D_bonus ./maps/[chooseMap] ```
 
 to take advantage of all the functionalities of the program.
 
@@ -51,4 +51,4 @@ _ps: if you are using Mac, make sure that your Makefile is compiling with the fl
 
 ## Collaborators
 
-* [Noel](https://github.com/Rubidium7)
+[@Rubidium7](https://github.com/Rubidium7)

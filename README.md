@@ -15,7 +15,7 @@ mathematics as a tool to create elegant and efficient algorithms
 
 ## Preview 
 
-[![cubgif2.gif](./screenshoots/cubgif2.gif)
+![cubgif2.gif](./screenshoots/cubgif2.gif)
 
 ## Requirements
 As this program is coded in C, you will need a compiler. Also you will need minilibX graphic library. You can get it [here](https://github.com/42Paris/minilibx-linux).

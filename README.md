@@ -40,6 +40,24 @@ mathematics as a tool to create elegant and efficient algorithms
 
 <br><br>
 
+## **_Feactures_**
+
+### _Mandatory part:_ ###
+
+- Walk through the maze
+- Collision detection
+
+### _Bonus part:_ ###
+
+- Minimap system
+- Doors to open and close
+- Animated sprite
+- Rotate the point of view with the mouse
+- Shoot
+- Enemies attack
+- Health system
+<br><br>
+
 ## **_Requirements_**
 As this program is coded in C, you will need a compiler as gcc. Also you will need minilibX graphic library. You can get it [here](https://github.com/42Paris/minilibx-linux).
 <br><br>
@@ -48,7 +66,9 @@ As this program is coded in C, you will need a compiler as gcc. Also you will ne
 To run the mandatory part just
 
 ```
-make && ./cub3D ./maps/[chooseMap]
+$ git clone https://github.com/affmde/42-cub3d.git
+$ cd 42-cub3d
+$ make && ./cub3D ./maps/[chooseMap]
 
 ```
 
@@ -56,7 +76,7 @@ replace chooseMap with one of the maps available in the maps folder.<br>
 Although, the most fun part of this project is the bonus, so I strongly recommend you to use
 
 ```
-make bonus && ./cub3D_bonus ./maps/[chooseMap]
+$ make bonus && ./cub3D_bonus ./maps/[chooseMap]
 ```
 
 to take advantage of all the functionalities of the program.

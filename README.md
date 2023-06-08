@@ -19,13 +19,13 @@
 
 ---
 
-## **_Description_**
+## ![description icon](https://cdn-icons-png.flaticon.com/32/2644/2644332.png) **_Description_**
 This project is inspired by the world-famous Wolfenstein 3D game, which
 was the first FPS ever. It will enable you to explore ray-casting. Your goal will be to
 make a dynamic view inside a maze, in which you’ll have to find your way.
 <br><br>
 
-## **_Goals_**
+## ![goals icon](https://cdn-icons-png.flaticon.com/32/3077/3077054.png) **_Goals_**
 This project’s objectives are: Rigor, use of C, use of basic algorithms, information research etc.<br>
 As a graphic design project, cub3D will enable you to improve your skills in these
 areas: windows, colors, events, fill shapes, etc.<br>
@@ -34,13 +34,13 @@ With the help of the numerous documents available on the internet, you will use
 mathematics as a tool to create elegant and efficient algorithms
 <br><br>
 
-## **_Preview_**
+## ![preview icon](https://cdn-icons-png.flaticon.com/32/607/607554.png) **_Preview_**
 
 ![cubgif2.gif](./screenshoots/cubgif2.gif)
 
 <br><br>
 
-## **_Feactures_**
+## ![features icon](https://cdn-icons-png.flaticon.com/32/3295/3295442.png) **_Features_**
 
 ### _Mandatory part:_ ###
 
@@ -58,11 +58,11 @@ mathematics as a tool to create elegant and efficient algorithms
 - Health system
 <br><br>
 
-## **_Requirements_**
+## ![requirements](https://cdn-icons-png.flaticon.com/32/3079/3079162.png) **_Requirements_**
 As this program is coded in C, you will need a compiler as gcc. Also you will need minilibX graphic library. You can get it [here](https://github.com/42Paris/minilibx-linux).
 <br><br>
 
-## **_How to run it_**
+## ![run it](https://cdn-icons-png.flaticon.com/32/189/189638.png) **_How to run it_**
 To run the mandatory part just
 
 ```
@@ -84,7 +84,7 @@ to take advantage of all the functionalities of the program.
 _ps: if you are using Mac, make sure that your Makefile is compiling with the flag MOSFLAGS. If you use linux the flags should be LINFLAGS._
 <br><br>
 
-## **_Commands_**
+## ![controls icon](https://cdn-icons-png.flaticon.com/32/808/808439.png) **_Controls_**
 
 | __Key__        | __Action__   |
 | -------------  |:-------------:|
@@ -100,6 +100,6 @@ _ps: if you are using Mac, make sure that your Makefile is compiling with the fl
 | ESC  | Close window      |
 <br><br>
 
-## **_Collaborators_**
+## ![collaborator icon](https://cdn-icons-png.flaticon.com/32/7829/7829198.png) **_Collaborators_**
 
 [@Rubidium7](https://github.com/Rubidium7)
